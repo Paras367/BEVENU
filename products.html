@@ -1,78 +1,336 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products | Bevenu</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products — Bevenu</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-<body data-page="products">
-    <nav class="navbar">
-        <div class="container nav-wrapper">
-            <a href="./" class="logo">Bevenu</a>
-            <div class="search-container">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" placeholder="Search products..." class="search-input">
-                <div class="search-suggestions"></div>
-            </div>
-            <div class="nav-actions">
-                <button class="nav-btn theme-toggle"><i class="fas fa-moon"></i></button>
-                <a href="./cart.html" class="nav-btn"><i class="fas fa-shopping-bag"></i><span class="badge cart-count">0</span></a>
-                <button id="userProfileBtn" class="nav-btn"><i class="fas fa-user-circle"></i></button>
-                <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
-            </div>
+<body>
+<div id="toast-container"></div>
+
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href="index.html"><span class="logo-text">Bevenu</span><span class="logo-dot">.</span></a>
+    </div>
+    <div class="nav-search">
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="search-input" placeholder="Search products..." autocomplete="off" />
+        <div class="search-suggestions" id="search-suggestions"></div>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <div class="nav-dropdown">
+        <button class="nav-btn" id="categories-btn">
+          <i class="fas fa-th-large"></i><span>Shop</span><i class="fas fa-chevron-down chevron"></i>
+        </button>
+        <div class="dropdown-menu" id="categories-dropdown">
+          <a href="./products.html?cat=men"><i class="fas fa-male"></i> Men</a>
+          <a href="./products.html?cat=women"><i class="fas fa-female"></i> Women</a>
+          <a href="./products.html?cat=kids"><i class="fas fa-child"></i> Kids</a>
+          <a href="./products.html?cat=accessories"><i class="fas fa-gem"></i> Accessories</a>
         </div>
+      </div>
+      <button class="nav-btn" id="theme-toggle"><i class="fas fa-moon" id="theme-icon"></i></button>
+      <a href="#" class="nav-btn" id="wishlist-btn"><i class="fas fa-heart"></i><span class="badge" id="wishlist-count">0</span></a>
+      <a href="./cart.html" class="nav-btn cart-btn"><i class="fas fa-shopping-bag"></i><span class="badge" id="cart-count">0</span></a>
+      <a href="./login.html" class="nav-btn" id="login-btn"><i class="fas fa-user"></i><span id="user-display">Login</span></a>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <nav class="mobile-nav">
+      <a href="./products.html?cat=men"><i class="fas fa-male"></i> Men</a>
+      <a href="./products.html?cat=women"><i class="fas fa-female"></i> Women</a>
+      <a href="./products.html?cat=kids"><i class="fas fa-child"></i> Kids</a>
+      <a href="./products.html?cat=accessories"><i class="fas fa-gem"></i> Accessories</a>
     </nav>
+  </div>
+</nav>
 
-    <main class="container" style="margin: 2rem auto; display: grid; grid-template-columns: 280px 1fr; gap: 2rem;">
-        <aside class="filters-wrapper">
-            <div class="filter-group">
-                <label>Category</label>
-                <div class="filter-options" id="categoryFilter">
-                    <div class="filter-chip active" data-value="all">All</div>
-                    <div class="filter-chip" data-value="Men">Men</div>
-                    <div class="filter-chip" data-value="Women">Women</div>
-                    <div class="filter-chip" data-value="Kids">Kids</div>
-                    <div class="filter-chip" data-value="Accessories">Accessories</div>
-                </div>
-            </div>
-            <div class="filter-group">
-                <label>Price Range</label>
-                <div class="filter-options">
-                    <div class="filter-chip active" data-value="all">All</div>
-                    <div class="filter-chip" data-value="0-50">Under $50</div>
-                    <div class="filter-chip" data-value="50-100">$50-$100</div>
-                    <div class="filter-chip" data-value="100-200">$100+</div>
-                </div>
-            </div>
-            <div class="filter-group">
-                <label>Min Rating</label>
-                <div class="filter-options">
-                    <div class="filter-chip active" data-value="all">Any</div>
-                    <div class="filter-chip" data-value="3">3+ Stars</div>
-                    <div class="filter-chip" data-value="4">4+ Stars</div>
-                </div>
-            </div>
-        </aside>
 
-        <section>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                <span style="color: var(--text-light);">Showing <strong id="countDisplay">6</strong> items</span>
-                <select class="sort-select" style="width: auto;">
-                    <option value="default">Sort by: Relevance</option>
-                    <option value="low-high">Price: Low to High</option>
-                    <option value="high-low">Price: High to Low</option>
-                    <option value="popularity">Popularity</option>
-                </select>
-            </div>
-            <div class="grid-3 products-grid"></div>
-            <div class="pagination"></div>
-        </section>
-    </main>
+<div class="page-header">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a> <span>/</span> <span id="breadcrumb-current">All Products</span>
+    </nav>
+    <h1 id="page-title">All Products</h1>
+    <p id="page-subtitle">Discover our complete collection</p>
+  </div>
+</div>
 
-    <div class="toast-container"></div>
-    <script src="script.js"></script>
+
+<div class="products-page container">
+  <aside class="filter-sidebar" id="filter-sidebar">
+    <div class="filter-header">
+      <h3><i class="fas fa-sliders-h"></i> Filters</h3>
+      <button class="clear-filters-btn" onclick="clearFilters()">Clear All</button>
+    </div>
+
+    <div class="filter-group">
+      <h4 class="filter-title">Category <i class="fas fa-chevron-down"></i></h4>
+      <div class="filter-options">
+        <label class="filter-check"><input type="checkbox" name="cat" value="men" /> Men</label>
+        <label class="filter-check"><input type="checkbox" name="cat" value="women" /> Women</label>
+        <label class="filter-check"><input type="checkbox" name="cat" value="kids" /> Kids</label>
+        <label class="filter-check"><input type="checkbox" name="cat" value="accessories" /> Accessories</label>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <h4 class="filter-title">Price Range <i class="fas fa-chevron-down"></i></h4>
+      <div class="price-range-wrapper">
+        <div class="price-display">
+          <span>₹<span id="price-min-display">0</span></span>
+          <span>₹<span id="price-max-display">10000</span></span>
+        </div>
+        <input type="range" id="price-min" min="0" max="10000" value="0" step="100" class="price-slider" />
+        <input type="range" id="price-max" min="0" max="10000" value="10000" step="100" class="price-slider" />
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <h4 class="filter-title">Size <i class="fas fa-chevron-down"></i></h4>
+      <div class="size-options">
+        <button class="size-btn" data-size="XS">XS</button>
+        <button class="size-btn" data-size="S">S</button>
+        <button class="size-btn" data-size="M">M</button>
+        <button class="size-btn" data-size="L">L</button>
+        <button class="size-btn" data-size="XL">XL</button>
+        <button class="size-btn" data-size="XXL">XXL</button>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <h4 class="filter-title">Rating <i class="fas fa-chevron-down"></i></h4>
+      <div class="filter-options">
+        <label class="filter-check"><input type="radio" name="rating" value="4" /> 4★ & above</label>
+        <label class="filter-check"><input type="radio" name="rating" value="3" /> 3★ & above</label>
+        <label class="filter-check"><input type="radio" name="rating" value="2" /> 2★ & above</label>
+        <label class="filter-check"><input type="radio" name="rating" value="0" /> All</label>
+      </div>
+    </div>
+
+    <button class="btn btn-primary apply-filters-btn" onclick="applyFilters()">Apply Filters</button>
+  </aside>
+
+
+  <main class="products-main">
+    <div class="products-toolbar">
+      <div class="toolbar-left">
+        <button class="filter-toggle-btn" id="filter-toggle">
+          <i class="fas fa-sliders-h"></i> Filters
+        </button>
+        <p class="results-count"><span id="results-count">0</span> Products</p>
+      </div>
+      <div class="toolbar-right">
+        <select class="sort-select" id="sort-select" onchange="applyFilters()">
+          <option value="default">Sort By: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating">Top Rated</option>
+          <option value="newest">Newest First</option>
+          <option value="popularity">Most Popular</option>
+        </select>
+        <div class="view-toggle">
+          <button class="view-btn active" id="grid-view-btn" onclick="setView('grid')"><i class="fas fa-th"></i></button>
+          <button class="view-btn" id="list-view-btn" onclick="setView('list')"><i class="fas fa-list"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="active-filters" id="active-filters"></div>
+    <div class="products-grid" id="products-grid"></div>
+    <div class="pagination" id="pagination"></div>
+  </main>
+</div>
+
+<div class="wishlist-overlay" id="wishlist-overlay"></div>
+<div class="wishlist-sidebar" id="wishlist-sidebar">
+  <div class="wishlist-header">
+    <h3>My Wishlist <span id="wishlist-count-sidebar">0</span></h3>
+    <button onclick="closeWishlist()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="wishlist-items" id="wishlist-items-container"></div>
+</div>
+
+
+<footer class="footer footer-compact">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2026 Bevenu. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  let currentPage = 1;
+  const perPage = 12;
+  let filteredProducts = [];
+  let currentView = 'grid';
+  let selectedSizes = [];
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    updateNavCounts();
+    checkUserSession();
+    initSearchSuggestions();
+    initFiltersFromURL();
+    applyFilters();
+
+    document.getElementById('price-min').addEventListener('input', updatePriceDisplay);
+    document.getElementById('price-max').addEventListener('input', updatePriceDisplay);
+
+    document.querySelectorAll('.size-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('active');
+        const size = btn.dataset.size;
+        if (selectedSizes.includes(size)) {
+          selectedSizes = selectedSizes.filter(s => s !== size);
+        } else {
+          selectedSizes.push(size);
+        }
+      });
+    });
+
+    document.getElementById('filter-toggle').addEventListener('click', () => {
+      document.getElementById('filter-sidebar').classList.toggle('open');
+    });
+  });
+
+  function initFiltersFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get('cat');
+    const sort = params.get('sort');
+    const sale = params.get('sale');
+
+    if (cat) {
+      document.querySelectorAll(`input[name="cat"][value="${cat}"]`).forEach(cb => cb.checked = true);
+      document.getElementById('breadcrumb-current').textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+      document.getElementById('page-title').textContent = cat.charAt(0).toUpperCase() + cat.slice(1) + "'s Collection";
+    }
+    if (sort) document.getElementById('sort-select').value = sort;
+  }
+
+  function updatePriceDisplay() {
+    const min = document.getElementById('price-min').value;
+    const max = document.getElementById('price-max').value;
+    document.getElementById('price-min-display').textContent = min;
+    document.getElementById('price-max-display').textContent = max;
+  }
+
+  function applyFilters() {
+    const selectedCats = [...document.querySelectorAll('input[name="cat"]:checked')].map(i => i.value);
+    const minPrice = parseInt(document.getElementById('price-min').value);
+    const maxPrice = parseInt(document.getElementById('price-max').value);
+    const minRating = parseFloat(document.querySelector('input[name="rating"]:checked')?.value || 0);
+    const sortVal = document.getElementById('sort-select').value;
+
+    let products = getProducts();
+
+    if (selectedCats.length > 0) products = products.filter(p => selectedCats.includes(p.category));
+    products = products.filter(p => p.price >= minPrice && p.price <= maxPrice);
+    if (minRating > 0) products = products.filter(p => p.rating >= minRating);
+    if (selectedSizes.length > 0) products = products.filter(p => p.sizes && selectedSizes.some(s => p.sizes.includes(s)));
+
+    switch (sortVal) {
+      case 'price-asc': products.sort((a, b) => a.price - b.price); break;
+      case 'price-desc': products.sort((a, b) => b.price - a.price); break;
+      case 'rating': products.sort((a, b) => b.rating - a.rating); break;
+      case 'newest': products.sort((a, b) => (b.newArrival ? 1 : 0) - (a.newArrival ? 1 : 0)); break;
+      case 'popularity': products.sort((a, b) => b.reviews - a.reviews); break;
+    }
+
+    filteredProducts = products;
+    currentPage = 1;
+    document.getElementById('results-count').textContent = products.length;
+    renderPage();
+    renderActiveFilters(selectedCats, minPrice, maxPrice, minRating);
+  }
+
+  function renderPage() {
+    const start = (currentPage - 1) * perPage;
+    const end = start + perPage;
+    const pageProducts = filteredProducts.slice(start, end);
+
+    const grid = document.getElementById('products-grid');
+    grid.className = currentView === 'list' ? 'products-list' : 'products-grid';
+
+    if (pageProducts.length === 0) {
+      grid.innerHTML = `<div class="empty-state"><i class="fas fa-search"></i><h3>No products found</h3><p>Try adjusting your filters</p><button class="btn btn-primary" onclick="clearFilters()">Clear Filters</button></div>`;
+      document.getElementById('pagination').innerHTML = '';
+      return;
+    }
+
+    grid.innerHTML = pageProducts.map(p => renderProductCard(p)).join('');
+    renderPagination();
+    attachCardEvents();
+  }
+
+  function renderPagination() {
+    const total = Math.ceil(filteredProducts.length / perPage);
+    if (total <= 1) { document.getElementById('pagination').innerHTML = ''; return; }
+    let html = '';
+    if (currentPage > 1) html += `<button class="page-btn" onclick="goToPage(${currentPage - 1})"><i class="fas fa-chevron-left"></i></button>`;
+    for (let i = 1; i <= total; i++) {
+      html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
+    }
+    if (currentPage < total) html += `<button class="page-btn" onclick="goToPage(${currentPage + 1})"><i class="fas fa-chevron-right"></i></button>`;
+    document.getElementById('pagination').innerHTML = html;
+  }
+
+  function goToPage(page) {
+    currentPage = page;
+    renderPage();
+    document.querySelector('.products-page').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function setView(view) {
+    currentView = view;
+    document.getElementById('grid-view-btn').classList.toggle('active', view === 'grid');
+    document.getElementById('list-view-btn').classList.toggle('active', view === 'list');
+    renderPage();
+  }
+
+  function clearFilters() {
+    document.querySelectorAll('input[name="cat"]').forEach(cb => cb.checked = false);
+    document.getElementById('price-min').value = 0;
+    document.getElementById('price-max').value = 10000;
+    document.querySelector('input[name="rating"][value="0"]').checked = true;
+    selectedSizes = [];
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+    updatePriceDisplay();
+    applyFilters();
+  }
+
+  function renderActiveFilters(cats, min, max, rating) {
+    const container = document.getElementById('active-filters');
+    let html = '';
+    cats.forEach(c => { html += `<span class="filter-tag">${c} <button onclick="removeCatFilter('${c}')">×</button></span>`; });
+    if (min > 0 || max < 10000) html += `<span class="filter-tag">₹${min}–₹${max} <button onclick="clearPriceFilter()">×</button></span>`;
+    if (rating > 0) html += `<span class="filter-tag">${rating}★+ <button onclick="clearRatingFilter()">×</button></span>`;
+    container.innerHTML = html;
+  }
+
+  function removeCatFilter(cat) {
+    document.querySelector(`input[name="cat"][value="${cat}"]`).checked = false;
+    applyFilters();
+  }
+  function clearPriceFilter() {
+    document.getElementById('price-min').value = 0;
+    document.getElementById('price-max').value = 10000;
+    updatePriceDisplay();
+    applyFilters();
+  }
+  function clearRatingFilter() {
+    document.querySelector('input[name="rating"][value="0"]').checked = true;
+    applyFilters();
+  }
+</script>
 </body>
 </html>
