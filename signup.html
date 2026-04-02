@@ -1,39 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Authentication | Bevenu</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="0;url=login.html?form=signup" />
+  <title>Sign Up — Bevenu</title>
 </head>
-<body data-page="auth" style="background: var(--surface); min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
-    <nav class="navbar">
-        <div class="container nav-wrapper">
-            <a href="./" class="logo">Bevenu</a>
-            <button class="nav-btn theme-toggle"><i class="fas fa-moon"></i></button>
-        </div>
-    </nav>
-
-    <div class="auth-container animate-fade">
-        <h2 class="auth-title"></h2>
-        <form class="auth-form">
-            <input type="text" id="nameField" placeholder="Full Name" style="${window.location.pathname.includes('login') ? 'display:none;' : ''}">
-            <input type="email" id="email" placeholder="Email Address" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit" class="btn btn-primary btn-block" id="authBtn">Submit</button>
-        </form>
-        <p class="auth-toggle">
-            ${window.location.pathname.includes('login') ? `New here? <a href="./signup.html">Create account</a>` : `Already have account? <a href="./login.html">Login</a>`}
-        </p>
-    </div>
-
-    <div class="toast-container"></div>
-    <script>
-        document.querySelector('.auth-toggle').innerHTML = window.location.pathname.includes('login') ? `New here? <a href="./signup.html">Create account</a>` : `Already have account? <a href="./login.html">Login</a>`;
-        document.getElementById('nameField').style.display = window.location.pathname.includes('login') ? 'none' : 'block';
-        document.getElementById('authBtn').textContent = window.location.pathname.includes('login') ? 'Login' : 'Create Account';
-    </script>
-    <script src="script.js"></script>
+<body>
+  <p>Redirecting to sign up...</p>
+  <script>window.location.href = './login.html?form=signup';</script>
 </body>
 </html>
