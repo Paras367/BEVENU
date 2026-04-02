@@ -30,7 +30,7 @@
 
     <div class="toast-container"></div>
     <script>
-        document.querySelector('.auth-toggle').innerHTML = window.location.pathname.includes('login') ? `New here? <a href="/signup.html">Create account</a>` : `Already have account? <a href="/login.html">Login</a>`;
+        document.querySelector('.auth-toggle').innerHTML = window.location.pathname.includes('login') ? `New here? <a href="./signup.html">Create account</a>` : `Already have account? <a href="./login.html">Login</a>`;
         document.getElementById('nameField').style.display = window.location.pathname.includes('login') ? 'none' : 'block';
         document.getElementById('authBtn').textContent = window.location.pathname.includes('login') ? 'Login' : 'Create Account';
     </script>
