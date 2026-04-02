@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel | Bevenu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="admin">
+    <nav class="navbar">
+        <div class="container nav-wrapper">
+            <a href="/" class="logo">Bevenu Admin</a>
+            <div class="nav-actions">
+                <button class="nav-btn theme-toggle"><i class="fas fa-moon"></i></button>
+                <a href="/" class="btn btn-outline" style="font-size: 0.85rem;">View Store</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container admin-panel">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <h2>Product Management</h2>
+            <button class="btn btn-primary add-product-btn"><i class="fas fa-plus"></i> Add New</button>
+        </div>
+
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </main>
+
+    <div class="admin-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 style="margin-bottom: 1.5rem;">Product Details</h3>
+            <form id="adminForm" class="auth-form">
+                <input type="text" name="name" placeholder="Product Name" required>
+                <input type="number" name="price" placeholder="Price ($)" step="0.01" required>
+                <select name="category" required>
+                    <option value="Men">Men</option>
+                    <option value="Women">Women</option>
+                    <option value="Kids">Kids</option>
+                    <option value="Accessories">Accessories</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Save Product</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast-container"></div>
+    <script src="script.js"></script>
+</body>
+</html>
