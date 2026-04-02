@@ -1,29 +1,343 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product | Bevenu</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product — Bevenu</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-<body data-page="product">
-    <nav class="navbar">
-        <div class="container nav-wrapper">
-            <a href="/" class="logo">Bevenu</a>
-            <div class="nav-actions">
-                <button class="nav-btn theme-toggle"><i class="fas fa-moon"></i></button>
-                <a href="./cart.html" class="nav-btn"><i class="fas fa-shopping-bag"></i><span class="badge cart-count">0</span></a>
-                <button id="userProfileBtn" class="nav-btn"><i class="fas fa-user-circle"></i></button>
-            </div>
-        </div>
+<body>
+<div id="toast-container"></div>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <div class="nav-logo"><a href="index.html"><span class="logo-text">Bevenu</span><span class="logo-dot">.</span></a></div>
+    <div class="nav-search">
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="search-input" placeholder="Search products..." autocomplete="off" />
+        <div class="search-suggestions" id="search-suggestions"></div>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-btn" id="theme-toggle"><i class="fas fa-moon" id="theme-icon"></i></button>
+      <a href="#" class="nav-btn" id="wishlist-btn"><i class="fas fa-heart"></i><span class="badge" id="wishlist-count">0</span></a>
+      <a href="./cart.html" class="nav-btn cart-btn"><i class="fas fa-shopping-bag"></i><span class="badge" id="cart-count">0</span></a>
+      <a href="./login.html" class="nav-btn" id="login-btn"><i class="fas fa-user"></i><span id="user-display">Login</span></a>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <nav class="mobile-nav">
+      <a href="./products.html?cat=men">Men</a>
+      <a href="./products.html?cat=women">Women</a>
+      <a href="./products.html?cat=kids">Kids</a>
+      <a href="./products.html?cat=accessories">Accessories</a>
     </nav>
+  </div>
+</nav>
 
-    <main class="container product-detail-container">
-    </main>
+<div class="container" style="padding-top:2rem;">
+  <nav class="breadcrumb">
+    <a href="./index.html">Home</a> <span>/</span>
+    <a href="./products.html">Products</a> <span>/</span>
+    <span id="breadcrumb-product">Product</span>
+  </nav>
+</div>
 
-    <div class="toast-container"></div>
-    <script src="script.js"></script>
+
+<div class="product-detail-page container" id="product-detail-page">
+  <div class="skeleton-detail" id="skeleton-detail">
+    <div class="skeleton skeleton-img-main"></div>
+    <div class="skeleton-info">
+      <div class="skeleton skeleton-line" style="width:40%;height:14px;"></div>
+      <div class="skeleton skeleton-line" style="width:70%;height:28px;margin-top:12px;"></div>
+      <div class="skeleton skeleton-line" style="width:30%;height:20px;margin-top:8px;"></div>
+      <div class="skeleton skeleton-line" style="width:50%;height:40px;margin-top:20px;"></div>
+    </div>
+  </div>
+</div>
+
+<section class="section products-section" id="recommendations-section" style="display:none;">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag">You May Also Like</p>
+      <h2 class="section-title">Recommended For You</h2>
+    </div>
+    <div class="products-grid" id="recommendations-grid"></div>
+  </div>
+</section>
+
+<div class="container" id="reviews-section" style="display:none;">
+  <div class="reviews-container">
+    <div class="reviews-header">
+      <h2>Customer Reviews</h2>
+      <button class="btn btn-outline" onclick="openReviewModal()">Write a Review</button>
+    </div>
+    <div id="reviews-list"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="review-modal-overlay">
+  <div class="modal" id="review-modal">
+    <div class="modal-header">
+      <h3>Write a Review</h3>
+      <button onclick="closeReviewModal()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="star-rating-input" id="star-input">
+        <span class="star-inp" data-val="1">★</span>
+        <span class="star-inp" data-val="2">★</span>
+        <span class="star-inp" data-val="3">★</span>
+        <span class="star-inp" data-val="4">★</span>
+        <span class="star-inp" data-val="5">★</span>
+      </div>
+      <input type="text" placeholder="Your name" id="review-name" class="input-field" />
+      <textarea placeholder="Share your experience..." id="review-text" class="input-field" rows="4"></textarea>
+      <button class="btn btn-primary" onclick="submitReview()" style="width:100%">Submit Review</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="wishlist-overlay" id="wishlist-overlay"></div>
+<div class="wishlist-sidebar" id="wishlist-sidebar">
+  <div class="wishlist-header">
+    <h3>My Wishlist</h3>
+    <button onclick="closeWishlist()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="wishlist-items" id="wishlist-items-container"></div>
+</div>
+
+<footer class="footer footer-compact">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2026 Bevenu. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  let currentProduct = null;
+  let selectedSize = '';
+  let selectedQty = 1;
+  let reviewRating = 0;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    updateNavCounts();
+    checkUserSession();
+    initSearchSuggestions();
+
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get('id'));
+    if (!id) { window.location.href = 'products.html'; return; }
+    setTimeout(() => {
+      loadProduct(id);
+    }, 600);
+    document.querySelectorAll('.star-inp').forEach(star => {
+      star.addEventListener('click', () => {
+        reviewRating = parseInt(star.dataset.val);
+        document.querySelectorAll('.star-inp').forEach((s, i) => {
+          s.classList.toggle('active', i < reviewRating);
+        });
+      });
+    });
+  });
+
+  function loadProduct(id) {
+    const products = getProducts();
+    const product = products.find(p => p.id === id);
+    if (!product) { window.location.href = 'products.html'; return; }
+    currentProduct = product;
+
+    addToRecentlyViewed(product);
+    document.title = product.name + ' — Bevenu';
+    document.getElementById('breadcrumb-product').textContent = product.name;
+
+    document.getElementById('skeleton-detail').remove();
+
+    const container = document.getElementById('product-detail-page');
+    container.innerHTML = renderProductDetail(product);
+
+    const recs = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+    if (recs.length) {
+      document.getElementById('recommendations-section').style.display = 'block';
+      document.getElementById('recommendations-grid').innerHTML = recs.map(p => renderProductCard(p)).join('');
+      attachCardEvents();
+    }
+
+    renderReviews(product.id);
+    document.getElementById('reviews-section').style.display = 'block';
+  }
+
+  function renderProductDetail(p) {
+    const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+    const isWishlisted = wishlist.some(i => i.id === p.id);
+    const stars = getStarHTML(p.rating);
+    const discount = p.originalPrice ? Math.round((1 - p.price / p.originalPrice) * 100) : 0;
+
+    return `
+    <div class="product-detail">
+      <div class="product-images">
+        <div class="main-image">
+          <div class="product-img-placeholder large" style="background:${p.color || '#f0f0f0'}">
+            <i class="fas fa-tshirt"></i>
+            <span>${p.name}</span>
+          </div>
+          ${discount ? `<span class="product-badge sale">-${discount}%</span>` : ''}
+          ${p.newArrival ? `<span class="product-badge new-badge">New</span>` : ''}
+        </div>
+        <div class="thumbnails">
+          ${[1,2,3,4].map(n => `
+            <div class="thumbnail ${n===1?'active':''}">
+              <div class="product-img-placeholder thumb" style="background:${adjustColor(p.color,n*10)}">
+                <i class="fas fa-tshirt"></i>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="product-info">
+        <div class="product-meta">
+          <span class="product-category">${p.category.toUpperCase()}</span>
+          <span class="product-sku">SKU: BVN-${p.id.toString().padStart(4,'0')}</span>
+        </div>
+        <h1 class="product-detail-title">${p.name}</h1>
+        <div class="product-rating-row">
+          <div class="stars-display">${stars}</div>
+          <span class="rating-num">${p.rating}</span>
+          <span class="rating-count">(${p.reviews} reviews)</span>
+        </div>
+
+        <div class="product-price-row">
+          <span class="current-price">₹${p.price.toLocaleString()}</span>
+          ${p.originalPrice ? `<span class="original-price">₹${p.originalPrice.toLocaleString()}</span>` : ''}
+          ${discount ? `<span class="discount-badge">${discount}% OFF</span>` : ''}
+        </div>
+
+        <p class="product-desc">${p.description || 'Premium quality clothing crafted with the finest materials. Designed for comfort and style, perfect for everyday wear or special occasions.'}</p>
+
+        <div class="size-selector">
+          <div class="selector-header">
+            <span>Select Size</span>
+            <a href="#" class="size-guide-link">Size Guide <i class="fas fa-ruler"></i></a>
+          </div>
+          <div class="size-options-detail">
+            ${(p.sizes || ['S','M','L','XL']).map(s =>
+              `<button class="size-btn-detail" data-size="${s}" onclick="selectSize('${s}')">${s}</button>`
+            ).join('')}
+          </div>
+        </div>
+
+        <div class="qty-selector">
+          <span>Quantity</span>
+          <div class="qty-control">
+            <button onclick="changeQty(-1)"><i class="fas fa-minus"></i></button>
+            <span id="qty-display">1</span>
+            <button onclick="changeQty(1)"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="product-actions">
+          <button class="btn btn-primary btn-lg add-cart-detail" onclick="addToCartDetail()">
+            <i class="fas fa-shopping-bag"></i> Add to Cart
+          </button>
+          <button class="btn-wishlist-detail ${isWishlisted ? 'active' : ''}" onclick="toggleWishlistDetail()">
+            <i class="fas fa-heart"></i>
+          </button>
+        </div>
+
+        <div class="buy-now-row">
+          <button class="btn btn-outline btn-lg" onclick="buyNow()" style="width:100%">
+            <i class="fas fa-bolt"></i> Buy Now
+          </button>
+        </div>
+
+        <div class="product-features">
+          <div class="feature-item"><i class="fas fa-shipping-fast"></i><span>Free delivery on orders above ₹999</span></div>
+          <div class="feature-item"><i class="fas fa-undo"></i><span>Easy 30-day returns</span></div>
+          <div class="feature-item"><i class="fas fa-shield-alt"></i><span>100% authentic product</span></div>
+          <div class="feature-item"><i class="fas fa-tag"></i><span>Best price guaranteed</span></div>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function selectSize(size) {
+    selectedSize = size;
+    document.querySelectorAll('.size-btn-detail').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.size === size);
+    });
+  }
+
+  function changeQty(delta) {
+    selectedQty = Math.max(1, Math.min(10, selectedQty + delta));
+    document.getElementById('qty-display').textContent = selectedQty;
+  }
+
+  function addToCartDetail() {
+    if (!selectedSize) { showToast('Please select a size!', 'warning'); return; }
+    addToCart(currentProduct, selectedQty, selectedSize);
+  }
+
+  function buyNow() {
+    if (!selectedSize) { showToast('Please select a size!', 'warning'); return; }
+    addToCart(currentProduct, selectedQty, selectedSize);
+    window.location.href = 'cart.html';
+  }
+
+  function toggleWishlistDetail() {
+    toggleWishlist(currentProduct);
+    const btn = document.querySelector('.btn-wishlist-detail');
+    if (btn) btn.classList.toggle('active');
+  }
+
+  function adjustColor(hex, amt) {
+    if (!hex || !hex.startsWith('#')) return '#f5f5f5';
+    return hex;
+  }
+
+  function renderReviews(productId) {
+    const reviews = JSON.parse(localStorage.getItem(`reviews_${productId}`) || '[]');
+    const defaultReviews = [
+      { name: 'Anjali K.', rating: 5, text: 'Absolutely love this! The quality is top-notch and fits perfectly.', date: '2025-04-01' },
+      { name: 'Rohan S.', rating: 4, text: 'Great product, fast delivery. Would definitely buy again!', date: '2025-03-28' },
+    ];
+    const allReviews = [...defaultReviews, ...reviews];
+    document.getElementById('reviews-list').innerHTML = allReviews.map(r => `
+      <div class="review-card">
+        <div class="review-header">
+          <div class="reviewer-avatar">${r.name[0]}</div>
+          <div>
+            <strong>${r.name}</strong>
+            <div class="review-stars">${getStarHTML(r.rating)}</div>
+          </div>
+          <span class="review-date">${r.date}</span>
+        </div>
+        <p>${r.text}</p>
+      </div>
+    `).join('');
+  }
+
+  function openReviewModal() { document.getElementById('review-modal-overlay').classList.add('active'); }
+  function closeReviewModal() { document.getElementById('review-modal-overlay').classList.remove('active'); }
+
+  function submitReview() {
+    const name = document.getElementById('review-name').value;
+    const text = document.getElementById('review-text').value;
+    if (!name || !text || !reviewRating) { showToast('Please fill all fields and rate!', 'warning'); return; }
+    const reviews = JSON.parse(localStorage.getItem(`reviews_${currentProduct.id}`) || '[]');
+    reviews.push({ name, text, rating: reviewRating, date: new Date().toISOString().split('T')[0] });
+    localStorage.setItem(`reviews_${currentProduct.id}`, JSON.stringify(reviews));
+    closeReviewModal();
+    renderReviews(currentProduct.id);
+    showToast('Review submitted! Thank you.', 'success');
+  }
+</script>
 </body>
 </html>
