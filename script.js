@@ -1,505 +1,478 @@
-/**
- * BEVENU | Core Application Engine v2.1
- * Production-ready Vanilla JS Architecture
- * Integrates 15+ modern libraries via dynamic CDN loading with graceful fallbacks
- */
-'use strict';
+/* ============================================================
+   BEVENU - E-Commerce JavaScript
+   ============================================================ */
 
-const BevenuApp = (function () {
+// ============================================================
+// PRODUCT DATA
+// ============================================================
+const DEFAULT_PRODUCTS = [
+  // WOMEN
+  { id: 1, name: 'Floral Wrap Dress', category: 'women', price: 1299, originalPrice: 1999, rating: 4.8, reviews: 324, color: '#fce7f3', sizes: ['XS','S','M','L','XL'], trending: true, newArrival: false, description: 'Elegant floral wrap dress crafted from breathable chiffon fabric. Perfect for summer evenings and casual outings.' },
+  { id: 2, name: 'Linen Wide-Leg Pants', category: 'women', price: 1599, originalPrice: 2499, rating: 4.6, reviews: 218, color: '#fef3c7', sizes: ['S','M','L','XL'], trending: true, newArrival: true, description: 'Relaxed linen wide-leg trousers with an elastic waistband for all-day comfort.' },
+  { id: 3, name: 'Silk Camisole Top', category: 'women', price: 899, originalPrice: null, rating: 4.5, reviews: 156, color: '#ffe4e6', sizes: ['XS','S','M','L'], trending: false, newArrival: true, description: 'Luxurious silk-satin camisole with adjustable straps. Versatile for day or night styling.' },
+  { id: 4, name: 'Embroidered Kurti Set', category: 'women', price: 2199, originalPrice: 3499, rating: 4.9, reviews: 442, color: '#f0fdf4', sizes: ['S','M','L','XL','XXL'], trending: true, newArrival: false, description: 'Intricately embroidered ethnic kurti with matching palazzo. A festive favourite.' },
+  { id: 5, name: 'Blazer & Trouser Set', category: 'women', price: 3499, originalPrice: 5999, rating: 4.7, reviews: 187, color: '#f5f3ff', sizes: ['S','M','L','XL'], trending: false, newArrival: true, description: 'Tailored blazer and straight-cut trouser co-ord set in premium crepe fabric.' },
+  { id: 6, name: 'Ruched Bodycon Dress', category: 'women', price: 1099, originalPrice: 1599, rating: 4.4, reviews: 293, color: '#fce7f3', sizes: ['XS','S','M','L'], trending: true, newArrival: false, description: 'Figure-flattering ruched bodycon dress in a stretchy jersey fabric.' },
 
-  const CONFIG = {
-    VERSION: '2.1.0',
-    STORAGE_PREFIX: 'bevenu_',
-    CURRENCY: '$',
-    TAX_RATE: 0.15,
-    CDN_BASE: 'https://cdn.jsdelivr.net/npm/',
-    DEBOUNCE: 250,
-    THROTTLE: 100,
-    ANIMATION: { duration: 400, ease: 'power2.out' },
-    LIBRARIES: [
-      'gsap@3.12.5/dist/gsap.min.js',
-      'gsap@3.12.5/dist/ScrollTrigger.min.js',
-      'swiper@11.1.0/swiper-bundle.min.js',
-      'fuse.js@7.0.0/dist/fuse.min.js',
-      'dayjs@1.11.10/dayjs.min.js',
-      'uuid@9.0.0/dist/esm-browser/index.min.js',
-      'vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js',
-      'lazysizes@5.3.2/lazysizes.min.js',
-      'chart.js@4.4.1/dist/chart.umd.min.js',
-      'countup.js@2.8.0/dist/countUp.umd.js',
-      'micromodal@0.4.10/dist/micromodal.min.js',
-      'clipboard@2.0.11/dist/clipboard.min.js'
-    ]
-  };
+  // MEN
+  { id: 7, name: 'Slim Fit Oxford Shirt', category: 'men', price: 999, originalPrice: 1499, rating: 4.6, reviews: 389, color: '#dbeafe', sizes: ['S','M','L','XL','XXL'], trending: true, newArrival: false, description: 'Classic slim-fit Oxford shirt in breathable 100% cotton. A wardrobe staple.' },
+  { id: 8, name: 'Cargo Jogger Pants', category: 'men', price: 1399, originalPrice: 1999, rating: 4.5, reviews: 267, color: '#f0fdf4', sizes: ['S','M','L','XL','XXL'], trending: true, newArrival: true, description: 'Functional cargo joggers with multiple pockets and an adjustable waistband.' },
+  { id: 9, name: 'Premium Polo T-Shirt', category: 'men', price: 799, originalPrice: null, rating: 4.7, reviews: 512, color: '#fef9c3', sizes: ['S','M','L','XL','XXL'], trending: false, newArrival: false, description: 'Pique cotton polo with ribbed collar and cuffs. Available in 8 colours.' },
+  { id: 10, name: 'Denim Jacket Classic', category: 'men', price: 2499, originalPrice: 3499, rating: 4.8, reviews: 203, color: '#dbeafe', sizes: ['S','M','L','XL'], trending: true, newArrival: true, description: 'Vintage-washed denim jacket with button closures and front pockets.' },
+  { id: 11, name: 'Formal Blazer Navy', category: 'men', price: 4999, originalPrice: 7999, rating: 4.9, reviews: 128, color: '#e0e7ff', sizes: ['S','M','L','XL','XXL'], trending: false, newArrival: false, description: 'Single-breasted formal blazer in wool-blend fabric. Perfect for boardroom looks.' },
+  { id: 12, name: 'Linen Kurta Set', category: 'men', price: 1799, originalPrice: 2499, rating: 4.5, reviews: 334, color: '#fef3c7', sizes: ['S','M','L','XL','XXL'], trending: false, newArrival: true, description: 'Relaxed linen kurta and pyjama set, ideal for festive and casual occasions.' },
 
-  // ==================== 2. STATE MANAGER ====================
-  const Storage = {
-    get(key) {
-      try {
-        const raw = localStorage.getItem(CONFIG.STORAGE_PREFIX + key);
-        return raw ? JSON.parse(raw) : null;
-      } catch { return null; }
-    },
-    set(key, value) {
-      try {
-        localStorage.setItem(CONFIG.STORAGE_PREFIX + key, JSON.stringify(value));
-        return true;
-      } catch { return false; }
-    },
-    remove(key) { localStorage.removeItem(CONFIG.STORAGE_PREFIX + key); }
-  };
+  // KIDS
+  { id: 13, name: 'Dinosaur Print Tee', category: 'kids', price: 399, originalPrice: 599, rating: 4.8, reviews: 678, color: '#dcfce7', sizes: ['XS','S','M'], trending: true, newArrival: false, description: 'Fun dinosaur print t-shirt in soft organic cotton, available in sizes 2–12 years.' },
+  { id: 14, name: 'Floral Frock Dress', category: 'kids', price: 699, originalPrice: 999, rating: 4.7, reviews: 421, color: '#fce7f3', sizes: ['XS','S','M','L'], trending: false, newArrival: true, description: 'Adorable floral frock in breathable cotton blend. Features a back bow tie.' },
+  { id: 15, name: 'Denim Dungaree Set', category: 'kids', price: 899, originalPrice: 1299, rating: 4.6, reviews: 289, color: '#dbeafe', sizes: ['XS','S','M'], trending: true, newArrival: false, description: 'Comfortable denim dungaree with adjustable straps. Ideal for playful toddlers.' },
+  { id: 16, name: 'Ethnic Sherwani Set', category: 'kids', price: 1499, originalPrice: 2199, rating: 4.9, reviews: 156, color: '#fef9c3', sizes: ['S','M','L'], trending: false, newArrival: true, description: 'Traditional sherwani with matching churidaar. Perfect for weddings and festivities.' },
 
-  const State = {
-    products: Storage.get('products') || [
-      { id: 1, name: 'Classic Denim Jacket', price: 89.99, category: 'Men', rating: 4.5, image: 'https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=600&q=80', desc: 'Timeless fit, premium cotton blend.' },
-      { id: 2, name: 'Silk Evening Dress', price: 129.00, category: 'Women', rating: 4.8, image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&q=80', desc: 'Elegant design for special occasions.' },
-      { id: 3, name: 'Kids Cotton Hoodie', price: 35.50, category: 'Kids', rating: 4.3, image: 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=600&q=80', desc: 'Soft, comfortable, and durable.' },
-      { id: 4, name: 'Leather Crossbody Bag', price: 75.00, category: 'Accessories', rating: 4.6, image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=80', desc: 'Compact and stylish everyday bag.' },
-      { id: 5, name: 'Tailored Wool Trousers', price: 99.99, category: 'Men', rating: 4.4, image: 'https://images.unsplash.com/photo-1506152983158-b4a74a01c721?w=600&q=80', desc: 'Sharp look for formal settings.' },
-      { id: 6, name: 'Summer Floral Blouse', price: 45.00, category: 'Women', rating: 4.7, image: 'https://images.unsplash.com/photo-1564584217132-2271feaeb3c5?w=600&q=80', desc: 'Lightweight and breathable fabric.' }
-    ],
-    cart: Storage.get('cart') || [],
-    wishlist: Storage.get('wishlist') || [],
-    user: Storage.get('user') || null,
-    recentlyViewed: Storage.get('recentlyViewed') || [],
-    orders: Storage.get('orders') || [],
-    persist() {
-      ['products', 'cart', 'wishlist', 'user', 'recentlyViewed', 'orders'].forEach(k => Storage.set(k, this[k]));
-    }
-  };
+  // ACCESSORIES
+  { id: 17, name: 'Leather Tote Bag', category: 'accessories', price: 2999, originalPrice: 4999, rating: 4.8, reviews: 342, color: '#fef3c7', sizes: ['one-size'], trending: true, newArrival: false, description: 'Handcrafted genuine leather tote bag with a spacious interior and gold-tone hardware.' },
+  { id: 18, name: 'Silk Printed Scarf', category: 'accessories', price: 899, originalPrice: null, rating: 4.6, reviews: 189, color: '#fce7f3', sizes: ['one-size'], trending: false, newArrival: true, description: 'Lightweight silk scarf with vibrant abstract print. Versatile as head wrap or neck scarf.' },
+  { id: 19, name: 'Minimalist Watch', category: 'accessories', price: 3499, originalPrice: 4999, rating: 4.9, reviews: 267, color: '#e0e7ff', sizes: ['one-size'], trending: true, newArrival: false, description: 'Slim-profile quartz watch with a stainless steel case and leather strap.' },
+  { id: 20, name: 'Boho Earring Set', category: 'accessories', price: 599, originalPrice: 899, rating: 4.5, reviews: 421, color: '#f0fdf4', sizes: ['one-size'], trending: false, newArrival: true, description: 'Set of 3 pairs of bohemian-style earrings with feather and bead detailing.' },
+];
 
-  // ==================== 3. UTILITY BELT ====================
-  const Utils = {
-    debounce: (fn, ms) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; },
-    throttle: (fn, ms) => { let ready = true; return (...a) => { if (ready) { fn(...a); ready = false; setTimeout(() => ready = true, ms); } }; },
-    formatPrice: (p) => `${CONFIG.CURRENCY}${p.toFixed(2)}`,
-    generateStars: (r) => {
-      let s = ''; for (let i = 1; i <= 5; i++) s += i <= Math.round(r) ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>'; return s;
-    },
-    getQuery: (p = window.location.search) => new URLSearchParams(p),
-    uuid: () => crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substr(2, 9),
-    isElement: el => el instanceof HTMLElement,
-    $: (s, p = document) => p.querySelector(s),
-    $$: (s, p = document) => [...p.querySelectorAll(s)],
-    animateIn: (els, opts = {}) => {
-      if (typeof gsap !== 'undefined') {
-        gsap.from(els, { y: 20, opacity: 0, duration: 0.5, stagger: 0.08, ease: 'power2.out', ...opts });
-      } else {
-        els.forEach((el, i) => setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, i * 80));
-      }
-    }
-  };
+function getProducts() {
+  const customProducts = JSON.parse(localStorage.getItem('customProducts') || '[]');
+  return [...DEFAULT_PRODUCTS, ...customProducts];
+}
 
-  // ==================== 4. TOAST NOTIFICATIONS ====================
-  const Toast = {
-    container: null,
-    init() {
-      this.container = Utils.$('.toast-container') || document.body.appendChild(Object.assign(document.createElement('div'), { className: 'toast-container' }));
-    },
-    show(msg, type = 'success') {
-      this.init();
-      const icons = { success: 'check-circle', error: 'times-circle', info: 'info-circle', warning: 'exclamation-triangle' };
-      const toast = Object.assign(document.createElement('div'), { className: 'toast' });
-      toast.innerHTML = `<i class="fas fa-${icons[type]}"></i> ${msg}`;
-      this.container.appendChild(toast);
-      requestAnimationFrame(() => toast.classList.add('show'));
-      setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 350); }, 3200);
-    }
-  };
+// ============================================================
+// STAR RATING HTML
+// ============================================================
+function getStarHTML(rating) {
+  const full = Math.floor(rating);
+  const half = rating % 1 >= 0.5;
+  const empty = 5 - full - (half ? 1 : 0);
+  return '★'.repeat(full) + (half ? '½' : '') + '☆'.repeat(empty);
+}
 
-  // ==================== 5. LIBRARY LOADER ====================
-  const LibLoader = {
-    loaded: {},
-    loadAll() {
-      return Promise.all(CONFIG.LIBRARIES.map(lib => {
-        if (this.loaded[lib]) return Promise.resolve();
-        const name = lib.split('@')[0];
-        return new Promise(resolve => {
-          if (window[name] || window[name.replace('gsap@', '').split('/')[0]]) { this.loaded[lib] = true; return resolve(); }
-          const s = document.createElement('script');
-          s.src = CONFIG.CDN_BASE + lib;
-          s.async = true;
-          s.onload = s.onerror = () => { this.loaded[lib] = true; resolve(); };
-          document.head.appendChild(s);
-        });
-      }));
-    }
-  };
+// ============================================================
+// PRODUCT CARD RENDER
+// ============================================================
+function renderProductCard(p) {
+  const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+  const isWishlisted = wishlist.some(i => i.id === p.id);
+  const discount = p.originalPrice ? Math.round((1 - p.price / p.originalPrice) * 100) : 0;
+  const stars = getStarHTML(p.rating);
 
-  // ==================== 6. PAGE CONTROLLERS ====================
-  const Pages = {
-    initNavbar() {
-      const updateBadges = () => {
-        const cc = Utils.$('.cart-count'); if (cc) cc.textContent = State.cart.reduce((a, i) => a + i.qty, 0);
-        const wc = Utils.$('.wishlist-count'); if (wc) wc.textContent = State.wishlist.length;
-        const up = Utils.$('#userProfileBtn'); 
-        if (up) {
-          up.innerHTML = State.user ? `<i class="fas fa-user-check"></i>` : `<i class="fas fa-user-circle"></i>`;
-          up.title = State.user ? `Welcome, ${State.user.name}` : 'Login / Register';
-          up.onclick = () => State.user ? Toast.show(`Hello ${State.user.name}!`, 'info') : (window.location.href = 'login.html');
+  return `
+    <div class="product-card animate-in" data-id="${p.id}">
+      <div class="product-img-wrapper">
+        <div class="product-img-placeholder" style="background: linear-gradient(135deg, ${p.color || '#f5f5f5'}, ${lightenColor(p.color, 20)})">
+          <i class="fas fa-tshirt"></i>
+          <span>${p.category}</span>
+        </div>
+        ${discount ? `<span class="product-badge sale">-${discount}%</span>` : ''}
+        ${p.newArrival && !discount ? `<span class="product-badge new-badge">New</span>` : ''}
+        <div class="product-card-actions">
+          <button class="card-action-btn wishlist-btn-card ${isWishlisted ? 'wishlisted' : ''}"
+            onclick="event.stopPropagation(); toggleWishlist(getProducts().find(p => p.id === ${p.id})); this.classList.toggle('wishlisted');"
+            title="${isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}">
+            <i class="fas fa-heart"></i>
+          </button>
+          <button class="card-action-btn" onclick="event.stopPropagation(); quickView(${p.id});" title="Quick View">
+            <i class="fas fa-eye"></i>
+          </button>
+        </div>
+      </div>
+      <div class="product-card-body">
+        <p class="product-card-cat">${p.category}</p>
+        <h3 class="product-card-name">${p.name}</h3>
+        <div class="product-card-rating">
+          <div class="stars">${stars}</div>
+          <span class="rating-text">${p.rating} (${p.reviews})</span>
+        </div>
+        <div class="product-card-price">
+          <span class="price-current">₹${p.price.toLocaleString()}</span>
+          ${p.originalPrice ? `<span class="price-original">₹${p.originalPrice.toLocaleString()}</span>` : ''}
+          ${discount ? `<span class="price-discount">${discount}% off</span>` : ''}
+        </div>
+        <button class="add-cart-btn" onclick="event.stopPropagation(); addToCart(getProducts().find(p => p.id === ${p.id}), 1, '')">
+          <i class="fas fa-shopping-bag"></i> Add to Cart
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function attachCardEvents() {
+  document.querySelectorAll('.product-card[data-id]').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('button')) return;
+      const id = card.dataset.id;
+      window.location.href = `product.html?id=${id}`;
+    });
+  });
+
+  // Stagger animation
+  document.querySelectorAll('.animate-in').forEach((el, i) => {
+    el.style.animationDelay = `${i * 0.05}s`;
+  });
+}
+
+function renderProductGrid(containerId, products, limit) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const items = limit ? products.slice(0, limit) : products;
+  if (!items.length) {
+    container.innerHTML = '<p style="color:var(--text-muted);text-align:center;grid-column:1/-1">No products found.</p>';
+    return;
+  }
+  container.innerHTML = items.map(p => renderProductCard(p)).join('');
+  attachCardEvents();
+}
+
+function lightenColor(hex, amount) {
+  if (!hex || !hex.startsWith('#')) return '#f0f0f0';
+  return hex;
+}
+
+// ============================================================
+// CART SYSTEM
+// ============================================================
+function addToCart(product, quantity = 1, size = '') {
+  if (!product) return;
+  const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  const existingIdx = cart.findIndex(i => i.id === product.id && i.size === size);
+
+  if (existingIdx >= 0) {
+    cart[existingIdx].quantity = Math.min(10, cart[existingIdx].quantity + quantity);
+  } else {
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      originalPrice: product.originalPrice,
+      category: product.category,
+      color: product.color,
+      size: size,
+      quantity: quantity
+    });
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateNavCounts();
+  showToast(`"${product.name}" added to cart! 🛍️`, 'success');
+}
+
+function updateNavCounts() {
+  const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  document.querySelectorAll('#cart-count').forEach(el => { el.textContent = totalItems; });
+  document.querySelectorAll('#wishlist-count').forEach(el => { el.textContent = wishlist.length; });
+  document.querySelectorAll('#wishlist-count-sidebar').forEach(el => { el.textContent = wishlist.length; });
+}
+
+// ============================================================
+// WISHLIST SYSTEM
+// ============================================================
+function toggleWishlist(product) {
+  if (!product) return;
+  const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+  const idx = wishlist.findIndex(i => i.id === product.id);
+
+  if (idx >= 0) {
+    wishlist.splice(idx, 1);
+    showToast('Removed from wishlist', 'info');
+  } else {
+    wishlist.push({ id: product.id, name: product.name, price: product.price, category: product.category, color: product.color });
+    showToast(`"${product.name}" added to wishlist! ❤️`, 'success');
+  }
+
+  localStorage.setItem('wishlist', JSON.stringify(wishlist));
+  updateNavCounts();
+  renderWishlistSidebar();
+}
+
+function renderWishlistSidebar() {
+  const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+  const container = document.getElementById('wishlist-items-container');
+  if (!container) return;
+
+  if (!wishlist.length) {
+    container.innerHTML = `
+      <div style="text-align:center;padding:40px 20px;color:var(--text-muted)">
+        <i class="fas fa-heart" style="font-size:3rem;margin-bottom:12px;opacity:0.3"></i>
+        <p>Your wishlist is empty</p>
+        <a href="products.html" style="color:var(--accent);font-size:14px">Browse Products</a>
+      </div>`;
+    return;
+  }
+
+  container.innerHTML = wishlist.map(item => `
+    <div class="wishlist-item">
+      <div class="product-img-placeholder small" style="background:${item.color || '#eee'}">
+        <i class="fas fa-tshirt"></i>
+      </div>
+      <div class="wishlist-item-info">
+        <a href="product.html?id=${item.id}">${item.name}</a>
+        <p>₹${item.price.toLocaleString()}</p>
+      </div>
+      <button class="wishlist-remove-btn" onclick="toggleWishlist(getProducts().find(p => p.id === ${item.id}))">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  `).join('');
+}
+
+function openWishlist() {
+  renderWishlistSidebar();
+  document.getElementById('wishlist-sidebar')?.classList.add('open');
+  document.getElementById('wishlist-overlay')?.classList.add('active');
+}
+
+function closeWishlist() {
+  document.getElementById('wishlist-sidebar')?.classList.remove('open');
+  document.getElementById('wishlist-overlay')?.classList.remove('active');
+}
+
+// ============================================================
+// RECENTLY VIEWED
+// ============================================================
+function addToRecentlyViewed(product) {
+  const viewed = JSON.parse(localStorage.getItem('recentlyViewed') || '[]');
+  const filtered = viewed.filter(i => i.id !== product.id);
+  filtered.unshift({ id: product.id, name: product.name, price: product.price, category: product.category, color: product.color, rating: product.rating, reviews: product.reviews });
+  localStorage.setItem('recentlyViewed', JSON.stringify(filtered.slice(0, 8)));
+}
+
+function renderRecentlyViewed() {
+  const viewed = JSON.parse(localStorage.getItem('recentlyViewed') || '[]');
+  const section = document.getElementById('recently-viewed-section');
+  const grid = document.getElementById('recently-viewed-grid');
+  if (!viewed.length || !section || !grid) return;
+
+  section.style.display = 'block';
+  const products = getProducts();
+  const items = viewed.map(v => products.find(p => p.id === v.id)).filter(Boolean);
+  renderProductGrid('recently-viewed-grid', items, 4);
+}
+
+// ============================================================
+// TOAST NOTIFICATIONS
+// ============================================================
+function showToast(message, type = 'success') {
+  const container = document.getElementById('toast-container');
+  if (!container) return;
+
+  const icons = { success: 'fa-check-circle', error: 'fa-exclamation-circle', warning: 'fa-exclamation-triangle', info: 'fa-info-circle' };
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.innerHTML = `
+    <i class="fas ${icons[type] || icons.info} toast-icon"></i>
+    <span>${message}</span>
+  `;
+
+  container.appendChild(toast);
+  setTimeout(() => { toast.remove(); }, 3000);
+}
+
+// ============================================================
+// THEME TOGGLE (DARK MODE)
+// ============================================================
+function initTheme() {
+  const saved = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', saved);
+  updateThemeIcon(saved);
+
+  const btn = document.getElementById('theme-toggle');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateThemeIcon(next);
+    });
+  }
+}
+
+function updateThemeIcon(theme) {
+  const icon = document.getElementById('theme-icon');
+  if (icon) {
+    icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+  }
+}
+
+// ============================================================
+// USER SESSION
+// ============================================================
+function checkUserSession() {
+  const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+  const display = document.getElementById('user-display');
+  const loginBtn = document.getElementById('login-btn');
+
+  if (user && display) {
+    display.textContent = user.name.split(' ')[0];
+    if (loginBtn) {
+      loginBtn.href = '#';
+      loginBtn.onclick = () => {
+        if (confirm(`Logout as ${user.name}?`)) {
+          localStorage.removeItem('currentUser');
+          window.location.reload();
         }
       };
-
-      // Sticky nav shadow
-      const nav = Utils.$('#mainNavbar');
-      if (nav) window.addEventListener('scroll', Utils.throttle(() => nav.classList.toggle('scrolled', window.scrollY > 50), 100));
-
-      // Dark mode
-      const themeBtn = Utils.$('.theme-toggle');
-      const savedTheme = Storage.get('theme') || 'light';
-      document.documentElement.dataset.theme = savedTheme;
-      if (themeBtn) {
-        themeBtn.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-        themeBtn.onclick = () => {
-          const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-          document.documentElement.dataset.theme = next;
-          Storage.set('theme', next);
-          themeBtn.innerHTML = next === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-        };
-      }
-
-      // Mobile menu
-      const toggle = Utils.$('.mobile-toggle');
-      const menu = Utils.$('.mobile-menu');
-      if (toggle && menu) toggle.onclick = () => {
-        const open = menu.style.display === 'block';
-        menu.style.display = open ? 'none' : 'block';
-        toggle.innerHTML = open ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
-      };
-
-      updateBadges();
-      return updateBadges;
-    },
-
-    initSearch() {
-      const input = Utils.$('.search-input');
-      const box = Utils.$('.search-suggestions');
-      if (!input || !box) return;
-
-      let fuse;
-      if (typeof Fuse !== 'undefined') {
-        fuse = new Fuse(State.products, { keys: ['name', 'category'], threshold: 0.3 });
-      }
-
-      input.addEventListener('input', Utils.debounce((e) => {
-        const q = e.target.value.trim();
-        if (q.length < 2) { box.style.display = 'none'; return; }
-        let results = State.products;
-        if (fuse) results = fuse.search(q).map(r => r.item).slice(0, 5);
-        else results = State.products.filter(p => p.name.toLowerCase().includes(q.toLowerCase())).slice(0, 5);
-
-        box.innerHTML = results.map(p => `<div class="search-suggestion-item" data-id="${p.id}"><span>${p.name}</span> <small>${Utils.formatPrice(p.price)}</small></div>`).join('');
-        box.style.display = 'block';
-        box.querySelectorAll('.search-suggestion-item').forEach(item => {
-          item.onclick = () => { window.location.href = `product.html?id=${item.dataset.id}`; };
-        });
-      }, CONFIG.DEBOUNCE));
-
-      document.addEventListener('click', (e) => { if (!e.target.closest('.search-container')) box.style.display = 'none'; });
-    },
-
-    index() {
-      const renderGrid = (id, filter = () => true) => {
-        const el = Utils.$(`#${id}`); if (!el) return;
-        const items = State.products.filter(filter).slice(0, 4);
-        el.innerHTML = items.map(p => Components.productCard(p)).join('');
-        Components.bindCardActions();
-        Utils.animateIn(el.querySelectorAll('.product-card'));
-      };
-
-      renderGrid('featuredGrid', p => p.category === 'Men');
-      renderGrid('trendingGrid');
-      renderGrid('newArrivals', p => p.id > 3);
-
-      // Swiper for testimonials
-      if (typeof Swiper !== 'undefined') new Swiper('#testimonialSwiper', { loop: true, autoplay: { delay: 4000 }, pagination: { el: '.swiper-pagination', clickable: true } });
-
-      // Hero parallax
-      if (typeof gsap !== 'undefined') {
-        gsap.to('.hero::before', { scrollTrigger: { trigger: '.hero', scrub: true }, backgroundPosition: '50% 30%' });
-        ScrollTrigger.create({ animation: gsap.from('.hero-content', { y: 50, opacity: 0, duration: 1 }), trigger: '.hero', start: 'top center' });
-      }
-    },
-
-    products() {
-      const grid = Utils.$('.products-grid');
-      const pagin = Utils.$('.pagination');
-      if (!grid) return;
-
-      let page = 1; const per = 6;
-      const render = () => {
-        let filtered = State.products;
-        const cat = Utils.getQuery().get('cat');
-        const price = Utils.$('.price-filter')?.value || 'all';
-        const sort = Utils.$('.sort-select')?.value || 'default';
-
-        if (cat) filtered = filtered.filter(p => p.category === cat);
-        if (price !== 'all') { const [min, max] = price.split('-').map(Number); filtered = filtered.filter(p => p.price >= min && p.price <= max); }
-        if (sort === 'low-high') filtered.sort((a,b) => a.price - b.price);
-        else if (sort === 'high-low') filtered.sort((a,b) => b.price - a.price);
-        else if (sort === 'rating') filtered.sort((a,b) => b.rating - a.rating);
-
-        const start = (page - 1) * per;
-        const pageItems = filtered.slice(start, start + per);
-        grid.innerHTML = pageItems.map(p => Components.productCard(p)).join('') || '<div style="grid-column:1/-1; text-align:center; padding:3rem; color:var(--color-text-light);">No products match your filters.</div>';
-        Components.bindCardActions();
-
-        // Pagination
-        const total = Math.ceil(filtered.length / per);
-        pagin.innerHTML = '';
-        for(let i=1; i<=total; i++) {
-          const btn = document.createElement('button');
-          btn.className = `page-btn ${i===page?'active':''}`; btn.textContent = i;
-          btn.onclick = () => { page=i; render(); window.scrollTo({top:0, behavior:'smooth'}); };
-          pagin.appendChild(btn);
-        }
-      };
-
-      $$('.filter-chip, .sort-select').forEach(el => el.addEventListener('change', () => { page=1; render(); }));
-      render();
-    },
-
-    product() {
-      const params = Utils.getQuery(); const id = parseInt(params.get('id'));
-      const p = State.products.find(x => x.id === id);
-      if (!p) { document.querySelector('main').innerHTML = '<h2 style="text-align:center;padding:4rem;">Product not found</h2>'; return; }
-
-      // Track viewed
-      if (!State.recentlyViewed.includes(id)) State.recentlyViewed.unshift(id);
-      if (State.recentlyViewed.length > 8) State.recentlyViewed.pop();
-      State.persist();
-
-      const container = Utils.$('.product-detail');
-      if (!container) return;
-      container.innerHTML = Components.productDetail(p);
-      Components.bindCardActions();
-
-      // Tilt
-      if (typeof VanillaTilt !== 'undefined') VanillaTilt.init(Utils.$('.main-img'), { max: 15, speed: 300, glare: true, 'max-glare': 0.2 });
-
-      // Share
-      Utils.$('#shareBtn')?.addEventListener('click', () => {
-        if (navigator.share) navigator.share({ title: p.name, url: window.location.href });
-        else { ClipboardJS.copyText && ClipboardJS.copyText(window.location.href); Toast.show('Link copied!', 'success'); }
-      });
-    },
-
-    cart() {
-      const container = Utils.$('.cart-items');
-      const summary = Utils.$('.cart-summary');
-      if (!container) return;
-
-      const render = () => {
-        if (State.cart.length === 0) {
-          container.innerHTML = `<div style="text-align:center; padding:4rem;"><i class="fas fa-shopping-bag" style="font-size:4rem; color:var(--color-text-light);"></i><p style="margin-top:1rem;">Your cart is empty.</p><a href="products.html" class="btn btn-outline" style="margin-top:1rem;">Continue Shopping</a></div>`;
-        } else {
-          container.innerHTML = State.cart.map((item, i) => `
-            <div class="cart-item">
-              <img src="${item.image}" class="cart-img" loading="lazy">
-              <div><h3>${item.name}</h3><p style="color:var(--color-text-light); font-size:var(--text-sm);">Size: ${item.size} • ${Utils.formatPrice(item.price)}</p>
-                <div class="qty-selector" style="margin:0.8rem 0;">
-                  <button class="qty-btn" data-idx="${i}" data-op="-">-</button><span class="qty-val">${item.qty}</span><button class="qty-btn" data-idx="${i}" data-op="+">+</button>
-                </div>
-                <button class="cart-remove" data-idx="${i}" style="color:var(--color-accent); background:none; font-size:0.85rem;"><i class="fas fa-trash"></i> Remove</button>
-              </div>
-              <div style="text-align:right; min-width:80px; font-weight:600;">${Utils.formatPrice(item.price * item.qty)}</div>
-            </div>`).join('');
-        }
-
-        const sub = State.cart.reduce((a,i) => a + (i.price * i.qty), 0);
-        summary.innerHTML = `
-          <h3 style="margin-bottom:1.5rem;">Order Summary</h3>
-          <div class="summary-row"><span>Subtotal</span><span>${Utils.formatPrice(sub)}</span></div>
-          <div class="summary-row"><span>Shipping</span><span>Free</span></div>
-          <div class="summary-row"><span>Tax (15%)</span><span>${Utils.formatPrice(sub * CONFIG.TAX_RATE)}</span></div>
-          <div class="summary-row total"><span>Total</span><span style="color:var(--color-accent);">${Utils.formatPrice(sub * 1.15)}</span></div>
-          <button id="checkoutBtn" class="btn btn-primary btn-block" ${State.cart.length===0?'disabled':''}>Proceed to Checkout</button>`;
-
-        Utils.$('#checkoutBtn')?.addEventListener('click', () => window.location.href = 'checkout.html');
-
-        // Cart actions delegation
-        container.onclick = e => {
-          const btn = e.target.closest('.qty-btn');
-          if (btn) {
-            const i = parseInt(btn.dataset.idx); const op = btn.dataset.op;
-            if (op === '-' && State.cart[i].qty > 1) State.cart[i].qty--;
-            else if (op === '+') State.cart[i].qty++;
-            State.persist(); render();
-          }
-          const rm = e.target.closest('.cart-remove');
-          if (rm) { State.cart.splice(parseInt(rm.dataset.idx), 1); State.persist(); Toast.show('Removed', 'info'); render(); }
-        };
-      };
-      render();
-    },
-
-    auth() {
-      const isLogin = window.location.pathname.includes('login');
-      Utils.$('.auth-title').textContent = isLogin ? 'Welcome Back' : 'Create Account';
-      Utils.$('.auth-form').onsubmit = e => {
-        e.preventDefault();
-        const email = Utils.$('#email').value.trim(); const pass = Utils.$('#password').value; const name = Utils.$('#nameField')?.value || email.split('@')[0];
-        if (isLogin) {
-          const users = Storage.get('users') || []; const u = users.find(x => x.email === email && x.pass === pass);
-          if (u) { State.user = { name: u.name, email: u.email }; State.persist(); Toast.show('Logged in ✅'); window.location.href = 'index.html'; }
-          else Toast.show('Invalid credentials', 'error');
-        } else {
-          const users = Storage.get('users') || []; if (users.find(x => x.email === email)) return Toast.show('Email exists', 'error');
-          users.push({ name, email, pass }); Storage.set('users', users);
-          State.user = { name, email }; State.persist(); Toast.show('Account created ✅'); window.location.href = 'index.html';
-        }
-      };
-    },
-
-    admin() {
-      const table = Utils.$('.admin-table tbody'); const modal = Utils.$('.admin-modal'); const form = Utils.$('#adminForm');
-      if (!table) return;
-
-      const renderTable = () => {
-        table.innerHTML = State.products.map(p => `
-          <tr><td>${p.id}</td><td><img src="${p.image}" style="width:60px;height:60px;object-fit:cover;border-radius:var(--radius-sm);"></td>
-          <td>${p.name}</td><td>${Utils.formatPrice(p.price)}</td><td>${p.category}</td>
-          <td class="admin-actions"><button class="edit-btn" data-id="${p.id}"><i class="fas fa-edit"></i></button><button class="delete-btn" data-id="${p.id}"><i class="fas fa-trash"></i></button></td></tr>`).join('');
-      };
-
-      Utils.$$('.edit-btn', table).forEach(b => b.onclick = () => {
-        const p = State.products.find(x => x.id == b.dataset.id);
-        form.dataset.edit = p.id; form.name.value = p.name; form.price.value = p.price; form.category.value = p.category;
-        modal.classList.add('active');
-      });
-      Utils.$$('.delete-btn', table).forEach(b => b.onclick = () => { if(confirm('Delete?')) { State.products = State.products.filter(x => x.id != b.dataset.id); State.persist(); renderTable(); Toast.show('Deleted', 'info'); } });
-      Utils.$('.add-product-btn').onclick = () => { delete form.dataset.edit; form.reset(); modal.classList.add('active'); };
-      Utils.$('.close-modal').onclick = () => { modal.classList.remove('active'); };
-      form.onsubmit = e => {
-        e.preventDefault();
-        const d = { id: form.dataset.edit ? parseInt(form.dataset.edit) : Date.now(), name: form.name.value, price: parseFloat(form.price.value), category: form.category.value, image: 'https://placehold.co/600x600/e2e8f0/1e293b?text='+form.name.value.replace(/\s/g,'+'), desc: 'Admin added.', rating: 4.0 };
-        if (form.dataset.edit) { const i = State.products.findIndex(x => x.id == d.id); State.products[i] = { ...State.products[i], ...d }; Toast.show('Updated ✅'); }
-        else { State.products.push(d); Toast.show('Added 📦'); }
-        State.persist(); renderTable(); modal.classList.remove('active');
-      };
-      renderTable();
-
-      // Chart.js Analytics
-      if (typeof Chart !== 'undefined' && Utils.$('#adminChart')) {
-        new Chart(Utils.$('#adminChart'), { type: 'bar', data: { labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], datasets: [{ label: 'Revenue ($)', data: [120, 190, 300, 150, 210, 280, 340], backgroundColor: '#e11d48' }] }, options: { responsive: true, plugins: { legend: { display: false } } } });
-      }
-    },
-
-    checkout() {
-      if (!State.user) { Toast.show('Login required ⚠️', 'warning'); window.location.href = 'login.html'; return; }
-      Utils.$('.checkout-form').onsubmit = e => {
-        e.preventDefault();
-        const orderId = Utils.uuid().substring(0, 8).toUpperCase();
-        State.orders.push({ id: orderId, date: Date.now(), items: [...State.cart], total: State.cart.reduce((a,i)=>a+i.price*i.qty,0) * 1.15, status: 'Processing' });
-        State.cart = []; State.persist();
-        Toast.show(`Order ${orderId} placed! 🎉`, 'success');
-        setTimeout(() => window.location.href = 'index.html', 1500);
-      };
-      const sub = State.cart.reduce((a,i)=>a+i.price*i.qty,0);
-      Utils.$('.checkout-summary').innerHTML = `<div class="summary-row"><span>Subtotal</span><span>${Utils.formatPrice(sub)}</span></div><div class="summary-row total"><span>Total</span><span>${Utils.formatPrice(sub*1.15)}</span></div>`;
     }
-  };
+  }
+}
 
+// ============================================================
+// SEARCH & SUGGESTIONS
+// ============================================================
+function initSearchSuggestions() {
+  const input = document.getElementById('search-input');
+  const suggestionsEl = document.getElementById('search-suggestions');
+  if (!input || !suggestionsEl) return;
 
-  const Components = {
-    productCard(p) {
-      const isWished = State.wishlist.includes(p.id);
-      return `
-        <div class="product-card" data-id="${p.id}">
-          <a href="product.html?id=${p.id}">
-            <div class="product-img"><img src="${p.image}" alt="${p.name}" loading="lazy"></div>
-            <div class="product-info">
-              <div class="product-category">${p.category}</div>
-              <div class="product-name">${p.name}</div>
-              <div class="product-meta">
-                <span class="product-price">${Utils.formatPrice(p.price)}</span>
-                <span class="product-rating">${Utils.generateStars(p.rating)}</span>
-              </div>
-            </div>
-          </a>
-          <div class="product-actions">
-            <button class="action-btn wishlist-toggle ${isWished?'wishlist-active':''}" data-id="${p.id}" title="Wishlist"><i class="${isWished?'fas':'far'} fa-heart"></i></button>
-            <button class="action-btn quick-add" data-id="${p.id}" title="Quick Add"><i class="fas fa-plus"></i></button>
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    if (!q) { suggestionsEl.classList.remove('active'); return; }
+
+    const products = getProducts();
+    const matches = products.filter(p =>
+      p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q)
+    ).slice(0, 6);
+
+    if (!matches.length) { suggestionsEl.classList.remove('active'); return; }
+
+    suggestionsEl.innerHTML = matches.map(p => `
+      <div class="suggestion-item" onclick="window.location.href='product.html?id=${p.id}'">
+        <i class="fas fa-search"></i>
+        <span>${p.name}</span>
+        <small style="margin-left:auto;color:var(--text-muted);font-size:11px">₹${p.price.toLocaleString()}</small>
+      </div>
+    `).join('');
+
+    suggestionsEl.classList.add('active');
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const q = input.value.trim();
+      if (q) window.location.href = `products.html?q=${encodeURIComponent(q)}`;
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.search-wrapper')) {
+      suggestionsEl.classList.remove('active');
+    }
+  });
+}
+
+// ============================================================
+// HAMBURGER MENU
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+    });
+  }
+
+  // Sticky navbar
+  const navbar = document.getElementById('navbar');
+  if (navbar) {
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+  }
+
+  // Wishlist button
+  const wishlistBtn = document.getElementById('wishlist-btn');
+  if (wishlistBtn) {
+    wishlistBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openWishlist();
+    });
+  }
+
+  const wishlistOverlay = document.getElementById('wishlist-overlay');
+  if (wishlistOverlay) {
+    wishlistOverlay.addEventListener('click', closeWishlist);
+  }
+
+  // Intersection Observer for animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.animate-in, .cat-card, .testimonial-card, .stat-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+});
+
+// ============================================================
+// QUICK VIEW (Simple modal)
+// ============================================================
+function quickView(productId) {
+  const products = getProducts();
+  const product = products.find(p => p.id === productId);
+  if (!product) return;
+
+  const existing = document.getElementById('quick-view-modal');
+  if (existing) existing.remove();
+
+  const overlay = document.createElement('div');
+  overlay.id = 'quick-view-modal';
+  overlay.className = 'modal-overlay active';
+  const discount = product.originalPrice ? Math.round((1 - product.price / product.originalPrice) * 100) : 0;
+
+  overlay.innerHTML = `
+    <div class="modal" style="max-width:600px;width:90%">
+      <div class="modal-header">
+        <h3>Quick View</h3>
+        <button onclick="document.getElementById('quick-view-modal').remove()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body" style="flex-direction:row;gap:24px;flex-wrap:wrap">
+        <div style="width:160px;flex-shrink:0">
+          <div class="product-img-placeholder large" style="background:${product.color||'#f5f5f5'};min-height:200px;border-radius:12px">
+            <i class="fas fa-tshirt"></i>
           </div>
-        </div>`;
-    },
-
-    productDetail(p) {
-      return `
-        <div class="product-gallery"><img src="${p.image}" class="main-img"><div class="thumbs">${[1,2,3].map(() => `<div class="thumb" style="background:${p.image.replace('w=600','w=150')}"></div>`).join('')}</div></div>
-        <div class="detail-info">
-          <h1>${p.name}</h1>
-          <div class="detail-rating">${Utils.generateStars(p.rating)} (${p.rating}) • ${Math.floor(Math.random()*500)+100} reviews</div>
-          <div class="detail-price">${Utils.formatPrice(p.price)}</div>
-          <p style="color:var(--color-text-light); margin:1rem 0; line-height:1.8;">${p.desc}</p>
-          <div class="filter-group"><label>Size</label><div class="size-selector" id="sizeSelector">${['S','M','L','XL'].map(s => `<button class="size-btn">${s}</button>`).join('')}</div></div>
-          <div class="filter-group"><label>Quantity</label><div class="qty-selector"><button class="qty-btn" id="decQty">-</button><span class="qty-val" id="qtyVal">1</span><button class="qty-btn" id="incQty">+</button></div></div>
-          <div class="cart-actions">
-            <button class="btn btn-primary" id="addToCartBtn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-            <button class="btn btn-outline" id="wishlistBtn" style="width:auto;padding:0 1.2rem;"><i class="far fa-heart"></i></button>
-            <button class="btn btn-outline" id="shareBtn" style="width:auto;padding:0 1.2rem;"><i class="fas fa-share-alt"></i></button>
+        </div>
+        <div style="flex:1;min-width:200px">
+          <p style="font-size:11px;color:var(--accent);letter-spacing:2px;font-weight:700;text-transform:uppercase">${product.category}</p>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin:8px 0">${product.name}</h3>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+            <span style="color:#f59e0b">${getStarHTML(product.rating)}</span>
+            <span style="font-size:13px;color:var(--text-muted)">${product.rating} (${product.reviews})</span>
           </div>
-        </div>`;
-    },
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+            <span style="font-size:1.5rem;font-weight:800">₹${product.price.toLocaleString()}</span>
+            ${product.originalPrice ? `<span style="text-decoration:line-through;color:var(--text-muted)">₹${product.originalPrice.toLocaleString()}</span>` : ''}
+            ${discount ? `<span style="background:#dcfce7;color:#16a34a;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700">${discount}% OFF</span>` : ''}
+          </div>
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:20px;line-height:1.6">${product.description || ''}</p>
+          <div style="display:flex;gap:10px">
+            <a href="product.html?id=${product.id}" class="btn btn-outline" style="flex:1;justify-content:center">View Details</a>
+            <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="addToCart(getProducts().find(p => p.id === ${product.id}), 1, ''); document.getElementById('quick-view-modal').remove();">
+              <i class="fas fa-shopping-bag"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
 
-    bindCardActions() {
-      Utils.$$('.wishlist-toggle').forEach(b => b.onclick = e => {
-        e.preventDefault(); const id = parseInt(b.dataset.id);
-        const i = State.wishlist.indexOf(id);
-        if (i === -1) { State.wishlist.push(id); Toast.show('Added ❤️'); b.classList.add('wishlist-active'); b.innerHTML = '<i class="fas fa-heart"></i>'; }
-        else { State.wishlist.splice(i, 1); Toast.show('Removed', 'info'); b.classList.remove('wishlist-active'); b.innerHTML = '<i class="far fa-heart"></i>'; }
-        State.persist(); Pages.initNavbar()();
-      });
-      Utils.$$('.quick-add').forEach(b => b.onclick = e => {
-        e.preventDefault(); const id = parseInt(b.dataset.id); const p = State.products.find(x=>x.id===id);
-        const existing = State.cart.find(c=>c.id===id); existing ? existing.qty++ : State.cart.push({...p, qty:1, size:'M', maxQty:10});
-        State.persist(); Toast.show('Added to cart 🛒'); Pages.initNavbar()();
-      });
-
-      const detailSize = Utils.$('#sizeSelector'); if(detailSize) detailSize.onclick = e => { if(e.target.classList.contains('size-btn')) detailSize.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active')); e.target.classList.add('active'); };
-      const qty = () => parseInt(Utils.$('#qtyVal')?.textContent || '1');
-      Utils.$('#incQty')?.addEventListener('click', () => { const el = Utils.$('#qtyVal'); el.textContent = qty()+1; });
-      Utils.$('#decQty')?.addEventListener('click', () => { const el = Utils.$('#qtyVal'); if(qty()>1) el.textContent = qty()-1; });
-      Utils.$('#addToCartBtn')?.addEventListener('click', () => {
-        const p = State.products.find(x => x.id === parseInt(Utils.getQuery().get('id')));
-        const size = Utils.$('.size-btn.active')?.textContent || 'M';
-        const existing = State.cart.find(c => c.id === p.id && c.size === size);
-        existing ? existing.qty += qty() : State.cart.push({...p, qty: qty(), size, maxQty:10});
-        State.persist(); Toast.show('Added to cart 🛒'); Pages.initNavbar()();
-      });
-      Utils.$('#wishlistBtn')?.addEventListener('click', () => {
-        const id = parseInt(Utils.getQuery().get('id')); const i = State.wishlist.indexOf(id);
-        if(i===-1) State.wishlist.push(id); else State.wishlist.splice(i,1);
-        State.persist(); Toast.show(i===-1?'Added to wishlist ❤️':'Removed', 'info');
-        Utils.$('#wishlistBtn').innerHTML = `<i class="${i===-1?'fas':'far'} fa-heart"></i>`;
-        Pages.initNavbar()();
-      });
-    }
-  };
-
-
-  const App = {
-    init() {
-      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => this.run());
-      else this.run();
-    },
-    async run() {
-      await LibLoader.loadAll();
-      const page = document.body.dataset.page || 'index';
-      Pages.initNavbar()();
-      Pages.initSearch();
-
-      if (Pages[page]) Pages[page]();
-      else Pages.index();
-
-
-      const io = new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('animate-fade')), { threshold: 0.1 });
-      document.querySelectorAll('.animate-on-scroll').forEach(el => io.observe(el));
-      console.log(`🚀 Bevenu v${CONFIG.VERSION} initialized on ${page}. State:`, State);
-    }
-  };
-
-  return App;
-})();
-
-BevenuApp.init();
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+}
