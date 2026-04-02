@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About Bevenu — Premium fashion e-commerce brand. Discover our story, values, and commitment to sustainable style." />
+  <title>About Us — Bevenu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  
+  <style>
+    .about-hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    }
+    
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1445205170232-2775ac6c2d51?q=80&w=2070&auto=format&fit=crop') center/cover;
+      opacity: 0.12;
+      filter: blur(1px);
+    }
+    
+    .about-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      color: white;
+    }
+    
+    .about-hero-tag {
+      display: inline-block;
+      background: rgba(201,169,110,0.2);
+      color: var(--accent);
+      border: 1px solid rgba(201,169,110,0.4);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    
+    .about-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: white;
+    }
+    
+    .about-hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    
+    .story-section {
+      padding: 80px 0;
+      background: var(--bg);
+    }
+    
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    
+    .story-image {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .story-image-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--accent-light), var(--bg-secondary));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      color: var(--accent-dark);
+    }
+    
+    .story-image-placeholder i {
+      font-size: 4rem;
+      opacity: 0.6;
+    }
+    
+    .story-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    
+    .story-content p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      font-size: 15px;
+    }
+    
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    
+    .value-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    
+    .value-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent);
+    }
+    
+    .value-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin: 0 auto 16px;
+    }
+    
+    .value-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    
+    .value-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    
+    .team-section {
+      padding: 80px 0;
+      background: var(--bg-secondary);
+    }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    
+    .team-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: var(--transition);
+    }
+    
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .team-avatar {
+      width: 100%;
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, var(--accent-light), var(--bg-secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--accent-dark);
+      position: relative;
+    }
+    
+    .team-avatar::after {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      opacity: 0.3;
+    }
+    
+    .team-info {
+      padding: 20px;
+    }
+    
+    .team-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    
+    .team-info .role {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: block;
+    }
+    
+    .team-info p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    
+    .social-links-small {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    
+    .social-links-small a {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+    
+    .social-links-small a:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .cta-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      text-align: center;
+      color: white;
+    }
+    
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    
+    .cta-section p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+    
+    .stats-showcase {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    
+    .stat-showcase-item {
+      text-align: center;
+      padding: 24px;
+    }
+    
+    .stat-showcase-item .number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 8px;
+    }
+    
+    .stat-showcase-item .label {
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      font-weight: 500;
+    }
+    
+    @media (max-width: 900px) {
+      .story-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .stats-showcase { grid-template-columns: 1fr 1fr; }
+    }
+    
+    @media (max-width: 600px) {
+      .values-grid, .team-grid, .stats-showcase { grid-template-columns: 1fr; }
+      .about-hero h1 { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="toast-container"></div>
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href="index.html">
+        <span class="logo-text">Bevenu</span>
+        <span class="logo-dot">.</span>
+      </a>
+    </div>
+
+    <div class="nav-search">
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="search-input" placeholder="Search for clothes, brands..." autocomplete="off" />
+        <div class="search-suggestions" id="search-suggestions"></div>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <div class="nav-dropdown">
+        <button class="nav-btn" id="categories-btn">
+          <i class="fas fa-th-large"></i>
+          <span>Shop</span>
+          <i class="fas fa-chevron-down chevron"></i>
+        </button>
+        <div class="dropdown-menu" id="categories-dropdown">
+          <a href="products.html?cat=men"><i class="fas fa-male"></i> Men</a>
+          <a href="products.html?cat=women"><i class="fas fa-female"></i> Women</a>
+          <a href="products.html?cat=kids"><i class="fas fa-child"></i> Kids</a>
+          <a href="products.html?cat=accessories"><i class="fas fa-gem"></i> Accessories</a>
+        </div>
+      </div>
+
+      <button class="nav-btn" id="theme-toggle" title="Toggle Dark Mode">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+
+      <a href="#" class="nav-btn" id="wishlist-btn" title="Wishlist">
+        <i class="fas fa-heart"></i>
+        <span class="badge" id="wishlist-count">0</span>
+      </a>
+
+      <a href="cart.html" class="nav-btn cart-btn" title="Cart">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="badge" id="cart-count">0</span>
+      </a>
+
+      <div class="nav-user" id="nav-user">
+        <a href="login.html" class="nav-btn" id="login-btn">
+          <i class="fas fa-user"></i>
+          <span id="user-display">Login</span>
+        </a>
+      </div>
+    </div>
+
+    <button class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-search">
+      <input type="text" placeholder="Search products..." id="mobile-search" />
+    </div>
+    <nav class="mobile-nav">
+      <a href="products.html?cat=men"><i class="fas fa-male"></i> Men</a>
+      <a href="products.html?cat=women"><i class="fas fa-female"></i> Women</a>
+      <a href="products.html?cat=kids"><i class="fas fa-child"></i> Kids</a>
+      <a href="products.html?cat=accessories"><i class="fas fa-gem"></i> Accessories</a>
+      <hr />
+      <a href="cart.html"><i class="fas fa-shopping-bag"></i> Cart</a>
+      <a href="login.html"><i class="fas fa-user"></i> Login / Signup</a>
+    </nav>
+  </div>
+</nav>
+
+<section class="about-hero">
+  <div class="about-hero-content animate-in">
+    <span class="about-hero-tag">Our Story</span>
+    <h1>Fashion That Tells<br><em>Your</em> Story</h1>
+    <p>Bevenu was born from a simple belief: everyone deserves to feel confident, comfortable, and uniquely themselves through the clothes they wear.</p>
+    <a href="#story" class="btn btn-primary">Discover Our Journey <i class="fas fa-arrow-down"></i></a>
+  </div>
+</section>
+
+
+<section class="story-section" id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-image animate-in">
+        <div class="story-image-placeholder">
+          <i class="fas fa-seedling"></i>
+          <span>Founded 2025</span>
+        </div>
+      </div>
+      <div class="story-content animate-in" style="animation-delay: 0.1s">
+        <h2>From Idea to Impact</h2>
+        <p>In 2025, Bevenu began as a small studio with a big vision: to create fashion that doesn't compromise on style, sustainability, or ethics. What started as a passion project has grown into a community of conscious consumers who believe in looking good while doing good.</p>
+        <p>Every piece in our collection is thoughtfully designed, ethically sourced, and crafted with attention to detail. We partner with artisans and manufacturers who share our values, ensuring fair wages, safe working conditions, and minimal environmental impact.</p>
+        <p>Today, Bevenu serves thousands of customers worldwide, but our mission remains unchanged: to empower you to express your unique style while respecting people and planet.</p>
+        <a href="products.html" class="btn btn-outline" style="margin-top: 16px">Explore Collection <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: var(--bg-card)">
+  <div class="container">
+    <div class="section-header" style="justify-content: center; text-align: center">
+      <p class="section-tag">What We Stand For</p>
+      <h2 class="section-title">Our Core Values</h2>
+    </div>
+    
+    <div class="values-grid">
+      <div class="value-card animate-in">
+        <div class="value-icon"><i class="fas fa-leaf"></i></div>
+        <h3>Sustainability First</h3>
+        <p>We use eco-friendly materials, minimize waste, and offset carbon emissions. Fashion should never cost the earth.</p>
+      </div>
+      <div class="value-card animate-in" style="animation-delay: 0.1s">
+        <div class="value-icon"><i class="fas fa-hands-helping"></i></div>
+        <h3>Ethical Production</h3>
+        <p>Every garment is made in facilities that ensure fair wages, safe conditions, and respect for workers' rights.</p>
+      </div>
+      <div class="value-card animate-in" style="animation-delay: 0.2s">
+        <div class="value-icon"><i class="fas fa-palette"></i></div>
+        <h3>Timeless Design</h3>
+        <p>We create pieces that transcend trends—versatile, high-quality styles you'll love for years, not just a season.</p>
+      </div>
+      <div class="value-card animate-in" style="animation-delay: 0.3s">
+        <div class="value-icon"><i class="fas fa-heart"></i></div>
+        <h3>Customer Love</h3>
+        <p>Your satisfaction is our priority. From easy returns to 24/7 support, we're here to make your experience exceptional.</p>
+      </div>
+      <div class="value-card animate-in" style="animation-delay: 0.4s">
+        <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+        <h3>Innovation</h3>
+        <p>We constantly explore new fabrics, technologies, and processes to push the boundaries of sustainable fashion.</p>
+      </div>
+      <div class="value-card animate-in" style="animation-delay: 0.5s">
+        <div class="value-icon"><i class="fas fa-globe-asia"></i></div>
+        <h3>Global Community</h3>
+        <p>We celebrate diversity and inclusivity, creating styles for every body, background, and story.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="team-section">
+  <div class="container">
+    <div class="section-header" style="justify-content: center; text-align: center">
+      <p class="section-tag">The People Behind Bevenu</p>
+      <h2 class="section-title">Meet Our Team</h2>
+    </div>
+    
+    <div class="team-grid">
+      <div class="team-card animate-in">
+        <div class="team-avatar"><i class="fas fa-user"></i></div>
+        <div class="team-info">
+          <h3>Paras Dhiman</h3>
+          <span class="role">Founder & CEO</span>
+          <p>Visionary leader with 15+ years in sustainable fashion. Passionate about ethical supply chains.</p>
+          <div class="social-links-small">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card animate-in" style="animation-delay: 0.1s">
+        <div class="team-avatar"><i class="fas fa-user"></i></div>
+        <div class="team-info">
+          <h3>Dhrupad Arora</h3>
+          <span class="role">Creative Director</span>
+          <p>Award-winning designer blending traditional craftsmanship with contemporary aesthetics.</p>
+          <div class="social-links-small">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-dribbble"></i></a>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Join the Movement</h2>
+    <p>Every purchase supports sustainable practices, fair wages, and a cleaner planet. Together, we're redefining fashion.</p>
+    
+    <div class="stats-showcase">
+      <div class="stat-showcase-item">
+        <span class="number">50K+</span>
+        <span class="label">Happy Customers</span>
+      </div>
+      <div class="stat-showcase-item">
+        <span class="number">120+</span>
+        <span class="label">Ethical Partners</span>
+      </div>
+      <div class="stat-showcase-item">
+        <span class="number">98%</span>
+        <span class="label">Sustainable Materials</span>
+      </div>
+      <div class="stat-showcase-item">
+        <span class="number">4.9★</span>
+        <span class="label">Average Rating</span>
+      </div>
+    </div>
+    
+    <div style="margin-top: 40px">
+      <a href="products.html" class="btn btn-light btn-lg">Shop Consciously <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Bevenu<span>.</span></div>
+        <p>Premium fashion for every story. Crafted with love, delivered with care.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="products.html?cat=men">Men's Collection</a>
+        <a href="products.html?cat=women">Women's Collection</a>
+        <a href="products.html?cat=kids">Kids Wear</a>
+        <a href="products.html?cat=accessories">Accessories</a>
+      </div>
+      <div class="footer-links">
+        <h4>Help</h4>
+        <a href="#">Shipping Info</a>
+        <a href="#">Returns Policy</a>
+        <a href="#">Size Guide</a>
+        <a href="#">Track Order</a>
+        <a href="#">Contact Us</a>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <a href="about.html">About Bevenu</a>
+        <a href="#">Careers</a>
+        <a href="#">Press</a>
+        <a href="admin.html">Admin Panel</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Bevenu. All rights reserved.</p>
+      <div class="payment-icons">
+        <i class="fab fa-cc-visa"></i>
+        <i class="fab fa-cc-mastercard"></i>
+        <i class="fab fa-cc-paypal"></i>
+        <i class="fab fa-google-pay"></i>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<div class="wishlist-overlay" id="wishlist-overlay"></div>
+<div class="wishlist-sidebar" id="wishlist-sidebar">
+  <div class="wishlist-header">
+    <h3>My Wishlist <span id="wishlist-count-sidebar">0</span></h3>
+    <button onclick="closeWishlist()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="wishlist-items" id="wishlist-items-container"></div>
+</div>
+
+
+<script src="script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    updateNavCounts();
+    initSearchSuggestions();
+    checkUserSession();
+    initTheme();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.stat-showcase-item, .value-card, .team-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+  });
+</script>
+</body>
+</html>
