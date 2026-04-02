@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Bevenu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="products">
+    <nav class="navbar">
+        <div class="container nav-wrapper">
+            <a href="/" class="logo">Bevenu</a>
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="Search products..." class="search-input">
+                <div class="search-suggestions"></div>
+            </div>
+            <div class="nav-actions">
+                <button class="nav-btn theme-toggle"><i class="fas fa-moon"></i></button>
+                <a href="/cart.html" class="nav-btn"><i class="fas fa-shopping-bag"></i><span class="badge cart-count">0</span></a>
+                <button id="userProfileBtn" class="nav-btn"><i class="fas fa-user-circle"></i></button>
+                <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="margin: 2rem auto; display: grid; grid-template-columns: 280px 1fr; gap: 2rem;">
+        <aside class="filters-wrapper">
+            <div class="filter-group">
+                <label>Category</label>
+                <div class="filter-options" id="categoryFilter">
+                    <div class="filter-chip active" data-value="all">All</div>
+                    <div class="filter-chip" data-value="Men">Men</div>
+                    <div class="filter-chip" data-value="Women">Women</div>
+                    <div class="filter-chip" data-value="Kids">Kids</div>
+                    <div class="filter-chip" data-value="Accessories">Accessories</div>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label>Price Range</label>
+                <div class="filter-options">
+                    <div class="filter-chip active" data-value="all">All</div>
+                    <div class="filter-chip" data-value="0-50">Under $50</div>
+                    <div class="filter-chip" data-value="50-100">$50-$100</div>
+                    <div class="filter-chip" data-value="100-200">$100+</div>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label>Min Rating</label>
+                <div class="filter-options">
+                    <div class="filter-chip active" data-value="all">Any</div>
+                    <div class="filter-chip" data-value="3">3+ Stars</div>
+                    <div class="filter-chip" data-value="4">4+ Stars</div>
+                </div>
+            </div>
+        </aside>
+
+        <section>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <span style="color: var(--text-light);">Showing <strong id="countDisplay">6</strong> items</span>
+                <select class="sort-select" style="width: auto;">
+                    <option value="default">Sort by: Relevance</option>
+                    <option value="low-high">Price: Low to High</option>
+                    <option value="high-low">Price: High to Low</option>
+                    <option value="popularity">Popularity</option>
+                </select>
+            </div>
+            <div class="grid-3 products-grid"></div>
+            <div class="pagination"></div>
+        </section>
+    </main>
+
+    <div class="toast-container"></div>
+    <script src="script.js"></script>
+</body>
+</html>
