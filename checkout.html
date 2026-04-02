@@ -1,53 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <title>Checkout | Bevenu</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — Bevenu</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-<body data-page="checkout">
-    <nav class="navbar">
-        <div class="container nav-wrapper">
-            <a href="./" class="logo">Bevenu</a>
-            <div class="nav-actions">
-                <button class="nav-btn theme-toggle"><i class="fas fa-moon"></i></button>
-            </div>
+<body>
+<div id="toast-container"></div>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <div class="nav-logo"><a href="index.html"><span class="logo-text">Bevenu</span><span class="logo-dot">.</span></a></div>
+    <div class="checkout-steps">
+      <div class="step active"><span>1</span> Cart</div>
+      <div class="step-line active"></div>
+      <div class="step active"><span>2</span> Details</div>
+      <div class="step-line"></div>
+      <div class="step"><span>3</span> Payment</div>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="container">
+    <h1>Checkout</h1>
+    <p>Complete your order</p>
+  </div>
+</div>
+
+
+<div class="order-success-overlay" id="order-success-overlay">
+  <div class="order-success-modal">
+    <div class="success-icon">
+      <i class="fas fa-check-circle"></i>
+    </div>
+    <h2>Order Placed Successfully!</h2>
+    <p>Thank you for shopping with Bevenu. Your order has been confirmed.</p>
+    <p class="order-id">Order ID: <strong id="order-id-display"></strong></p>
+    <p>You'll receive a confirmation shortly. Estimated delivery: <strong>3–5 business days</strong></p>
+    <div class="success-actions">
+      <a href="index.html" class="btn btn-primary">Continue Shopping</a>
+    </div>
+  </div>
+</div>
+
+<div class="checkout-page container">
+  <div class="checkout-main">
+    <div class="checkout-section">
+      <div class="section-title-row">
+        <span class="step-badge">1</span>
+        <h3>Delivery Address</h3>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" id="co-name" class="input-field" placeholder="John Doe" />
         </div>
-    </nav>
-
-    <main class="container" style="margin: 2rem auto;">
-        <h2 style="margin-bottom: 2rem;">Secure Checkout</h2>
-        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 2rem;">
-            <form class="checkout-form" style="background: var(--surface); padding: 2rem; border-radius: var(--radius);">
-                <h3 style="margin-bottom: 1rem;">Shipping Information</h3>
-                <div class="grid-2" style="margin-bottom: 1rem;">
-                    <input type="text" placeholder="First Name" required>
-                    <input type="text" placeholder="Last Name" required>
-                </div>
-                <input type="email" placeholder="Email Address" style="margin-bottom: 1rem;" required>
-                <input type="text" placeholder="Street Address" style="margin-bottom: 1rem;" required>
-                <div class="grid-3" style="margin-bottom: 1.5rem;">
-                    <input type="text" placeholder="City" required>
-                    <input type="text" placeholder="State" required>
-                    <input type="text" placeholder="Zip" required>
-                </div>
-
-                <h3 style="margin-bottom: 1rem;">Payment</h3>
-                <input type="text" placeholder="Card Number" style="margin-bottom: 1rem;" required>
-                <div class="grid-2">
-                    <input type="text" placeholder="Expiry (MM/YY)" required>
-                    <input type="text" placeholder="CVV" required>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block" style="margin-top: 1.5rem;">Place Order</button>
-            </form>
-
-            <div class="checkout-summary" style="background: var(--surface); padding: 2rem; border-radius: var(--radius); height: fit-content;"></div>
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input type="tel" id="co-phone" class="input-field" placeholder="+91 9876543210" />
         </div>
-    </main>
+        <div class="form-group full-width">
+          <label>Address Line 1 *</label>
+          <input type="text" id="co-addr1" class="input-field" placeholder="House/Flat No., Street Name" />
+        </div>
+        <div class="form-group full-width">
+          <label>Address Line 2</label>
+          <input type="text" id="co-addr2" class="input-field" placeholder="Area, Landmark (optional)" />
+        </div>
+        <div class="form-group">
+          <label>City *</label>
+          <input type="text" id="co-city" class="input-field" placeholder="Mumbai" />
+        </div>
+        <div class="form-group">
+          <label>State *</label>
+          <select id="co-state" class="input-field">
+            <option value="">Select State</option>
+            <option>Maharashtra</option><option>Delhi</option><option>Karnataka</option>
+            <option>Tamil Nadu</option><option>Gujarat</option><option>Rajasthan</option>
+            <option>West Bengal</option><option>Uttar Pradesh</option><option>Punjab</option>
+            <option>Haryana</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>PIN Code *</label>
+          <input type="text" id="co-pin" class="input-field" placeholder="400001" maxlength="6" />
+        </div>
+        <div class="form-group">
+          <label>Country</label>
+          <input type="text" value="India" class="input-field" readonly />
+        </div>
+      </div>
+    </div>
 
-    <div class="toast-container"></div>
-    <script src="script.js"></script>
+    <div class="checkout-section">
+      <div class="section-title-row">
+        <span class="step-badge">2</span>
+        <h3>Payment Method</h3>
+      </div>
+      <div class="payment-methods">
+        <label class="payment-option">
+          <input type="radio" name="payment" value="upi" checked />
+          <div class="payment-label">
+            <i class="fas fa-mobile-alt"></i>
+            <span>UPI / QR Code</span>
+            <small>Pay via GPay, PhonePe, BHIM</small>
+          </div>
+        </label>
+        <label class="payment-option">
+          <input type="radio" name="payment" value="card" />
+          <div class="payment-label">
+            <i class="fas fa-credit-card"></i>
+            <span>Credit / Debit Card</span>
+            <small>Visa, MasterCard, RuPay</small>
+          </div>
+        </label>
+        <label class="payment-option">
+          <input type="radio" name="payment" value="netbanking" />
+          <div class="payment-label">
+            <i class="fas fa-university"></i>
+            <span>Net Banking</span>
+            <small>All major banks</small>
+          </div>
+        </label>
+        <label class="payment-option">
+          <input type="radio" name="payment" value="cod" />
+          <div class="payment-label">
+            <i class="fas fa-money-bill-wave"></i>
+            <span>Cash on Delivery</span>
+            <small>Pay when you receive</small>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <aside class="checkout-sidebar">
+    <div class="order-summary">
+      <h3>Order Summary</h3>
+      <div id="checkout-items"></div>
+      <hr />
+      <div id="checkout-summary-rows"></div>
+      <div class="summary-total">
+        <span>Total</span>
+        <span id="checkout-total">₹0</span>
+      </div>
+      <button class="btn btn-primary checkout-btn" onclick="placeOrder()">
+        <i class="fas fa-lock"></i> Place Order Securely
+      </button>
+      <div class="secure-badge">
+        <i class="fas fa-shield-alt"></i>
+        <span>256-bit SSL encrypted & secure checkout</span>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<script src="script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    checkUserSession();
+    renderCheckoutSummary();
+
+    const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    if (user) {
+      document.getElementById('co-name').value = user.name || '';
+      document.getElementById('co-phone').value = user.phone || '';
+    }
+  });
+
+  function renderCheckoutSummary() {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    if (!cart.length) { window.location.href = 'cart.html'; return; }
+    const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+    const shipping = subtotal >= 999 ? 0 : 99;
+    const total = subtotal + shipping;
+
+    document.getElementById('checkout-items').innerHTML = cart.map(item => `
+      <div class="checkout-item">
+        <div class="checkout-item-img">
+          <div class="product-img-placeholder mini"><i class="fas fa-tshirt"></i></div>
+        </div>
+        <div class="checkout-item-info">
+          <span>${item.name}</span>
+          <small>Size: ${item.size || '—'} × ${item.quantity}</small>
+        </div>
+        <span>₹${(item.price * item.quantity).toLocaleString()}</span>
+      </div>
+    `).join('');
+
+    document.getElementById('checkout-summary-rows').innerHTML = `
+      <div class="summary-row"><span>Subtotal</span><span>₹${subtotal.toLocaleString()}</span></div>
+      <div class="summary-row"><span>Shipping</span><span>${shipping === 0 ? 'FREE' : '₹' + shipping}</span></div>
+    `;
+    document.getElementById('checkout-total').textContent = `₹${total.toLocaleString()}`;
+  }
+
+  function placeOrder() {
+    const name = document.getElementById('co-name').value.trim();
+    const phone = document.getElementById('co-phone').value.trim();
+    const addr1 = document.getElementById('co-addr1').value.trim();
+    const city = document.getElementById('co-city').value.trim();
+    const state = document.getElementById('co-state').value;
+    const pin = document.getElementById('co-pin').value.trim();
+
+    if (!name || !phone || !addr1 || !city || !state || !pin) {
+      showToast('Please fill in all required fields', 'error');
+      return;
+    }
+    if (pin.length !== 6) { showToast('Enter a valid 6-digit PIN code', 'error'); return; }
+
+    const orderId = 'BVN' + Date.now().toString().slice(-8);
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+    orders.push({
+      id: orderId,
+      items: cart,
+      address: { name, phone, addr1, city, state, pin },
+      payment: document.querySelector('input[name="payment"]:checked').value,
+      date: new Date().toISOString(),
+      status: 'Confirmed'
+    });
+    localStorage.setItem('orders', JSON.stringify(orders));
+    localStorage.setItem('cart', '[]');
+
+    document.getElementById('order-id-display').textContent = orderId;
+    document.getElementById('order-success-overlay').classList.add('active');
+    updateNavCounts();
+  }
+</script>
 </body>
 </html>
