@@ -1,273 +1,369 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="description" content="Bevenu - Premium fashion e-commerce. Discover curated collections for men, women, and kids. Sustainable, modern, timeless.">
-    <meta name="theme-color" content="#e11d48">
-    <title>Bevenu | Elevate Your Style</title>
-
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.0/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/dayjs.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uuid@9.0.0/dist/esm-browser/index.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/countup.js@2.8.0/dist/countUp.umd.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/micromodal@0.4.10/dist/micromodal.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>" type="image/svg+xml">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bevenu — Premium Fashion</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-<body data-page="index">
-    <header class="navbar" id="mainNavbar">
-        <div class="container nav-wrapper">
-            <a href="./index.html" class="logo" aria-label="Bevenu Home">Bevenu</a>
-            
-            <div class="search-container">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" placeholder="Search collections, brands, items..." class="search-input" aria-label="Search products">
-                <div class="search-suggestions"></div>
-            </div>
-            
-            <nav class="category-dropdown" tabindex="0" aria-label="Category navigation">
-                Categories <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:4px;"></i>
-                <div class="dropdown-menu">
-                    <a href="./products.html?cat=Men">Men's Collection</a>
-                    <a href="./products.html?cat=Women">Women's Collection</a>
-                    <a href="./products.html?cat=Kids">Kids' Wear</a>
-                    <a href="./products.html?cat=Accessories">Accessories</a>
-                    <a href="./products.html?sort=popularity">Trending Now</a>
-                </div>
-            </nav>
-            
-            <div class="nav-actions">
-                <button class="nav-btn theme-toggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <a href="cart.html" class="nav-btn" aria-label="Shopping Cart">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="badge cart-count">0</span>
-                </a>
-                <button id="userProfileBtn" class="nav-btn" aria-label="User Profile">
-                    <i class="fas fa-user-circle"></i>
-                </button>
-                <button class="mobile-toggle" aria-label="Open mobile menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+<body>
+
+<!-- TOAST NOTIFICATION -->
+<div id="toast-container"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href="index.html">
+        <span class="logo-text">Bevenu</span>
+        <span class="logo-dot">.</span>
+      </a>
+    </div>
+
+    <div class="nav-search">
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="search-input" placeholder="Search for clothes, brands..." autocomplete="off" />
+        <div class="search-suggestions" id="search-suggestions"></div>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <div class="nav-dropdown">
+        <button class="nav-btn" id="categories-btn">
+          <i class="fas fa-th-large"></i>
+          <span>Shop</span>
+          <i class="fas fa-chevron-down chevron"></i>
+        </button>
+        <div class="dropdown-menu" id="categories-dropdown">
+          <a href="products.html?cat=men"><i class="fas fa-male"></i> Men</a>
+          <a href="products.html?cat=women"><i class="fas fa-female"></i> Women</a>
+          <a href="products.html?cat=kids"><i class="fas fa-child"></i> Kids</a>
+          <a href="products.html?cat=accessories"><i class="fas fa-gem"></i> Accessories</a>
         </div>
-        
-  
-        <div class="mobile-menu" id="mobileMenu" style="display:none;">
-            <a href="./products.html?cat=Men"><i class="fas fa-user-tie" style="width:20px;"></i> Men</a>
-            <a href="./products.html?cat=Women"><i class="fas fa-female" style="width:20px;"></i> Women</a>
-            <a href="./products.html?cat=Kids"><i class="fas fa-child" style="width:20px;"></i> Kids</a>
-            <a href="./products.html?cat=Accessories"><i class="fas fa-gem" style="width:20px;"></i> Accessories</a>
-            <a href="./cart.html"><i class="fas fa-shopping-bag" style="width:20px;"></i> Cart</a>
-            <a href="./login.html"><i class="fas fa-sign-in-alt" style="width:20px;"></i> Login / Signup</a>
+      </div>
+
+      <button class="nav-btn" id="theme-toggle" title="Toggle Dark Mode">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+
+      <a href="#" class="nav-btn" id="wishlist-btn" title="Wishlist">
+        <i class="fas fa-heart"></i>
+        <span class="badge" id="wishlist-count">0</span>
+      </a>
+
+      <a href="cart.html" class="nav-btn cart-btn" title="Cart">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="badge" id="cart-count">0</span>
+      </a>
+
+      <div class="nav-user" id="nav-user">
+        <a href="login.html" class="nav-btn" id="login-btn">
+          <i class="fas fa-user"></i>
+          <span id="user-display">Login</span>
+        </a>
+      </div>
+    </div>
+
+    <button class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-search">
+      <input type="text" placeholder="Search products..." id="mobile-search" />
+    </div>
+    <nav class="mobile-nav">
+      <a href="products.html?cat=men"><i class="fas fa-male"></i> Men</a>
+      <a href="products.html?cat=women"><i class="fas fa-female"></i> Women</a>
+      <a href="products.html?cat=kids"><i class="fas fa-child"></i> Kids</a>
+      <a href="products.html?cat=accessories"><i class="fas fa-gem"></i> Accessories</a>
+      <hr />
+      <a href="cart.html"><i class="fas fa-shopping-bag"></i> Cart</a>
+      <a href="login.html"><i class="fas fa-user"></i> Login / Signup</a>
+    </nav>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero" id="hero">
+  <div class="hero-slides">
+    <div class="hero-slide active" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">
+      <div class="hero-content">
+        <p class="hero-tag">New Season 2025</p>
+        <h1 class="hero-title">Dress to<br /><em>Impress.</em></h1>
+        <p class="hero-subtitle">Curated fashion for the modern soul. Discover premium styles crafted for every occasion.</p>
+        <div class="hero-btns">
+          <a href="products.html" class="btn btn-primary">Shop Now <i class="fas fa-arrow-right"></i></a>
+          <a href="products.html?cat=new" class="btn btn-outline">New Arrivals</a>
         </div>
-    </header>
-
-    <main>
-
-        <section class="hero">
-            <div class="hero-content animate-fade">
-                <span class="text-accent" style="font-weight:600; letter-spacing:2px; text-transform:uppercase; margin-bottom:1rem; display:block;">New Collection 2026</span>
-                <h1>Redefine Your<br>Everyday Elegance</h1>
-                <p>Curated premium fashion for the modern era. Discover timeless pieces crafted with precision, comfort, and sustainable materials.</p>
-                <div class="hero-actions">
-                    <a href="products.html" class="btn btn-primary">Shop Collection</a>
-                    <a href="products.html?sort=popularity" class="btn btn-outline">View Lookbook</a>
-                </div>
-            </div>
-        </section>
-
-
-        <section class="container" style="padding: 4rem 0;">
-            <h2 class="section-title">Featured Categories</h2>
-            <div class="grid-4" id="featuredGrid">
-                <div class="product-card skeleton" style="height: 380px;"></div>
-                <div class="product-card skeleton" style="height: 380px;"></div>
-                <div class="product-card skeleton" style="height: 380px;"></div>
-                <div class="product-card skeleton" style="height: 380px;"></div>
-            </div>
-        </section>
-
-
-        <section class="container">
-            <div style="background: var(--gradient-primary); padding: 3rem 2rem; border-radius: var(--radius-xl); color: white; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; margin-bottom: 4rem; overflow: hidden; position: relative;">
-                <div style="position: relative; z-index: 2;">
-                    <span style="background: var(--color-accent); padding: 0.3rem 0.8rem; border-radius: var(--radius-sm); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; display: inline-block;">Summer Sale</span>
-                    <h3 style="font-family: var(--font-serif); font-size: var(--text-2xl); margin-bottom: 0.8rem;">Up to 50% Off Seasonal Essentials</h3>
-                    <p style="opacity: 0.85; margin-bottom: 1.5rem;">Premium fabrics, tailored fits, and exclusive designs. Offer ends soon.</p>
-                    <a href="products.html" class="btn btn-primary">Claim Offer</a>
-                </div>
-                <div style="position: absolute; right: -5%; bottom: -20%; width: 50%; opacity: 0.15; pointer-events: none;">
-                    <i class="fas fa-tag" style="font-size: 20rem; transform: rotate(-15deg);"></i>
-                </div>
-            </div>
-        </section>
-
-        <section class="container" style="padding: 2rem 0;">
-            <h2 class="section-title">Trending Now</h2>
-            <div class="grid-4" id="trendingGrid">
-                <div class="product-card skeleton" style="height: 380px;"></div>
-                <div class="product-card skeleton" style="height: 380px;"></div>
-                <div class="product-card skeleton" style="height: 380px;"></div>
-                <div class="product-card skeleton" style="height: 380px;"></div>
-            </div>
-        </section>
-
-        <section class="container" style="padding: 4rem 0;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
-                <h2 class="section-title" style="margin: 0;">New Arrivals</h2>
-                <a href="products.html?sort=newest" class="btn btn-outline" style="padding: 0.6rem 1.5rem;">View All <i class="fas fa-arrow-right" style="margin-left: 0.5rem; font-size: 0.8rem;"></i></a>
-            </div>
-            <div class="grid-4" id="newArrivals">
-                <div class="product-card skeleton" style="height: 380px;"></div>
-                <div class="product-card skeleton" style="height: 380px;"></div>
-                <div class="product-card skeleton" style="height: 380px;"></div>
-                <div class="product-card skeleton" style="height: 380px;"></div>
-            </div>
-        </section>
-
-        <section class="container" style="padding: 4rem 0; margin-bottom: 2rem;">
-            <h2 class="section-title">What Our Clients Say</h2>
-            <div class="grid-3" id="testimonialsGrid">
-                <div class="bg-surface rounded-md" style="padding: 2rem; border: 1px solid var(--color-border); text-align: center; transition: var(--transition-base);">
-                    <div style="color: var(--color-warning); margin-bottom: 1rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p style="margin-bottom: 1rem; font-style: italic; color: var(--color-text-light);">"The quality is unmatched. Fits perfectly and the fabric feels premium. Will definitely order again!"</p>
-                    <strong>— Sarah M.</strong>
-                </div>
-                <div class="bg-surface rounded-md" style="padding: 2rem; border: 1px solid var(--color-border); text-align: center; transition: var(--transition-base);">
-                    <div style="color: var(--color-warning); margin-bottom: 1rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                    <p style="margin-bottom: 1rem; font-style: italic; color: var(--color-text-light);">"Fast shipping, beautiful packaging, and exactly as pictured. Customer service was incredibly helpful."</p>
-                    <strong>— James L.</strong>
-                </div>
-                <div class="bg-surface rounded-md" style="padding: 2rem; border: 1px solid var(--color-border); text-align: center; transition: var(--transition-base);">
-                    <div style="color: var(--color-warning); margin-bottom: 1rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p style="margin-bottom: 1rem; font-style: italic; color: var(--color-text-light);">"Finally found a brand that blends modern aesthetics with everyday comfort. Highly recommended!"</p>
-                    <strong>— Elena R.</strong>
-                </div>
-            </div>
-        </section>
-    </main>
-
-
-    <footer style="background: var(--color-bg-soft); border-top: 1px solid var(--color-border); padding: 5rem 0 2rem; margin-top: 4rem;">
-        <div class="container">
-            <div class="grid-4" style="margin-bottom: 3rem;">
-
-                <div>
-                    <a href="./index.html" class="logo" style="display: inline-block; margin-bottom: 1rem;">Bevenu</a>
-                    <p style="color: var(--color-text-light); margin-bottom: 1.5rem; font-size: var(--text-sm); line-height: 1.7;">Redefining modern fashion with sustainable practices, premium materials, and timeless designs crafted for the contemporary individual.</p>
-                    <div style="display: flex; gap: 0.8rem;">
-                        <a href="#" class="nav-btn" style="background: var(--color-surface); border: 1px solid var(--color-border); width: 40px; height: 40px; border-radius: var(--radius-md);" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="nav-btn" style="background: var(--color-surface); border: 1px solid var(--color-border); width: 40px; height: 40px; border-radius: var(--radius-md);" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="nav-btn" style="background: var(--color-surface); border: 1px solid var(--color-border); width: 40px; height: 40px; border-radius: var(--radius-md);" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="nav-btn" style="background: var(--color-surface); border: 1px solid var(--color-border); width: 40px; height: 40px; border-radius: var(--radius-md);" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 style="font-weight: 600; margin-bottom: 1.5rem;">Shop</h4>
-                    <ul style="display: flex; flex-direction: column; gap: 0.8rem;">
-                        <li><a href="./products.html?cat=Men" style="color: var(--color-text-light);">Men's Collection</a></li>
-                        <li><a href="./products.html?cat=Women" style="color: var(--color-text-light);">Women's Collection</a></li>
-                        <li><a href="./products.html?cat=Kids" style="color: var(--color-text-light);">Kids' Wear</a></li>
-                        <li><a href="./products.html?cat=Accessories" style="color: var(--color-text-light);">Accessories</a></li>
-                        <li><a href="./products.html" style="color: var(--color-text-light);">Sale & Clearance</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 style="font-weight: 600; margin-bottom: 1.5rem;">Company</h4>
-                    <ul style="display: flex; flex-direction: column; gap: 0.8rem;">
-                        <li><a href="#" style="color: var(--color-text-light);">About Us</a></li>
-                        <li><a href="#" style="color: var(--color-text-light);">Sustainability</a></li>
-                        <li><a href="#" style="color: var(--color-text-light);">Careers</a></li>
-                        <li><a href="#" style="color: var(--color-text-light);">Press & Media</a></li>
-                        <li><a href="admin.html" style="color: var(--color-text-light);">Admin Portal</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 style="font-weight: 600; margin-bottom: 1.5rem;">Stay Updated</h4>
-                    <p style="color: var(--color-text-light); margin-bottom: 1rem; font-size: var(--text-sm);">Subscribe for exclusive drops, early access, and style guides.</p>
-                    <form id="newsletterForm" style="display: flex; gap: 0.5rem;">
-                        <input type="email" placeholder="Your email" required style="padding: 0.7rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--color-border); background: var(--color-surface); flex: 1;">
-                        <button type="submit" class="btn btn-primary" style="padding: 0.7rem 1.2rem;"><i class="fas fa-paper-plane"></i></button>
-                    </form>
-                    <p id="newsletterMsg" style="margin-top: 0.5rem; font-size: var(--text-xs); color: var(--color-success); display: none;">Subscribed successfully!</p>
-                </div>
-            </div>
-            
-            <div style="border-top: 1px solid var(--color-border); padding-top: 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; font-size: var(--text-sm); color: var(--color-text-muted);">
-                <div>&copy; 2026 Bevenu. All rights reserved.</div>
-                <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-                    <a href="#" style="color: var(--color-text-muted);">Privacy Policy</a>
-                    <a href="#" style="color: var(--color-text-muted);">Terms of Service</a>
-                    <a href="#" style="color: var(--color-text-muted);">Shipping & Returns</a>
-                    <a href="#" style="color: var(--color-text-muted);">Contact Support</a>
-                </div>
-                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                    <i class="fab fa-cc-visa" style="font-size: 1.5rem;"></i>
-                    <i class="fab fa-cc-mastercard" style="font-size: 1.5rem;"></i>
-                    <i class="fab fa-cc-amex" style="font-size: 1.5rem;"></i>
-                    <i class="fab fa-cc-paypal" style="font-size: 1.5rem;"></i>
-                    <i class="fab fa-cc-apple-pay" style="font-size: 1.5rem;"></i>
-                </div>
-            </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-img-wrapper">
+          <div class="hero-img-placeholder">
+            <i class="fas fa-tshirt"></i>
+            <span>Summer Collection</span>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <span>Scroll to explore</span>
+    <i class="fas fa-chevron-down"></i>
+  </div>
+</section>
 
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item"><i class="fas fa-shipping-fast"></i><span>Free Shipping over ₹999</span></div>
+  <div class="stat-item"><i class="fas fa-undo"></i><span>30-Day Easy Returns</span></div>
+  <div class="stat-item"><i class="fas fa-shield-alt"></i><span>Secure Payments</span></div>
+  <div class="stat-item"><i class="fas fa-headset"></i><span>24/7 Support</span></div>
+</div>
 
-    <div class="toast-container" id="toastContainer"></div>
+<!-- FEATURED CATEGORIES -->
+<section class="section categories-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag">Browse By</p>
+      <h2 class="section-title">Shop Categories</h2>
+    </div>
+    <div class="categories-grid">
+      <a href="products.html?cat=women" class="cat-card cat-women">
+        <div class="cat-overlay"></div>
+        <div class="cat-content">
+          <i class="fas fa-female cat-icon"></i>
+          <h3>Women</h3>
+          <p>320+ Styles</p>
+        </div>
+      </a>
+      <a href="products.html?cat=men" class="cat-card cat-men">
+        <div class="cat-overlay"></div>
+        <div class="cat-content">
+          <i class="fas fa-male cat-icon"></i>
+          <h3>Men</h3>
+          <p>240+ Styles</p>
+        </div>
+      </a>
+      <a href="products.html?cat=kids" class="cat-card cat-kids">
+        <div class="cat-overlay"></div>
+        <div class="cat-content">
+          <i class="fas fa-child cat-icon"></i>
+          <h3>Kids</h3>
+          <p>180+ Styles</p>
+        </div>
+      </a>
+      <a href="products.html?cat=accessories" class="cat-card cat-accessories">
+        <div class="cat-overlay"></div>
+        <div class="cat-content">
+          <i class="fas fa-gem cat-icon"></i>
+          <h3>Accessories</h3>
+          <p>150+ Items</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
-    
-    <script>
-        const navbar = document.getElementById('mainNavbar');
-        window.addEventListener('scroll', () => {
-            navbar?.classList.toggle('scrolled', window.scrollY > 40);
-        });
+<!-- TRENDING PRODUCTS -->
+<section class="section products-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag">Hot Right Now</p>
+      <h2 class="section-title">Trending Products</h2>
+      <a href="products.html" class="see-all">See All <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="products-grid" id="trending-grid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
 
+<!-- OFFER BANNER -->
+<section class="offer-banner">
+  <div class="offer-content">
+    <p class="offer-tag">Limited Time</p>
+    <h2>Up to <span class="highlight">50% OFF</span></h2>
+    <p>On selected summer collection items. Don't miss out!</p>
+    <a href="products.html?sale=true" class="btn btn-light">Shop Sale <i class="fas fa-fire"></i></a>
+  </div>
+  <div class="offer-decoration">
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    <div class="circle c3"></div>
+  </div>
+</section>
 
-        const menuToggle = document.querySelector('.mobile-toggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        if (menuToggle && mobileMenu) {
-            menuToggle.addEventListener('click', () => {
-                const isOpen = mobileMenu.style.display === 'block';
-                mobileMenu.style.display = isOpen ? 'none' : 'block';
-                menuToggle.querySelector('i').className = isOpen ? 'fas fa-bars' : 'fas fa-times';
-            });
-        }
+<!-- NEW ARRIVALS -->
+<section class="section products-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag">Just Landed</p>
+      <h2 class="section-title">New Arrivals</h2>
+      <a href="products.html?sort=newest" class="see-all">See All <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="products-grid" id="new-arrivals-grid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
 
-        document.getElementById('newsletterForm')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const msg = document.getElementById('newsletterMsg');
-            if (msg) { msg.style.display = 'block'; setTimeout(() => msg.style.display = 'none', 3000); }
-            e.target.reset();
-        });
+<!-- RECENTLY VIEWED -->
+<section class="section products-section" id="recently-viewed-section" style="display:none;">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag">Your History</p>
+      <h2 class="section-title">Recently Viewed</h2>
+    </div>
+    <div class="products-grid" id="recently-viewed-grid"></div>
+  </div>
+</section>
 
+<!-- TESTIMONIALS -->
+<section class="section testimonials-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag">What They Say</p>
+      <h2 class="section-title">Customer Reviews</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Absolutely love the quality! The fabric feels premium and the fit is perfect. Will definitely order again from Bevenu."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div>
+            <strong>Aisha Sharma</strong>
+            <span>Verified Buyer</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card featured">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Best fashion store I've shopped at online. Fast delivery, amazing packaging, and the clothes look exactly like the photos!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">R</div>
+          <div>
+            <strong>Rahul Mehta</strong>
+            <span>Verified Buyer</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★☆</div>
+        <p class="testimonial-text">"Great collection and easy returns policy. Customer service was helpful when I needed to exchange a size. Highly recommend!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">P</div>
+          <div>
+            <strong>Priya Kapoor</strong>
+            <span>Verified Buyer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.category-dropdown')) {
-                document.querySelector('.dropdown-menu')?.style.removeProperty('display');
-            }
-        });
-    </script>
-    
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-content">
+      <h2>Stay in Style</h2>
+      <p>Subscribe for exclusive offers, new arrivals & style inspiration.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Your email address" id="newsletter-email" />
+        <button class="btn btn-primary" onclick="subscribeNewsletter()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script src="script.js" defer></script>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Bevenu<span>.</span></div>
+        <p>Premium fashion for every story. Crafted with love, delivered with care.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="products.html?cat=men">Men's Collection</a>
+        <a href="products.html?cat=women">Women's Collection</a>
+        <a href="products.html?cat=kids">Kids Wear</a>
+        <a href="products.html?cat=accessories">Accessories</a>
+      </div>
+      <div class="footer-links">
+        <h4>Help</h4>
+        <a href="#">Shipping Info</a>
+        <a href="#">Returns Policy</a>
+        <a href="#">Size Guide</a>
+        <a href="#">Track Order</a>
+        <a href="#">Contact Us</a>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <a href="#">About Bevenu</a>
+        <a href="#">Careers</a>
+        <a href="#">Press</a>
+        <a href="admin.html">Admin Panel</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Bevenu. All rights reserved.</p>
+      <div class="payment-icons">
+        <i class="fab fa-cc-visa"></i>
+        <i class="fab fa-cc-mastercard"></i>
+        <i class="fab fa-cc-paypal"></i>
+        <i class="fab fa-google-pay"></i>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WISHLIST SIDEBAR -->
+<div class="wishlist-overlay" id="wishlist-overlay"></div>
+<div class="wishlist-sidebar" id="wishlist-sidebar">
+  <div class="wishlist-header">
+    <h3>My Wishlist <span id="wishlist-count-sidebar">0</span></h3>
+    <button onclick="closeWishlist()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="wishlist-items" id="wishlist-items-container"></div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    renderProductGrid('trending-grid', getProducts().filter(p => p.trending), 4);
+    renderProductGrid('new-arrivals-grid', getProducts().filter(p => p.newArrival), 4);
+    renderRecentlyViewed();
+    updateNavCounts();
+    initSearchSuggestions();
+    checkUserSession();
+    initTheme();
+  });
+
+  function subscribeNewsletter() {
+    const email = document.getElementById('newsletter-email').value;
+    if (email && email.includes('@')) {
+      showToast('🎉 Subscribed successfully!', 'success');
+      document.getElementById('newsletter-email').value = '';
+    } else {
+      showToast('Please enter a valid email.', 'error');
+    }
+  }
+</script>
 </body>
 </html>
