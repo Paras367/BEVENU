@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bevenu | Modern Fashion E-Commerce</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+</head>
+<body data-page="index">
+    <nav class="navbar">
+        <div class="container nav-wrapper">
+            <a href="/" class="logo">Bevenu</a>
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="Search products..." class="search-input">
+                <div class="search-suggestions"></div>
+            </div>
+            <div class="category-dropdown">
+                Categories <i class="fas fa-chevron-down" style="font-size:0.8rem;"></i>
+                <div class="dropdown-menu">
+                    <a href="/products.html?cat=Men">Men</a>
+                    <a href="/products.html?cat=Women">Women</a>
+                    <a href="/products.html?cat=Kids">Kids</a>
+                    <a href="/products.html?cat=Accessories">Accessories</a>
+                </div>
+            </div>
+            <div class="nav-actions">
+                <button class="nav-btn theme-toggle"><i class="fas fa-moon"></i></button>
+                <a href="/cart.html" class="nav-btn cart-count-link">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="badge cart-count">0</span>
+                </a>
+                <button id="userProfileBtn" class="nav-btn"><i class="fas fa-user-circle"></i></button>
+                <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Elevate Your Style.</h1>
+                <p>Discover premium fashion crafted for the modern era. New arrivals drop every week.</p>
+                <a href="/products.html" class="btn btn-primary">Shop Now</a>
+                <a href="/products.html?sort=popularity" class="btn btn-outline">Trending</a>
+            </div>
+        </section>
+
+        <div class="container" style="padding-bottom: 4rem;">
+            <h2 class="section-title animate-fade">Featured Collections</h2>
+            <div class="grid-4" id="featuredGrid"></div>
+
+            <div style="margin: 4rem 0; background: linear-gradient(135deg, #111 0%, #333 100%); padding: 4rem 2rem; border-radius: var(--radius); color: white; text-align: center;">
+                <h3 style="font-size: 2rem; margin-bottom: 0.5rem;">Summer Clearance</h3>
+                <p style="opacity: 0.9; margin-bottom: 1.5rem;">Up to 50% off on selected styles.</p>
+                <a href="/products.html" class="btn btn-primary">Claim Offer</a>
+            </div>
+
+            <h2 class="section-title animate-fade">Trending Now</h2>
+            <div class="grid-4" id="trendingGrid"></div>
+
+            <h2 class="section-title animate-fade" style="margin-top: 4rem;">New Arrivals</h2>
+            <div class="grid-4" id="newArrivals"></div>
+        </div>
+    </main>
+
+    <footer style="background: var(--surface); padding: 3rem 0; margin-top: 4rem; text-align: center; border-top: 1px solid var(--border);">
+        <p style="color: var(--text-light);">&copy; 2026 Bevenu Fashion. All rights reserved.</p>
+    </footer>
+    <div class="toast-container"></div>
+    <script src="script.js"></script>
+</body>
+</html>
