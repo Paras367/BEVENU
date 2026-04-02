@@ -1,33 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <title>Cart | Bevenu</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart — Bevenu</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-<body data-page="cart">
-    <nav class="navbar">
-        <div class="container nav-wrapper">
-            <a href="./" class="logo">Bevenu</a>
-            <div class="nav-actions">
-                <button class="nav-btn theme-toggle"><i class="fas fa-moon"></i></button>
-                <a href="./cart.html" class="nav-btn"><i class="fas fa-shopping-bag"></i><span class="badge cart-count">0</span></a>
-                <button id="userProfileBtn" class="nav-btn"><i class="fas fa-user-circle"></i></button>
+<body>
+<div id="toast-container"></div>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <div class="nav-logo"><a href="index.html"><span class="logo-text">Bevenu</span><span class="logo-dot">.</span></a></div>
+    <div class="nav-actions">
+      <button class="nav-btn" id="theme-toggle"><i class="fas fa-moon" id="theme-icon"></i></button>
+      <a href="./cart.html" class="nav-btn cart-btn"><i class="fas fa-shopping-bag"></i><span class="badge" id="cart-count">0</span></a>
+      <a href="./login.html" class="nav-btn" id="login-btn"><i class="fas fa-user"></i><span id="user-display">Login</span></a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="container">
+    <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>Shopping Cart</span></nav>
+    <h1>Shopping Cart</h1>
+    <p id="cart-header-count">0 items</p>
+  </div>
+</div>
+
+<div class="cart-page container">
+  <div class="cart-main" id="cart-main">
+  </div>
+  <aside class="cart-sidebar">
+    <div class="order-summary">
+      <h3>Order Summary</h3>
+      <div class="summary-rows" id="summary-rows"></div>
+      <div class="coupon-row">
+        <input type="text" id="coupon-input" placeholder="Enter coupon code" class="input-field" />
+        <button class="btn btn-outline" onclick="applyCoupon()">Apply</button>
+      </div>
+      <div class="summary-total">
+        <span>Total Amount</span>
+        <span id="summary-total">₹0</span>
+      </div>
+      <a href="checkout.html" class="btn btn-primary checkout-btn" id="checkout-btn">
+        Proceed to Checkout <i class="fas fa-arrow-right"></i>
+      </a>
+      <a href="products.html" class="continue-shopping">
+        <i class="fas fa-arrow-left"></i> Continue Shopping
+      </a>
+    </div>
+  </aside>
+</div>
+
+<footer class="footer footer-compact">
+  <div class="container">
+    <div class="footer-bottom"><p>&copy; 2026 Bevenu.</p></div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  let discount = 0;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    checkUserSession();
+    renderCart();
+  });
+
+  function renderCart() {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const main = document.getElementById('cart-main');
+    document.getElementById('cart-header-count').textContent = `${cart.length} item${cart.length !== 1 ? 's' : ''}`;
+    updateNavCounts();
+
+    if (cart.length === 0) {
+      main.innerHTML = `
+        <div class="empty-cart">
+          <div class="empty-cart-icon"><i class="fas fa-shopping-bag"></i></div>
+          <h2>Your cart is empty</h2>
+          <p>Looks like you haven't added anything yet!</p>
+          <a href="products.html" class="btn btn-primary">Start Shopping</a>
+        </div>`;
+      document.getElementById('summary-rows').innerHTML = '';
+      document.getElementById('summary-total').textContent = '₹0';
+      document.getElementById('checkout-btn').style.pointerEvents = 'none';
+      document.getElementById('checkout-btn').style.opacity = '0.5';
+      return;
+    }
+
+    main.innerHTML = `
+      <div class="cart-list">
+        <div class="cart-list-header">
+          <span>Product</span><span>Size</span><span>Price</span><span>Qty</span><span>Total</span><span></span>
+        </div>
+        ${cart.map((item, idx) => `
+          <div class="cart-item" id="cart-item-${idx}">
+            <div class="cart-item-img">
+              <div class="product-img-placeholder small" style="background:${item.color||'#eee'}">
+                <i class="fas fa-tshirt"></i>
+              </div>
+              <div class="cart-item-info">
+                <a href="product.html?id=${item.id}" class="cart-item-name">${item.name}</a>
+                <span class="cart-item-cat">${item.category}</span>
+              </div>
             </div>
-        </div>
-    </nav>
+            <span class="cart-item-size">${item.size || '—'}</span>
+            <span class="cart-item-price">₹${item.price.toLocaleString()}</span>
+            <div class="cart-qty-control">
+              <button onclick="updateCartQty(${idx}, -1)"><i class="fas fa-minus"></i></button>
+              <span>${item.quantity}</span>
+              <button onclick="updateCartQty(${idx}, 1)"><i class="fas fa-plus"></i></button>
+            </div>
+            <span class="cart-item-total">₹${(item.price * item.quantity).toLocaleString()}</span>
+            <button class="remove-btn" onclick="removeFromCart(${idx})"><i class="fas fa-trash"></i></button>
+          </div>
+        `).join('')}
+      </div>
+      <div class="cart-actions">
+        <button class="btn btn-outline" onclick="clearCart()"><i class="fas fa-trash"></i> Clear Cart</button>
+      </div>`;
 
-    <main class="container cart-container">
-        <h2 style="margin-bottom: 2rem;">Shopping Cart</h2>
-        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
-            <div class="cart-items"></div>
-            <div class="cart-summary"></div>
-        </div>
-    </main>
+    renderSummary(cart);
+  }
 
-    <div class="toast-container"></div>
-    <script src="script.js"></script>
+  function renderSummary(cart) {
+    const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const shipping = subtotal >= 999 ? 0 : 99;
+    const total = subtotal + shipping - discount;
+
+    document.getElementById('summary-rows').innerHTML = `
+      <div class="summary-row"><span>Subtotal (${cart.length} items)</span><span>₹${subtotal.toLocaleString()}</span></div>
+      <div class="summary-row"><span>Shipping</span><span>${shipping === 0 ? '<span style="color:var(--success)">FREE</span>' : '₹' + shipping}</span></div>
+      ${discount > 0 ? `<div class="summary-row discount"><span>Coupon Discount</span><span>-₹${discount}</span></div>` : ''}
+    `;
+    document.getElementById('summary-total').textContent = `₹${Math.max(0, total).toLocaleString()}`;
+  }
+
+  function updateCartQty(idx, delta) {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    cart[idx].quantity = Math.max(1, Math.min(10, cart[idx].quantity + delta));
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
+  }
+
+  function removeFromCart(idx) {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    cart.splice(idx, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    showToast('Item removed from cart', 'info');
+    renderCart();
+  }
+
+  function clearCart() {
+    if (confirm('Clear all items from cart?')) {
+      localStorage.setItem('cart', '[]');
+      renderCart();
+      showToast('Cart cleared', 'info');
+    }
+  }
+
+  function applyCoupon() {
+    const code = document.getElementById('coupon-input').value.trim().toUpperCase();
+    const coupons = { 'BEVENU10': 10, 'SAVE50': 50, 'FIRST20': 20 };
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+    if (coupons[code]) {
+      discount = Math.round(subtotal * coupons[code] / 100);
+      showToast(`Coupon applied! ₹${discount} off`, 'success');
+      renderSummary(cart);
+    } else {
+      showToast('Invalid coupon code', 'error');
+    }
+  }
+</script>
 </body>
 </html>
