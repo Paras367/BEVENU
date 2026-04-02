@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout | Bevenu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="checkout">
+    <nav class="navbar">
+        <div class="container nav-wrapper">
+            <a href="/" class="logo">Bevenu</a>
+            <div class="nav-actions">
+                <button class="nav-btn theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="margin: 2rem auto;">
+        <h2 style="margin-bottom: 2rem;">Secure Checkout</h2>
+        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 2rem;">
+            <form class="checkout-form" style="background: var(--surface); padding: 2rem; border-radius: var(--radius);">
+                <h3 style="margin-bottom: 1rem;">Shipping Information</h3>
+                <div class="grid-2" style="margin-bottom: 1rem;">
+                    <input type="text" placeholder="First Name" required>
+                    <input type="text" placeholder="Last Name" required>
+                </div>
+                <input type="email" placeholder="Email Address" style="margin-bottom: 1rem;" required>
+                <input type="text" placeholder="Street Address" style="margin-bottom: 1rem;" required>
+                <div class="grid-3" style="margin-bottom: 1.5rem;">
+                    <input type="text" placeholder="City" required>
+                    <input type="text" placeholder="State" required>
+                    <input type="text" placeholder="Zip" required>
+                </div>
+
+                <h3 style="margin-bottom: 1rem;">Payment</h3>
+                <input type="text" placeholder="Card Number" style="margin-bottom: 1rem;" required>
+                <div class="grid-2">
+                    <input type="text" placeholder="Expiry (MM/YY)" required>
+                    <input type="text" placeholder="CVV" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" style="margin-top: 1.5rem;">Place Order</button>
+            </form>
+
+            <div class="checkout-summary" style="background: var(--surface); padding: 2rem; border-radius: var(--radius); height: fit-content;"></div>
+        </div>
+    </main>
+
+    <div class="toast-container"></div>
+    <script src="script.js"></script>
+</body>
+</html>
