@@ -161,138 +161,6 @@
 
 <script src="script.js"></script>
 <script>
-// 🔐 WORKER AUTH CONFIG (ADD THIS - COMPATIBLE WITH script.js)
-const AUTH_CONFIG = {
-  WORKER_URL: 'https://bevenu-auth.dhimanparas605.workers.dev', // ← Replace with your Worker URL
-  SESSION_KEY: 'bevenu_session'
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Initialize shared functions from script.js
-  initTheme();
-  
-  // 🔐 Initialize Worker auth if function exists in script.js
-  if (typeof initWorkerAuth === 'function') {
-    initWorkerAuth();
-  }
-  
-  // Check for existing session (UI only - auth handled by Worker cookie)
-  const session = JSON.parse(localStorage.getItem(AUTH_CONFIG.SESSION_KEY) || 'null');
-  if (session) {
-    showToast(`Already logged in as ${session.name}`, 'info');
-    setTimeout(() => window.location.href = 'index.html', 1500);
-  }
-  
-  // Handle URL param for form switch
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('form') === 'signup') switchForm('signup');
-  
-  // Password strength checker (original logic preserved)
-  document.getElementById('signup-password')?.addEventListener('input', checkPasswordStrength);
-});
-
-// 🔐 WORKER-BASED LOGIN (Replaces localStorage auth, keeps all validation/UI logic)
-async function handleLogin() {
-  const email = document.getElementById('login-email').value.trim();
-  const password = document.getElementById('login-password').value;
-  const btn = document.getElementById('login-btn');
-
-  // Original validation logic (preserved)
-  if (!email || !password) { showToast('Please fill in all fields', 'error'); return; }
-  if (!email.includes('@')) { showToast('Enter a valid email address', 'error'); return; }
-
-  // Disable button during request (original UI behavior)
-  const originalText = btn.innerHTML;
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
-
-  try {
-    // Call Worker endpoint (credentials: 'include' for httpOnly cookie)
-    const res = await fetch(`${AUTH_CONFIG.WORKER_URL}/auth/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      body: JSON.stringify({ email, password })
-    });
-
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Login failed');
-
-    // Store minimal session for UI (Worker handles auth via cookie)
-    if (data.user) {
-      localStorage.setItem(AUTH_CONFIG.SESSION_KEY, JSON.stringify({ 
-        name: data.user.name, 
-        email: data.user.email 
-      }));
-    }
-
-    // Original success flow (preserved)
-    showToast(data.message, 'success');
-    setTimeout(() => window.location.href = 'index.html', 1000);
-
-  } catch (err) {
-    // Original error handling (preserved)
-    showToast(err.message, 'error');
-    btn.disabled = false;
-    btn.innerHTML = originalText;
-  }
-}
-
-// 🔐 WORKER-BASED SIGNUP (Replaces localStorage auth, keeps all validation/UI logic)
-async function handleSignup() {
-  const fname = document.getElementById('signup-fname').value.trim();
-  const lname = document.getElementById('signup-lname').value.trim();
-  const email = document.getElementById('signup-email').value.trim();
-  const password = document.getElementById('signup-password').value;
-  const terms = document.getElementById('signup-terms').checked;
-  const btn = document.getElementById('signup-btn');
-
-  // Original validation logic (preserved + enhanced password length)
-  if (!fname || !lname || !email || !password) { showToast('Please fill in all fields', 'error'); return; }
-  if (!email.includes('@')) { showToast('Enter a valid email', 'error'); return; }
-  if (password.length < 8) { showToast('Password must be at least 8 characters', 'error'); return; }
-  if (!terms) { showToast('Please accept the Terms & Conditions', 'error'); return; }
-
-  // Disable button during request (original UI behavior)
-  const originalText = btn.innerHTML;
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating account...';
-
-  try {
-    // Call Worker endpoint
-    const res = await fetch(`${AUTH_CONFIG.WORKER_URL}/auth/signup`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      body: JSON.stringify({ 
-        name: `${fname} ${lname}`, 
-        email, 
-        password 
-      })
-    });
-
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Signup failed');
-
-    // Original success flow (preserved)
-    showToast(data.message, 'success');
-    
-    // Auto-switch to login form after successful signup (original behavior)
-    setTimeout(() => {
-      switchForm('login');
-      // Pre-fill email for convenience (original UX)
-      document.getElementById('login-email').value = email;
-    }, 1500);
-
-  } catch (err) {
-    // Original error handling (preserved)
-    showToast(err.message, 'error');
-    btn.disabled = false;
-    btn.innerHTML = originalText;
-  }
-}
-
-// ✅ ORIGINAL HELPER FUNCTIONS (100% PRESERVED - NO CHANGES)
 function switchForm(form) {
   document.getElementById('login-form').classList.toggle('active', form === 'login');
   document.getElementById('signup-form').classList.toggle('active', form === 'signup');
@@ -307,8 +175,9 @@ function togglePass(id) {
 }
 
 function checkPasswordStrength() {
-  const password = document.getElementById('signup-password').value;
+  const password = document.getElementById('signup-password')?.value || '';
   const bar = document.getElementById('password-strength');
+  if (!bar) return;
   let strength = 0;
   if (password.length >= 6) strength++;
   if (password.match(/[A-Z]/)) strength++;
@@ -319,8 +188,128 @@ function checkPasswordStrength() {
   bar.innerHTML = `<div class="strength-bar"><div style="width:${strength*25}%;background:${colors[strength]};height:4px;border-radius:4px;transition:all 0.3s"></div></div><span style="color:${colors[strength]};font-size:12px">${labels[strength]}</span>`;
 }
 
+
 function googleLogin() { showToast('Google login coming soon!', 'info'); }
 function fbLogin() { showToast('Facebook login coming soon!', 'info'); }
+
+// 🔐 WORKER-BASED LOGIN 
+async function handleLogin() {
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
+  const btn = document.getElementById('login-btn');
+
+  // Validation (preserved original logic)
+  if (!email || !password) { showToast('Please fill in all fields', 'error'); return; }
+  if (!email.includes('@')) { showToast('Enter a valid email address', 'error'); return; }
+
+  // UI feedback (preserved)
+  const originalText = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+
+  try {
+    // Worker API call (AUTH_CONFIG from script.js)
+    const res = await fetch(`${AUTH_CONFIG.WORKER_URL}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Login failed');
+
+    // Store UI session (Worker handles auth via cookie)
+    if (data.user) {
+      localStorage.setItem(AUTH_CONFIG.SESSION_KEY, JSON.stringify({ 
+        name: data.user.name, 
+        email: data.user.email 
+      }));
+    }
+
+    showToast(data.message, 'success');
+    setTimeout(() => window.location.href = 'index.html', 1000);
+
+  } catch (err) {
+    showToast(err.message, 'error');
+    btn.disabled = false;
+    btn.innerHTML = originalText;
+  }
+}
+
+// 🔐 WORKER-BASED SIGNUP
+async function handleSignup() {
+  const fname = document.getElementById('signup-fname').value.trim();
+  const lname = document.getElementById('signup-lname').value.trim();
+  const email = document.getElementById('signup-email').value.trim();
+  const password = document.getElementById('signup-password').value;
+  const terms = document.getElementById('signup-terms').checked;
+  const btn = document.getElementById('signup-btn');
+
+  // Validation
+  if (!fname || !lname || !email || !password) { showToast('Please fill in all fields', 'error'); return; }
+  if (!email.includes('@')) { showToast('Enter a valid email', 'error'); return; }
+  if (password.length < 8) { showToast('Password must be at least 8 characters', 'error'); return; }
+  if (!terms) { showToast('Please accept the Terms & Conditions', 'error'); return; }
+
+  // UI feedback 
+  const originalText = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating account...';
+
+  try {
+    const res = await fetch(`${AUTH_CONFIG.WORKER_URL}/auth/signup`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ 
+        name: `${fname} ${lname}`, 
+        email, 
+        password 
+      })
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Signup failed');
+
+    showToast(data.message, 'success');
+    
+    // Auto-switch to login (preserved UX)
+    setTimeout(() => {
+      switchForm('login');
+      document.getElementById('login-email').value = email;
+    }, 1500);
+
+  } catch (err) {
+    showToast(err.message, 'error');
+    btn.disabled = false;
+    btn.innerHTML = originalText;
+  }
+}
+
+// ✅ INITIALIZATION 
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof initTheme === 'function') initTheme();
+  
+
+  if (typeof AUTH_CONFIG !== 'undefined') {
+    const session = JSON.parse(localStorage.getItem(AUTH_CONFIG.SESSION_KEY) || 'null');
+    if (session) {
+      showToast(`Already logged in as ${session.name}`, 'info');
+      setTimeout(() => window.location.href = 'index.html', 1500);
+    }
+  }
+  
+
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('form') === 'signup') switchForm('signup');
+
+  document.getElementById('signup-password')?.addEventListener('input', checkPasswordStrength);
+
+  if (typeof initWorkerAuth === 'function') {
+    initWorkerAuth();
+  }
+});
 </script>
 </body>
 </html>
