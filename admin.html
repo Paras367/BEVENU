@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Panel — Bevenu</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e11d48'/><path d='M32 45 L38 72 L62 72 L68 45 M50 45 L50 28 A12 12 0 0 1 74 45' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%23e11d48'/><path d='M55 80 L65 125 L115 125 L125 80 M90 80 L90 55 A20 20 0 0 1 130 80' fill='none' stroke='%23ffffff' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+  <meta name="description" content="Bevenu — Premium fashion e-commerce. Discover curated collections for men, women & kids. Sustainable, modern, timeless styles.">
+  <meta name="keywords" content="fashion, clothing, e-commerce, sustainable fashion, men's wear, women's fashion, kids clothes, accessories, premium apparel">
+  <meta name="author" content="Bevenu">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://paras367.github.io/BEVENU"> 
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -225,26 +232,82 @@
 
 <script src="script.js"></script>
 <script>
+
+const ADMIN_AUTH = {
+  WORKER_URL: 'https://bevenu-admin-auth.dhimanparas605.workers.dev', 
+  COOKIE_NAME: 'bevenu_admin_token',
+  SESSION_KEY: 'bevenu_admin_session'
+};
+  
   let deleteTargetId = null;
 
-  document.addEventListener('DOMContentLoaded', () => {
-    initTheme();
-    if (localStorage.getItem('adminLoggedIn') === 'true') {
-      showAdminPanel();
-    }
-  });
+ document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  
 
-  function adminLogin() {
-    const user = document.getElementById('admin-user').value;
-    const pass = document.getElementById('admin-pass').value;
-    if (user === 'admin' && pass === 'bevenu123') {
-      localStorage.setItem('adminLoggedIn', 'true');
-      showToast('Welcome, Admin!', 'success');
-      showAdminPanel();
-    } else {
-      showToast('Invalid admin credentials', 'error');
+  checkAdminSession();
+});
+
+
+async function checkAdminSession() {
+  try {
+    const res = await fetch(`${ADMIN_AUTH.WORKER_URL}/admin/me`, {
+      method: 'GET',
+      credentials: 'include'
+    });
+    
+    if (res.ok) {
+      const data = await res.json();
+      if (data.success && data.admin) {
+        localStorage.setItem(ADMIN_AUTH.SESSION_KEY, JSON.stringify(data.admin));
+        showAdminPanel();
+      }
     }
+  } catch (e) {
+    console.log('Admin session check failed (expected if not logged in)');
   }
+}
+
+
+async function adminLogin() {
+  const username = document.getElementById('admin-user').value.trim();
+  const password = document.getElementById('admin-pass').value;
+  const btn = document.querySelector('#admin-gate .btn-primary');
+  
+  if (!username || !password) { showToast('Enter admin credentials', 'error'); return; }
+
+  const originalText = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
+  
+  try {
+    const res = await fetch(`${ADMIN_AUTH.WORKER_URL}/admin/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ username, password })
+    });
+    
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Login failed');
+    
+
+    if (data.admin) {
+      localStorage.setItem(ADMIN_AUTH.SESSION_KEY, JSON.stringify({ 
+        username: data.admin.username, 
+        role: data.admin.role 
+      }));
+    }
+    
+    showToast(data.message, 'success');
+    showAdminPanel();
+    
+  } catch (err) {
+    showToast(err.message, 'error');
+    btn.disabled = false;
+    btn.innerHTML = originalText;
+  }
+}
 
   function showAdminPanel() {
     document.getElementById('admin-gate').style.display = 'none';
@@ -252,11 +315,20 @@
     loadDashboard();
   }
 
-  function adminLogout() {
-    localStorage.removeItem('adminLoggedIn');
-    document.getElementById('admin-gate').style.display = 'flex';
-    document.getElementById('admin-panel').style.display = 'none';
-  }
+async function adminLogout() {
+  try {
+    await fetch(`${ADMIN_AUTH.WORKER_URL}/admin/logout`, {
+      method: 'POST',
+      credentials: 'include'
+    });
+  } catch (e) { console.warn('Logout request failed', e); }
+  
+
+  localStorage.removeItem(ADMIN_AUTH.SESSION_KEY);
+  document.getElementById('admin-gate').style.display = 'flex';
+  document.getElementById('admin-panel').style.display = 'none';
+  showToast('Admin logged out', 'info');
+}
 
   function showSection(name) {
     document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
@@ -461,6 +533,11 @@
     loadProductsTable();
     showToast('Product deleted', 'info');
   }
+
+
+function getAdminSession() {
+  return JSON.parse(localStorage.getItem(ADMIN_AUTH.SESSION_KEY) || 'null');
+}
 </script>
 </body>
 </html>
