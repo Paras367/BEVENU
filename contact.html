@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Bevenu — Premium fashion e-commerce. Get in touch with our team: Paras Dhiman (CEO) & Dhrupad Arora (Designs Manager).">
+  <title>Contact Us — Bevenu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230F172A'/%3E%3Cpath d='M50 15 C 44 15 40 22 40 30 C 40 38 50 45 50 45 C 50 45 60 38 60 30 C 60 22 56 15 50 15 Z' fill='%23E11D48'/%3E%3Crect x='20' y='42' width='60' height='4' rx='2' fill='%23FFFFFF'/%3E%3Cpath d='M25 50 L75 50 L85 88 A 8 8 0 0 1 75 94 L25 94 A 8 8 0 0 1 15 88 Z' fill='%23FFFFFF'/%3E%3Cpath d='M35 50 V 35 C 35 25 65 25 65 35 V 50' stroke='%23E11D48' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3Cpath d='M50 82 C 50 82 40 72 40 64 C 40 58 46 54 50 58 C 54 54 60 58 60 64 C 60 72 50 82 50 82 Z' fill='%23E11D48'/%3E%3C/svg%3E">
+  <style>
+
+    .contact-hero {
+      min-height: 60vh;
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1445205170232-2775ac6c2d51?q=80&w=2070&auto=format&fit=crop') center/cover;
+      opacity: 0.08;
+      filter: blur(1px);
+    }
+    
+    .contact-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      color: white;
+    }
+    
+    .contact-hero-tag {
+      display: inline-block;
+      background: rgba(201,169,110,0.2);
+      color: var(--accent);
+      border: 1px solid rgba(201,169,110,0.4);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    
+    .contact-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      color: white;
+    }
+    
+    .contact-hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 32px;
+      padding: 60px 0;
+    }
+    
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    
+    .contact-form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .contact-form-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+    
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    
+    .input-field {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-secondary);
+      color: var(--text);
+      font-size: 14px;
+      outline: none;
+      transition: var(--transition);
+      font-family: inherit;
+    }
+    
+    .input-field:focus {
+      border-color: var(--accent);
+      background: var(--bg-card);
+      box-shadow: 0 0 0 3px rgba(201,169,110,0.12);
+    }
+    
+    textarea.input-field {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    .submit-btn {
+      width: 100%;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .contact-info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      align-self: start;
+      position: sticky;
+      top: calc(var(--nav-h) + 24px);
+    }
+    
+    .contact-info-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+    
+    .contact-method {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    
+    .contact-method:last-child { border-bottom: none; }
+    
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    
+    .contact-details h4 {
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+    
+    .contact-details p, .contact-details a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      transition: var(--transition-fast);
+    }
+    
+    .contact-details a:hover {
+      color: var(--accent);
+    }
+    
+    .business-hours {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-light);
+    }
+    
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      padding: 6px 0;
+      color: var(--text-secondary);
+    }
+    
+    .hours-row.today {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    
+
+    .leadership-section {
+      padding: 60px 0;
+      background: var(--bg-secondary);
+    }
+    
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+    
+    @media (max-width: 768px) {
+      .leadership-grid { grid-template-columns: 1fr; }
+    }
+    
+    .leader-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    
+    .leader-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent);
+    }
+    
+    .leader-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      background: linear-gradient(135deg, var(--accent-light), var(--bg-secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--accent-dark);
+      border: 3px solid var(--accent);
+      position: relative;
+    }
+    
+    .leader-avatar::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      opacity: 0.2;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.2; }
+      50% { transform: scale(1.05); opacity: 0.4; }
+    }
+    
+    .leader-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+    
+    .leader-role {
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: block;
+    }
+    
+    .leader-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    
+    .leader-social {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .leader-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+    
+    .leader-social a:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .faq-section {
+      padding: 60px 0;
+    }
+    
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    
+    .faq-question {
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text);
+      transition: var(--transition-fast);
+    }
+    
+    .faq-question:hover {
+      background: var(--bg-secondary);
+      color: var(--accent);
+    }
+    
+    .faq-question i {
+      transition: transform var(--transition-fast);
+    }
+    
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+    
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition), padding var(--transition);
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    
+    .faq-item.active .faq-answer {
+      padding: 0 20px 16px;
+      max-height: 500px;
+    }
+    
+    /* Live Chat Toggle */
+    .chat-toggle {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: var(--shadow-lg);
+      cursor: pointer;
+      z-index: 999;
+      transition: var(--transition);
+      animation: bounce 2s infinite;
+    }
+    
+    .chat-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(225,29,72,0.5);
+    }
+    
+    .chat-toggle.active {
+      animation: none;
+      background: var(--primary);
+    }
+    
+    .chat-window {
+      position: fixed;
+      bottom: 96px;
+      right: 24px;
+      width: 360px;
+      max-width: 90vw;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      z-index: 998;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    
+    .chat-window.active {
+      display: flex;
+      animation: slideUp 0.3s ease;
+    }
+    
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .chat-header {
+      padding: 16px 20px;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .chat-header h4 {
+      font-weight: 600;
+      font-size: 15px;
+    }
+    
+    .chat-header button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-fast);
+    }
+    
+    .chat-header button:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    
+    .chat-body {
+      padding: 16px 20px;
+      flex: 1;
+      overflow-y: auto;
+      max-height: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .chat-message {
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      line-height: 1.5;
+      max-width: 85%;
+    }
+    
+    .chat-message.bot {
+      background: var(--bg-secondary);
+      color: var(--text);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+    
+    .chat-message.user {
+      background: var(--accent);
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+    
+    .chat-input {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+    }
+    
+    .chat-input input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-secondary);
+      color: var(--text);
+      font-size: 14px;
+      outline: none;
+    }
+    
+    .chat-input input:focus {
+      border-color: var(--accent);
+    }
+    
+    .chat-input button {
+      padding: 10px 16px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .chat-input button:hover {
+      background: var(--accent-dark);
+    }
+    
+   
+    .contact-cta {
+      padding: 60px 0;
+      background: linear-gradient(135deg, var(--accent-light) 0%, #f5efe3 100%);
+      text-align: center;
+    }
+    
+    [data-theme="dark"] .contact-cta {
+      background: linear-gradient(135deg, #2a2015 0%, #1a1a2e 100%);
+    }
+    
+    .contact-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    
+    .contact-cta p {
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      max-width: 500px;
+      margin-inline: auto;
+    }
+    
+    .contact-cta .newsletter-form {
+      max-width: 480px;
+      margin: 0 auto;
+      display: flex;
+      gap: 12px;
+    }
+    
+    .contact-cta .newsletter-form input {
+      flex: 1;
+      padding: 12px 18px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-xl);
+      background: white;
+      font-size: 14px;
+      outline: none;
+      color: var(--text);
+    }
+    
+    .contact-cta .newsletter-form input:focus {
+      border-color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+
+<div id="toast-container"></div>
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href="index.html">
+        <span class="logo-text">Bevenu</span>
+        <span class="logo-dot">.</span>
+      </a>
+    </div>
+
+    <div class="nav-search">
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="search-input" placeholder="Search for clothes, brands..." autocomplete="off" />
+        <div class="search-suggestions" id="search-suggestions"></div>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <div class="nav-dropdown">
+        <button class="nav-btn" id="categories-btn">
+          <i class="fas fa-th-large"></i>
+          <span>Shop</span>
+          <i class="fas fa-chevron-down chevron"></i>
+        </button>
+        <div class="dropdown-menu" id="categories-dropdown">
+          <a href="products.html?cat=men"><i class="fas fa-male"></i> Men</a>
+          <a href="products.html?cat=women"><i class="fas fa-female"></i> Women</a>
+          <a href="products.html?cat=kids"><i class="fas fa-child"></i> Kids</a>
+          <a href="products.html?cat=accessories"><i class="fas fa-gem"></i> Accessories</a>
+        </div>
+      </div>
+
+      <button class="nav-btn" id="theme-toggle" title="Toggle Dark Mode">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+
+      <a href="#" class="nav-btn" id="wishlist-btn" title="Wishlist">
+        <i class="fas fa-heart"></i>
+        <span class="badge" id="wishlist-count">0</span>
+      </a>
+
+      <a href="cart.html" class="nav-btn cart-btn" title="Cart">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="badge" id="cart-count">0</span>
+      </a>
+
+      <div class="nav-user" id="nav-user">
+        <a href="login.html" class="nav-btn" id="login-btn">
+          <i class="fas fa-user"></i>
+          <span id="user-display">Login</span>
+        </a>
+      </div>
+    </div>
+
+    <button class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-search">
+      <input type="text" placeholder="Search products..." id="mobile-search" />
+    </div>
+    <nav class="mobile-nav">
+      <a href="products.html?cat=men"><i class="fas fa-male"></i> Men</a>
+      <a href="products.html?cat=women"><i class="fas fa-female"></i> Women</a>
+      <a href="products.html?cat=kids"><i class="fas fa-child"></i> Kids</a>
+      <a href="products.html?cat=accessories"><i class="fas fa-gem"></i> Accessories</a>
+      <hr />
+      <a href="cart.html"><i class="fas fa-shopping-bag"></i> Cart</a>
+      <a href="login.html"><i class="fas fa-user"></i> Login / Signup</a>
+    </nav>
+  </div>
+</nav>
+
+
+<section class="contact-hero">
+  <div class="contact-hero-content animate-fade">
+    <span class="contact-hero-tag">Get in Touch</span>
+    <h1>We'd Love to Hear<br><em>From You.</em></h1>
+    <p>Questions about your order, styling advice, or just want to say hello? Our team is here to help you look and feel your best.</p>
+    <a href="#contact-form" class="btn btn-primary">Send a Message <i class="fas fa-arrow-down"></i></a>
+  </div>
+</section>
+
+
+<section class="container">
+  <div class="contact-grid">
+    <div class="contact-form-card" id="contact-form">
+      <h3>Send Us a Message</h3>
+      <form id="bevenu-contact-form" onsubmit="handleContactSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contact-name">Full Name *</label>
+            <input type="text" id="contact-name" class="input-field" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email Address *</label>
+            <input type="email" id="contact-email" class="input-field" placeholder="you@example.com" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contact-subject">Subject *</label>
+            <select id="contact-subject" class="input-field" required>
+              <option value="">Select a topic</option>
+              <option value="order">Order Inquiry</option>
+              <option value="shipping">Shipping & Returns</option>
+              <option value="sizing">Size Guide</option>
+              <option value="product">Product Question</option>
+              <option value="collab">Collaboration</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contact-order">Order ID (Optional)</label>
+            <input type="text" id="contact-order" class="input-field" placeholder="#BEV-12345" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="contact-message">Your Message *</label>
+          <textarea id="contact-message" class="input-field" placeholder="How can we help you today?" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary submit-btn">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+      </form>
+    </div>
+
+
+    <div class="contact-info-card">
+      <h3>Contact Information</h3>
+      
+      <div class="contact-method">
+        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+        <div class="contact-details">
+          <h4>Email Us</h4>
+          <a href="mailto:dhimanparas605@gmail.com">dhimanparas605@gmail.com</a>
+          <p style="font-size:12px;color:var(--text-muted);margin-top:4px">We respond within 24 hours</p>
+        </div>
+      </div>
+      
+      <div class="contact-method">
+        <div class="contact-icon"><i class="fas fa-clock"></i></div>
+        <div class="contact-details">
+          <h4>Business Hours</h4>
+          <p>Mon–Fri: 9:00 AM – 6:00 PM IST</p>
+          <p>Sat: 10:00 AM – 4:00 PM IST</p>
+          <p>Sun: Closed</p>
+        </div>
+      </div>
+      
+      <div class="contact-method">
+        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="contact-details">
+          <h4>Our Location</h4>
+          <p>Bevenu Fashion Labs<br>Chandigarh, India</p>
+          <a href="#" style="font-size:13px;color:var(--accent);margin-top:4px;display:inline-flex;align-items:center;gap:4px">
+            View on Map <i class="fas fa-arrow-right" style="font-size:10px"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="business-hours">
+        <h4 style="margin-bottom:12px;font-weight:600">Today's Hours</h4>
+        <div class="hours-row today">
+          <span>Monday – Friday</span>
+          <span>9:00 AM – 6:00 PM</span>
+        </div>
+        <div class="hours-row">
+          <span>Saturday</span>
+          <span>10:00 AM – 4:00 PM</span>
+        </div>
+        <div class="hours-row">
+          <span>Sunday</span>
+          <span>Closed</span>
+        </div>
+      </div>
+      
+      <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border-light)">
+        <h4 style="margin-bottom:12px;font-weight:600">Follow Us</h4>
+        <div class="social-links" style="display:flex;gap:10px">
+          <a href="#" class="nav-btn" style="width:40px;height:40px;background:var(--bg-secondary);border-radius:50%;display:flex;align-items:center;justify-content:center"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="nav-btn" style="width:40px;height:40px;background:var(--bg-secondary);border-radius:50%;display:flex;align-items:center;justify-content:center"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="nav-btn" style="width:40px;height:40px;background:var(--bg-secondary);border-radius:50%;display:flex;align-items:center;justify-content:center"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="nav-btn" style="width:40px;height:40px;background:var(--bg-secondary);border-radius:50%;display:flex;align-items:center;justify-content:center"><i class="fab fa-pinterest-p"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="leadership-section">
+  <div class="container">
+    <div class="section-header" style="justify-content:center;text-align:center">
+      <p class="section-tag">Meet Our Leaders</p>
+      <h2 class="section-title">The Vision Behind Bevenu</h2>
+    </div>
+    
+    <div class="leadership-grid">
+      <div class="leader-card animate-fade">
+        <div class="leader-avatar"><i class="fas fa-user-tie"></i></div>
+        <h3>Paras Dhiman</h3>
+        <span class="leader-role">Chairperson & Chief Executive Officer</span>
+        <p class="leader-desc">Visionary leader driving Bevenu's mission to blend sustainable fashion with cutting-edge technology. Oversees strategy, partnerships, and customer experience.</p>
+        <div class="leader-social">
+          <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+          
+        </div>
+      </div>
+
+      <div class="leader-card animate-fade" style="animation-delay:0.1s">
+        <div class="leader-avatar"><i class="fas fa-palette"></i></div>
+        <h3>Dhrupad Arora</h3>
+        <span class="leader-role">Designs Manager & Social Media Manager</span>
+        <p class="leader-desc">Creative force behind Bevenu's aesthetic direction and digital presence. Curates collections, leads design innovation, and connects with our community worldwide.</p>
+        <div class="leader-social">
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="Behance"><i class="fab fa-behance"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="faq-section">
+  <div class="container">
+    <div class="section-header" style="justify-content:center;text-align:center">
+      <p class="section-tag">Quick Answers</p>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+    
+    <div style="max-width:800px;margin:0 auto">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>How do I track my order?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Once your order ships, you'll receive a tracking number via email. You can also log into your account and view order status under "My Orders". For assistance, contact us with your order ID.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>What is your return policy?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          We offer 30-day easy returns on all unworn, unwashed items with original tags. Initiate a return from your account or contact support. Return shipping is free for defective items.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Do you ship internationally?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Yes! We ship to 50+ countries worldwide. Shipping costs and delivery times vary by location. All international orders include customs documentation and tracking.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>How can I collaborate with Bevenu?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          We love working with creators, brands, and influencers! Email partnerships@bevenu.com with your proposal, audience details, and collaboration ideas. Our team reviews all inquiries.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Is my data secure with Bevenu?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Absolutely. We use industry-standard encryption, never sell your data, and comply with global privacy regulations. Read our full Privacy Policy for details on how we protect your information.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="contact-cta">
+  <div class="container">
+    <h2>Stay in Style</h2>
+    <p>Subscribe for exclusive drops, early access to sales, and styling tips delivered to your inbox.</p>
+    <form class="newsletter-form" onsubmit="handleNewsletterSubscribe(event)">
+      <input type="email" placeholder="Your email address" required />
+      <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+    <p id="newsletter-msg" style="margin-top:12px;font-size:14px;color:var(--success);display:none">Subscribed successfully! ✨</p>
+  </div>
+</section>
+
+
+<button class="chat-toggle" id="chatToggle" title="Chat with us" onclick="toggleChat()">
+  <i class="fas fa-comments"></i>
+</button>
+
+
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <h4>Bevenu Support</h4>
+    <button onclick="toggleChat()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="chat-message bot">
+      Hi there! 👋 How can we help you today? Ask about orders, sizing, or styling tips.
+    </div>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKeypress(event)" />
+    <button onclick="sendChatMessage()">Send</button>
+  </div>
+</div>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Bevenu<span>.</span></div>
+        <p>Premium fashion for every story. Crafted with love, delivered with care.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="products.html?cat=men">Men's Collection</a>
+        <a href="products.html?cat=women">Women's Collection</a>
+        <a href="products.html?cat=kids">Kids Wear</a>
+        <a href="products.html?cat=accessories">Accessories</a>
+      </div>
+      <div class="footer-links">
+        <h4>Help</h4>
+        <a href="contact.html">Contact Us</a>
+        <a href="#">Shipping Info</a>
+        <a href="#">Returns Policy</a>
+        <a href="#">Size Guide</a>
+        <a href="#">Track Order</a>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <a href="about.html">About Bevenu</a>
+        <a href="#">Careers</a>
+        <a href="#">Press</a>
+        <a href="admin.html">Admin Panel</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Bevenu. All rights reserved.</p>
+      <div class="payment-icons">
+        <i class="fab fa-cc-visa"></i>
+        <i class="fab fa-cc-mastercard"></i>
+        <i class="fab fa-cc-paypal"></i>
+        <i class="fab fa-google-pay"></i>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<div class="wishlist-overlay" id="wishlist-overlay"></div>
+<div class="wishlist-sidebar" id="wishlist-sidebar">
+  <div class="wishlist-header">
+    <h3>My Wishlist <span id="wishlist-count-sidebar">0</span></h3>
+    <button onclick="closeWishlist()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="wishlist-items" id="wishlist-items-container"></div>
+</div>
+
+<script src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  updateNavCounts();
+  initSearchSuggestions();
+  checkUserSession();
+  initTheme();
+  
+
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => toggleFaq(q));
+  });
+  
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-fade');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  document.querySelectorAll('.leader-card, .contact-form-card, .contact-info-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+});
+
+
+async function handleContactSubmit(e) {
+  e.preventDefault();
+  
+  const name = document.getElementById('contact-name').value.trim();
+  const email = document.getElementById('contact-email').value.trim();
+  const subject = document.getElementById('contact-subject').value;
+  const message = document.getElementById('contact-message').value.trim();
+  const orderId = document.getElementById('contact-order').value.trim();
+  
+  if (!name || !email || !subject || !message) {
+    showToast('Please fill in all required fields', 'error');
+    return;
+  }
+  
+  const btn = e.target.querySelector('button[type="submit"]');
+  const originalText = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+  
+  try {
+    await new Promise(resolve => setTimeout(resolve, 1200));
+
+    
+    showToast('Message sent successfully! We\'ll reply within 24 hours. ✉️', 'success');
+    e.target.reset();
+    
+  } catch (err) {
+    showToast('Failed to send message. Please try again.', 'error');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = originalText;
+  }
+}
+
+function toggleFaq(element) {
+  const item = element.closest('.faq-item');
+  const isActive = item.classList.contains('active');
+
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+  if (!isActive) item.classList.add('active');
+}
+
+function toggleChat() {
+  const chat = document.getElementById('chatWindow');
+  const toggle = document.getElementById('chatToggle');
+  chat.classList.toggle('active');
+  toggle.classList.toggle('active');
+  
+  if (chat.classList.contains('active')) {
+    document.getElementById('chatInput')?.focus();
+  }
+}
+
+function sendChatMessage() {
+  const input = document.getElementById('chatInput');
+  const body = document.getElementById('chatBody');
+  const message = input.value.trim();
+  
+  if (!message) return;
+
+  const userMsg = document.createElement('div');
+  userMsg.className = 'chat-message user';
+  userMsg.textContent = message;
+  body.appendChild(userMsg);
+  
+  input.value = '';
+  body.scrollTop = body.scrollHeight;
+
+  setTimeout(() => {
+    const botMsg = document.createElement('div');
+    botMsg.className = 'chat-message bot';
+    
+    const lower = message.toLowerCase();
+    if (lower.includes('order') || lower.includes('track')) {
+      botMsg.textContent = 'To track your order, please provide your Order ID (starts with #BEV-). You can also check "My Orders" in your account.';
+    } else if (lower.includes('return') || lower.includes('refund')) {
+      botMsg.textContent = 'We offer 30-day easy returns! Visit our Returns Policy page or reply with your Order ID to start a return.';
+    } else if (lower.includes('size') || lower.includes('fit')) {
+      botMsg.textContent = 'Check our Size Guide for detailed measurements. For personalized advice, tell me what you\'re looking for! 👗';
+    } else if (lower.includes('hello') || lower.includes('hi')) {
+      botMsg.textContent = 'Hello! 👋 How can I help you today? Ask about orders, sizing, styling, or anything Bevenu!';
+    } else {
+      botMsg.textContent = 'Thanks for your message! For detailed assistance, please email us at dhimanparas605@gmail.com or use the contact form above. We\'re here to help! ✨';
+    }
+    
+    body.appendChild(botMsg);
+    body.scrollTop = body.scrollHeight;
+  }, 800);
+}
+
+function handleChatKeypress(e) {
+  if (e.key === 'Enter') sendChatMessage();
+}
+
+
+function handleNewsletterSubscribe(e) {
+  e.preventDefault();
+  const email = e.target.querySelector('input[type="email"]').value.trim();
+  const msg = document.getElementById('newsletter-msg');
+  
+  if (!email || !email.includes('@')) {
+    showToast('Please enter a valid email', 'error');
+    return;
+  }
+  
+
+  showToast('Subscribed! Welcome to the Bevenu family. ✨', 'success');
+  if (msg) {
+    msg.style.display = 'block';
+    setTimeout(() => msg.style.display = 'none', 3000);
+  }
+  e.target.reset();
+}
+</script>
+</body>
+</html>
