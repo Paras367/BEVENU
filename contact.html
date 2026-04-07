@@ -648,9 +648,6 @@
   color: #f1f5f9 !important;
 }
 
-/* ============================================================
-   LEADERSHIP SECTION STYLES
-   ============================================================ */
 .leadership-section {
   padding: 60px 24px !important;
   background: var(--bg-secondary, #f8fafc) !important;
@@ -786,9 +783,6 @@
   transform: translateY(-2px) !important;
 }
 
-/* ============================================================
-   FAQ SECTION STYLES
-   ============================================================ */
 .faq-section {
   padding: 60px 24px !important;
   opacity: 1 !important;
@@ -862,9 +856,6 @@
   max-height: 500px !important;
 }
 
-/* ============================================================
-   NEWSLETTER CTA SECTION STYLES
-   ============================================================ */
 .contact-cta {
   padding: 60px 24px !important;
   background: linear-gradient(135deg, var(--accent-light, #fff1f2) 0%, #f5efe3 100%) !important;
@@ -924,9 +915,7 @@
   border-color: var(--accent, #e11d48) !important;
 }
 
-/* ============================================================
-   LIVE CHAT STYLES
-   ============================================================ */
+
 .chat-toggle {
   position: fixed !important;
   bottom: 24px !important;
@@ -1106,6 +1095,102 @@
 
 .chat-input button:hover {
   background: var(--accent-dark, #be123c) !important;
+}
+
+.faq-item {
+  border: 1px solid var(--border, #e2e8f0) !important;
+  border-radius: 12px !important;
+  margin-bottom: 12px !important;
+  overflow: hidden !important;
+  background: var(--bg-card, #ffffff) !important;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+.faq-item:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+  border-color: var(--accent, #e11d48) !important;
+}
+
+
+.faq-question {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 18px 20px !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  color: var(--text, #0f172a) !important;
+  background: transparent !important;
+  transition: all 0.25s ease !important;
+  user-select: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.faq-question:hover {
+  color: var(--accent, #e11d48) !important;
+  background: var(--bg-secondary, #f8fafc) !important;
+}
+
+.faq-question i {
+  font-size: 14px !important;
+  color: var(--text-muted, #94a3b8) !important;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease !important;
+  flex-shrink: 0 !important;
+  margin-left: 12px !important;
+}
+
+
+.faq-item.active .faq-question {
+  color: var(--accent, #e11d48) !important;
+  border-bottom: 1px solid var(--border-light, #f1f5f9) !important;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg) scale(1.15) !important;
+  color: var(--accent, #e11d48) !important;
+}
+
+
+.faq-answer {
+  max-height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  padding: 0 20px !important;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.3s ease, 
+              padding 0.4s ease !important;
+  font-size: 15px !important;
+  line-height: 1.75 !important;
+  color: var(--text-secondary, #64748b) !important;
+  background: var(--bg-card, #ffffff) !important;
+}
+
+
+.faq-item.active .faq-answer {
+  max-height: 400px !important; 
+  opacity: 1 !important;
+  padding: 18px 20px !important;
+}
+
+
+[data-theme="dark"] .faq-item {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+[data-theme="dark"] .faq-question {
+  color: #f1f5f9 !important;
+}
+[data-theme="dark"] .faq-question:hover {
+  background: #0f172a !important;
+  color: var(--accent, #e11d48) !important;
+}
+[data-theme="dark"] .faq-answer {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .faq-item.active .faq-question {
+  border-bottom-color: #334155 !important;
 }
   </style>
 </head>
@@ -1463,16 +1548,16 @@
       <div class="footer-links">
         <h4>Help</h4>
         <a href="contact.html">Contact Us</a>
-        <a href="#">Shipping Info</a>
-        <a href="#">Returns Policy</a>
-        <a href="#">Size Guide</a>
-        <a href="#">Track Order</a>
+        <a href="./#">Shipping Info</a>
+        <a href="./#">Returns Policy</a>
+        <a href="./#">Size Guide</a>
+        <a href="./#">Track Order</a>
       </div>
       <div class="footer-links">
         <h4>Company</h4>
         <a href="about.html">About Bevenu</a>
-        <a href="#">Careers</a>
-        <a href="#">Press</a>
+        <a href="./#">Careers</a>
+        <a href="./#">Press</a>
         <a href="admin.html">Admin Panel</a>
       </div>
     </div>
