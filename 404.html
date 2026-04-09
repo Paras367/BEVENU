@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Page Not Found - Bevenu Premium Fashion">
+  <title>404 - Page Not Found | Bevenu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+ <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%2338bdf8"/><stop offset="100%" stop-color="%236366f1"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="%230b1220"/><text x="50%" y="52%" font-size="30" text-anchor="middle" fill="url(%23g)" font-family="Segoe UI,Arial,sans-serif" font-weight="700" dy=".3em">404</text><circle cx="52" cy="12" r="3" fill="%2338bdf8"/><circle cx="12" cy="52" r="2" fill="%236366f1"/></svg>'>
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg, #ffffff);
+      position: relative;
+      overflow: hidden;
+    }
+    
+
+    .error-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+      overflow: hidden;
+    }
+    
+    .error-bg::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: bgMove 20s linear infinite;
+      opacity: 0.3;
+    }
+    
+    @keyframes bgMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+    
+
+    .error-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 24px 60px;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+    }
+    
+  
+    .error-code {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(8rem, 20vw, 16rem);
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: glitch 3s infinite, float 6s ease-in-out infinite;
+      position: relative;
+      text-shadow: 0 0 80px rgba(225,29,72,0.5);
+    }
+    
+    @keyframes glitch {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .error-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: white;
+    }
+    
+    .error-subtitle {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 500px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    
+  
+    .loader-container {
+      margin: 40px 0;
+      position: relative;
+    }
+    
+    .loader {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      margin: 0 auto;
+    }
+    
+    .loader-ring {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 3px solid transparent;
+      border-top-color: var(--accent, #e11d48);
+      border-radius: 50%;
+      animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+    }
+    
+    .loader-ring:nth-child(2) {
+      border-top-color: rgba(255,255,255,0.6);
+      animation-delay: -0.5s;
+      width: 70%;
+      height: 70%;
+      top: 15%;
+      left: 15%;
+    }
+    
+    .loader-ring:nth-child(3) {
+      border-top-color: rgba(255,255,255,0.3);
+      animation-delay: -1s;
+      width: 40%;
+      height: 40%;
+      top: 30%;
+      left: 30%;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .loader-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent, #e11d48);
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    .loader-status {
+      margin-top: 20px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .loader-dots {
+      display: inline-flex;
+      gap: 4px;
+    }
+    
+    .loader-dots span {
+      width: 6px;
+      height: 6px;
+      background: var(--accent, #e11d48);
+      border-radius: 50%;
+      animation: dotBounce 1.4s infinite ease-in-out;
+    }
+    
+    .loader-dots span:nth-child(1) { animation-delay: -0.32s; }
+    .loader-dots span:nth-child(2) { animation-delay: -0.16s; }
+    
+    @keyframes dotBounce {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+    
+
+    .error-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    .btn-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark, #be123c) 100%);
+      color: white;
+      border-radius: var(--radius-xl, 24px);
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(225,29,72,0.4);
+    }
+    
+    .btn-home:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(225,29,72,0.6);
+    }
+    
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: var(--radius-xl, 24px);
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .btn-back:hover {
+      background: rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.5);
+      transform: translateY(-3px);
+    }
+
+    .coming-soon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent, #e11d48);
+      margin-bottom: 30px;
+      backdrop-filter: blur(10px);
+      animation: badgePulse 2s infinite;
+    }
+    
+    @keyframes badgePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(225,29,72,0.4); }
+      50% { box-shadow: 0 0 0 10px rgba(225,29,72,0); }
+    }
+    
+
+    .error-search {
+      margin-top: 40px;
+      max-width: 500px;
+      width: 100%;
+    }
+    
+    .error-search input {
+      width: 100%;
+      padding: 16px 24px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius-xl, 24px);
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 15px;
+      outline: none;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .error-search input::placeholder {
+      color: rgba(255,255,255,0.6);
+    }
+    
+    .error-search input:focus {
+      border-color: var(--accent, #e11d48);
+      background: rgba(255,255,255,0.15);
+      box-shadow: 0 0 0 4px rgba(225,29,72,0.2);
+    }
+
+    .error-page .footer {
+      background: rgba(15,23,42,0.95);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 640px) {
+      .error-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+      .btn-home, .btn-back {
+        width: 100%;
+        justify-content: center;
+      }
+      .error-search {
+        padding: 0 16px;
+      }
+    }
+
+    [data-theme="dark"] .error-bg {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+  </style>
+</head>
+<body>
+
+<div class="error-page">
+  <div class="error-bg"></div>
+  <div class="error-container">
+    <div class="coming-soon-badge">
+      <i class="fas fa-clock"></i>
+      <span>Coming Soon</span>
+    </div>
+
+    <h1 class="error-code">404</h1>
+    <h2 class="error-title">Page Not Found</h2>
+    <p class="error-subtitle">
+      Oops! The page you're looking for seems to have wandered off. 
+      We're working on something amazing. Stay tuned!
+    </p>
+
+    <div class="loader-container">
+      <div class="loader">
+        <div class="loader-ring"></div>
+        <div class="loader-ring"></div>
+        <div class="loader-ring"></div>
+        <div class="loader-text">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+      <div class="loader-status">
+        <span>Searching for page</span>
+        <div class="loader-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="error-actions">
+      <a href="index.html" class="btn-home">
+        <i class="fas fa-home"></i>
+        Back to Home
+      </a>
+      <a href="contact.html" class="btn-back">
+        <i class="fas fa-envelope"></i>
+        Contact Support
+      </a>
+    </div>
+    
+
+    <div class="error-search">
+      <input type="text" placeholder="Search for products, brands..." id="error-search" onkeypress="handleErrorSearch(event)" />
+    </div>
+  </div>
+  
+
+  <footer class="footer" style="background:rgba(15,23,42,0.95);border-top:1px solid rgba(255,255,255,0.1);position:relative;z-index:2;">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">Bevenu<span style="color:var(--accent);">.</span></div>
+          <p style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.7;">Premium fashion for every story. Crafted with love, delivered with care.</p>
+          <div class="social-links" style="display:flex;gap:12px;margin-top:16px;">
+            <a href="#" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:white;transition:all 0.3s ease;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:white;transition:all 0.3s ease;"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:white;transition:all 0.3s ease;"><i class="fab fa-twitter"></i></a>
+            <a href="#" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:white;transition:all 0.3s ease;"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4 style="color:white;font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;">Quick Links</h4>
+          <a href="products.html?cat=men" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Men's Collection</a>
+          <a href="products.html?cat=women" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Women's Collection</a>
+          <a href="products.html?cat=kids" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Kids Wear</a>
+          <a href="products.html?cat=accessories" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Accessories</a>
+        </div>
+        <div class="footer-links">
+          <h4 style="color:white;font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;">Help</h4>
+          <a href="contact.html" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Contact Us</a>
+          <a href="#" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Shipping Info</a>
+          <a href="#" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Returns Policy</a>
+          <a href="#" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Size Guide</a>
+        </div>
+        <div class="footer-links">
+          <h4 style="color:white;font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;">Company</h4>
+          <a href="about.html" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">About Bevenu</a>
+          <a href="#" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Careers</a>
+          <a href="#" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Press</a>
+          <a href="admin.html" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Admin Panel</a>
+        </div>
+      </div>
+      <div class="footer-bottom" style="border-top:1px solid rgba(255,255,255,0.1);padding:20px 0;margin-top:40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+        <p style="color:rgba(255,255,255,0.5);font-size:13px;">&copy; 2026 Bevenu. All rights reserved.</p>
+        <div style="display:flex;gap:12px;font-size:24px;color:rgba(255,255,255,0.5);">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+          <i class="fab fa-google-pay"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+
+<div id="toast-container"></div>
+  
+<script src="script.js"></script>
+  
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof initTheme === 'function') initTheme();
+
+  simulateLoading();
+});
+
+function simulateLoading() {
+  const statuses = [
+    'Searching for page',
+    'Checking database',
+    'Looking in archives',
+    'Scanning servers',
+    'Almost there',
+    'Still searching'
+  ];
+  
+  let index = 0;
+  setInterval(() => {
+    const statusEl = document.querySelector('.loader-status span:first-child');
+    if (statusEl) {
+      statusEl.textContent = statuses[index];
+      index = (index + 1) % statuses.length;
+    }
+  }, 3000);
+}
+
+function handleErrorSearch(event) {
+  if (event.key === 'Enter') {
+    const query = event.target.value.trim();
+    if (query) {
+      window.location.href = `products.html?q=${encodeURIComponent(query)}`;
+    }
+  }
+}
+
+if (typeof gtag !== 'undefined') {
+  gtag('event', 'page_not_found', {
+    page_location: window.location.href,
+    page_path: window.location.pathname
+  });
+}
+</script>
+</body>
+</html>
