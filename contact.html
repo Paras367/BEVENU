@@ -1097,83 +1097,6 @@
   background: var(--accent-dark, #be123c) !important;
 }
 
-.faq-item {
-  border: 1px solid var(--border, #e2e8f0) !important;
-  border-radius: 12px !important;
-  margin-bottom: 12px !important;
-  overflow: hidden !important;
-  background: var(--bg-card, #ffffff) !important;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease !important;
-}
-
-.faq-item:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
-  border-color: var(--accent, #e11d48) !important;
-}
-
-
-.faq-question {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  padding: 18px 20px !important;
-  cursor: pointer !important;
-  font-weight: 600 !important;
-  font-size: 15px !important;
-  color: var(--text, #0f172a) !important;
-  background: transparent !important;
-  transition: all 0.25s ease !important;
-  user-select: none !important;
-  -webkit-tap-highlight-color: transparent !important;
-}
-
-.faq-question:hover {
-  color: var(--accent, #e11d48) !important;
-  background: var(--bg-secondary, #f8fafc) !important;
-}
-
-.faq-question i {
-  font-size: 14px !important;
-  color: var(--text-muted, #94a3b8) !important;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease !important;
-  flex-shrink: 0 !important;
-  margin-left: 12px !important;
-}
-
-
-.faq-item.active .faq-question {
-  color: var(--accent, #e11d48) !important;
-  border-bottom: 1px solid var(--border-light, #f1f5f9) !important;
-}
-
-.faq-item.active .faq-question i {
-  transform: rotate(180deg) scale(1.15) !important;
-  color: var(--accent, #e11d48) !important;
-}
-
-
-.faq-answer {
-  max-height: 0 !important;
-  overflow: hidden !important;
-  opacity: 0 !important;
-  padding: 0 20px !important;
-  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), 
-              opacity 0.3s ease, 
-              padding 0.4s ease !important;
-  font-size: 15px !important;
-  line-height: 1.75 !important;
-  color: var(--text-secondary, #64748b) !important;
-  background: var(--bg-card, #ffffff) !important;
-}
-
-
-.faq-item.active .faq-answer {
-  max-height: 400px !important; 
-  opacity: 1 !important;
-  padding: 18px 20px !important;
-}
-
-
 [data-theme="dark"] .faq-item {
   background: #1e293b !important;
   border-color: #334155 !important;
@@ -1182,89 +1105,58 @@
   color: #f1f5f9 !important;
 }
 [data-theme="dark"] .faq-question:hover {
-  background: #0f172a !important;
   color: var(--accent, #e11d48) !important;
+  background: rgba(225,29,72,0.05) !important;
 }
 [data-theme="dark"] .faq-answer {
   background: #1e293b !important;
   color: #cbd5e1 !important;
 }
+[data-theme="dark"] .faq-answer p {
+  color: #cbd5e1 !important;
+}
+[data-theme="dark"] .faq-item.active {
+  border-color: var(--accent, #e11d48) !important;
+  box-shadow: 0 4px 12px rgba(225,29,72,0.15) !important;
+}
+
+.faq-item.active {
+  border-color: var(--accent, #e11d48) !important;
+  box-shadow: 0 4px 12px rgba(225,29,72,0.1) !important;
+}
+.faq-item.active .faq-question {
+  color: var(--accent, #e11d48) !important;
+  border-bottom: 1px solid var(--border-light, #f1f5f9) !important;
+}
 [data-theme="dark"] .faq-item.active .faq-question {
   border-bottom-color: #334155 !important;
 }
 
-.faq-section { opacity: 1 !important; visibility: visible !important; }
-
-.faq-item {
-  background: var(--bg-card, #ffffff) !important;
-  border: 1px solid var(--border, #e2e8f0) !important;
-  border-radius: 10px !important;
-  margin-bottom: 12px !important;
-  overflow: hidden !important;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
-}
-.faq-item:hover { border-color: var(--accent, #e11d48) !important; }
-
-.faq-question {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  padding: 16px 20px !important;
-  cursor: pointer !important;
-  font-weight: 600 !important;
-  font-size: 15px !important;
-  color: var(--text, #0f172a) !important;
-  background: transparent !important;
-  transition: color 0.2s ease !important;
-  user-select: none !important;
-  -webkit-tap-highlight-color: transparent !important;
-}
-.faq-question:hover { color: var(--accent, #e11d48) !important; }
-
-.faq-question i {
-  font-size: 13px !important;
-  color: var(--text-muted, #94a3b8) !important;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease !important;
-  margin-left: 12px !important;
-  pointer-events: none !important;
-}
-
-.faq-item.active { border-color: var(--accent, #e11d48) !important; box-shadow: 0 2px 8px rgba(225,29,72,0.08) !important; }
-.faq-item.active .faq-question { color: var(--accent, #e11d48) !important; }
-.faq-item.active .faq-question i {
-  transform: rotate(180deg) scale(1.1) !important;
-  color: var(--accent, #e11d48) !important;
-}
-
-
 .faq-answer {
-  max-height: 0 !important;
-  overflow: hidden !important;
-  opacity: 0 !important;
-  padding: 0 20px !important;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-              opacity 0.3s ease, 
+  opacity: 0;
+  transition: max-height 0.4s cubic-bezier(0, 1, 0, 1),
+              opacity 0.3s ease,
               padding 0.3s ease !important;
-  font-size: 14.5px !important;
-  line-height: 1.7 !important;
-  color: var(--text-secondary, #64748b) !important;
-  background: var(--bg-card, #ffffff) !important;
 }
-
-
 .faq-item.active .faq-answer {
-  max-height: 350px !important;
-  opacity: 1 !important;
-  padding: 16px 20px 20px !important;
-  border-top: 1px solid var(--border-light, #f1f5f9) !important;
+  opacity: 1;
 }
 
+.faq-item.active .faq-question i {
+  transform: rotate(180deg) scale(1.1);
+  color: var(--accent, #e11d48);
+}
 
-[data-theme="dark"] .faq-item { background: #1e293b !important; border-color: #334155 !important; }
-[data-theme="dark"] .faq-question { color: #f1f5f9 !important; }
-[data-theme="dark"] .faq-question:hover { color: var(--accent, #e11d48) !important; }
-[data-theme="dark"] .faq-answer { background: #1e293b !important; color: #cbd5e1 !important; border-top-color: #334155 !important; }
-[data-theme="dark"] .faq-item.active { border-color: var(--accent, #e11d48) !important; }
+@media (max-width: 640px) {
+  .faq-question {
+    padding: 16px 16px !important;
+    font-size: 14px !important;
+  }
+  .faq-answer p {
+    font-size: 14px !important;
+    padding: 0 0 16px !important;
+  }
+}
   </style>
 </head>
 <body>
@@ -1500,68 +1392,66 @@
   </div>
 </section>
 
-
-<section class="faq-section">
+<section class="faq-section" style="padding: 60px 24px; opacity: 1; visibility: visible;">
   <div class="container">
-    <div class="section-header" style="justify-content:center;text-align:center">
-      <p class="section-tag">Quick Answers</p>
-      <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="section-header" style="justify-content:center;text-align:center;margin-bottom:40px;">
+      <p class="section-tag" style="color:var(--accent);font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;">Quick Answers</p>
+      <h2 class="section-title" style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;color:var(--text);">Frequently Asked Questions</h2>
     </div>
     
-    <div style="max-width:800px;margin:0 auto">
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
+    <div style="max-width:800px;margin:0 auto;" id="faq-container">
+      <div class="faq-item" style="background:var(--bg-card,#fff);border:1px solid var(--border,#e2e8f0);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:all 0.3s ease;">
+        <div class="faq-question" onclick="toggleFAQ(this)" style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px;cursor:pointer;font-weight:600;font-size:15px;color:var(--text);transition:all 0.25s ease;user-select:none;">
           <span>How do I track my order?</span>
-          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-chevron-down" style="font-size:14px;color:var(--text-muted);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);"></i>
         </div>
-        <div class="faq-answer">
-          Once your order ships, you'll receive a tracking number via email. You can also log into your account and view order status under "My Orders". For assistance, contact us with your order ID.
+        <div class="faq-answer" style="max-height:0;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);padding:0 20px;">
+          <p style="padding:0 0 18px;font-size:14.5px;line-height:1.7;color:var(--text-secondary);">Once your order ships, you'll receive a tracking number via email. You can also log into your account and view order status under "My Orders". For assistance, contact us with your order ID.</p>
         </div>
       </div>
-      
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
+
+      <div class="faq-item" style="background:var(--bg-card,#fff);border:1px solid var(--border,#e2e8f0);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:all 0.3s ease;">
+        <div class="faq-question" onclick="toggleFAQ(this)" style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px;cursor:pointer;font-weight:600;font-size:15px;color:var(--text);transition:all 0.25s ease;user-select:none;">
           <span>What is your return policy?</span>
-          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-chevron-down" style="font-size:14px;color:var(--text-muted);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);"></i>
         </div>
-        <div class="faq-answer">
-          We offer 30-day easy returns on all unworn, unwashed items with original tags. Initiate a return from your account or contact support. Return shipping is free for defective items.
+        <div class="faq-answer" style="max-height:0;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);padding:0 20px;">
+          <p style="padding:0 0 18px;font-size:14.5px;line-height:1.7;color:var(--text-secondary);">We offer 30-day easy returns on all unworn, unwashed items with original tags. Initiate a return from your account or contact support. Return shipping is free for defective items.</p>
         </div>
       </div>
       
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
+      <div class="faq-item" style="background:var(--bg-card,#fff);border:1px solid var(--border,#e2e8f0);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:all 0.3s ease;">
+        <div class="faq-question" onclick="toggleFAQ(this)" style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px;cursor:pointer;font-weight:600;font-size:15px;color:var(--text);transition:all 0.25s ease;user-select:none;">
           <span>Do you ship internationally?</span>
-          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-chevron-down" style="font-size:14px;color:var(--text-muted);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);"></i>
         </div>
-        <div class="faq-answer">
-          Yes! We ship to 50+ countries worldwide. Shipping costs and delivery times vary by location. All international orders include customs documentation and tracking.
+        <div class="faq-answer" style="max-height:0;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);padding:0 20px;">
+          <p style="padding:0 0 18px;font-size:14.5px;line-height:1.7;color:var(--text-secondary);">Yes! We ship to 50+ countries worldwide. Shipping costs and delivery times vary by location. All international orders include customs documentation and tracking.</p>
         </div>
       </div>
       
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
+      <div class="faq-item" style="background:var(--bg-card,#fff);border:1px solid var(--border,#e2e8f0);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:all 0.3s ease;">
+        <div class="faq-question" onclick="toggleFAQ(this)" style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px;cursor:pointer;font-weight:600;font-size:15px;color:var(--text);transition:all 0.25s ease;user-select:none;">
           <span>How can I collaborate with Bevenu?</span>
-          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-chevron-down" style="font-size:14px;color:var(--text-muted);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);"></i>
         </div>
-        <div class="faq-answer">
-          We love working with creators, brands, and influencers! Email partnerships@bevenu.com with your proposal, audience details, and collaboration ideas. Our team reviews all inquiries.
+        <div class="faq-answer" style="max-height:0;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);padding:0 20px;">
+          <p style="padding:0 0 18px;font-size:14.5px;line-height:1.7;color:var(--text-secondary);">We love working with creators, brands, and influencers! Email partnerships@bevenu.com with your proposal, audience details, and collaboration ideas. Our team reviews all inquiries.</p>
         </div>
       </div>
-      
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
+
+      <div class="faq-item" style="background:var(--bg-card,#fff);border:1px solid var(--border,#e2e8f0);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:all 0.3s ease;">
+        <div class="faq-question" onclick="toggleFAQ(this)" style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px;cursor:pointer;font-weight:600;font-size:15px;color:var(--text);transition:all 0.25s ease;user-select:none;">
           <span>Is my data secure with Bevenu?</span>
-          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-chevron-down" style="font-size:14px;color:var(--text-muted);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);"></i>
         </div>
-        <div class="faq-answer">
-          Absolutely. We use industry-standard encryption, never sell your data, and comply with global privacy regulations. Read our full Privacy Policy for details on how we protect your information.
+        <div class="faq-answer" style="max-height:0;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);padding:0 20px;">
+          <p style="padding:0 0 18px;font-size:14.5px;line-height:1.7;color:var(--text-secondary);">Absolutely. We use industry-standard encryption, never sell your data, and comply with global privacy regulations. Read our full Privacy Policy for details on how we protect your information.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 
 <section class="contact-cta">
   <div class="container">
@@ -1804,15 +1694,79 @@ function handleNewsletterSubscribe(e) {
 }
 </script>
 
-  <script>
-  document.querySelectorAll('.faq-question').forEach(q => {
-    q.addEventListener('click', () => {
-      const item = q.parentElement;
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-      item.classList.toggle('active');
+<script>
+
+function toggleFAQ(element) {
+  console.log('FAQ clicked!', element); 
+  
+  const faqItem = element.closest('.faq-item');
+  const answer = faqItem.querySelector('.faq-answer');
+  const icon = element.querySelector('i');
+  const isActive = faqItem.classList.contains('active');
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.classList.remove('active');
+    item.querySelector('.faq-answer').style.maxHeight = '0';
+    item.querySelector('.faq-answer').style.padding = '0 20px';
+    item.querySelector('.faq-answer').style.opacity = '0';
+    item.querySelector('i').style.transform = 'rotate(0deg)';
+  });
+
+  if (!isActive) {
+    faqItem.classList.add('active');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+    answer.style.padding = '0 20px 18px';
+    answer.style.opacity = '1';
+    if (icon) icon.style.transform = 'rotate(180deg)';
+    
+    setTimeout(() => {
+      faqItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 300);
+  }
+  
+  console.log('FAQ toggled successfully');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('FAQ System Initialized');
+
+  document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleFAQ(this);
+    });
+
+    question.setAttribute('tabindex', '0');
+    question.setAttribute('role', 'button');
+    question.setAttribute('aria-expanded', 'false');
+    
+    question.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleFAQ(this);
+      }
     });
   });
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('mouseenter', function() {
+      this.style.borderColor = 'var(--accent, #e11d48)';
+    });
+    item.addEventListener('mouseleave', function() {
+      if (!this.classList.contains('active')) {
+        this.style.borderColor = 'var(--border, #e2e8f0)';
+      }
+    });
+  });
+});
+
+window.addEventListener('error', function(e) {
+  if (e.message.includes('FAQ') || e.message.includes('toggle')) {
+    console.error('FAQ Error:', e);
+    showToast('FAQ system encountered an issue. Please refresh.', 'error');
+  }
+});
 </script>
-  
 </body>
 </html>
