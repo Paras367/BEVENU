@@ -1803,5 +1803,16 @@ function handleNewsletterSubscribe(e) {
   e.target.reset();
 }
 </script>
+
+  <script>
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+      item.classList.toggle('active');
+    });
+  });
+</script>
+  
 </body>
 </html>
