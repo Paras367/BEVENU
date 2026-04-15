@@ -22,6 +22,8 @@
    <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  
 </head>
 <body>
 
@@ -373,6 +375,47 @@
     }
   }
 </script>
+
+  <style>
+body {
+  user-select: none;
+}
+</style>
+
+  <script>
+document.onkeydown = function(e) {
+  if (
+    e.key === "F12" ||
+    (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key)) ||
+    (e.ctrlKey && e.key === "U")
+  ) {
+    return false;
+  }
+};
+
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+setInterval(() => {
+  if (window.outerWidth - window.innerWidth > 160) {
+    document.body.innerHTML = "DevTools detected 🚫";
+  }
+}, 1000);
+
+const element = new Image();
+Object.defineProperty(element, 'id', {
+  get: function () {
+    document.body.innerHTML = "Inspect blocked!";
+  }
+});
+console.log(element);
+
+console.log = function() {};
+console.warn = function() {};
+console.error = function() {};
+
+
+</script>
+  
 </body>
 </html>
 
