@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Contact Bevenu — Premium fashion e-commerce. Get in touch with Paras Dhiman (CEO) & Dhrupad Arora (Designs Manager).">
   <title>Contact Us — Bevenu</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -22,15 +21,18 @@
       --sh:0 2px 8px rgba(0,0,0,.06);--shm:0 4px 20px rgba(0,0,0,.10);--shl:0 8px 40px rgba(0,0,0,.14);
       --r:10px;--rl:16px;--rx:24px;--tr:all .3s cubic-bezier(.4,0,.2,1);--nav:70px;
     }
+    
     [data-theme="dark"] {
       --bg:#0a0a0f;--bgc:#13131a;--bgs:#1a1a24;--bgl:#16161f;--bd:#252535;--bdl:#1e1e2e;
       --t:#f0f0f5;--ts:#9090a8;--tm:#55556a;--p:#f0ede8;
     }
+    
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
     body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t); line-height: 1.6; transition: background .3s, color .3s; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; }
+
 
     #toast-container { position: fixed; top: 90px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
     .toast { display: flex; align-items: center; gap: 12px; padding: 14px 20px; border-radius: var(--rl); background: var(--bgc); box-shadow: var(--shl); border-left: 4px solid var(--a); min-width: 280px; font-size: 14px; font-weight: 500; animation: toastIn .3s ease, toastOut .3s ease 2.7s forwards; }
@@ -38,23 +40,12 @@
     @keyframes toastIn { from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:none;} }
     @keyframes toastOut { from{opacity:1;}to{opacity:0;transform:translateX(20px);} }
 
-    .navbar { position: sticky; top: 0; z-index: 1000; background: var(--bgc); border-bottom: 1px solid var(--bd); box-shadow: var(--sh); height: var(--nav); transition: var(--tr); }
-    .nav-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; gap: 20px; }
-    .nav-logo a { display: flex; align-items: baseline; gap: 2px; }
-    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 800; color: var(--t); }
-    .logo-dot { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--a); font-weight: 800; }
-    .nav-actions { display: flex; align-items: center; gap: 4px; margin-left: auto; }
-    .nav-btn { display: flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: var(--r); color: var(--t); font-size: 14px; font-weight: 500; transition: var(--tr); background: none; border: none; cursor: pointer; white-space: nowrap; }
-    .nav-btn:hover { background: var(--bgs); color: var(--a); }
-    .badge { position: absolute; top: 2px; right: 2px; background: var(--a); color: white; font-size: 10px; font-weight: 700; min-width: 18px; height: 18px; border-radius: 999px; display: flex; align-items: center; justify-content: center; }
-    .cart-btn { position: relative; }
-
+    /* Hero Section */
     .hero-contact {
       min-height: 62vh; position: relative; overflow: hidden;
       background: linear-gradient(135deg, #0f0c29 0%, #1a1a2e 50%, #302b63 100%);
       display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 24px 80px;
     }
-    .hero-particles { position: absolute; inset: 0; }
     .hero-overlay { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 100%, rgba(201,169,110,.12) 0%, transparent 60%); }
     .hero-content { position: relative; z-index: 2; max-width: 720px; color: white; }
     .hero-tag {
@@ -68,23 +59,16 @@
     .hero-p { font-size: 1.05rem; color: rgba(255,255,255,.78); line-height: 1.75; margin-bottom: 28px; max-width: 560px; margin-inline: auto; }
     .hero-scroll { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 36px; color: rgba(255,255,255,.4); font-size: 12px; animation: scrollBounce 2.5s infinite; }
     @keyframes scrollBounce { 0%,100%{transform:translateY(0);}50%{transform:translateY(8px);} }
-
     .contact-wave { margin-top: -2px; display: block; }
-
     .section { padding: 72px 0; }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-
     .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--a); display: block; margin-bottom: 8px; }
     .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,3vw,2.6rem); font-weight: 700; line-height: 1.2; }
-
     .contact-layout { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: start; }
-
     .card { background: var(--bgc); border: 1px solid var(--bd); border-radius: var(--rl); box-shadow: var(--sh); }
-
     .form-card { padding: 36px; }
     .form-card-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 6px; }
     .form-card-sub { font-size: 14px; color: var(--tm); margin-bottom: 28px; }
-
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .form-group { margin-bottom: 18px; }
     .form-group label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: var(--ts); margin-bottom: 7px; }
@@ -119,8 +103,10 @@
     .fss-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
     .fss-sub { font-size: 14px; color: var(--tm); margin-bottom: 24px; }
 
+
     .info-card { padding: 28px; position: sticky; top: calc(var(--nav) + 20px); }
     .info-card-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; }
+
 
     .contact-method { display: flex; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--bdl); }
     .contact-method:last-of-type { border-bottom: none; }
@@ -130,18 +116,20 @@
     .cm-val a { color: var(--ts); transition: var(--tr); }
     .cm-val a:hover { color: var(--a); }
 
+    /* Online Status */
     .online-status { display: flex; align-items: center; gap: 8px; margin-top: 20px; padding: 12px 16px; background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.2); border-radius: var(--r); font-size: 13px; font-weight: 600; color: var(--su); }
     .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--su); animation: statusPulse 2s infinite; flex-shrink: 0; }
     @keyframes statusPulse { 0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.4);}50%{box-shadow:0 0 0 8px rgba(34,197,94,0);} }
-
     .hours-grid { display: flex; flex-direction: column; gap: 6px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--bdl); }
     .hrow { display: flex; justify-content: space-between; font-size: 13px; color: var(--ts); padding: 5px 0; }
     .hrow.today { color: var(--a); font-weight: 700; }
     .hrow.closed { color: var(--tm); }
 
+    /* Social Links */
     .social-row { display: flex; gap: 10px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--bdl); }
     .soc-btn { width: 38px; height: 38px; border-radius: 50%; background: var(--bgs); border: 1.5px solid var(--bd); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--tm); transition: var(--tr); }
     .soc-btn:hover { background: var(--a); border-color: var(--a); color: white; transform: translateY(-3px); }
+
 
     .leadership-section { padding: 72px 0; background: var(--bgs); }
     .leaders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
@@ -171,6 +159,7 @@
     .ls-btn { width: 34px; height: 34px; border-radius: 50%; background: var(--bgs); border: 1.5px solid var(--bd); display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--tm); transition: var(--tr); }
     .ls-btn:hover { background: var(--a); border-color: var(--a); color: white; transform: translateY(-2px); }
 
+
     .faq-section { padding: 72px 0; }
     .faq-wrap { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; margin-top: 40px; }
     .faq-item {
@@ -195,6 +184,7 @@
     .faq-item.open .faq-a { max-height: 400px; opacity: 1; padding: 0 22px 18px; }
     .faq-a p { font-size: 14px; color: var(--ts); line-height: 1.75; margin-top: 12px; }
 
+    /* Live Chat */
     .live-chat-btn {
       position: fixed; bottom: 28px; right: 28px; z-index: 500;
       width: 62px; height: 62px; border-radius: 50%;
@@ -241,6 +231,7 @@
     .chat-inp button { padding: 9px 16px; background: var(--a); color: white; border: none; border-radius: var(--r); font-weight: 700; font-size: 13px; cursor: pointer; transition: var(--tr); }
     .chat-inp button:hover { background: var(--ad); }
 
+
     .newsletter-sec { padding: 60px 0; background: linear-gradient(135deg, var(--al) 0%, #f5efe3 100%); }
     [data-theme="dark"] .newsletter-sec { background: linear-gradient(135deg, #2a2015 0%, #1a1a2e 100%); }
     .nl-content { text-align: center; }
@@ -250,6 +241,7 @@
     .nl-form input { flex: 1; padding: 12px 18px; border: 1.5px solid var(--bd); border-radius: var(--rx); background: white; font-size: 14px; outline: none; color: var(--t); transition: var(--tr); }
     .nl-form input:focus { border-color: var(--a); }
 
+ 
     .footer { background: var(--p); color: rgba(255,255,255,.85); padding: 56px 0 0; }
     [data-theme="dark"] .footer { background: var(--bgs); border-top: 1px solid var(--bd); }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 36px; padding-bottom: 40px; }
@@ -266,35 +258,96 @@
     .footer-bottom p { font-size: 13px; color: rgba(255,255,255,.45); }
     .payment-icons { display: flex; gap: 10px; font-size: 22px; color: rgba(255,255,255,.45); }
 
-    @media (max-width: 980px) { .contact-layout { grid-template-columns: 1fr; } .info-card { position: static; } }
+
+    @media (max-width: 980px) { 
+      .contact-layout { grid-template-columns: 1fr; } 
+      .info-card { position: static; } 
+    }
     @media (max-width: 768px) {
       .leaders-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .nl-form { flex-direction: column; }
     }
-    @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 480px) { 
+      .footer-grid { grid-template-columns: 1fr; } 
+    }
   </style>
 </head>
 <body>
 <div id="toast-container"></div>
-
 <nav class="navbar" id="navbar">
   <div class="nav-container">
     <div class="nav-logo"><a href="index.html"><span class="logo-text">Bevenu</span><span class="logo-dot">.</span></a></div>
+    <div class="nav-search">
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="search-input" placeholder="Search for clothes, brands..." autocomplete="off" />
+        <div class="search-suggestions" id="search-suggestions"></div>
+      </div>
+    </div>
+    
     <div class="nav-actions">
-      <button class="nav-btn" id="theme-toggle"><i class="fas fa-moon" id="theme-icon"></i></button>
-      <a href="cart.html" class="nav-btn cart-btn" style="position:relative">
+      <div class="nav-dropdown">
+        <button class="nav-btn" id="categories-btn">
+          <i class="fas fa-th-large"></i>
+          <span>Shop</span>
+          <i class="fas fa-chevron-down chevron"></i>
+        </button>
+        <div class="dropdown-menu" id="categories-dropdown">
+          <a href="products.html?cat=men"><i class="fas fa-male"></i> Men</a>
+          <a href="products.html?cat=women"><i class="fas fa-female"></i> Women</a>
+          <a href="products.html?cat=kids"><i class="fas fa-child"></i> Kids</a>
+          <a href="products.html?cat=accessories"><i class="fas fa-gem"></i> Accessories</a>
+        </div>
+      </div>
+      
+      <button class="nav-btn" id="theme-toggle" title="Toggle Dark Mode">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+      
+      <a href="#" class="nav-btn" id="wishlist-btn" title="Wishlist">
+        <i class="fas fa-heart"></i>
+        <span class="badge" id="wishlist-count">0</span>
+      </a>
+      
+      <a href="cart.html" class="nav-btn cart-btn" title="Cart">
         <i class="fas fa-shopping-bag"></i>
         <span class="badge" id="cart-count">0</span>
       </a>
-      <a href="login.html" class="nav-btn" id="login-btn"><i class="fas fa-user"></i><span id="user-display">Login</span></a>
+      
+      <div class="nav-user" id="nav-user">
+        <a href="login.html" class="nav-btn" id="login-btn">
+          <i class="fas fa-user"></i>
+          <span id="user-display">Login</span>
+        </a>
+      </div>
     </div>
+    
+    <button class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-search">
+      <input type="text" placeholder="Search products..." id="mobile-search" />
+    </div>
+    <nav class="mobile-nav">
+      <a href="products.html?cat=men"><i class="fas fa-male"></i> Men</a>
+      <a href="products.html?cat=women"><i class="fas fa-female"></i> Women</a>
+      <a href="products.html?cat=kids"><i class="fas fa-child"></i> Kids</a>
+      <a href="products.html?cat=accessories"><i class="fas fa-gem"></i> Accessories</a>
+      <hr />
+      <a href="cart.html"><i class="fas fa-shopping-bag"></i> Cart</a>
+      <a href="login.html"><i class="fas fa-user"></i> Login / Signup</a>
+    </nav>
   </div>
 </nav>
 
+
 <section class="hero-contact">
-  <div class="hero-particles" id="hero-particles"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-tag animate__animated animate__fadeInDown"><i class="fas fa-envelope"></i> Get in Touch</div>
@@ -436,6 +489,7 @@
   </div>
 </section>
 
+
 <section class="leadership-section">
   <div class="container">
     <div style="text-align:center">
@@ -468,6 +522,7 @@
     </div>
   </div>
 </section>
+
 
 <section class="faq-section" id="faq-section">
   <div class="container">
@@ -503,6 +558,7 @@
     </div>
   </div>
 </section>
+
 
 <section class="newsletter-sec">
   <div class="container">
@@ -599,6 +655,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof initTheme === 'function') initTheme();
   if (typeof updateNavCounts === 'function') updateNavCounts();
   if (typeof checkUserSession === 'function') checkUserSession();
+  if (typeof initSearchSuggestions === 'function') initSearchSuggestions();
 
   initParticles();
   initFAQs();
@@ -607,11 +664,17 @@ document.addEventListener('DOMContentLoaded', () => {
   initLeaderTilt();
   highlightTodayHours();
 
-  document.getElementById('chat-inp').addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(); });
+
+  document.getElementById('chat-inp').addEventListener('keydown', e => { 
+    if (e.key === 'Enter') sendChat(); 
+  });
+  
+
   document.getElementById('fm')?.addEventListener('input', function() {
     document.getElementById('char-count').textContent = this.value.length;
   });
 });
+
 
 function initParticles() {
   if (typeof tsParticles === 'undefined') return;
@@ -628,6 +691,7 @@ function initParticles() {
   });
 }
 
+// FAQ Toggle Function
 function initFAQs() {
   document.querySelectorAll('.faq-q').forEach(q => {
     q.addEventListener('click', () => {
@@ -678,6 +742,7 @@ function initFormValidation() {
   });
 }
 
+// Field Validation Helper
 function validateField(id, rule) {
   const el = document.getElementById(id);
   const err = document.getElementById(id + '-err');
@@ -689,6 +754,7 @@ function validateField(id, rule) {
   return valid;
 }
 
+
 function resetForm() {
   document.getElementById('bevenu-form').reset();
   document.getElementById('bevenu-form').style.display = '';
@@ -698,6 +764,7 @@ function resetForm() {
   document.getElementById('char-count').textContent = '0';
   document.querySelectorAll('.input-f').forEach(el => el.classList.remove('error-field', 'valid-field'));
 }
+
 
 function initScrollAnimations() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
@@ -712,11 +779,13 @@ function initScrollAnimations() {
   });
 }
 
+
 function initLeaderTilt() {
   if (typeof VanillaTilt !== 'undefined') {
     VanillaTilt.init(document.querySelectorAll('.leader-card'), { max: 8, speed: 400, glare: true, 'max-glare': .08 });
   }
 }
+
 
 function highlightTodayHours() {
   const day = new Date().getDay();
@@ -727,6 +796,7 @@ function highlightTodayHours() {
   else rows[2]?.classList.add('today');
 }
 
+
 function toggleChat() {
   const win = document.getElementById('chat-window');
   const btn = document.getElementById('chat-toggle-btn');
@@ -736,6 +806,7 @@ function toggleChat() {
     document.getElementById('chat-inp').focus();
   }
 }
+
 
 function sendChat() {
   const inp = document.getElementById('chat-inp');
@@ -767,6 +838,7 @@ function sendChat() {
   }, 1200);
 }
 
+
 function handleNewsletter(e) {
   e.preventDefault();
   const email = e.target.querySelector('input[type="email"]').value;
@@ -778,8 +850,12 @@ function handleNewsletter(e) {
   }
 }
 
+
 function showToast(msg, type) {
-  if (typeof window.showToast !== 'undefined' && window.showToast !== showToast) { window.showToast(msg, type); return; }
+  if (typeof window.showToast !== 'undefined' && window.showToast !== showToast) { 
+    window.showToast(msg, type); 
+    return; 
+  }
   const c = document.getElementById('toast-container'); if (!c) return;
   const icons = { success:'fa-check-circle', error:'fa-exclamation-circle', info:'fa-info-circle' };
   const colors = { success:'var(--su)', error:'var(--er)', info:'var(--in)' };
