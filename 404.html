@@ -494,14 +494,13 @@ function initTypedText() {
 
 function initLottieAnimation() {
   if (typeof lottie !== 'undefined') {
-    // Example: Load a Lottie animation for the orbit loader
-    // lottie.loadAnimation({
-    //   container: document.querySelector('.orbit-loader'),
-    //   renderer: 'svg',
-    //   loop: true,
-    //   autoplay: true,
-    //   path: 'https://assets.lottiefiles.com/packages/lf20_abc123.json'
-    // });
+     lottie.loadAnimation({
+       container: document.querySelector('.orbit-loader'),
+       renderer: 'svg',
+       loop: true,
+       autoplay: true,
+       path: 'https://assets.lottiefiles.com/packages/lf20_abc123.json'
+     });
   }
 }
 
