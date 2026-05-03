@@ -4,473 +4,444 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Page Not Found - Bevenu Premium Fashion">
-  <title>404 - Page Not Found | Bevenu</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <title>404 — Bevenu</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="styles.css" />
- <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%2338bdf8"/><stop offset="100%" stop-color="%236366f1"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="%230b1220"/><text x="50%" y="52%" font-size="30" text-anchor="middle" fill="url(%23g)" font-family="Segoe UI,Arial,sans-serif" font-weight="700" dy=".3em">404</text><circle cx="52" cy="12" r="3" fill="%2338bdf8"/><circle cx="12" cy="52" r="2" fill="%236366f1"/></svg>'>
+
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%25" stop-color="%2338bdf8"/><stop offset="100%25" stop-color="%236366f1"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="%230b1220"/><text x="50%25" y="52%25" font-size="30" text-anchor="middle" fill="url(%23g)" font-family="Segoe UI,Arial,sans-serif" font-weight="700" dy=".3em">404</text></svg>'>
+
   <style>
-    .error-page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background: var(--bg, #ffffff);
-      position: relative;
-      overflow: hidden;
+    :root {
+      --p: #1a1a2e; --a: #c9a96e; --ad: #a07840; --al: #e8d5b0;
+      --bg: #fafaf8; --bgc: #fff; --bgs: #f5f3ef;
+      --bd: #e8e4dc; --t: #1a1a1a; --ts: #4a4a4a; --tm: #9a9a9a;
+      --su: #22c55e; --wa: #f59e0b; --er: #ef4444; --in: #3b82f6;
+      --sh: 0 4px 24px rgba(0,0,0,.08); --shl: 0 12px 48px rgba(0,0,0,.14);
+      --r: 12px; --rx: 24px; --tr: all .3s cubic-bezier(.4,0,.2,1);
     }
-    
+    [data-theme="dark"] {
+      --bg: #0a0a0f; --bgc: #13131a; --bgs: #1a1a24; --bd: #252535;
+      --t: #f0f0f5; --ts: #9090a8; --tm: #55556a;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t); overflow-x: hidden; transition: background .3s, color .3s; }
+    a { text-decoration: none; color: inherit; }
 
-    .error-bg {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
-      overflow: hidden;
-    }
-    
-    .error-bg::before {
-      content: '';
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-      background-size: 50px 50px;
-      animation: bgMove 20s linear infinite;
-      opacity: 0.3;
-    }
-    
-    @keyframes bgMove {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(50px, 50px); }
-    }
-    
+    #toast-container { position: fixed; top: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
+    .toast { display: flex; align-items: center; gap: 12px; padding: 14px 20px; border-radius: var(--r); background: var(--bgc); box-shadow: var(--shl); border-left: 4px solid var(--a); min-width: 280px; font-size: 14px; font-weight: 500; animation: slideInRight .3s ease, fadeOut .3s ease 2.7s forwards; }
+    .toast.success { border-color: var(--su); } .toast.error { border-color: var(--er); } .toast.info { border-color: var(--in); }
+    @keyframes slideInRight { from { opacity:0; transform:translateX(20px); } to { opacity:1; transform:none; } }
+    @keyframes fadeOut { from { opacity:1; } to { opacity:0; transform:translateX(20px); } }
 
-    .error-container {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 120px 24px 60px;
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      color: white;
+    .pg-wrap { min-height: 100vh; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+
+    .scene-bg {
+      position: fixed; inset: 0; z-index: 0;
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
     }
-    
-  
-    .error-code {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(8rem, 20vw, 16rem);
-      font-weight: 800;
-      line-height: 1;
-      margin-bottom: 20px;
-      background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: glitch 3s infinite, float 6s ease-in-out infinite;
-      position: relative;
-      text-shadow: 0 0 80px rgba(225,29,72,0.5);
+    .scene-bg canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .7; }
+
+    .floating-shapes { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+    .fs { position: absolute; border-radius: 50%; opacity: .06; animation: floatAround linear infinite; }
+    .fs:nth-child(1){ width:400px;height:400px;background:var(--a);top:-100px;left:-100px;animation-duration:25s; }
+    .fs:nth-child(2){ width:250px;height:250px;background:#8b5cf6;top:50%;right:-80px;animation-duration:18s;animation-delay:-6s; }
+    .fs:nth-child(3){ width:180px;height:180px;background:#3b82f6;bottom:10%;left:10%;animation-duration:22s;animation-delay:-10s; }
+    .fs:nth-child(4){ width:120px;height:120px;background:#ec4899;top:30%;left:40%;animation-duration:16s;animation-delay:-4s; }
+    @keyframes floatAround { 0%,100%{transform:translate(0,0) rotate(0deg);} 25%{transform:translate(30px,-30px) rotate(90deg);} 50%{transform:translate(-20px,20px) rotate(180deg);} 75%{transform:translate(20px,30px) rotate(270deg);} }
+
+    .nav-404 {
+      position: relative; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px; background: rgba(0,0,0,.2); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
-    
-    @keyframes glitch {
-      0%, 100% { transform: translate(0); }
-      20% { transform: translate(-2px, 2px); }
-      40% { transform: translate(-2px, -2px); }
-      60% { transform: translate(2px, 2px); }
-      80% { transform: translate(2px, -2px); }
+    .nav-logo-404 { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 800; color: white; }
+    .nav-logo-404 span { color: var(--a); }
+    .nav-404-actions { display: flex; gap: 12px; }
+    .nav-404-btn {
+      padding: 8px 18px; border-radius: var(--rx); font-size: 13px; font-weight: 600;
+      cursor: pointer; border: 1.5px solid rgba(255,255,255,.2); color: rgba(255,255,255,.8);
+      background: rgba(255,255,255,.06); backdrop-filter: blur(10px); transition: var(--tr);
     }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
+    .nav-404-btn:hover { background: rgba(255,255,255,.15); border-color: var(--a); color: white; }
+    .nav-404-btn.accent { background: linear-gradient(135deg, var(--a), var(--ad)); border-color: var(--a); color: white; }
+    .nav-404-btn.accent:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,169,110,.4); }
+
+    .main-404 {
+      flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 60px 24px; position: relative; z-index: 10; text-align: center; color: white;
     }
-    
-    .error-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 700;
-      margin-bottom: 16px;
-      color: white;
+
+    .status-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 18px; background: rgba(201,169,110,.15); border: 1px solid rgba(201,169,110,.35);
+      border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--a); margin-bottom: 28px;
+      animation: pulseBorder 2s infinite;
     }
-    
-    .error-subtitle {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.8);
-      max-width: 500px;
+    @keyframes pulseBorder { 0%,100%{ box-shadow: 0 0 0 0 rgba(201,169,110,.4); } 50%{ box-shadow: 0 0 0 10px rgba(201,169,110,0); } }
+
+    .code-404 {
+      font-family: 'Playfair Display', serif; font-size: clamp(7rem, 22vw, 18rem);
+      font-weight: 800; line-height: 1; margin-bottom: 16px; position: relative; cursor: default;
+      background: linear-gradient(135deg, #fff 0%, var(--a) 50%, #fff 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      animation: shimmerText 3s linear infinite, gentleFloat 6s ease-in-out infinite;
+      filter: drop-shadow(0 0 60px rgba(201,169,110,.3));
+    }
+    @keyframes shimmerText { 0%{background-position:0% center;} 100%{background-position:200% center;} }
+    @keyframes gentleFloat { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-16px);} }
+
+    .glitch-404 { position: relative; display: inline-block; }
+    .glitch-404::before, .glitch-404::after {
+      content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      font-family: 'Playfair Display', serif; font-size: inherit; font-weight: 800;
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .glitch-404::before { background: linear-gradient(135deg, #ff006680 0%, transparent 100%); animation: glitch1 4s infinite; clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%); }
+    .glitch-404::after { background: linear-gradient(135deg, #00b4d880 0%, transparent 100%); animation: glitch2 4s infinite; clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%); }
+    @keyframes glitch1 { 0%,85%,100%{transform:none;} 88%{transform:translate(-4px,2px) skewX(-2deg);} 92%{transform:translate(4px,-2px);} 96%{transform:translate(-2px,1px);} }
+    @keyframes glitch2 { 0%,88%,100%{transform:none;} 90%{transform:translate(4px,-2px) skewX(2deg);} 94%{transform:translate(-4px,2px);} 98%{transform:translate(2px,-1px);} }
+
+    .error-title-404 {
+      font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700; margin-bottom: 12px; color: white;
+    }
+    .error-sub-404 {
+      font-size: 1.05rem; color: rgba(255,255,255,.72); max-width: 520px;
+      margin: 0 auto 36px; line-height: 1.75;
+    }
+
+    .orbit-loader { width: 90px; height: 90px; position: relative; margin: 0 auto 28px; }
+    .orbit { position: absolute; border-radius: 50%; border: 2px solid transparent; }
+    .orbit-1 { inset: 0; border-top-color: var(--a); animation: orbitSpin 1.8s linear infinite; }
+    .orbit-2 { inset: 14px; border-right-color: rgba(255,255,255,.5); animation: orbitSpin 1.2s linear infinite reverse; }
+    .orbit-3 { inset: 28px; border-bottom-color: rgba(255,255,255,.3); animation: orbitSpin 2.4s linear infinite; }
+    .orbit-center { position: absolute; inset: 38px; border-radius: 50%; background: var(--a); box-shadow: 0 0 20px rgba(201,169,110,.6); animation: orbitPulse 1.5s ease-in-out infinite; }
+    @keyframes orbitSpin { to { transform: rotate(360deg); } }
+    @keyframes orbitPulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.2);} }
+
+    .scan-status {
+      font-family: 'JetBrains Mono', monospace; font-size: 13px;
+      color: rgba(255,255,255,.6); display: flex; align-items: center; gap: 10px;
+      margin-bottom: 36px; background: rgba(0,0,0,.25); padding: 10px 20px;
+      border-radius: var(--rx); border: 1px solid rgba(255,255,255,.08);
+    }
+    .scan-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--a); animation: blink 1.2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.2;} }
+
+    .action-row { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
+
+    .btn-404 {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 13px 30px; border-radius: var(--rx); font-size: 14px; font-weight: 700;
+      cursor: pointer; border: 2px solid transparent; transition: var(--tr); white-space: nowrap;
+    }
+    .btn-404-primary {
+      background: linear-gradient(135deg, var(--a), var(--ad));
+      color: white; border-color: var(--a); box-shadow: 0 4px 20px rgba(201,169,110,.35);
+    }
+    .btn-404-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(201,169,110,.5); }
+    .btn-404-ghost {
+      background: rgba(255,255,255,.08); color: rgba(255,255,255,.85);
+      border-color: rgba(255,255,255,.2); backdrop-filter: blur(10px);
+    }
+    .btn-404-ghost:hover { background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.4); transform: translateY(-2px); }
+
+    .search-404 {
+      max-width: 480px; width: 100%; position: relative;
+      background: rgba(255,255,255,.08); backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(255,255,255,.18); border-radius: var(--rx);
+      display: flex; align-items: center; gap: 0;
+      transition: var(--tr); margin: 0 auto 40px;
+    }
+    .search-404:focus-within { border-color: var(--a); background: rgba(255,255,255,.14); box-shadow: 0 0 0 4px rgba(201,169,110,.15); }
+    .search-404 i { padding: 0 14px 0 20px; color: rgba(255,255,255,.5); font-size: 14px; }
+    .search-404 input {
+      flex: 1; padding: 14px 0; background: none; border: none; outline: none;
+      color: white; font-size: 14px; font-family: 'DM Sans', sans-serif;
+    }
+    .search-404 input::placeholder { color: rgba(255,255,255,.45); }
+    .search-404 button {
+      padding: 10px 20px; margin: 4px; border-radius: 20px;
+      background: var(--a); color: white; border: none; cursor: pointer;
+      font-weight: 700; font-size: 13px; transition: var(--tr);
+    }
+    .search-404 button:hover { background: var(--ad); }
+
+    .quick-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 48px; }
+    .ql {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 16px; border-radius: var(--rx); font-size: 12px; font-weight: 600;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.75); cursor: pointer; transition: var(--tr);
+    }
+    .ql:hover { background: rgba(201,169,110,.2); border-color: var(--a); color: white; }
+
+    .stats-strip {
+      display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;
+      padding: 24px 40px; background: rgba(0,0,0,.25); backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255,255,255,.07); border-bottom: 1px solid rgba(255,255,255,.07);
       margin-bottom: 40px;
-      line-height: 1.7;
     }
-    
-  
-    .loader-container {
-      margin: 40px 0;
-      position: relative;
-    }
-    
-    .loader {
-      width: 80px;
-      height: 80px;
-      position: relative;
-      margin: 0 auto;
-    }
-    
-    .loader-ring {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border: 3px solid transparent;
-      border-top-color: var(--accent, #e11d48);
-      border-radius: 50%;
-      animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
-    }
-    
-    .loader-ring:nth-child(2) {
-      border-top-color: rgba(255,255,255,0.6);
-      animation-delay: -0.5s;
-      width: 70%;
-      height: 70%;
-      top: 15%;
-      left: 15%;
-    }
-    
-    .loader-ring:nth-child(3) {
-      border-top-color: rgba(255,255,255,0.3);
-      animation-delay: -1s;
-      width: 40%;
-      height: 40%;
-      top: 30%;
-      left: 30%;
-    }
-    
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    
-    .loader-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--accent, #e11d48);
-      animation: pulse 1.5s ease-in-out infinite;
-    }
-    
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-    
-    .loader-status {
-      margin-top: 20px;
-      font-size: 14px;
-      color: rgba(255,255,255,0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    
-    .loader-dots {
-      display: inline-flex;
-      gap: 4px;
-    }
-    
-    .loader-dots span {
-      width: 6px;
-      height: 6px;
-      background: var(--accent, #e11d48);
-      border-radius: 50%;
-      animation: dotBounce 1.4s infinite ease-in-out;
-    }
-    
-    .loader-dots span:nth-child(1) { animation-delay: -0.32s; }
-    .loader-dots span:nth-child(2) { animation-delay: -0.16s; }
-    
-    @keyframes dotBounce {
-      0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
-      40% { transform: scale(1); opacity: 1; }
-    }
-    
+    .sstat { text-align: center; }
+    .sstat-val { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 800; color: var(--a); }
+    .sstat-lbl { font-size: 11px; color: rgba(255,255,255,.5); font-weight: 600; letter-spacing: .5px; text-transform: uppercase; margin-top: 2px; }
 
-    .error-actions {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 20px;
+    .featured-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px; max-width: 900px; width: 100%; margin: 0 auto 48px;
     }
-    
-    .btn-home {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 32px;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark, #be123c) 100%);
-      color: white;
-      border-radius: var(--radius-xl, 24px);
-      font-weight: 600;
-      font-size: 15px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(225,29,72,0.4);
+    .fg-card {
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--r); padding: 20px 16px; cursor: pointer;
+      transition: var(--tr); backdrop-filter: blur(10px); text-align: center;
     }
-    
-    .btn-home:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 30px rgba(225,29,72,0.6);
-    }
-    
-    .btn-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 32px;
-      background: rgba(255,255,255,0.1);
-      color: white;
-      border: 2px solid rgba(255,255,255,0.3);
-      border-radius: var(--radius-xl, 24px);
-      font-weight: 600;
-      font-size: 15px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-    }
-    
-    .btn-back:hover {
-      background: rgba(255,255,255,0.2);
-      border-color: rgba(255,255,255,0.5);
-      transform: translateY(-3px);
-    }
+    .fg-card:hover { background: rgba(201,169,110,.15); border-color: var(--a); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.3); }
+    .fg-card i { font-size: 2rem; color: var(--a); margin-bottom: 10px; display: block; }
+    .fg-card h4 { font-size: 14px; font-weight: 700; color: white; margin-bottom: 4px; }
+    .fg-card p { font-size: 12px; color: rgba(255,255,255,.55); }
 
-    .coming-soon-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 20px;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--accent, #e11d48);
-      margin-bottom: 30px;
-      backdrop-filter: blur(10px);
-      animation: badgePulse 2s infinite;
+    .footer-404 {
+      position: relative; z-index: 10;
+      background: rgba(0,0,0,.4); backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 24px 40px; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 12px;
     }
-    
-    @keyframes badgePulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(225,29,72,0.4); }
-      50% { box-shadow: 0 0 0 10px rgba(225,29,72,0); }
-    }
-    
+    .footer-404 p { font-size: 13px; color: rgba(255,255,255,.45); }
+    .footer-links-404 { display: flex; gap: 20px; }
+    .footer-links-404 a { font-size: 13px; color: rgba(255,255,255,.5); transition: var(--tr); }
+    .footer-links-404 a:hover { color: var(--a); }
 
-    .error-search {
-      margin-top: 40px;
-      max-width: 500px;
-      width: 100%;
-    }
-    
-    .error-search input {
-      width: 100%;
-      padding: 16px 24px;
-      border: 2px solid rgba(255,255,255,0.2);
-      border-radius: var(--radius-xl, 24px);
-      background: rgba(255,255,255,0.1);
-      color: white;
-      font-size: 15px;
-      outline: none;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-    }
-    
-    .error-search input::placeholder {
-      color: rgba(255,255,255,0.6);
-    }
-    
-    .error-search input:focus {
-      border-color: var(--accent, #e11d48);
-      background: rgba(255,255,255,0.15);
-      box-shadow: 0 0 0 4px rgba(225,29,72,0.2);
-    }
-
-    .error-page .footer {
-      background: rgba(15,23,42,0.95);
-      border-top: 1px solid rgba(255,255,255,0.1);
-      position: relative;
-      z-index: 2;
-    }
-
-    @media (max-width: 640px) {
-      .error-actions {
-        flex-direction: column;
-        width: 100%;
-      }
-      .btn-home, .btn-back {
-        width: 100%;
-        justify-content: center;
-      }
-      .error-search {
-        padding: 0 16px;
-      }
-    }
-
-    [data-theme="dark"] .error-bg {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    @media (max-width: 600px) {
+      .nav-404 { padding: 16px 20px; }
+      .featured-grid { grid-template-columns: repeat(2,1fr); }
+      .stats-strip { gap: 20px; padding: 20px; }
+      .footer-404 { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
+<div id="toast-container"></div>
 
-<div class="error-page">
-  <div class="error-bg"></div>
-  <div class="error-container">
-    <div class="coming-soon-badge">
-      <i class="fas fa-clock"></i>
-      <span>Coming Soon</span>
+<div class="pg-wrap">
+  <div class="scene-bg">
+    <canvas id="starfield"></canvas>
+  </div>
+  <div class="floating-shapes">
+    <div class="fs"></div><div class="fs"></div><div class="fs"></div><div class="fs"></div>
+  </div>
+
+  <nav class="nav-404">
+    <a href="index.html" class="nav-logo-404">Bevenu<span>.</span></a>
+    <div class="nav-404-actions">
+      <button class="nav-404-btn" onclick="history.back()"><i class="fas fa-arrow-left"></i> Go Back</button>
+      <a href="index.html" class="nav-404-btn accent"><i class="fas fa-home"></i> Home</a>
+    </div>
+  </nav>
+
+  <main class="main-404">
+    <div class="status-tag animate__animated animate__fadeInDown">
+      <i class="fas fa-satellite-dish"></i>
+      <span>Signal Lost</span>
     </div>
 
-    <h1 class="error-code">404</h1>
-    <h2 class="error-title">Page Not Found</h2>
-    <p class="error-subtitle">
-      Oops! The page you're looking for seems to have wandered off. 
-      We're working on something amazing. Stay tuned!
+    <div class="code-404 animate__animated animate__fadeIn">
+      <div class="glitch-404" data-text="404">404</div>
+    </div>
+
+    <h1 class="error-title-404 animate__animated animate__fadeInUp">Page Not Found</h1>
+    <p class="error-sub-404 animate__animated animate__fadeInUp animate__delay-1s">
+      Oops! This page drifted into the fashion void. Our stylists are searching the collection, but this look doesn't exist — yet.
     </p>
 
-    <div class="loader-container">
-      <div class="loader">
-        <div class="loader-ring"></div>
-        <div class="loader-ring"></div>
-        <div class="loader-ring"></div>
-        <div class="loader-text">
-          <i class="fas fa-search"></i>
-        </div>
-      </div>
-      <div class="loader-status">
-        <span>Searching for page</span>
-        <div class="loader-dots">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
+    <div class="orbit-loader animate__animated animate__fadeIn">
+      <div class="orbit orbit-1"></div>
+      <div class="orbit orbit-2"></div>
+      <div class="orbit orbit-3"></div>
+      <div class="orbit-center"></div>
     </div>
 
-    <div class="error-actions">
-      <a href="index.html" class="btn-home">
-        <i class="fas fa-home"></i>
-        Back to Home
-      </a>
-      <a href="contact.html" class="btn-back">
-        <i class="fas fa-envelope"></i>
-        Contact Support
-      </a>
+    <div class="scan-status animate__animated animate__fadeIn">
+      <div class="scan-dot"></div>
+      <span id="scan-text">Scanning wardrobe database...</span>
     </div>
-    
 
-    <div class="error-search">
-      <input type="text" placeholder="Search for products, brands..." id="error-search" onkeypress="handleErrorSearch(event)" />
+    <div class="action-row animate__animated animate__fadeInUp animate__delay-1s">
+      <a href="index.html" class="btn-404 btn-404-primary"><i class="fas fa-home"></i> Back to Home</a>
+      <a href="products.html" class="btn-404 btn-404-ghost"><i class="fas fa-tshirt"></i> Browse Products</a>
+      <a href="contact.html" class="btn-404 btn-404-ghost"><i class="fas fa-envelope"></i> Get Help</a>
     </div>
-  </div>
-  
 
-  <footer class="footer" style="background:rgba(15,23,42,0.95);border-top:1px solid rgba(255,255,255,0.1);position:relative;z-index:2;">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-logo">Bevenu<span style="color:var(--accent);">.</span></div>
-          <p style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.7;">Premium fashion for every story. Crafted with love, delivered with care.</p>
-          <div class="social-links" style="display:flex;gap:12px;margin-top:16px;">
-            <a href="#" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:white;transition:all 0.3s ease;"><i class="fab fa-instagram"></i></a>
-            <a href="#" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:white;transition:all 0.3s ease;"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:white;transition:all 0.3s ease;"><i class="fab fa-twitter"></i></a>
-            <a href="#" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:white;transition:all 0.3s ease;"><i class="fab fa-pinterest-p"></i></a>
-          </div>
-        </div>
-        <div class="footer-links">
-          <h4 style="color:white;font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;">Quick Links</h4>
-          <a href="products.html?cat=men" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Men's Collection</a>
-          <a href="products.html?cat=women" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Women's Collection</a>
-          <a href="products.html?cat=kids" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Kids Wear</a>
-          <a href="products.html?cat=accessories" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Accessories</a>
-        </div>
-        <div class="footer-links">
-          <h4 style="color:white;font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;">Help</h4>
-          <a href="contact.html" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Contact Us</a>
-          <a href="#" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Shipping Info</a>
-          <a href="#" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Returns Policy</a>
-          <a href="#" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Size Guide</a>
-        </div>
-        <div class="footer-links">
-          <h4 style="color:white;font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;">Company</h4>
-          <a href="about.html" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">About Bevenu</a>
-          <a href="#" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Careers</a>
-          <a href="#" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Press</a>
-          <a href="admin.html" style="display:block;color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:10px;transition:all 0.3s ease;">Admin Panel</a>
-        </div>
+    <div class="search-404 animate__animated animate__fadeInUp">
+      <i class="fas fa-search"></i>
+      <input type="text" id="error-search" placeholder="Search for products, brands, styles…" />
+      <button onclick="doSearch()">Search</button>
+    </div>
+
+    <div class="quick-links">
+      <a href="products.html?cat=women" class="ql"><i class="fas fa-female"></i> Women</a>
+      <a href="products.html?cat=men" class="ql"><i class="fas fa-male"></i> Men</a>
+      <a href="products.html?cat=kids" class="ql"><i class="fas fa-child"></i> Kids</a>
+      <a href="products.html?cat=accessories" class="ql"><i class="fas fa-gem"></i> Accessories</a>
+      <a href="cart.html" class="ql"><i class="fas fa-shopping-bag"></i> Cart</a>
+      <a href="login.html" class="ql"><i class="fas fa-user"></i> Account</a>
+    </div>
+
+    <div class="stats-strip">
+      <div class="sstat"><div class="sstat-val" data-count="320">0</div><div class="sstat-lbl">Products</div></div>
+      <div class="sstat"><div class="sstat-val" data-count="50">0</div><div class="sstat-lbl">Brands</div></div>
+      <div class="sstat"><div class="sstat-val" data-count="4">0</div><div class="sstat-lbl">Categories</div></div>
+      <div class="sstat"><div class="sstat-val" data-count="10000">0</div><div class="sstat-lbl">Happy Customers</div></div>
+    </div>
+
+    <div class="featured-grid">
+      <div class="fg-card" onclick="window.location='products.html?sort=newest'">
+        <i class="fas fa-star"></i><h4>New Arrivals</h4><p>Fresh styles just landed</p>
       </div>
-      <div class="footer-bottom" style="border-top:1px solid rgba(255,255,255,0.1);padding:20px 0;margin-top:40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-        <p style="color:rgba(255,255,255,0.5);font-size:13px;">&copy; 2026 Bevenu. All rights reserved.</p>
-        <div style="display:flex;gap:12px;font-size:24px;color:rgba(255,255,255,0.5);">
-          <i class="fab fa-cc-visa"></i>
-          <i class="fab fa-cc-mastercard"></i>
-          <i class="fab fa-cc-paypal"></i>
-          <i class="fab fa-google-pay"></i>
-        </div>
+      <div class="fg-card" onclick="window.location='products.html?sale=true'">
+        <i class="fas fa-fire"></i><h4>Sale Items</h4><p>Up to 50% off today</p>
       </div>
+      <div class="fg-card" onclick="window.location='products.html?trending=true'">
+        <i class="fas fa-chart-line"></i><h4>Trending</h4><p>What everyone's wearing</p>
+      </div>
+      <div class="fg-card" onclick="window.location='contact.html'">
+        <i class="fas fa-headset"></i><h4>Support</h4><p>We're here to help</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer-404">
+    <p>&copy; 2026 Bevenu. All rights reserved.</p>
+    <div class="footer-links-404">
+      <a href="index.html">Home</a>
+      <a href="products.html">Shop</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
     </div>
   </footer>
 </div>
 
-
-<div id="toast-container"></div>
-  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
 <script src="script.js"></script>
-  
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  if (typeof initTheme === 'function') initTheme();
+  initTheme();
+  initStarfield();
+  initScanText();
+  initCounters();
+  initTilt();
 
-  simulateLoading();
+  document.getElementById('error-search').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doSearch();
+  });
 });
 
-function simulateLoading() {
-  const statuses = [
-    'Searching for page',
-    'Checking database',
-    'Looking in archives',
-    'Scanning servers',
-    'Almost there',
-    'Still searching'
-  ];
-  
-  let index = 0;
-  setInterval(() => {
-    const statusEl = document.querySelector('.loader-status span:first-child');
-    if (statusEl) {
-      statusEl.textContent = statuses[index];
-      index = (index + 1) % statuses.length;
-    }
-  }, 3000);
+function initStarfield() {
+  const canvas = document.getElementById('starfield');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, stars = [];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', () => { resize(); createStars(); });
+
+  function createStars() {
+    stars = Array.from({ length: 180 }, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      r: Math.random() * 1.8 + .2, vx: (Math.random() - .5) * .3, vy: (Math.random() - .5) * .3,
+      a: Math.random(), da: (Math.random() * .01 + .003) * (Math.random() > .5 ? 1 : -1)
+    }));
+  }
+  createStars();
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    stars.forEach(s => {
+      s.x = (s.x + s.vx + W) % W;
+      s.y = (s.y + s.vy + H) % H;
+      s.a = Math.max(.05, Math.min(1, s.a + s.da));
+      if (s.a >= 1 || s.a <= .05) s.da *= -1;
+      ctx.save();
+      ctx.globalAlpha = s.a;
+      ctx.fillStyle = '#c9a96e';
+      ctx.shadowBlur = 6; ctx.shadowColor = '#c9a96e';
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
 }
 
-function handleErrorSearch(event) {
-  if (event.key === 'Enter') {
-    const query = event.target.value.trim();
-    if (query) {
-      window.location.href = `products.html?q=${encodeURIComponent(query)}`;
+function initScanText() {
+  const msgs = [
+    'Scanning wardrobe database…',
+    'Checking fashion archives…',
+    'Looking through collections…',
+    'Consulting the style oracle…',
+    'Still searching…',
+    'Nothing here yet!'
+  ];
+  let i = 0;
+  setInterval(() => {
+    i = (i + 1) % msgs.length;
+    const el = document.getElementById('scan-text');
+    if (el) {
+      el.style.opacity = '0';
+      setTimeout(() => { el.textContent = msgs[i]; el.style.opacity = '1'; el.style.transition = 'opacity .4s'; }, 200);
     }
+  }, 2800);
+}
+
+function initCounters() {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('[data-count]').forEach(el => {
+        const target = parseInt(el.dataset.count);
+        const cu = new countUp.CountUp(el, target, { duration: 2, separator: ',' });
+        if (!cu.error) cu.start();
+      });
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: .3 });
+
+  const strip = document.querySelector('.stats-strip');
+  if (strip) observer.observe(strip);
+}
+
+function initTilt() {
+  if (typeof VanillaTilt !== 'undefined') {
+    VanillaTilt.init(document.querySelectorAll('.fg-card'), { max: 12, speed: 400, glare: true, 'max-glare': .15 });
   }
 }
 
-if (typeof gtag !== 'undefined') {
-  gtag('event', 'page_not_found', {
-    page_location: window.location.href,
-    page_path: window.location.pathname
-  });
+function doSearch() {
+  const q = document.getElementById('error-search').value.trim();
+  if (q) window.location.href = `products.html?q=${encodeURIComponent(q)}`;
+  else showToast('Enter something to search!', 'info');
+}
+
+function showToast(msg, type) {
+  const c = document.getElementById('toast-container'); if (!c) return;
+  const icons = { success:'fa-check-circle', error:'fa-exclamation-circle', info:'fa-info-circle' };
+  const t = document.createElement('div'); t.className = `toast ${type}`;
+  t.innerHTML = `<i class="fas ${icons[type]||icons.info}" style="color:var(--${type==='success'?'su':type==='error'?'er':'in'})"></i><span>${msg}</span>`;
+  c.appendChild(t); setTimeout(() => t.remove(), 3000);
 }
 </script>
 </body>
