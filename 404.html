@@ -1,16 +1,30 @@
+<!-- File Not Found : Err 404 -->
+<!-- #404 -->
+
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Page Not Found - Bevenu Premium Fashion">
+  <meta name="robots" content="noindex, follow">
   <title>404 — Bevenu</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magic-animated/1.0.0/magic.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animated-headline/1.0.0/animated-headline.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.7/css/flag-icons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.15.1/devicon.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/9.15.0/simple-icons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fontisto/3.0.4/fontisto.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" />
   <link rel="stylesheet" href="styles.css" />
-
   <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%25" stop-color="%2338bdf8"/><stop offset="100%25" stop-color="%236366f1"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="%230b1220"/><text x="50%25" y="52%25" font-size="30" text-anchor="middle" fill="url(%23g)" font-family="Segoe UI,Arial,sans-serif" font-weight="700" dy=".3em">404</text></svg>'>
 
   <style>
@@ -31,20 +45,22 @@
     body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t); overflow-x: hidden; transition: background .3s, color .3s; }
     a { text-decoration: none; color: inherit; }
 
+
     #toast-container { position: fixed; top: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
     .toast { display: flex; align-items: center; gap: 12px; padding: 14px 20px; border-radius: var(--r); background: var(--bgc); box-shadow: var(--shl); border-left: 4px solid var(--a); min-width: 280px; font-size: 14px; font-weight: 500; animation: slideInRight .3s ease, fadeOut .3s ease 2.7s forwards; }
     .toast.success { border-color: var(--su); } .toast.error { border-color: var(--er); } .toast.info { border-color: var(--in); }
     @keyframes slideInRight { from { opacity:0; transform:translateX(20px); } to { opacity:1; transform:none; } }
     @keyframes fadeOut { from { opacity:1; } to { opacity:0; transform:translateX(20px); } }
 
+
     .pg-wrap { min-height: 100vh; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+
 
     .scene-bg {
       position: fixed; inset: 0; z-index: 0;
       background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
     }
     .scene-bg canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .7; }
-
     .floating-shapes { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
     .fs { position: absolute; border-radius: 50%; opacity: .06; animation: floatAround linear infinite; }
     .fs:nth-child(1){ width:400px;height:400px;background:var(--a);top:-100px;left:-100px;animation-duration:25s; }
@@ -52,7 +68,6 @@
     .fs:nth-child(3){ width:180px;height:180px;background:#3b82f6;bottom:10%;left:10%;animation-duration:22s;animation-delay:-10s; }
     .fs:nth-child(4){ width:120px;height:120px;background:#ec4899;top:30%;left:40%;animation-duration:16s;animation-delay:-4s; }
     @keyframes floatAround { 0%,100%{transform:translate(0,0) rotate(0deg);} 25%{transform:translate(30px,-30px) rotate(90deg);} 50%{transform:translate(-20px,20px) rotate(180deg);} 75%{transform:translate(20px,30px) rotate(270deg);} }
-
     .nav-404 {
       position: relative; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -225,6 +240,14 @@
       .stats-strip { gap: 20px; padding: 20px; }
       .footer-404 { flex-direction: column; text-align: center; }
     }
+
+    [data-aos] {
+      opacity: 0;
+      transition-property: opacity, transform;
+    }
+    [data-aos].aos-animate {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -234,6 +257,7 @@
   <div class="scene-bg">
     <canvas id="starfield"></canvas>
   </div>
+
   <div class="floating-shapes">
     <div class="fs"></div><div class="fs"></div><div class="fs"></div><div class="fs"></div>
   </div>
@@ -317,6 +341,7 @@
     </div>
   </main>
 
+
   <footer class="footer-404">
     <p>&copy; 2026 Bevenu. All rights reserved.</p>
     <div class="footer-links-404">
@@ -329,22 +354,35 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.umd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/js/glightbox.min.js"></script>
 <script src="script.js"></script>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  initTheme();
+  if (typeof initTheme === 'function') initTheme();
+  AOS.init({ duration: 800, once: true, offset: 100 });
   initStarfield();
   initScanText();
   initCounters();
   initTilt();
+  initTypedText();
+  initLottieAnimation();
+  initGlightbox();
+  initGSAPAnimations();
 
   document.getElementById('error-search').addEventListener('keydown', e => {
     if (e.key === 'Enter') doSearch();
   });
 });
+
 
 function initStarfield() {
   const canvas = document.getElementById('starfield');
@@ -407,6 +445,7 @@ function initScanText() {
   }, 2800);
 }
 
+
 function initCounters() {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -424,11 +463,70 @@ function initCounters() {
   if (strip) observer.observe(strip);
 }
 
+
 function initTilt() {
   if (typeof VanillaTilt !== 'undefined') {
     VanillaTilt.init(document.querySelectorAll('.fg-card'), { max: 12, speed: 400, glare: true, 'max-glare': .15 });
   }
 }
+
+
+function initTypedText() {
+  if (typeof Typed !== 'undefined') {
+    new Typed('#scan-text', {
+      strings: [
+        'Scanning wardrobe database…',
+        'Checking fashion archives…',
+        'Looking through collections…',
+        'Consulting the style oracle…',
+        'Still searching…',
+        'Nothing here yet!'
+      ],
+      typeSpeed: 40,
+      backSpeed: 20,
+      backDelay: 1500,
+      loop: true,
+      showCursor: false
+    });
+  }
+}
+
+
+function initLottieAnimation() {
+  if (typeof lottie !== 'undefined') {
+    // Example: Load a Lottie animation for the orbit loader
+    // lottie.loadAnimation({
+    //   container: document.querySelector('.orbit-loader'),
+    //   renderer: 'svg',
+    //   loop: true,
+    //   autoplay: true,
+    //   path: 'https://assets.lottiefiles.com/packages/lf20_abc123.json'
+    // });
+  }
+}
+
+function initGlightbox() {
+  if (typeof GLightbox !== 'undefined') {
+    GLightbox({ selector: '.fg-card' });
+  }
+}
+
+function initGSAPAnimations() {
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from('.code-404', {
+      scrollTrigger: { trigger: '.code-404', start: 'top 80%' },
+      scale: 0.8, opacity: 0, duration: 1, ease: 'power2.out'
+    });
+
+    gsap.from('.btn-404', {
+      scrollTrigger: { trigger: '.action-row', start: 'top 80%' },
+      y: 30, opacity: 0, stagger: 0.15, duration: 0.7, ease: 'power2.out'
+    });
+  }
+}
+
 
 function doSearch() {
   const q = document.getElementById('error-search').value.trim();
@@ -436,11 +534,13 @@ function doSearch() {
   else showToast('Enter something to search!', 'info');
 }
 
+
 function showToast(msg, type) {
   const c = document.getElementById('toast-container'); if (!c) return;
   const icons = { success:'fa-check-circle', error:'fa-exclamation-circle', info:'fa-info-circle' };
+  const colors = { success:'var(--su)', error:'var(--er)', info:'var(--in)' };
   const t = document.createElement('div'); t.className = `toast ${type}`;
-  t.innerHTML = `<i class="fas ${icons[type]||icons.info}" style="color:var(--${type==='success'?'su':type==='error'?'er':'in'})"></i><span>${msg}</span>`;
+  t.innerHTML = `<i class="fas ${icons[type]||icons.info}" style="color:${colors[type]}"></i><span>${msg}</span>`;
   c.appendChild(t); setTimeout(() => t.remove(), 3000);
 }
 </script>
