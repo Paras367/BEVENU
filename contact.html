@@ -3,1490 +3,519 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Contact Bevenu — Premium fashion e-commerce. Get in touch with our team: Paras Dhiman (CEO) & Dhrupad Arora (Designs Manager).">
+  <meta name="description" content="Contact Bevenu — Premium fashion e-commerce. Get in touch with Paras Dhiman (CEO) & Dhrupad Arora (Designs Manager).">
   <title>Contact Us — Bevenu</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230F172A'/%3E%3Cpath d='M50 15 C 44 15 40 22 40 30 C 40 38 50 45 50 45 C 50 45 60 38 60 30 C 60 22 56 15 50 15 Z' fill='%23E11D48'/%3E%3Crect x='20' y='42' width='60' height='4' rx='2' fill='%23FFFFFF'/%3E%3Cpath d='M25 50 L75 50 L85 88 A 8 8 0 0 1 75 94 L25 94 A 8 8 0 0 1 15 88 Z' fill='%23FFFFFF'/%3E%3Cpath d='M35 50 V 35 C 35 25 65 25 65 35 V 50' stroke='%23E11D48' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3Cpath d='M50 82 C 50 82 40 72 40 64 C 40 58 46 54 50 58 C 54 54 60 58 60 64 C 60 72 50 82 50 82 Z' fill='%23E11D48'/%3E%3C/svg%3E">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230F172A'/%3E%3Cpath d='M50 15 C 44 15 40 22 40 30 C 40 38 50 45 50 45 C 50 45 60 38 60 30 C 60 22 56 15 50 15 Z' fill='%23E11D48'/%3E%3C/svg%3E">
+
   <style>
+    :root {
+      --p:#1a1a2e;--pl:#16213e;--a:#c9a96e;--ad:#a07840;--al:#e8d5b0;
+      --bg:#fafaf8;--bgc:#fff;--bgs:#f5f3ef;--bgl:#f0ede8;
+      --bd:#e8e4dc;--bdl:#f0ede8;--t:#1a1a1a;--ts:#4a4a4a;--tm:#9a9a9a;
+      --su:#22c55e;--wa:#f59e0b;--er:#ef4444;--in:#3b82f6;--pu:#8b5cf6;
+      --sh:0 2px 8px rgba(0,0,0,.06);--shm:0 4px 20px rgba(0,0,0,.10);--shl:0 8px 40px rgba(0,0,0,.14);
+      --r:10px;--rl:16px;--rx:24px;--tr:all .3s cubic-bezier(.4,0,.2,1);--nav:70px;
+    }
+    [data-theme="dark"] {
+      --bg:#0a0a0f;--bgc:#13131a;--bgs:#1a1a24;--bgl:#16161f;--bd:#252535;--bdl:#1e1e2e;
+      --t:#f0f0f5;--ts:#9090a8;--tm:#55556a;--p:#f0ede8;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t); line-height: 1.6; transition: background .3s, color .3s; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
 
-    .contact-hero {
-      min-height: 60vh;
-      background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 60px 24px;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .contact-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url('https://images.unsplash.com/photo-1582719188393-bb71ca45dbb9?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdGhpbmclMjBzdG9yZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop') center/cover;
-      opacity: 0.08;
-      filter: blur(1px);
-    }
-    
-    .contact-hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 700px;
-      color: white;
-    }
-    
-    .contact-hero-tag {
-      display: inline-block;
-      background: rgba(201,169,110,0.2);
-      color: var(--accent);
-      border: 1px solid rgba(201,169,110,0.4);
-      padding: 6px 16px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-    
-    .contact-hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 16px;
-      color: white;
-    }
-    
-    .contact-hero p {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.85);
-      line-height: 1.7;
-      margin-bottom: 28px;
-    }
-    
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 32px;
-      padding: 60px 0;
-    }
-    
-    @media (max-width: 900px) {
-      .contact-grid { grid-template-columns: 1fr; }
-    }
-    
-    .contact-form-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      box-shadow: var(--shadow-sm);
-    }
-    
-    .contact-form-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      margin-bottom: 24px;
-      color: var(--text);
-    }
-    
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    
-    @media (max-width: 600px) {
-      .form-row { grid-template-columns: 1fr; }
-    }
-    
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: var(--text);
-    }
-    
-    .input-field {
-      width: 100%;
-      padding: 12px 16px;
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-md);
-      background: var(--bg-secondary);
-      color: var(--text);
-      font-size: 14px;
-      outline: none;
-      transition: var(--transition);
-      font-family: inherit;
-    }
-    
-    .input-field:focus {
-      border-color: var(--accent);
-      background: var(--bg-card);
-      box-shadow: 0 0 0 3px rgba(201,169,110,0.12);
-    }
-    
-    textarea.input-field {
-      min-height: 120px;
-      resize: vertical;
-    }
-    
-    .submit-btn {
-      width: 100%;
-      margin-top: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    
-    .contact-info-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      box-shadow: var(--shadow-sm);
-      align-self: start;
-      position: sticky;
-      top: calc(var(--nav-h) + 24px);
-    }
-    
-    .contact-info-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      margin-bottom: 24px;
-      color: var(--text);
-    }
-    
-    .contact-method {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-    
-    .contact-method:last-child { border-bottom: none; }
-    
-    .contact-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius-md);
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-    
-    .contact-details h4 {
-      font-weight: 600;
-      font-size: 15px;
-      margin-bottom: 4px;
-      color: var(--text);
-    }
-    
-    .contact-details p, .contact-details a {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      transition: var(--transition-fast);
-    }
-    
-    .contact-details a:hover {
-      color: var(--accent);
-    }
-    
-    .business-hours {
-      margin-top: 24px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border-light);
-    }
-    
-    .hours-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 14px;
-      padding: 6px 0;
-      color: var(--text-secondary);
-    }
-    
-    .hours-row.today {
-      color: var(--accent);
-      font-weight: 600;
-    }
-    
+    #toast-container { position: fixed; top: 90px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
+    .toast { display: flex; align-items: center; gap: 12px; padding: 14px 20px; border-radius: var(--rl); background: var(--bgc); box-shadow: var(--shl); border-left: 4px solid var(--a); min-width: 280px; font-size: 14px; font-weight: 500; animation: toastIn .3s ease, toastOut .3s ease 2.7s forwards; }
+    .toast.success { border-color: var(--su); } .toast.error { border-color: var(--er); } .toast.info { border-color: var(--in); }
+    @keyframes toastIn { from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:none;} }
+    @keyframes toastOut { from{opacity:1;}to{opacity:0;transform:translateX(20px);} }
 
-    .leadership-section {
-      padding: 60px 0;
-      background: var(--bg-secondary);
+    .navbar { position: sticky; top: 0; z-index: 1000; background: var(--bgc); border-bottom: 1px solid var(--bd); box-shadow: var(--sh); height: var(--nav); transition: var(--tr); }
+    .nav-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; gap: 20px; }
+    .nav-logo a { display: flex; align-items: baseline; gap: 2px; }
+    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 800; color: var(--t); }
+    .logo-dot { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--a); font-weight: 800; }
+    .nav-actions { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+    .nav-btn { display: flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: var(--r); color: var(--t); font-size: 14px; font-weight: 500; transition: var(--tr); background: none; border: none; cursor: pointer; white-space: nowrap; }
+    .nav-btn:hover { background: var(--bgs); color: var(--a); }
+    .badge { position: absolute; top: 2px; right: 2px; background: var(--a); color: white; font-size: 10px; font-weight: 700; min-width: 18px; height: 18px; border-radius: 999px; display: flex; align-items: center; justify-content: center; }
+    .cart-btn { position: relative; }
+
+    .hero-contact {
+      min-height: 62vh; position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #0f0c29 0%, #1a1a2e 50%, #302b63 100%);
+      display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 24px 80px;
     }
-    
-    .leadership-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 32px;
+    .hero-particles { position: absolute; inset: 0; }
+    .hero-overlay { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 100%, rgba(201,169,110,.12) 0%, transparent 60%); }
+    .hero-content { position: relative; z-index: 2; max-width: 720px; color: white; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(201,169,110,.15); border: 1px solid rgba(201,169,110,.35);
+      padding: 6px 18px; border-radius: 999px; font-size: 12px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase; color: var(--a); margin-bottom: 22px;
     }
-    
-    @media (max-width: 768px) {
-      .leadership-grid { grid-template-columns: 1fr; }
+    .hero-h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem,6vw,4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+    .hero-h1 em { color: var(--a); font-style: italic; }
+    .hero-p { font-size: 1.05rem; color: rgba(255,255,255,.78); line-height: 1.75; margin-bottom: 28px; max-width: 560px; margin-inline: auto; }
+    .hero-scroll { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 36px; color: rgba(255,255,255,.4); font-size: 12px; animation: scrollBounce 2.5s infinite; }
+    @keyframes scrollBounce { 0%,100%{transform:translateY(0);}50%{transform:translateY(8px);} }
+
+    .contact-wave { margin-top: -2px; display: block; }
+
+    .section { padding: 72px 0; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+    .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--a); display: block; margin-bottom: 8px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,3vw,2.6rem); font-weight: 700; line-height: 1.2; }
+
+    .contact-layout { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: start; }
+
+    .card { background: var(--bgc); border: 1px solid var(--bd); border-radius: var(--rl); box-shadow: var(--sh); }
+
+    .form-card { padding: 36px; }
+    .form-card-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 6px; }
+    .form-card-sub { font-size: 14px; color: var(--tm); margin-bottom: 28px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: var(--ts); margin-bottom: 7px; }
+    .input-f {
+      width: 100%; padding: 12px 15px; border: 1.5px solid var(--bd);
+      border-radius: var(--r); background: var(--bgs); color: var(--t);
+      font-size: 14px; font-family: 'DM Sans', sans-serif; outline: none; transition: var(--tr);
     }
-    
+    .input-f:focus { border-color: var(--a); background: var(--bgc); box-shadow: 0 0 0 3px rgba(201,169,110,.12); }
+    .input-f.error-field { border-color: var(--er); box-shadow: 0 0 0 3px rgba(239,68,68,.1); }
+    .input-f.valid-field { border-color: var(--su); }
+    .field-err { font-size: 11px; color: var(--er); margin-top: 4px; display: none; }
+    .field-err.show { display: block; }
+    textarea.input-f { min-height: 120px; resize: vertical; }
+    select.input-f { cursor: pointer; }
+
+    .char-counter { font-size: 11px; color: var(--tm); text-align: right; margin-top: 4px; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: var(--rx); font-size: 14px; font-weight: 600; cursor: pointer; border: 2px solid transparent; transition: var(--tr); white-space: nowrap; font-family: 'DM Sans', sans-serif; }
+    .btn-primary { background: linear-gradient(135deg, var(--a), var(--ad)); color: white; border-color: var(--a); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(201,169,110,.4); filter: brightness(1.05); }
+    .btn-primary:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+    .btn-outline { background: transparent; color: var(--t); border-color: var(--bd); }
+    .btn-outline:hover { border-color: var(--a); color: var(--a); }
+    .btn-full { width: 100%; justify-content: center; margin-top: 4px; }
+
+    .form-success-state {
+      display: none; text-align: center; padding: 48px 24px;
+    }
+    .fss-icon { font-size: 4rem; color: var(--su); margin-bottom: 16px; animation: successPop .5s ease; }
+    @keyframes successPop { from{transform:scale(0);} 70%{transform:scale(1.2);} to{transform:scale(1);} }
+    .fss-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+    .fss-sub { font-size: 14px; color: var(--tm); margin-bottom: 24px; }
+
+    .info-card { padding: 28px; position: sticky; top: calc(var(--nav) + 20px); }
+    .info-card-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; }
+
+    .contact-method { display: flex; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--bdl); }
+    .contact-method:last-of-type { border-bottom: none; }
+    .cm-icon { width: 46px; height: 46px; border-radius: var(--r); background: linear-gradient(135deg, var(--a), var(--ad)); color: white; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .cm-label { font-weight: 700; font-size: 14px; margin-bottom: 3px; }
+    .cm-val { font-size: 13px; color: var(--ts); line-height: 1.6; }
+    .cm-val a { color: var(--ts); transition: var(--tr); }
+    .cm-val a:hover { color: var(--a); }
+
+    .online-status { display: flex; align-items: center; gap: 8px; margin-top: 20px; padding: 12px 16px; background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.2); border-radius: var(--r); font-size: 13px; font-weight: 600; color: var(--su); }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--su); animation: statusPulse 2s infinite; flex-shrink: 0; }
+    @keyframes statusPulse { 0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.4);}50%{box-shadow:0 0 0 8px rgba(34,197,94,0);} }
+
+    .hours-grid { display: flex; flex-direction: column; gap: 6px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--bdl); }
+    .hrow { display: flex; justify-content: space-between; font-size: 13px; color: var(--ts); padding: 5px 0; }
+    .hrow.today { color: var(--a); font-weight: 700; }
+    .hrow.closed { color: var(--tm); }
+
+    .social-row { display: flex; gap: 10px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--bdl); }
+    .soc-btn { width: 38px; height: 38px; border-radius: 50%; background: var(--bgs); border: 1.5px solid var(--bd); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--tm); transition: var(--tr); }
+    .soc-btn:hover { background: var(--a); border-color: var(--a); color: white; transform: translateY(-3px); }
+
+    .leadership-section { padding: 72px 0; background: var(--bgs); }
+    .leaders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+
     .leader-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      text-align: center;
-      transition: var(--transition);
+      background: var(--bgc); border: 1px solid var(--bd); border-radius: var(--rl);
+      padding: 32px; text-align: center; transition: var(--tr); cursor: default;
+      position: relative; overflow: hidden;
     }
-    
-    .leader-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--accent);
-    }
-    
+    .leader-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, transparent 70%, rgba(201,169,110,.04) 100%); pointer-events: none; }
+    .leader-card:hover { transform: translateY(-6px); box-shadow: var(--shl); border-color: var(--a); }
     .leader-avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin: 0 auto 16px;
-      background: linear-gradient(135deg, var(--accent-light), var(--bg-secondary));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      color: var(--accent-dark);
-      border: 3px solid var(--accent);
-      position: relative;
+      width: 110px; height: 110px; border-radius: 50%; margin: 0 auto 18px;
+      background: linear-gradient(135deg, var(--al), var(--bgs));
+      display: flex; align-items: center; justify-content: center; font-size: 2.8rem;
+      color: var(--ad); border: 3px solid var(--a); position: relative;
     }
-    
     .leader-avatar::after {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border: 2px solid var(--accent);
-      border-radius: 50%;
-      opacity: 0.2;
-      animation: pulse 2s infinite;
+      content: ''; position: absolute; inset: -6px; border: 1.5px solid rgba(201,169,110,.3);
+      border-radius: 50%; animation: avatarPulse 3s ease-in-out infinite;
     }
-    
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.2; }
-      50% { transform: scale(1.05); opacity: 0.4; }
-    }
-    
-    .leader-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-      color: var(--text);
-    }
-    
-    .leader-role {
-      font-size: 14px;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 8px;
-      display: block;
-    }
-    
-    .leader-desc {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 16px;
-    }
-    
-    .leader-social {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
-    
-    .leader-social a {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--bg-secondary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      color: var(--text-muted);
-      transition: var(--transition);
-    }
-    
-    .leader-social a:hover {
-      background: var(--accent);
-      color: white;
-      transform: translateY(-2px);
-    }
+    @keyframes avatarPulse { 0%,100%{transform:scale(1);opacity:.3;}50%{transform:scale(1.06);opacity:.6;} }
+    .leader-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 4px; }
+    .leader-role { font-size: 12px; color: var(--a); font-weight: 700; letter-spacing: .5px; text-transform: uppercase; display: block; margin-bottom: 12px; }
+    .leader-desc { font-size: 14px; color: var(--ts); line-height: 1.7; margin-bottom: 18px; }
+    .leader-socials { display: flex; justify-content: center; gap: 10px; }
+    .ls-btn { width: 34px; height: 34px; border-radius: 50%; background: var(--bgs); border: 1.5px solid var(--bd); display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--tm); transition: var(--tr); }
+    .ls-btn:hover { background: var(--a); border-color: var(--a); color: white; transform: translateY(-2px); }
 
-    .faq-section {
-      padding: 60px 0;
-    }
-    
+    .faq-section { padding: 72px 0; }
+    .faq-wrap { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; margin-top: 40px; }
     .faq-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      margin-bottom: 12px;
-      overflow: hidden;
+      background: var(--bgc); border: 1.5px solid var(--bd); border-radius: var(--rl);
+      overflow: hidden; transition: var(--tr);
     }
-    
-    .faq-question {
-      padding: 16px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 15px;
-      color: var(--text);
-      transition: var(--transition-fast);
+    .faq-item.open { border-color: var(--a); box-shadow: 0 0 0 3px rgba(201,169,110,.08); }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 22px; cursor: pointer; font-weight: 600; font-size: 15px;
+      color: var(--t); user-select: none; transition: var(--tr);
     }
-    
-    .faq-question:hover {
-      background: var(--bg-secondary);
-      color: var(--accent);
+    .faq-q:hover { color: var(--a); }
+    .faq-item.open .faq-q { color: var(--a); border-bottom: 1px solid var(--bdl); }
+    .faq-chevron { font-size: 13px; color: var(--tm); transition: transform .35s cubic-bezier(.34,1.56,.64,1); flex-shrink: 0; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--a); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height .4s cubic-bezier(.4,0,.2,1), opacity .3s ease;
+      opacity: 0; padding: 0 22px;
     }
-    
-    .faq-question i {
-      transition: transform var(--transition-fast);
+    .faq-item.open .faq-a { max-height: 400px; opacity: 1; padding: 0 22px 18px; }
+    .faq-a p { font-size: 14px; color: var(--ts); line-height: 1.75; margin-top: 12px; }
+
+    .live-chat-btn {
+      position: fixed; bottom: 28px; right: 28px; z-index: 500;
+      width: 62px; height: 62px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--a), var(--ad));
+      color: white; display: flex; align-items: center; justify-content: center;
+      font-size: 26px; box-shadow: 0 6px 24px rgba(201,169,110,.5); cursor: pointer;
+      border: none; transition: var(--tr); animation: floatChat 3s ease-in-out infinite;
     }
-    
-    .faq-item.active .faq-question i {
-      transform: rotate(180deg);
+    .live-chat-btn:hover { transform: scale(1.12); box-shadow: 0 10px 36px rgba(201,169,110,.6); animation: none; }
+    .live-chat-btn.active { background: var(--p); animation: none; }
+    @keyframes floatChat { 0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);} }
+    .chat-pulse { position: absolute; top: -2px; right: -2px; width: 16px; height: 16px; border-radius: 50%; background: var(--su); border: 2px solid var(--bgc); animation: statusPulse 2s infinite; }
+
+    .chat-win {
+      position: fixed; bottom: 104px; right: 28px; z-index: 499;
+      width: 360px; max-width: calc(100vw - 40px); background: var(--bgc);
+      border: 1px solid var(--bd); border-radius: var(--rl); box-shadow: var(--shl);
+      display: flex; flex-direction: column; overflow: hidden;
+      transform: scale(.9) translateY(20px); opacity: 0; pointer-events: none; transition: var(--tr);
     }
-    
-    .faq-answer {
-      padding: 0 20px;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height var(--transition), padding var(--transition);
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.7;
+    .chat-win.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
+    .chat-hdr {
+      padding: 14px 18px; background: var(--p); color: white;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    
-    .faq-item.active .faq-answer {
-      padding: 0 20px 16px;
-      max-height: 500px;
+    [data-theme="dark"] .chat-hdr { background: var(--bgs); border-bottom: 1px solid var(--bd); }
+    .chat-hdr-info { display: flex; align-items: center; gap: 10px; }
+    .chat-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--a); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
+    .chat-hdr-text strong { font-size: 14px; display: block; }
+    .chat-hdr-text small { font-size: 11px; opacity: .7; }
+    .chat-close { background: none; border: none; color: white; font-size: 18px; cursor: pointer; opacity: .7; transition: var(--tr); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .chat-close:hover { opacity: 1; background: rgba(255,255,255,.1); }
+    .chat-body { padding: 16px; max-height: 280px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+    .chat-msg { padding: 10px 14px; border-radius: 14px; font-size: 13.5px; line-height: 1.5; max-width: 85%; }
+    .chat-msg.bot { background: var(--bgs); color: var(--t); align-self: flex-start; border-bottom-left-radius: 4px; }
+    .chat-msg.user { background: var(--a); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+    .chat-typing { display: flex; gap: 4px; align-items: center; padding: 10px 14px; background: var(--bgs); border-radius: 14px; width: 60px; border-bottom-left-radius: 4px; }
+    .chat-typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--tm); animation: typingDot 1.2s infinite; }
+    .chat-typing span:nth-child(2) { animation-delay: .2s; } .chat-typing span:nth-child(3) { animation-delay: .4s; }
+    @keyframes typingDot { 0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-6px);} }
+    .chat-inp { display: flex; gap: 8px; padding: 12px; border-top: 1px solid var(--bdl); }
+    .chat-inp input { flex: 1; padding: 9px 14px; border: 1.5px solid var(--bd); border-radius: var(--r); background: var(--bgs); color: var(--t); font-size: 13px; outline: none; font-family: 'DM Sans', sans-serif; transition: var(--tr); }
+    .chat-inp input:focus { border-color: var(--a); }
+    .chat-inp button { padding: 9px 16px; background: var(--a); color: white; border: none; border-radius: var(--r); font-weight: 700; font-size: 13px; cursor: pointer; transition: var(--tr); }
+    .chat-inp button:hover { background: var(--ad); }
+
+    .newsletter-sec { padding: 60px 0; background: linear-gradient(135deg, var(--al) 0%, #f5efe3 100%); }
+    [data-theme="dark"] .newsletter-sec { background: linear-gradient(135deg, #2a2015 0%, #1a1a2e 100%); }
+    .nl-content { text-align: center; }
+    .nl-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 10px; }
+    .nl-sub { color: var(--ts); margin-bottom: 28px; font-size: 1.05rem; }
+    .nl-form { display: flex; gap: 12px; max-width: 500px; margin: 0 auto; }
+    .nl-form input { flex: 1; padding: 12px 18px; border: 1.5px solid var(--bd); border-radius: var(--rx); background: white; font-size: 14px; outline: none; color: var(--t); transition: var(--tr); }
+    .nl-form input:focus { border-color: var(--a); }
+
+    .footer { background: var(--p); color: rgba(255,255,255,.85); padding: 56px 0 0; }
+    [data-theme="dark"] .footer { background: var(--bgs); border-top: 1px solid var(--bd); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 36px; padding-bottom: 40px; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 800; color: white; margin-bottom: 12px; }
+    .footer-logo span { color: var(--a); }
+    .footer-brand p { font-size: 14px; color: rgba(255,255,255,.6); line-height: 1.7; margin-bottom: 20px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-social-btn { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; font-size: 13px; color: white; transition: var(--tr); }
+    .footer-social-btn:hover { background: var(--a); transform: translateY(-2px); }
+    .footer-col h4 { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: white; margin-bottom: 16px; }
+    .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 9px; transition: var(--tr); }
+    .footer-col a:hover { color: var(--a); padding-left: 4px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding: 18px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .footer-bottom p { font-size: 13px; color: rgba(255,255,255,.45); }
+    .payment-icons { display: flex; gap: 10px; font-size: 22px; color: rgba(255,255,255,.45); }
+
+    @media (max-width: 980px) { .contact-layout { grid-template-columns: 1fr; } .info-card { position: static; } }
+    @media (max-width: 768px) {
+      .leaders-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .nl-form { flex-direction: column; }
     }
-    
-    /* Live Chat Toggle */
-    .chat-toggle {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      box-shadow: var(--shadow-lg);
-      cursor: pointer;
-      z-index: 999;
-      transition: var(--transition);
-      animation: bounce 2s infinite;
-    }
-    
-    .chat-toggle:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 30px rgba(225,29,72,0.5);
-    }
-    
-    .chat-toggle.active {
-      animation: none;
-      background: var(--primary);
-    }
-    
-    .chat-window {
-      position: fixed;
-      bottom: 96px;
-      right: 24px;
-      width: 360px;
-      max-width: 90vw;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-xl);
-      z-index: 998;
-      display: none;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    
-    .chat-window.active {
-      display: flex;
-      animation: slideUp 0.3s ease;
-    }
-    
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .chat-header {
-      padding: 16px 20px;
-      background: var(--primary);
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .chat-header h4 {
-      font-weight: 600;
-      font-size: 15px;
-    }
-    
-    .chat-header button {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition-fast);
-    }
-    
-    .chat-header button:hover {
-      background: rgba(255,255,255,0.1);
-    }
-    
-    .chat-body {
-      padding: 16px 20px;
-      flex: 1;
-      overflow-y: auto;
-      max-height: 300px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    
-    .chat-message {
-      padding: 10px 14px;
-      border-radius: var(--radius-md);
-      font-size: 14px;
-      line-height: 1.5;
-      max-width: 85%;
-    }
-    
-    .chat-message.bot {
-      background: var(--bg-secondary);
-      color: var(--text);
-      align-self: flex-start;
-      border-bottom-left-radius: 4px;
-    }
-    
-    .chat-message.user {
-      background: var(--accent);
-      color: white;
-      align-self: flex-end;
-      border-bottom-right-radius: 4px;
-    }
-    
-    .chat-input {
-      padding: 12px 16px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      gap: 8px;
-    }
-    
-    .chat-input input {
-      flex: 1;
-      padding: 10px 14px;
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-md);
-      background: var(--bg-secondary);
-      color: var(--text);
-      font-size: 14px;
-      outline: none;
-    }
-    
-    .chat-input input:focus {
-      border-color: var(--accent);
-    }
-    
-    .chat-input button {
-      padding: 10px 16px;
-      background: var(--accent);
-      color: white;
-      border: none;
-      border-radius: var(--radius-md);
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    
-    .chat-input button:hover {
-      background: var(--accent-dark);
-    }
-    
-   
-    .contact-cta {
-      padding: 60px 0;
-      background: linear-gradient(135deg, var(--accent-light) 0%, #f5efe3 100%);
-      text-align: center;
-    }
-    
-    [data-theme="dark"] .contact-cta {
-      background: linear-gradient(135deg, #2a2015 0%, #1a1a2e 100%);
-    }
-    
-    .contact-cta h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      margin-bottom: 12px;
-      color: var(--text);
-    }
-    
-    .contact-cta p {
-      color: var(--text-secondary);
-      margin-bottom: 24px;
-      max-width: 500px;
-      margin-inline: auto;
-    }
-    
-    .contact-cta .newsletter-form {
-      max-width: 480px;
-      margin: 0 auto;
-      display: flex;
-      gap: 12px;
-    }
-    
-    .contact-cta .newsletter-form input {
-      flex: 1;
-      padding: 12px 18px;
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-xl);
-      background: white;
-      font-size: 14px;
-      outline: none;
-      color: var(--text);
-    }
-    
-    .contact-cta .newsletter-form input:focus {
-      border-color: var(--accent);
-    }
-
-
-.contact-grid {
-  display: grid !important;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 32px;
-  padding: 60px 24px;
-  max-width: 1280px;
-  margin: 0 auto;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-.contact-form-card,
-.contact-info-card {
-  background: var(--bg-card, #ffffff) !important;
-  border: 1px solid var(--border, #e2e8f0) !important;
-  border-radius: var(--radius-lg, 12px);
-  padding: 32px;
-  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.1));
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-
-[data-theme="dark"] .contact-form-card,
-[data-theme="dark"] .contact-info-card {
-  background: #1e293b !important;
-  border-color: #334155 !important;
-  color: #f1f5f9 !important;
-}
-
-
-.input-field {
-  background: var(--bg-secondary, #f8fafc) !important;
-  color: var(--text, #0f172a) !important;
-  border: 1.5px solid var(--border, #e2e8f0) !important;
-}
-
-[data-theme="dark"] .input-field {
-  background: #0f172a !important;
-  color: #f1f5f9 !important;
-  border-color: #334155 !important;
-}
-
-
-.form-group label {
-  color: var(--text, #0f172a) !important;
-  font-weight: 600;
-  display: block;
-  margin-bottom: 6px;
-}
-
-[data-theme="dark"] .form-group label {
-  color: #f1f5f9 !important;
-}
-
-.leadership-section {
-  padding: 60px 24px !important;
-  background: var(--bg-secondary, #f8fafc) !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-[data-theme="dark"] .leadership-section {
-  background: #0f172a !important;
-}
-
-.leadership-grid {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: 24px !important;
-  margin-top: 32px !important;
-  max-width: 1280px !important;
-  margin-inline: auto !important;
-}
-
-@media (max-width: 768px) {
-  .leadership-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-.leader-card {
-  background: var(--bg-card, #ffffff) !important;
-  border: 1px solid var(--border, #e2e8f0) !important;
-  border-radius: var(--radius-lg, 12px) !important;
-  padding: 28px !important;
-  text-align: center !important;
-  transition: var(--transition, all 0.3s ease) !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-.leader-card:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: var(--shadow-lg, 0 10px 25px rgba(0,0,0,0.1)) !important;
-  border-color: var(--accent, #e11d48) !important;
-}
-
-[data-theme="dark"] .leader-card {
-  background: #1e293b !important;
-  border-color: #334155 !important;
-}
-
-.leader-avatar {
-  width: 120px !important;
-  height: 120px !important;
-  border-radius: 50% !important;
-  margin: 0 auto 16px !important;
-  background: linear-gradient(135deg, var(--accent-light, #fff1f2), var(--bg-secondary, #f8fafc)) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  font-size: 3rem !important;
-  color: var(--accent-dark, #a07840) !important;
-  border: 3px solid var(--accent, #e11d48) !important;
-  position: relative !important;
-}
-
-.leader-avatar::after {
-  content: '' !important;
-  position: absolute !important;
-  inset: -4px !important;
-  border: 2px solid var(--accent, #e11d48) !important;
-  border-radius: 50% !important;
-  opacity: 0.2 !important;
-  animation: pulse 2s infinite !important;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 0.2; }
-  50% { transform: scale(1.05); opacity: 0.4; }
-}
-
-.leader-card h3 {
-  font-family: 'Playfair Display', serif !important;
-  font-size: 1.3rem !important;
-  font-weight: 700 !important;
-  margin-bottom: 4px !important;
-  color: var(--text, #0f172a) !important;
-}
-
-[data-theme="dark"] .leader-card h3 {
-  color: #f1f5f9 !important;
-}
-
-.leader-role {
-  font-size: 14px !important;
-  color: var(--accent, #e11d48) !important;
-  font-weight: 600 !important;
-  margin-bottom: 8px !important;
-  display: block !important;
-}
-
-.leader-desc {
-  font-size: 14px !important;
-  color: var(--text-secondary, #64748b) !important;
-  line-height: 1.7 !important;
-  margin-bottom: 16px !important;
-}
-
-[data-theme="dark"] .leader-desc {
-  color: #94a3b8 !important;
-}
-
-.leader-social {
-  display: flex !important;
-  justify-content: center !important;
-  gap: 10px !important;
-}
-
-.leader-social a {
-  width: 36px !important;
-  height: 36px !important;
-  border-radius: 50% !important;
-  background: var(--bg-secondary, #f8fafc) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  font-size: 14px !important;
-  color: var(--text-muted, #94a3b8) !important;
-  transition: var(--transition-fast, all 0.15s ease) !important;
-  text-decoration: none !important;
-}
-
-.leader-social a:hover {
-  background: var(--accent, #e11d48) !important;
-  color: white !important;
-  transform: translateY(-2px) !important;
-}
-
-.faq-section {
-  padding: 60px 24px !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-.faq-item {
-  background: var(--bg-card, #ffffff) !important;
-  border: 1px solid var(--border, #e2e8f0) !important;
-  border-radius: var(--radius-md, 8px) !important;
-  margin-bottom: 12px !important;
-  overflow: hidden !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-[data-theme="dark"] .faq-item {
-  background: #1e293b !important;
-  border-color: #334155 !important;
-}
-
-.faq-question {
-  padding: 16px 20px !important;
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  cursor: pointer !important;
-  font-weight: 600 !important;
-  font-size: 15px !important;
-  color: var(--text, #0f172a) !important;
-  transition: var(--transition-fast, all 0.15s ease) !important;
-}
-
-[data-theme="dark"] .faq-question {
-  color: #f1f5f9 !important;
-}
-
-.faq-question:hover {
-  background: var(--bg-secondary, #f8fafc) !important;
-  color: var(--accent, #e11d48) !important;
-}
-
-[data-theme="dark"] .faq-question:hover {
-  background: #0f172a !important;
-}
-
-.faq-question i {
-  transition: transform var(--transition-fast, all 0.15s ease) !important;
-}
-
-.faq-item.active .faq-question i {
-  transform: rotate(180deg) !important;
-}
-
-.faq-answer {
-  padding: 0 20px !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  transition: max-height 0.3s ease, padding 0.3s ease !important;
-  font-size: 14px !important;
-  color: var(--text-secondary, #64748b) !important;
-  line-height: 1.7 !important;
-}
-
-[data-theme="dark"] .faq-answer {
-  color: #94a3b8 !important;
-}
-
-.faq-item.active .faq-answer {
-  padding: 0 20px 16px !important;
-  max-height: 500px !important;
-}
-
-.contact-cta {
-  padding: 60px 24px !important;
-  background: linear-gradient(135deg, var(--accent-light, #fff1f2) 0%, #f5efe3 100%) !important;
-  text-align: center !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-[data-theme="dark"] .contact-cta {
-  background: linear-gradient(135deg, #2a2015 0%, #1a1a2e 100%) !important;
-}
-
-.contact-cta h2 {
-  font-family: 'Playfair Display', serif !important;
-  font-size: 2rem !important;
-  margin-bottom: 12px !important;
-  color: var(--text, #0f172a) !important;
-}
-
-[data-theme="dark"] .contact-cta h2 {
-  color: #f1f5f9 !important;
-}
-
-.contact-cta p {
-  color: var(--text-secondary, #64748b) !important;
-  margin-bottom: 24px !important;
-  max-width: 500px !important;
-  margin-inline: auto !important;
-}
-
-[data-theme="dark"] .contact-cta p {
-  color: #94a3b8 !important;
-}
-
-.contact-cta .newsletter-form {
-  max-width: 480px !important;
-  margin: 0 auto !important;
-  display: flex !important;
-  gap: 12px !important;
-  flex-wrap: wrap !important;
-  justify-content: center !important;
-}
-
-.contact-cta .newsletter-form input {
-  flex: 1 !important;
-  min-width: 200px !important;
-  padding: 12px 18px !important;
-  border: 1.5px solid var(--border, #e2e8f0) !important;
-  border-radius: var(--radius-xl, 24px) !important;
-  background: white !important;
-  font-size: 14px !important;
-  outline: none !important;
-  color: var(--text, #0f172a) !important;
-}
-
-.contact-cta .newsletter-form input:focus {
-  border-color: var(--accent, #e11d48) !important;
-}
-
-
-.chat-toggle {
-  position: fixed !important;
-  bottom: 24px !important;
-  right: 24px !important;
-  width: 60px !important;
-  height: 60px !important;
-  border-radius: 50% !important;
-  background: linear-gradient(135deg, var(--accent, #e11d48), var(--accent-dark, #be123c)) !important;
-  color: white !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  font-size: 24px !important;
-  box-shadow: var(--shadow-lg, 0 10px 25px rgba(0,0,0,0.15)) !important;
-  cursor: pointer !important;
-  z-index: 999 !important;
-  transition: var(--transition, all 0.3s ease) !important;
-  animation: bounce 2s infinite !important;
-  border: none !important;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.chat-toggle:hover {
-  transform: scale(1.1) !important;
-  box-shadow: 0 8px 30px rgba(225,29,72,0.5) !important;
-}
-
-.chat-toggle.active {
-  animation: none !important;
-  background: var(--primary, #111827) !important;
-}
-
-.chat-window {
-  position: fixed !important;
-  bottom: 96px !important;
-  right: 24px !important;
-  width: 360px !important;
-  max-width: 90vw !important;
-  background: var(--bg-card, #ffffff) !important;
-  border: 1px solid var(--border, #e2e8f0) !important;
-  border-radius: var(--radius-lg, 12px) !important;
-  box-shadow: var(--shadow-xl, 0 20px 50px rgba(0,0,0,0.2)) !important;
-  z-index: 998 !important;
-  display: none !important;
-  flex-direction: column !important;
-  overflow: hidden !important;
-}
-
-[data-theme="dark"] .chat-window {
-  background: #1e293b !important;
-  border-color: #334155 !important;
-}
-
-.chat-window.active {
-  display: flex !important;
-  animation: slideUp 0.3s ease !important;
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.chat-header {
-  padding: 16px 20px !important;
-  background: var(--primary, #111827) !important;
-  color: white !important;
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-}
-
-.chat-header h4 {
-  font-weight: 600 !important;
-  font-size: 15px !important;
-  margin: 0 !important;
-}
-
-.chat-header button {
-  background: none !important;
-  border: none !important;
-  color: white !important;
-  font-size: 18px !important;
-  cursor: pointer !important;
-  width: 32px !important;
-  height: 32px !important;
-  border-radius: 50% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  transition: var(--transition-fast, all 0.15s ease) !important;
-}
-
-.chat-header button:hover {
-  background: rgba(255,255,255,0.1) !important;
-}
-
-.chat-body {
-  padding: 16px 20px !important;
-  flex: 1 !important;
-  overflow-y: auto !important;
-  max-height: 300px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 12px !important;
-}
-
-.chat-message {
-  padding: 10px 14px !important;
-  border-radius: var(--radius-md, 8px) !important;
-  font-size: 14px !important;
-  line-height: 1.5 !important;
-  max-width: 85% !important;
-}
-
-.chat-message.bot {
-  background: var(--bg-secondary, #f8fafc) !important;
-  color: var(--text, #0f172a) !important;
-  align-self: flex-start !important;
-  border-bottom-left-radius: 4px !important;
-}
-
-[data-theme="dark"] .chat-message.bot {
-  background: #0f172a !important;
-  color: #f1f5f9 !important;
-}
-
-.chat-message.user {
-  background: var(--accent, #e11d48) !important;
-  color: white !important;
-  align-self: flex-end !important;
-  border-bottom-right-radius: 4px !important;
-}
-
-.chat-input {
-  padding: 12px 16px !important;
-  border-top: 1px solid var(--border, #e2e8f0) !important;
-  display: flex !important;
-  gap: 8px !important;
-}
-
-.chat-input input {
-  flex: 1 !important;
-  padding: 10px 14px !important;
-  border: 1.5px solid var(--border, #e2e8f0) !important;
-  border-radius: var(--radius-md, 8px) !important;
-  background: var(--bg-secondary, #f8fafc) !important;
-  color: var(--text, #0f172a) !important;
-  font-size: 14px !important;
-  outline: none !important;
-}
-
-[data-theme="dark"] .chat-input input {
-  background: #0f172a !important;
-  color: #f1f5f9 !important;
-  border-color: #334155 !important;
-}
-
-.chat-input input:focus {
-  border-color: var(--accent, #e11d48) !important;
-}
-
-.chat-input button {
-  padding: 10px 16px !important;
-  background: var(--accent, #e11d48) !important;
-  color: white !important;
-  border: none !important;
-  border-radius: var(--radius-md, 8px) !important;
-  font-weight: 600 !important;
-  cursor: pointer !important;
-  transition: var(--transition, all 0.3s ease) !important;
-}
-
-.chat-input button:hover {
-  background: var(--accent-dark, #be123c) !important;
-}
-
-[data-theme="dark"] .faq-item {
-  background: #1e293b !important;
-  border-color: #334155 !important;
-}
-[data-theme="dark"] .faq-question {
-  color: #f1f5f9 !important;
-}
-[data-theme="dark"] .faq-question:hover {
-  color: var(--accent, #e11d48) !important;
-  background: rgba(225,29,72,0.05) !important;
-}
-[data-theme="dark"] .faq-answer {
-  background: #1e293b !important;
-  color: #cbd5e1 !important;
-}
-[data-theme="dark"] .faq-answer p {
-  color: #cbd5e1 !important;
-}
-[data-theme="dark"] .faq-item.active {
-  border-color: var(--accent, #e11d48) !important;
-  box-shadow: 0 4px 12px rgba(225,29,72,0.15) !important;
-}
-
-.faq-item.active {
-  border-color: var(--accent, #e11d48) !important;
-  box-shadow: 0 4px 12px rgba(225,29,72,0.1) !important;
-}
-.faq-item.active .faq-question {
-  color: var(--accent, #e11d48) !important;
-  border-bottom: 1px solid var(--border-light, #f1f5f9) !important;
-}
-[data-theme="dark"] .faq-item.active .faq-question {
-  border-bottom-color: #334155 !important;
-}
-
-.faq-answer {
-  opacity: 0;
-  transition: max-height 0.4s cubic-bezier(0, 1, 0, 1),
-              opacity 0.3s ease,
-              padding 0.3s ease !important;
-}
-.faq-item.active .faq-answer {
-  opacity: 1;
-}
-
-.faq-item.active .faq-question i {
-  transform: rotate(180deg) scale(1.1);
-  color: var(--accent, #e11d48);
-}
-
-@media (max-width: 640px) {
-  .faq-question {
-    padding: 16px 16px !important;
-    font-size: 14px !important;
-  }
-  .faq-answer p {
-    font-size: 14px !important;
-    padding: 0 0 16px !important;
-  }
-}
+    @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-
-
 <div id="toast-container"></div>
+
 <nav class="navbar" id="navbar">
   <div class="nav-container">
-    <div class="nav-logo">
-      <a href="index.html">
-        <span class="logo-text">Bevenu</span>
-        <span class="logo-dot">.</span>
-      </a>
-    </div>
-
-    <div class="nav-search">
-      <div class="search-wrapper">
-        <i class="fas fa-search search-icon"></i>
-        <input type="text" id="search-input" placeholder="Search for clothes, brands..." autocomplete="off" />
-        <div class="search-suggestions" id="search-suggestions"></div>
-      </div>
-    </div>
-
+    <div class="nav-logo"><a href="index.html"><span class="logo-text">Bevenu</span><span class="logo-dot">.</span></a></div>
     <div class="nav-actions">
-      <div class="nav-dropdown">
-        <button class="nav-btn" id="categories-btn">
-          <i class="fas fa-th-large"></i>
-          <span>Shop</span>
-          <i class="fas fa-chevron-down chevron"></i>
-        </button>
-        <div class="dropdown-menu" id="categories-dropdown">
-          <a href="products.html?cat=men"><i class="fas fa-male"></i> Men</a>
-          <a href="products.html?cat=women"><i class="fas fa-female"></i> Women</a>
-          <a href="products.html?cat=kids"><i class="fas fa-child"></i> Kids</a>
-          <a href="products.html?cat=accessories"><i class="fas fa-gem"></i> Accessories</a>
-        </div>
-      </div>
-
-      <button class="nav-btn" id="theme-toggle" title="Toggle Dark Mode">
-        <i class="fas fa-moon" id="theme-icon"></i>
-      </button>
-
-      <a href="#" class="nav-btn" id="wishlist-btn" title="Wishlist">
-        <i class="fas fa-heart"></i>
-        <span class="badge" id="wishlist-count">0</span>
-      </a>
-
-      <a href="cart.html" class="nav-btn cart-btn" title="Cart">
+      <button class="nav-btn" id="theme-toggle"><i class="fas fa-moon" id="theme-icon"></i></button>
+      <a href="cart.html" class="nav-btn cart-btn" style="position:relative">
         <i class="fas fa-shopping-bag"></i>
         <span class="badge" id="cart-count">0</span>
       </a>
-
-      <div class="nav-user" id="nav-user">
-        <a href="login.html" class="nav-btn" id="login-btn">
-          <i class="fas fa-user"></i>
-          <span id="user-display">Login</span>
-        </a>
-      </div>
+      <a href="login.html" class="nav-btn" id="login-btn"><i class="fas fa-user"></i><span id="user-display">Login</span></a>
     </div>
-
-    <button class="hamburger" id="hamburger">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-
-  <div class="mobile-menu" id="mobile-menu">
-    <div class="mobile-search">
-      <input type="text" placeholder="Search products..." id="mobile-search" />
-    </div>
-    <nav class="mobile-nav">
-      <a href="products.html?cat=men"><i class="fas fa-male"></i> Men</a>
-      <a href="products.html?cat=women"><i class="fas fa-female"></i> Women</a>
-      <a href="products.html?cat=kids"><i class="fas fa-child"></i> Kids</a>
-      <a href="products.html?cat=accessories"><i class="fas fa-gem"></i> Accessories</a>
-      <hr />
-      <a href="cart.html"><i class="fas fa-shopping-bag"></i> Cart</a>
-      <a href="login.html"><i class="fas fa-user"></i> Login / Signup</a>
-    </nav>
   </div>
 </nav>
 
-
-<section class="contact-hero">
-  <div class="contact-hero-content animate-fade">
-    <span class="contact-hero-tag">Get in Touch</span>
-    <h1>We'd Love to Hear<br><em>From You.</em></h1>
-    <p>Questions about your order, styling advice, or just want to say hello? Our team is here to help you look and feel your best.</p>
-    <a href="#contact-form" class="btn btn-primary">Send a Message <i class="fas fa-arrow-down"></i></a>
+<section class="hero-contact">
+  <div class="hero-particles" id="hero-particles"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag animate__animated animate__fadeInDown"><i class="fas fa-envelope"></i> Get in Touch</div>
+    <h1 class="hero-h1 animate__animated animate__fadeInUp">We'd Love to Hear<br><em>From You.</em></h1>
+    <p class="hero-p animate__animated animate__fadeInUp animate__delay-1s">
+      Questions, styling advice, or just want to say hello? Our team is here to help you look and feel your best.
+    </p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap" class="animate__animated animate__fadeInUp animate__delay-1s">
+      <a href="#contact-form" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Message</a>
+      <a href="#faq-section" class="btn btn-outline" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3);color:white"><i class="fas fa-question-circle"></i> FAQs</a>
+    </div>
+    <div class="hero-scroll"><span>Scroll to explore</span><i class="fas fa-chevron-down"></i></div>
   </div>
 </section>
 
+<svg class="contact-wave" viewBox="0 0 1440 40" preserveAspectRatio="none" style="display:block;background:linear-gradient(135deg,#0f0c29,#302b63);margin-top:-1px" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0,40 L0,20 Q360,0 720,20 Q1080,40 1440,20 L1440,40 Z" fill="var(--bg)"/>
+</svg>
 
-<section class="container">
-  <div class="contact-grid">
-    <div class="contact-form-card" id="contact-form">
-      <h3>Send Us a Message</h3>
-      <form id="bevenu-contact-form" onsubmit="handleContactSubmit(event)">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="contact-name">Full Name *</label>
-            <input type="text" id="contact-name" class="input-field" placeholder="Your name" required />
-          </div>
-          <div class="form-group">
-            <label for="contact-email">Email Address *</label>
-            <input type="email" id="contact-email" class="input-field" placeholder="you@example.com" required />
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="contact-subject">Subject *</label>
-            <select id="contact-subject" class="input-field" required>
-              <option value="">Select a topic</option>
-              <option value="order">Order Inquiry</option>
-              <option value="shipping">Shipping & Returns</option>
-              <option value="sizing">Size Guide</option>
-              <option value="product">Product Question</option>
-              <option value="collab">Collaboration</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="contact-order">Order ID (Optional)</label>
-            <input type="text" id="contact-order" class="input-field" placeholder="#BEV-12345" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="contact-message">Your Message *</label>
-          <textarea id="contact-message" class="input-field" placeholder="How can we help you today?" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary submit-btn">
-          <i class="fas fa-paper-plane"></i> Send Message
-        </button>
-      </form>
-    </div>
+<section class="section" id="contact-form">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="card form-card">
+        <h2 class="form-card-title">Send Us a Message</h2>
+        <p class="form-card-sub">Fill in the form below — we respond within 24 hours.</p>
 
+        <form id="bevenu-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fn">Full Name *</label>
+              <input type="text" id="fn" class="input-f" placeholder="Your full name" />
+              <div class="field-err" id="fn-err">Please enter your name.</div>
+            </div>
+            <div class="form-group">
+              <label for="fe">Email Address *</label>
+              <input type="email" id="fe" class="input-f" placeholder="you@example.com" />
+              <div class="field-err" id="fe-err">Enter a valid email address.</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fs">Subject *</label>
+              <select id="fs" class="input-f">
+                <option value="">Select a topic</option>
+                <option value="order">Order Inquiry</option>
+                <option value="shipping">Shipping & Returns</option>
+                <option value="sizing">Size Guide</option>
+                <option value="product">Product Question</option>
+                <option value="collab">Collaboration</option>
+                <option value="other">Other</option>
+              </select>
+              <div class="field-err" id="fs-err">Please select a subject.</div>
+            </div>
+            <div class="form-group">
+              <label for="fo">Order ID (Optional)</label>
+              <input type="text" id="fo" class="input-f" placeholder="e.g. BVN12345678" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fm">Your Message *</label>
+            <textarea id="fm" class="input-f" rows="5" placeholder="How can we help you today?" maxlength="1000"></textarea>
+            <div class="char-counter"><span id="char-count">0</span>/1000</div>
+            <div class="field-err" id="fm-err">Please write your message.</div>
+          </div>
+          <div class="form-group" style="display:flex;align-items:center;gap:10px">
+            <input type="checkbox" id="f-consent" style="width:16px;height:16px;accent-color:var(--a);cursor:pointer" />
+            <label for="f-consent" style="font-size:13px;color:var(--ts);cursor:pointer">
+              I agree to the <a href="privacy.html" style="color:var(--a)">Privacy Policy</a> and consent to being contacted.
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="submit-btn">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
 
-    <div class="contact-info-card">
-      <h3>Contact Information</h3>
-      
-      <div class="contact-method">
-        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-        <div class="contact-details">
-          <h4>Email Us</h4>
-          <a href="mailto:dhimanparas605@gmail.com">dhimanparas605@gmail.com</a>
-          <p style="font-size:12px;color:var(--text-muted);margin-top:4px">We respond within 24 hours</p>
+        <div class="form-success-state" id="form-success">
+          <div class="fss-icon"><i class="fas fa-check-circle"></i></div>
+          <h3 class="fss-title">Message Sent!</h3>
+          <p class="fss-sub">Thanks for reaching out. We'll reply to your email within 24 hours.</p>
+          <button class="btn btn-outline" onclick="resetForm()"><i class="fas fa-redo"></i> Send Another</button>
         </div>
       </div>
-      
-      <div class="contact-method">
-        <div class="contact-icon"><i class="fas fa-clock"></i></div>
-        <div class="contact-details">
-          <h4>Business Hours</h4>
-          <p>Mon–Fri: 9:00 AM – 6:00 PM IST</p>
-          <p>Sat: 10:00 AM – 4:00 PM IST</p>
-          <p>Sun: Closed</p>
+
+      <div class="card info-card">
+        <h3 class="info-card-title">Contact Information</h3>
+
+        <div class="online-status">
+          <div class="status-dot"></div>
+          Support team is online now
         </div>
-      </div>
-      
-      <div class="contact-method">
-        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-        <div class="contact-details">
-          <h4>Our Location</h4>
-          <p>Bevenu Fashion Labs<br>Chandigarh, India</p>
-          <a href="#" style="font-size:13px;color:var(--accent);margin-top:4px;display:inline-flex;align-items:center;gap:4px">
-            View on Map <i class="fas fa-arrow-right" style="font-size:10px"></i>
-          </a>
+
+        <div class="contact-method">
+          <div class="cm-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="cm-label">Email Us</div>
+            <div class="cm-val">
+              <a href="mailto:dhimanparas605@gmail.com">dhimanparas605@gmail.com</a>
+              <br><small style="color:var(--tm)">Replies within 24 hours</small>
+            </div>
+          </div>
         </div>
-      </div>
-      
-      <div class="business-hours">
-        <h4 style="margin-bottom:12px;font-weight:600">Today's Hours</h4>
-        <div class="hours-row today">
-          <span>Monday – Friday</span>
-          <span>9:00 AM – 6:00 PM</span>
+
+        <div class="contact-method">
+          <div class="cm-icon"><i class="fas fa-clock"></i></div>
+          <div>
+            <div class="cm-label">Business Hours</div>
+            <div class="cm-val">
+              Mon–Fri: 9:00 AM – 6:00 PM IST<br>
+              Sat: 10:00 AM – 4:00 PM IST<br>
+              Sun: Closed
+            </div>
+          </div>
         </div>
-        <div class="hours-row">
-          <span>Saturday</span>
-          <span>10:00 AM – 4:00 PM</span>
+
+        <div class="contact-method">
+          <div class="cm-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="cm-label">Location</div>
+            <div class="cm-val">Bevenu Fashion Labs<br>Chandigarh, India</div>
+          </div>
         </div>
-        <div class="hours-row">
-          <span>Sunday</span>
-          <span>Closed</span>
+
+        <div class="hours-grid">
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--tm);margin-bottom:4px">Today's Hours</div>
+          <div class="hrow today"><span>Mon – Fri</span><span>9AM – 6PM</span></div>
+          <div class="hrow"><span>Saturday</span><span>10AM – 4PM</span></div>
+          <div class="hrow closed"><span>Sunday</span><span>Closed</span></div>
         </div>
-      </div>
-      
-      <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border-light)">
-        <h4 style="margin-bottom:12px;font-weight:600">Follow Us</h4>
-        <div class="social-links" style="display:flex;gap:10px">
-          <a href="#" class="nav-btn" style="width:40px;height:40px;background:var(--bg-secondary);border-radius:50%;display:flex;align-items:center;justify-content:center"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="nav-btn" style="width:40px;height:40px;background:var(--bg-secondary);border-radius:50%;display:flex;align-items:center;justify-content:center"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="nav-btn" style="width:40px;height:40px;background:var(--bg-secondary);border-radius:50%;display:flex;align-items:center;justify-content:center"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="nav-btn" style="width:40px;height:40px;background:var(--bg-secondary);border-radius:50%;display:flex;align-items:center;justify-content:center"><i class="fab fa-pinterest-p"></i></a>
+
+        <div class="social-row">
+          <a href="#" class="soc-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="soc-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="soc-btn" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="soc-btn" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          <a href="#" class="soc-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 
 <section class="leadership-section">
   <div class="container">
-    <div class="section-header" style="justify-content:center;text-align:center">
-      <p class="section-tag">Meet Our Leaders</p>
+    <div style="text-align:center">
+      <span class="section-tag">Meet the Team</span>
       <h2 class="section-title">The Vision Behind Bevenu</h2>
     </div>
-    
-    <div class="leadership-grid">
-      <div class="leader-card animate-fade">
+    <div class="leaders-grid">
+      <div class="leader-card">
         <div class="leader-avatar"><i class="fas fa-user-tie"></i></div>
-        <h3>Paras Dhiman</h3>
-        <span class="leader-role">Chairperson & Chief Executive Officer</span>
-        <p class="leader-desc">Visionary leader driving Bevenu's mission to blend sustainable fashion with cutting-edge technology. Oversees strategy, partnerships, and customer experience.</p>
-        <div class="leader-social">
-          <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-          
+        <h3 class="leader-name">Paras Dhiman</h3>
+        <span class="leader-role">Chairperson & CEO</span>
+        <p class="leader-desc">Visionary leader driving Bevenu's mission to blend sustainable fashion with cutting-edge technology. Oversees strategy, partnerships, and customer experience excellence.</p>
+        <div class="leader-socials">
+          <a href="#" class="ls-btn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="ls-btn"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="ls-btn"><i class="fab fa-twitter"></i></a>
         </div>
       </div>
-
-      <div class="leader-card animate-fade" style="animation-delay:0.1s">
+      <div class="leader-card">
         <div class="leader-avatar"><i class="fas fa-palette"></i></div>
-        <h3>Dhrupad Arora</h3>
-        <span class="leader-role">Designs Manager & Social Media Manager</span>
-        <p class="leader-desc">Creative force behind Bevenu's aesthetic direction and digital presence. Curates collections, leads design innovation, and connects with our community worldwide.</p>
-        <div class="leader-social">
-          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" title="Behance"><i class="fab fa-behance"></i></a>
+        <h3 class="leader-name">Dhrupad Arora</h3>
+        <span class="leader-role">Designs & Social Media Manager</span>
+        <p class="leader-desc">Creative force behind Bevenu's aesthetic direction and digital presence. Curates collections, leads design innovation, and builds our global community one post at a time.</p>
+        <div class="leader-socials">
+          <a href="#" class="ls-btn"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="ls-btn"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="ls-btn"><i class="fab fa-behance"></i></a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="faq-section" style="padding: 60px 24px; opacity: 1; visibility: visible;">
+<section class="faq-section" id="faq-section">
   <div class="container">
-    <div class="section-header" style="justify-content:center;text-align:center;margin-bottom:40px;">
-      <p class="section-tag" style="color:var(--accent);font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;">Quick Answers</p>
-      <h2 class="section-title" style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;color:var(--text);">Frequently Asked Questions</h2>
+    <div style="text-align:center">
+      <span class="section-tag">Quick Answers</span>
+      <h2 class="section-title">Frequently Asked Questions</h2>
     </div>
-    
-    <div style="max-width:800px;margin:0 auto;" id="faq-container">
-      <div class="faq-item" style="background:var(--bg-card,#fff);border:1px solid var(--border,#e2e8f0);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:all 0.3s ease;">
-        <div class="faq-question" onclick="toggleFAQ(this)" style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px;cursor:pointer;font-weight:600;font-size:15px;color:var(--text);transition:all 0.25s ease;user-select:none;">
-          <span>How do I track my order?</span>
-          <i class="fas fa-chevron-down" style="font-size:14px;color:var(--text-muted);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);"></i>
-        </div>
-        <div class="faq-answer" style="max-height:0;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);padding:0 20px;">
-          <p style="padding:0 0 18px;font-size:14.5px;line-height:1.7;color:var(--text-secondary);">Once your order ships, you'll receive a tracking number via email. You can also log into your account and view order status under "My Orders". For assistance, contact us with your order ID.</p>
-        </div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <div class="faq-q"><span>How do I track my order?</span><i class="fas fa-chevron-down faq-chevron"></i></div>
+        <div class="faq-a"><p>Once your order ships, you'll receive a tracking number via email. Log into your account and check "My Orders" for real-time status updates. For help, contact us with your Order ID.</p></div>
       </div>
-
-      <div class="faq-item" style="background:var(--bg-card,#fff);border:1px solid var(--border,#e2e8f0);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:all 0.3s ease;">
-        <div class="faq-question" onclick="toggleFAQ(this)" style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px;cursor:pointer;font-weight:600;font-size:15px;color:var(--text);transition:all 0.25s ease;user-select:none;">
-          <span>What is your return policy?</span>
-          <i class="fas fa-chevron-down" style="font-size:14px;color:var(--text-muted);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);"></i>
-        </div>
-        <div class="faq-answer" style="max-height:0;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);padding:0 20px;">
-          <p style="padding:0 0 18px;font-size:14.5px;line-height:1.7;color:var(--text-secondary);">We offer 30-day easy returns on all unworn, unwashed items with original tags. Initiate a return from your account or contact support. Return shipping is free for defective items.</p>
-        </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>What is your return policy?</span><i class="fas fa-chevron-down faq-chevron"></i></div>
+        <div class="faq-a"><p>We offer 30-day easy returns on all unworn, unwashed items with original tags. Initiate a return from your account or contact support. Return shipping is free for defective items.</p></div>
       </div>
-      
-      <div class="faq-item" style="background:var(--bg-card,#fff);border:1px solid var(--border,#e2e8f0);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:all 0.3s ease;">
-        <div class="faq-question" onclick="toggleFAQ(this)" style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px;cursor:pointer;font-weight:600;font-size:15px;color:var(--text);transition:all 0.25s ease;user-select:none;">
-          <span>Do you ship internationally?</span>
-          <i class="fas fa-chevron-down" style="font-size:14px;color:var(--text-muted);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);"></i>
-        </div>
-        <div class="faq-answer" style="max-height:0;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);padding:0 20px;">
-          <p style="padding:0 0 18px;font-size:14.5px;line-height:1.7;color:var(--text-secondary);">Yes! We ship to 50+ countries worldwide. Shipping costs and delivery times vary by location. All international orders include customs documentation and tracking.</p>
-        </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Do you ship internationally?</span><i class="fas fa-chevron-down faq-chevron"></i></div>
+        <div class="faq-a"><p>Yes! We ship to 50+ countries worldwide. Shipping costs and delivery times vary by destination. All international orders include full customs documentation and tracking.</p></div>
       </div>
-      
-      <div class="faq-item" style="background:var(--bg-card,#fff);border:1px solid var(--border,#e2e8f0);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:all 0.3s ease;">
-        <div class="faq-question" onclick="toggleFAQ(this)" style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px;cursor:pointer;font-weight:600;font-size:15px;color:var(--text);transition:all 0.25s ease;user-select:none;">
-          <span>How can I collaborate with Bevenu?</span>
-          <i class="fas fa-chevron-down" style="font-size:14px;color:var(--text-muted);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);"></i>
-        </div>
-        <div class="faq-answer" style="max-height:0;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);padding:0 20px;">
-          <p style="padding:0 0 18px;font-size:14.5px;line-height:1.7;color:var(--text-secondary);">We love working with creators, brands, and influencers! Email partnerships@bevenu.com with your proposal, audience details, and collaboration ideas. Our team reviews all inquiries.</p>
-        </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>How can I collaborate with Bevenu?</span><i class="fas fa-chevron-down faq-chevron"></i></div>
+        <div class="faq-a"><p>We love working with creators and brands! Email dhimanparas605@gmail.com with your proposal, audience details, and ideas. Our team reviews all inquiries within 3–5 business days.</p></div>
       </div>
-
-      <div class="faq-item" style="background:var(--bg-card,#fff);border:1px solid var(--border,#e2e8f0);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:all 0.3s ease;">
-        <div class="faq-question" onclick="toggleFAQ(this)" style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px;cursor:pointer;font-weight:600;font-size:15px;color:var(--text);transition:all 0.25s ease;user-select:none;">
-          <span>Is my data secure with Bevenu?</span>
-          <i class="fas fa-chevron-down" style="font-size:14px;color:var(--text-muted);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);"></i>
-        </div>
-        <div class="faq-answer" style="max-height:0;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);padding:0 20px;">
-          <p style="padding:0 0 18px;font-size:14.5px;line-height:1.7;color:var(--text-secondary);">Absolutely. We use industry-standard encryption, never sell your data, and comply with global privacy regulations. Read our full Privacy Policy for details on how we protect your information.</p>
-        </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>How do I find the right size?</span><i class="fas fa-chevron-down faq-chevron"></i></div>
+        <div class="faq-a"><p>Each product page has a detailed size guide with measurements in cm and inches. When in doubt, size up for relaxed fits. Our support team can help you choose — just drop us a message.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Is my payment information secure?</span><i class="fas fa-chevron-down faq-chevron"></i></div>
+        <div class="faq-a"><p>Absolutely. We use 256-bit SSL encryption for all transactions. We never store card details on our servers. All payments are processed through Razorpay, India's most trusted payment gateway.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="contact-cta">
+<section class="newsletter-sec">
   <div class="container">
-    <h2>Stay in Style</h2>
-    <p>Subscribe for exclusive drops, early access to sales, and styling tips delivered to your inbox.</p>
-    <form class="newsletter-form" onsubmit="handleNewsletterSubscribe(event)">
-      <input type="email" placeholder="Your email address" required />
-      <button type="submit" class="btn btn-primary">Subscribe</button>
-    </form>
-    <p id="newsletter-msg" style="margin-top:12px;font-size:14px;color:var(--success);display:none">Subscribed successfully! ✨</p>
-  </div>
-</section>
-
-
-<button class="chat-toggle" id="chatToggle" title="Chat with us" onclick="toggleChat()">
-  <i class="fas fa-comments"></i>
-</button>
-
-
-<div class="chat-window" id="chatWindow">
-  <div class="chat-header">
-    <h4>Bevenu Support</h4>
-    <button onclick="toggleChat()"><i class="fas fa-times"></i></button>
-  </div>
-  <div class="chat-body" id="chatBody">
-    <div class="chat-message bot">
-      Hi there! 👋 How can we help you today? Ask about orders, sizing, or styling tips.
+    <div class="nl-content">
+      <h2 class="nl-title">Stay in Style</h2>
+      <p class="nl-sub">Subscribe for exclusive drops, early sale access, and weekly style inspiration.</p>
+      <form class="nl-form" onsubmit="handleNewsletter(event)">
+        <input type="email" placeholder="Your email address" required />
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
     </div>
   </div>
-  <div class="chat-input">
-    <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKeypress(event)" />
-    <button onclick="sendChatMessage()">Send</button>
-  </div>
-</div>
-
+</section>
 
 <footer class="footer">
   <div class="container">
@@ -1494,279 +523,270 @@
       <div class="footer-brand">
         <div class="footer-logo">Bevenu<span>.</span></div>
         <p>Premium fashion for every story. Crafted with love, delivered with care.</p>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-pinterest"></i></a>
+        <div class="footer-socials">
+          <a href="#" class="footer-social-btn"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="footer-social-btn"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="footer-social-btn"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="footer-social-btn"><i class="fab fa-pinterest-p"></i></a>
         </div>
       </div>
-      <div class="footer-links">
-        <h4>Quick Links</h4>
+      <div class="footer-col">
+        <h4>Shop</h4>
         <a href="products.html?cat=men">Men's Collection</a>
         <a href="products.html?cat=women">Women's Collection</a>
         <a href="products.html?cat=kids">Kids Wear</a>
         <a href="products.html?cat=accessories">Accessories</a>
       </div>
-      <div class="footer-links">
+      <div class="footer-col">
         <h4>Help</h4>
         <a href="contact.html">Contact Us</a>
-        <a href="./#">Shipping Info</a>
-        <a href="./#">Returns Policy</a>
-        <a href="./#">Size Guide</a>
-        <a href="./#">Track Order</a>
+        <a href="#">Shipping Info</a>
+        <a href="#">Returns Policy</a>
+        <a href="#">Size Guide</a>
+        <a href="#">Track Order</a>
       </div>
-      <div class="footer-links">
+      <div class="footer-col">
         <h4>Company</h4>
-        <a href="about.html">About Bevenu</a>
-        <a href="./#">Careers</a>
-        <a href="./#">Press</a>
+        <a href="#">About Bevenu</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="#">Careers</a>
         <a href="admin.html">Admin Panel</a>
       </div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 Bevenu. All rights reserved.</p>
       <div class="payment-icons">
-        <i class="fab fa-cc-visa"></i>
-        <i class="fab fa-cc-mastercard"></i>
-        <i class="fab fa-cc-paypal"></i>
-        <i class="fab fa-google-pay"></i>
+        <i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i>
+        <i class="fab fa-cc-paypal"></i><i class="fab fa-google-pay"></i>
       </div>
     </div>
   </div>
 </footer>
 
+<button class="live-chat-btn" id="chat-toggle-btn" onclick="toggleChat()">
+  <i class="fas fa-comments"></i>
+  <div class="chat-pulse"></div>
+</button>
 
-<div class="wishlist-overlay" id="wishlist-overlay"></div>
-<div class="wishlist-sidebar" id="wishlist-sidebar">
-  <div class="wishlist-header">
-    <h3>My Wishlist <span id="wishlist-count-sidebar">0</span></h3>
-    <button onclick="closeWishlist()"><i class="fas fa-times"></i></button>
+<div class="chat-win" id="chat-window">
+  <div class="chat-hdr">
+    <div class="chat-hdr-info">
+      <div class="chat-avatar">B</div>
+      <div class="chat-hdr-text">
+        <strong>Bevenu Support</strong>
+        <small>Online now · Usually replies instantly</small>
+      </div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></button>
   </div>
-  <div class="wishlist-items" id="wishlist-items-container"></div>
+  <div class="chat-body" id="chat-body">
+    <div class="chat-msg bot">Hi there! 👋 Welcome to Bevenu support. How can we help you look amazing today?</div>
+  </div>
+  <div class="chat-inp">
+    <input type="text" id="chat-inp" placeholder="Type your message…" />
+    <button onclick="sendChat()">Send</button>
+  </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.bundle.min.js"></script>
 <script src="script.js"></script>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  updateNavCounts();
-  initSearchSuggestions();
-  checkUserSession();
-  initTheme();
-  
+  if (typeof initTheme === 'function') initTheme();
+  if (typeof updateNavCounts === 'function') updateNavCounts();
+  if (typeof checkUserSession === 'function') checkUserSession();
 
-  document.querySelectorAll('.faq-question').forEach(q => {
-    q.addEventListener('click', () => toggleFaq(q));
-  });
-  
+  initParticles();
+  initFAQs();
+  initFormValidation();
+  initScrollAnimations();
+  initLeaderTilt();
+  highlightTodayHours();
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-fade');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  
-  document.querySelectorAll('.leader-card, .contact-form-card, .contact-info-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
+  document.getElementById('chat-inp').addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(); });
+  document.getElementById('fm')?.addEventListener('input', function() {
+    document.getElementById('char-count').textContent = this.value.length;
   });
 });
 
+function initParticles() {
+  if (typeof tsParticles === 'undefined') return;
+  tsParticles.load('hero-particles', {
+    particles: {
+      number: { value: 60 },
+      color: { value: ['#c9a96e', '#ffffff', '#8b5cf6'] },
+      opacity: { value: .3, random: true },
+      size: { value: 2, random: true },
+      move: { enable: true, speed: .6, direction: 'none', random: true },
+      links: { enable: true, color: '#c9a96e', opacity: .08, distance: 100 }
+    },
+    background: { color: 'transparent' }
+  });
+}
 
-async function handleContactSubmit(e) {
-  e.preventDefault();
-  
-  const name = document.getElementById('contact-name').value.trim();
-  const email = document.getElementById('contact-email').value.trim();
-  const subject = document.getElementById('contact-subject').value;
-  const message = document.getElementById('contact-message').value.trim();
-  const orderId = document.getElementById('contact-order').value.trim();
-  
-  if (!name || !email || !subject || !message) {
-    showToast('Please fill in all required fields', 'error');
-    return;
-  }
-  
-  const btn = e.target.querySelector('button[type="submit"]');
-  const originalText = btn.innerHTML;
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-  
-  try {
-    await new Promise(resolve => setTimeout(resolve, 1200));
+function initFAQs() {
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+}
 
-    
-    showToast('Message sent successfully! We\'ll reply within 24 hours. ✉️', 'success');
-    e.target.reset();
-    
-  } catch (err) {
-    showToast('Failed to send message. Please try again.', 'error');
-  } finally {
-    btn.disabled = false;
-    btn.innerHTML = originalText;
+function initFormValidation() {
+  const form = document.getElementById('bevenu-form');
+  if (!form) return;
+
+  const rules = {
+    fn: v => v.trim().length >= 2,
+    fe: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+    fs: v => v !== '',
+    fm: v => v.trim().length >= 10
+  };
+
+  Object.keys(rules).forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('blur', () => validateField(id, rules[id]));
+    el.addEventListener('input', () => {
+      if (el.classList.contains('error-field')) validateField(id, rules[id]);
+    });
+  });
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    let valid = true;
+    Object.keys(rules).forEach(id => { if (!validateField(id, rules[id])) valid = false; });
+    if (!document.getElementById('f-consent').checked) {
+      showToast('Please accept the privacy policy', 'error'); valid = false;
+    }
+    if (!valid) return;
+
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
+    await new Promise(r => setTimeout(r, 1400));
+    form.style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+    showToast('Message sent! We\'ll reply within 24 hours. ✉️', 'success');
+  });
+}
+
+function validateField(id, rule) {
+  const el = document.getElementById(id);
+  const err = document.getElementById(id + '-err');
+  if (!el) return true;
+  const valid = rule(el.value);
+  el.classList.toggle('error-field', !valid);
+  el.classList.toggle('valid-field', valid);
+  if (err) err.classList.toggle('show', !valid);
+  return valid;
+}
+
+function resetForm() {
+  document.getElementById('bevenu-form').reset();
+  document.getElementById('bevenu-form').style.display = '';
+  document.getElementById('form-success').style.display = 'none';
+  document.getElementById('submit-btn').disabled = false;
+  document.getElementById('submit-btn').innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+  document.getElementById('char-count').textContent = '0';
+  document.querySelectorAll('.input-f').forEach(el => el.classList.remove('error-field', 'valid-field'));
+}
+
+function initScrollAnimations() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from('.leader-card', {
+    scrollTrigger: { trigger: '.leaders-grid', start: 'top 80%' },
+    y: 40, opacity: 0, stagger: .15, duration: .7, ease: 'power2.out'
+  });
+  gsap.from('.faq-item', {
+    scrollTrigger: { trigger: '.faq-wrap', start: 'top 80%' },
+    y: 20, opacity: 0, stagger: .08, duration: .5, ease: 'power2.out'
+  });
+}
+
+function initLeaderTilt() {
+  if (typeof VanillaTilt !== 'undefined') {
+    VanillaTilt.init(document.querySelectorAll('.leader-card'), { max: 8, speed: 400, glare: true, 'max-glare': .08 });
   }
 }
 
-function toggleFaq(element) {
-  const item = element.closest('.faq-item');
-  const isActive = item.classList.contains('active');
-
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-
-  if (!isActive) item.classList.add('active');
+function highlightTodayHours() {
+  const day = new Date().getDay();
+  const rows = document.querySelectorAll('.hrow');
+  rows.forEach(r => r.classList.remove('today'));
+  if (day >= 1 && day <= 5) rows[0]?.classList.add('today');
+  else if (day === 6) rows[1]?.classList.add('today');
+  else rows[2]?.classList.add('today');
 }
 
 function toggleChat() {
-  const chat = document.getElementById('chatWindow');
-  const toggle = document.getElementById('chatToggle');
-  chat.classList.toggle('active');
-  toggle.classList.toggle('active');
-  
-  if (chat.classList.contains('active')) {
-    document.getElementById('chatInput')?.focus();
+  const win = document.getElementById('chat-window');
+  const btn = document.getElementById('chat-toggle-btn');
+  win.classList.toggle('open');
+  btn.classList.toggle('active');
+  if (win.classList.contains('open')) {
+    document.getElementById('chat-inp').focus();
   }
 }
 
-function sendChatMessage() {
-  const input = document.getElementById('chatInput');
-  const body = document.getElementById('chatBody');
-  const message = input.value.trim();
-  
-  if (!message) return;
+function sendChat() {
+  const inp = document.getElementById('chat-inp');
+  const body = document.getElementById('chat-body');
+  const msg = inp.value.trim();
+  if (!msg) return;
 
-  const userMsg = document.createElement('div');
-  userMsg.className = 'chat-message user';
-  userMsg.textContent = message;
-  body.appendChild(userMsg);
-  
-  input.value = '';
-  body.scrollTop = body.scrollHeight;
+  const userDiv = document.createElement('div');
+  userDiv.className = 'chat-msg user'; userDiv.textContent = msg;
+  body.appendChild(userDiv);
+  inp.value = ''; body.scrollTop = body.scrollHeight;
+
+  const typing = document.createElement('div');
+  typing.className = 'chat-typing'; typing.innerHTML = '<span></span><span></span><span></span>';
+  body.appendChild(typing); body.scrollTop = body.scrollHeight;
 
   setTimeout(() => {
-    const botMsg = document.createElement('div');
-    botMsg.className = 'chat-message bot';
-    
-    const lower = message.toLowerCase();
-    if (lower.includes('order') || lower.includes('track')) {
-      botMsg.textContent = 'To track your order, please provide your Order ID (starts with #BEV-). You can also check "My Orders" in your account.';
-    } else if (lower.includes('return') || lower.includes('refund')) {
-      botMsg.textContent = 'We offer 30-day easy returns! Visit our Returns Policy page or reply with your Order ID to start a return.';
-    } else if (lower.includes('size') || lower.includes('fit')) {
-      botMsg.textContent = 'Check our Size Guide for detailed measurements. For personalized advice, tell me what you\'re looking for! 👗';
-    } else if (lower.includes('hello') || lower.includes('hi')) {
-      botMsg.textContent = 'Hello! 👋 How can I help you today? Ask about orders, sizing, styling, or anything Bevenu!';
-    } else {
-      botMsg.textContent = 'Thanks for your message! For detailed assistance, please email us at dhimanparas605@gmail.com or use the contact form above. We\'re here to help! ✨';
-    }
-    
-    body.appendChild(botMsg);
-    body.scrollTop = body.scrollHeight;
-  }, 800);
+    typing.remove();
+    const botDiv = document.createElement('div');
+    botDiv.className = 'chat-msg bot';
+    const low = msg.toLowerCase();
+    if (low.includes('order') || low.includes('track')) botDiv.textContent = 'To track your order, check "My Orders" in your account or provide your Order ID (starts with BVN) and we\'ll help right away! 📦';
+    else if (low.includes('return') || low.includes('refund')) botDiv.textContent = 'Easy 30-day returns! Visit your account → Orders → Return Item. Free returns on defective products. 🔄';
+    else if (low.includes('size') || low.includes('fit')) botDiv.textContent = 'Every product has a size guide! When in doubt, size up. Our support team can also give personal advice. 👗';
+    else if (low.includes('shipping') || low.includes('deliver')) botDiv.textContent = 'Free shipping on orders above ₹999! Standard delivery: 3–5 business days. Express available at checkout. 🚀';
+    else if (/hi|hello|hey/.test(low)) botDiv.textContent = 'Hello! 👋 So great to hear from you. Ask me about orders, sizing, returns, or anything fashion!';
+    else botDiv.textContent = 'Thanks for your message! For detailed help, email dhimanparas605@gmail.com or use the contact form above. We\'re always here! ✨';
+    body.appendChild(botDiv); body.scrollTop = body.scrollHeight;
+  }, 1200);
 }
 
-function handleChatKeypress(e) {
-  if (e.key === 'Enter') sendChatMessage();
-}
-
-
-function handleNewsletterSubscribe(e) {
+function handleNewsletter(e) {
   e.preventDefault();
-  const email = e.target.querySelector('input[type="email"]').value.trim();
-  const msg = document.getElementById('newsletter-msg');
-  
-  if (!email || !email.includes('@')) {
-    showToast('Please enter a valid email', 'error');
-    return;
+  const email = e.target.querySelector('input[type="email"]').value;
+  if (email && email.includes('@')) {
+    showToast('Subscribed! Welcome to the Bevenu family. ✨', 'success');
+    e.target.reset();
+  } else {
+    showToast('Enter a valid email address', 'error');
   }
-  
-
-  showToast('Subscribed! Welcome to the Bevenu family. ✨', 'success');
-  if (msg) {
-    msg.style.display = 'block';
-    setTimeout(() => msg.style.display = 'none', 3000);
-  }
-  e.target.reset();
-}
-</script>
-
-<script>
-
-function toggleFAQ(element) {
-  console.log('FAQ clicked!', element); 
-  
-  const faqItem = element.closest('.faq-item');
-  const answer = faqItem.querySelector('.faq-answer');
-  const icon = element.querySelector('i');
-  const isActive = faqItem.classList.contains('active');
-
-  document.querySelectorAll('.faq-item').forEach(item => {
-    item.classList.remove('active');
-    item.querySelector('.faq-answer').style.maxHeight = '0';
-    item.querySelector('.faq-answer').style.padding = '0 20px';
-    item.querySelector('.faq-answer').style.opacity = '0';
-    item.querySelector('i').style.transform = 'rotate(0deg)';
-  });
-
-  if (!isActive) {
-    faqItem.classList.add('active');
-    answer.style.maxHeight = answer.scrollHeight + 'px';
-    answer.style.padding = '0 20px 18px';
-    answer.style.opacity = '1';
-    if (icon) icon.style.transform = 'rotate(180deg)';
-    
-    setTimeout(() => {
-      faqItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 300);
-  }
-  
-  console.log('FAQ toggled successfully');
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('FAQ System Initialized');
-
-  document.querySelectorAll('.faq-question').forEach(question => {
-    question.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      toggleFAQ(this);
-    });
-
-    question.setAttribute('tabindex', '0');
-    question.setAttribute('role', 'button');
-    question.setAttribute('aria-expanded', 'false');
-    
-    question.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggleFAQ(this);
-      }
-    });
-  });
-
-  document.querySelectorAll('.faq-item').forEach(item => {
-    item.addEventListener('mouseenter', function() {
-      this.style.borderColor = 'var(--accent, #e11d48)';
-    });
-    item.addEventListener('mouseleave', function() {
-      if (!this.classList.contains('active')) {
-        this.style.borderColor = 'var(--border, #e2e8f0)';
-      }
-    });
-  });
-});
-
-window.addEventListener('error', function(e) {
-  if (e.message.includes('FAQ') || e.message.includes('toggle')) {
-    console.error('FAQ Error:', e);
-    showToast('FAQ system encountered an issue. Please refresh.', 'error');
-  }
-});
+function showToast(msg, type) {
+  if (typeof window.showToast !== 'undefined' && window.showToast !== showToast) { window.showToast(msg, type); return; }
+  const c = document.getElementById('toast-container'); if (!c) return;
+  const icons = { success:'fa-check-circle', error:'fa-exclamation-circle', info:'fa-info-circle' };
+  const colors = { success:'var(--su)', error:'var(--er)', info:'var(--in)' };
+  const t = document.createElement('div'); t.className = `toast ${type}`;
+  t.innerHTML = `<i class="fas ${icons[type]||icons.info}" style="color:${colors[type]}"></i><span>${msg}</span>`;
+  c.appendChild(t); setTimeout(() => t.remove(), 3000);
+}
 </script>
 </body>
 </html>
