@@ -1,3 +1,5 @@
+<!-- BEVENU. -->
+
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -7,9 +9,41 @@
   <title>About Us — Bevenu</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magic-animated/1.0.0/magic.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animated-headline/1.0.0/animated-headline.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.7/css/flag-icons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.15.1/devicon.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/9.15.0/simple-icons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fontisto/3.0.4/fontisto.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css" />
   <link rel="stylesheet" href="styles.css" />
-  
+
   <style>
+    :root {
+      --p: #1a1a2e; --pl: #16213e; --a: #c9a96e; --ad: #a07840; --al: #e8d5b0;
+      --bg: #fafaf8; --bgc: #fff; --bgs: #f5f3ef; --bgl: #f0ede8;
+      --bd: #e8e4dc; --bdl: #f0ede8; --t: #1a1a1a; --ts: #4a4a4a; --tm: #9a9a9a;
+      --su: #22c55e; --wa: #f59e0b; --er: #ef4444; --in: #3b82f6; --pu: #8b5cf6;
+      --sh: 0 2px 8px rgba(0,0,0,.06); --shm: 0 4px 20px rgba(0,0,0,.10); --shl: 0 8px 40px rgba(0,0,0,.14);
+      --r: 10px; --rl: 16px; --rx: 24px; --tr: all .3s cubic-bezier(.4,0,.2,1); --nav: 70px;
+    }
+    [data-theme="dark"] {
+      --bg: #0a0a0f; --bgc: #13131a; --bgs: #1a1a24; --bgl: #16161f; --bd: #252535; --bdl: #1e1e2e;
+      --t: #f0f0f5; --ts: #9090a8; --tm: #55556a; --p: #f0ede8;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t); line-height: 1.6; transition: background .3s, color .3s; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+
     .about-hero {
       min-height: 70vh;
       display: flex;
@@ -19,14 +53,14 @@
       padding: 80px 24px;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+      background: linear-gradient(135deg, var(--pl) 0%, var(--p) 100%);
     }
     
     .about-hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: url('https://images.unsplash.com/photo-1445205170232-2775ac6c2d51?q=80&w=2070&auto=format&fit=crop') center/cover;
+      background: url('https://images.unsplash.com/photo-1721152531086-70a0d0bb33f9?q=80&w=2070&auto=format&fit=crop') center/cover;
       opacity: 0.12;
       filter: blur(1px);
     }
@@ -41,7 +75,7 @@
     .about-hero-tag {
       display: inline-block;
       background: rgba(201,169,110,0.2);
-      color: var(--accent);
+      color: var(--a);
       border: 1px solid rgba(201,169,110,0.4);
       padding: 6px 16px;
       border-radius: 999px;
@@ -67,7 +101,8 @@
       line-height: 1.7;
       margin-bottom: 32px;
     }
-    
+
+ 
     .story-section {
       padding: 80px 0;
       background: var(--bg);
@@ -82,22 +117,22 @@
     
     .story-image {
       position: relative;
-      border-radius: var(--radius-xl);
+      border-radius: var(--rx);
       overflow: hidden;
       aspect-ratio: 4/5;
-      box-shadow: var(--shadow-xl);
+      box-shadow: var(--shl);
     }
     
     .story-image-placeholder {
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, var(--accent-light), var(--bg-secondary));
+      background: linear-gradient(135deg, var(--al), var(--bgs));
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 16px;
-      color: var(--accent-dark);
+      color: var(--ad);
     }
     
     .story-image-placeholder i {
@@ -110,16 +145,16 @@
       font-size: clamp(1.8rem, 3vw, 2.5rem);
       font-weight: 700;
       margin-bottom: 20px;
-      color: var(--text);
+      color: var(--t);
     }
     
     .story-content p {
-      color: var(--text-secondary);
+      color: var(--ts);
       line-height: 1.8;
       margin-bottom: 24px;
       font-size: 15px;
     }
-    
+
     .values-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -128,31 +163,43 @@
     }
     
     .value-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
+      background: var(--bgc);
+      border: 1px solid var(--bd);
+      border-radius: var(--rl);
       padding: 28px;
       text-align: center;
-      transition: var(--transition);
+      transition: var(--tr);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .value-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 70%, rgba(201,169,110,0.04) 100%);
+      pointer-events: none;
     }
     
     .value-card:hover {
       transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--accent);
+      box-shadow: var(--shl);
+      border-color: var(--a);
     }
     
     .value-icon {
       width: 64px;
       height: 64px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      background: linear-gradient(135deg, var(--a), var(--ad));
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 24px;
       margin: 0 auto 16px;
+      position: relative;
+      z-index: 1;
     }
     
     .value-card h3 {
@@ -160,18 +207,23 @@
       font-size: 1.3rem;
       font-weight: 700;
       margin-bottom: 12px;
-      color: var(--text);
+      color: var(--t);
+      position: relative;
+      z-index: 1;
     }
     
     .value-card p {
       font-size: 14px;
-      color: var(--text-secondary);
+      color: var(--ts);
       line-height: 1.7;
+      position: relative;
+      z-index: 1;
     }
-    
+
+   
     .team-section {
       padding: 80px 0;
-      background: var(--bg-secondary);
+      background: var(--bgs);
     }
     
     .team-grid {
@@ -182,28 +234,29 @@
     }
     
     .team-card {
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
+      background: var(--bgc);
+      border-radius: var(--rl);
       overflow: hidden;
-      border: 1px solid var(--border);
+      border: 1px solid var(--bd);
       text-align: center;
-      transition: var(--transition);
+      transition: var(--tr);
+      position: relative;
     }
     
     .team-card:hover {
       transform: translateY(-6px);
-      box-shadow: var(--shadow-xl);
+      box-shadow: var(--shl);
     }
     
     .team-avatar {
       width: 100%;
       aspect-ratio: 1;
-      background: linear-gradient(135deg, var(--accent-light), var(--bg-secondary));
+      background: linear-gradient(135deg, var(--al), var(--bgs));
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 3rem;
-      color: var(--accent-dark);
+      color: var(--ad);
       position: relative;
     }
     
@@ -211,7 +264,7 @@
       content: '';
       position: absolute;
       inset: 8px;
-      border: 2px solid var(--accent);
+      border: 2px solid var(--a);
       border-radius: 50%;
       opacity: 0.3;
     }
@@ -229,7 +282,7 @@
     
     .team-info .role {
       font-size: 13px;
-      color: var(--accent);
+      color: var(--a);
       font-weight: 600;
       margin-bottom: 8px;
       display: block;
@@ -237,7 +290,7 @@
     
     .team-info p {
       font-size: 14px;
-      color: var(--text-muted);
+      color: var(--tm);
       line-height: 1.6;
     }
     
@@ -252,24 +305,25 @@
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      background: var(--bg-secondary);
+      background: var(--bgs);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 12px;
-      color: var(--text-muted);
-      transition: var(--transition);
+      color: var(--tm);
+      transition: var(--tr);
     }
     
     .social-links-small a:hover {
-      background: var(--accent);
+      background: var(--a);
       color: white;
       transform: translateY(-2px);
     }
-    
+
+  
     .cta-section {
       padding: 80px 0;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      background: linear-gradient(135deg, var(--p) 0%, var(--pl) 100%);
       text-align: center;
       color: white;
     }
@@ -305,7 +359,7 @@
       font-family: 'Playfair Display', serif;
       font-size: 2.5rem;
       font-weight: 800;
-      color: var(--accent);
+      color: var(--a);
       display: block;
       margin-bottom: 8px;
     }
@@ -315,7 +369,16 @@
       color: rgba(255,255,255,0.8);
       font-weight: 500;
     }
-    
+
+    .lottie-container {
+      width: 100%;
+      height: 300px;
+      margin: 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     @media (max-width: 900px) {
       .story-grid { grid-template-columns: 1fr; }
       .values-grid { grid-template-columns: 1fr 1fr; }
@@ -327,11 +390,22 @@
       .values-grid, .team-grid, .stats-showcase { grid-template-columns: 1fr; }
       .about-hero h1 { font-size: 2.5rem; }
     }
+
+
+    [data-aos] {
+      opacity: 0;
+      transition-property: opacity, transform;
+    }
+    [data-aos].aos-animate {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
 
+
 <div id="toast-container"></div>
+
 <nav class="navbar" id="navbar">
   <div class="nav-container">
     <div class="nav-logo">
@@ -408,7 +482,7 @@
 </nav>
 
 <section class="about-hero">
-  <div class="about-hero-content animate-in">
+  <div class="about-hero-content" data-aos="fade-up" data-aos-duration="1000">
     <span class="about-hero-tag">Our Story</span>
     <h1>Fashion That Tells<br><em>Your</em> Story</h1>
     <p>Bevenu was born from a simple belief: everyone deserves to feel confident, comfortable, and uniquely themselves through the clothes they wear.</p>
@@ -416,17 +490,16 @@
   </div>
 </section>
 
-
 <section class="story-section" id="story">
   <div class="container">
     <div class="story-grid">
-      <div class="story-image animate-in">
+      <div class="story-image" data-aos="fade-right" data-aos-duration="1000">
         <div class="story-image-placeholder">
           <i class="fas fa-seedling"></i>
           <span>Founded 2025</span>
         </div>
       </div>
-      <div class="story-content animate-in" style="animation-delay: 0.1s">
+      <div class="story-content" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
         <h2>From Idea to Impact</h2>
         <p>In 2025, Bevenu began as a small studio with a big vision: to create fashion that doesn't compromise on style, sustainability, or ethics. What started as a passion project has grown into a community of conscious consumers who believe in looking good while doing good.</p>
         <p>Every piece in our collection is thoughtfully designed, ethically sourced, and crafted with attention to detail. We partner with artisans and manufacturers who share our values, ensuring fair wages, safe working conditions, and minimal environmental impact.</p>
@@ -443,34 +516,36 @@
       <p class="section-tag">What We Stand For</p>
       <h2 class="section-title">Our Core Values</h2>
     </div>
+
+    <div class="lottie-container" id="lottie-sustainability"></div>
     
     <div class="values-grid">
-      <div class="value-card animate-in">
+      <div class="value-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
         <div class="value-icon"><i class="fas fa-leaf"></i></div>
         <h3>Sustainability First</h3>
         <p>We use eco-friendly materials, minimize waste, and offset carbon emissions. Fashion should never cost the earth.</p>
       </div>
-      <div class="value-card animate-in" style="animation-delay: 0.1s">
+      <div class="value-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
         <div class="value-icon"><i class="fas fa-hands-helping"></i></div>
         <h3>Ethical Production</h3>
         <p>Every garment is made in facilities that ensure fair wages, safe conditions, and respect for workers' rights.</p>
       </div>
-      <div class="value-card animate-in" style="animation-delay: 0.2s">
+      <div class="value-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
         <div class="value-icon"><i class="fas fa-palette"></i></div>
         <h3>Timeless Design</h3>
         <p>We create pieces that transcend trends—versatile, high-quality styles you'll love for years, not just a season.</p>
       </div>
-      <div class="value-card animate-in" style="animation-delay: 0.3s">
+      <div class="value-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
         <div class="value-icon"><i class="fas fa-heart"></i></div>
         <h3>Customer Love</h3>
         <p>Your satisfaction is our priority. From easy returns to 24/7 support, we're here to make your experience exceptional.</p>
       </div>
-      <div class="value-card animate-in" style="animation-delay: 0.4s">
+      <div class="value-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
         <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
         <h3>Innovation</h3>
         <p>We constantly explore new fabrics, technologies, and processes to push the boundaries of sustainable fashion.</p>
       </div>
-      <div class="value-card animate-in" style="animation-delay: 0.5s">
+      <div class="value-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">
         <div class="value-icon"><i class="fas fa-globe-asia"></i></div>
         <h3>Global Community</h3>
         <p>We celebrate diversity and inclusivity, creating styles for every body, background, and story.</p>
@@ -485,58 +560,61 @@
       <p class="section-tag">The People Behind Bevenu</p>
       <h2 class="section-title">Meet Our Team</h2>
     </div>
+
+    <div class="lottie-container" id="lottie-team"></div>
     
     <div class="team-grid">
-      <div class="team-card animate-in">
+      <div class="team-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
         <div class="team-avatar"><i class="fas fa-user"></i></div>
         <div class="team-info">
           <h3>Paras Dhiman</h3>
-          <span class="role">Founder & CEO</span>
-          <p>Visionary leader with 15+ years in sustainable fashion. Passionate about ethical supply chains.</p>
+          <span class="role">Chairperson & CEO</span>
+          <p>Visionary leader driving Bevenu's mission to blend sustainable fashion with cutting-edge technology. Oversees strategy, partnerships, and customer experience excellence.</p>
           <div class="social-links-small">
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="hvr-pulse"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="hvr-pulse"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hvr-pulse"><i class="fab fa-twitter"></i></a>
           </div>
         </div>
       </div>
-      <div class="team-card animate-in" style="animation-delay: 0.1s">
-        <div class="team-avatar"><i class="fas fa-user"></i></div>
+      <div class="team-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+        <div class="team-avatar"><i class="fas fa-palette"></i></div>
         <div class="team-info">
           <h3>Dhrupad Arora</h3>
-          <span class="role">Creative Director</span>
-          <p>Award-winning designer blending traditional craftsmanship with contemporary aesthetics.</p>
+          <span class="role">Designs & Social Media Manager</span>
+          <p>Creative force behind Bevenu's aesthetic direction and digital presence. Curates collections, leads design innovation, and builds our global community one post at a time.</p>
           <div class="social-links-small">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-dribbble"></i></a>
+            <a href="#" class="hvr-pulse"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hvr-pulse"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="hvr-pulse"><i class="fab fa-behance"></i></a>
           </div>
-        </div>
-      </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-
 <section class="cta-section">
   <div class="container">
     <h2>Join the Movement</h2>
     <p>Every purchase supports sustainable practices, fair wages, and a cleaner planet. Together, we're redefining fashion.</p>
+
+    <div class="lottie-container" id="lottie-celebration"></div>
     
     <div class="stats-showcase">
-      <div class="stat-showcase-item">
-        <span class="number">50K+</span>
+      <div class="stat-showcase-item" data-aos="zoom-in" data-aos-duration="800">
+        <span class="number" data-count="50000">0</span>
         <span class="label">Happy Customers</span>
       </div>
-      <div class="stat-showcase-item">
-        <span class="number">120+</span>
+      <div class="stat-showcase-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+        <span class="number" data-count="120">0</span>
         <span class="label">Ethical Partners</span>
       </div>
-      <div class="stat-showcase-item">
-        <span class="number">98%</span>
+      <div class="stat-showcase-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
+        <span class="number" data-count="98">0</span>
         <span class="label">Sustainable Materials</span>
       </div>
-      <div class="stat-showcase-item">
+      <div class="stat-showcase-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">
         <span class="number">4.9★</span>
         <span class="label">Average Rating</span>
       </div>
@@ -606,31 +684,145 @@
   <div class="wishlist-items" id="wishlist-items-container"></div>
 </div>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.umd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/js/glightbox.min.js"></script>
 <script src="script.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    updateNavCounts();
-    initSearchSuggestions();
-    checkUserSession();
-    initTheme();
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-          observer.unobserve(entry.target);
-        }
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof initTheme === 'function') initTheme();
+  if (typeof updateNavCounts === 'function') updateNavCounts();
+  if (typeof checkUserSession === 'function') checkUserSession();
+  if (typeof initSearchSuggestions === 'function') initSearchSuggestions();
+
+  AOS.init({ duration: 800, once: true, offset: 100 });
+
+  initLottieAnimations();
+  initCounters();
+  initTiltEffects();
+  initGSAPAnimations();
+});
+
+function initLottieAnimations() {
+  if (typeof lottie === 'undefined') return;
+
+  if (document.getElementById('lottie-sustainability')) {
+    try {
+      lottie.loadAnimation({
+        container: document.getElementById('lottie-sustainability'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'https://assets9.lottiefiles.com/packages/lf20_khzniaya.json' 
       });
-    }, { threshold: 0.1 });
-    
-    document.querySelectorAll('.stat-showcase-item, .value-card, .team-card').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      observer.observe(el);
+    } catch (e) {
+      console.warn('Lottie sustainability animation failed:', e);
+      document.getElementById('lottie-sustainability').innerHTML = '<i class="fas fa-leaf" style="font-size:3rem;color:var(--a)"></i>';
+    }
+  }
+  
+
+  if (document.getElementById('lottie-team')) {
+    try {
+      lottie.loadAnimation({
+        container: document.getElementById('lottie-team'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'https://assets2.lottiefiles.com/packages/lf20_jtbfg2nb.json' 
+      });
+    } catch (e) {
+      console.warn('Lottie team animation failed:', e);
+      document.getElementById('lottie-team').innerHTML = '<i class="fas fa-users" style="font-size:3rem;color:var(--a)"></i>';
+    }
+  }
+  
+
+  if (document.getElementById('lottie-celebration')) {
+    try {
+      lottie.loadAnimation({
+        container: document.getElementById('lottie-celebration'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'https://assets3.lottiefiles.com/packages/lf20_w51pcehl.json' 
+      });
+    } catch (e) {
+      console.warn('Lottie celebration animation failed:', e);
+      document.getElementById('lottie-celebration').innerHTML = '<i class="fas fa-star" style="font-size:3rem;color:var(--a)"></i>';
+    }
+  }
+}
+
+function initCounters() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('[data-count]').forEach(el => {
+        const target = parseInt(el.dataset.count);
+        const cu = new countUp.CountUp(el, target, { duration: 2, separator: ',' });
+        if (!cu.error) cu.start();
+      });
+      observer.unobserve(entry.target);
     });
+  }, { threshold: 0.3 });
+  
+  const showcase = document.querySelector('.stats-showcase');
+  if (showcase) observer.observe(showcase);
+}
+
+function initTiltEffects() {
+  if (typeof VanillaTilt !== 'undefined') {
+    VanillaTilt.init(document.querySelectorAll('.value-card, .team-card'), { 
+      max: 8, 
+      speed: 400, 
+      glare: true, 
+      'max-glare': 0.1 
+    });
+  }
+}
+
+function initGSAPAnimations() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.about-hero-content', {
+    scrollTrigger: { trigger: '.about-hero', start: 'top 80%' },
+    y: 30, opacity: 0, duration: 1, ease: 'power2.out'
   });
+  
+
+  gsap.from('.value-card', {
+    scrollTrigger: { trigger: '.values-grid', start: 'top 80%' },
+    y: 40, opacity: 0, stagger: 0.1, duration: 0.7, ease: 'power2.out'
+  });
+  
+
+  gsap.from('.team-card', {
+    scrollTrigger: { trigger: '.team-grid', start: 'top 80%' },
+    y: 40, opacity: 0, stagger: 0.15, duration: 0.8, ease: 'power2.out'
+  });
+}
+
+window.addEventListener('error', (e) => {
+  if (e.message.includes('lottie')) {
+    console.warn('Lottie library failed to load, using fallback icons');
+    document.querySelectorAll('.lottie-container').forEach(container => {
+      container.innerHTML = '<i class="fas fa-sync-alt" style="font-size:3rem;color:var(--a);animation:spin 1.5s linear infinite"></i>';
+    });
+  }
+}, true);
 </script>
 </body>
 </html>
+
+<!-- BEVENU. -->
