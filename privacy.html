@@ -3,793 +3,739 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Privacy Policy — Bevenu Premium Fashion. Learn how we collect, use, and protect your personal data.">
+  <meta name="description" content="Privacy Policy — Bevenu Premium Fashion. How we collect, use and protect your data.">
   <title>Privacy Policy — Bevenu</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="styles.css" />
-  
- <link rel="icon" type="image/svg+xml" 
-href="data:image/svg+xml,
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
-<defs>
-  <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
-    <stop offset='0%' stop-color='%2300C6FF'/>
-    <stop offset='100%' stop-color='%230072FF'/>
-  </linearGradient>
-</defs>
-<path d='M12 2L4 5V11C4 16 7.8 20.5 12 22C16.2 20.5 20 16 20 11V5L12 2Z' fill='url(%23g)'/>
-<rect x='8.5' y='10' width='7' height='6' rx='1.5' fill='white'/>
-<path d='M9.5 10V8.5C9.5 7.1 10.6 6 12 6C13.4 6 14.5 7.1 14.5 8.5V10' stroke='white' stroke-width='1.8' stroke-linecap='round'/>
-<circle cx='12' cy='13' r='1' fill='url(%23g)'/>
-</svg>">
-  
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2L4 5V11C4 16 7.8 20.5 12 22C16.2 20.5 20 16 20 11V5L12 2Z' fill='%23c9a96e'/></svg>">
+
   <style>
-    #privacy-page {
-      background: var(--bg, #ffffff);
-      color: var(--text, #0f172a);
-      min-height: 100vh;
-      padding-top: var(--nav-h, 80px);
+    :root {
+      --p:#1a1a2e;--pl:#16213e;--a:#c9a96e;--ad:#a07840;--al:#e8d5b0;
+      --bg:#fafaf8;--bgc:#fff;--bgs:#f5f3ef;--bgl:#f0ede8;
+      --bd:#e8e4dc;--bdl:#f0ede8;--t:#1a1a1a;--ts:#4a4a4a;--tm:#9a9a9a;
+      --su:#22c55e;--wa:#f59e0b;--er:#ef4444;--in:#3b82f6;--pu:#8b5cf6;
+      --sh:0 2px 8px rgba(0,0,0,.06);--shm:0 4px 20px rgba(0,0,0,.10);--shl:0 8px 40px rgba(0,0,0,.14);
+      --r:10px;--rl:16px;--rx:24px;--tr:all .3s cubic-bezier(.4,0,.2,1);--nav:70px;
     }
-
-    .privacy-hero {
-      background: linear-gradient(135deg, var(--primary-light, #16213e) 0%, var(--primary, #1a1a2e) 100%);
-      padding: 80px 24px 60px;
-      text-align: center;
-      color: white;
-      position: relative;
-      overflow: hidden;
+    [data-theme="dark"] {
+      --bg:#0a0a0f;--bgc:#13131a;--bgs:#1a1a24;--bgl:#16161f;--bd:#252535;--bdl:#1e1e2e;
+      --t:#f0f0f5;--ts:#9090a8;--tm:#55556a;--p:#f0ede8;
     }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t); line-height: 1.6; transition: background .3s, color .3s; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
 
-    .privacy-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-     background: url('https://images.unsplash.com/photo-1582719188393-bb71ca45dbb9?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdGhpbmclMjBzdG9yZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop') center/cover;
-      opacity: 0.3;
+    #toast-container { position: fixed; top: 90px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
+    .toast { display: flex; align-items: center; gap: 12px; padding: 14px 20px; border-radius: var(--rl); background: var(--bgc); box-shadow: var(--shl); border-left: 4px solid var(--a); min-width: 280px; font-size: 14px; font-weight: 500; animation: toastIn .3s ease, toastOut .3s ease 2.7s forwards; }
+    .toast.success { border-color: var(--su); } .toast.error { border-color: var(--er); } .toast.info { border-color: var(--in); }
+    @keyframes toastIn { from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:none;} }
+    @keyframes toastOut { from{opacity:1;}to{opacity:0;transform:translateX(20px);} }
+
+    .read-bar { position: fixed; top: var(--nav); left: 0; width: 0; height: 3px; background: linear-gradient(90deg, var(--a), var(--pu)); z-index: 999; border-radius: 0 3px 3px 0; box-shadow: 0 2px 8px rgba(201,169,110,.4); transition: width .05s linear; }
+
+    .navbar { position: sticky; top: 0; z-index: 1000; background: var(--bgc); border-bottom: 1px solid var(--bd); box-shadow: var(--sh); height: var(--nav); transition: var(--tr); }
+    .nav-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; gap: 20px; }
+    .nav-logo a { display: flex; align-items: baseline; gap: 2px; }
+    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 800; color: var(--t); }
+    .logo-dot { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--a); font-weight: 800; }
+    .nav-search { flex: 1; max-width: 500px; }
+    .search-wrapper { position: relative; display: flex; align-items: center; }
+    .search-icon { position: absolute; left: 14px; color: var(--tm); font-size: 14px; pointer-events: none; }
+    .search-wrapper input { width: 100%; padding: 10px 14px 10px 40px; border: 1.5px solid var(--bd); border-radius: var(--rx); background: var(--bgs); color: var(--t); font-size: 14px; outline: none; transition: var(--tr); }
+    .search-wrapper input:focus { border-color: var(--a); background: var(--bgc); box-shadow: 0 0 0 3px rgba(201,169,110,.15); }
+    .nav-actions { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+    .nav-btn { display: flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: var(--r); color: var(--t); font-size: 14px; font-weight: 500; transition: var(--tr); background: none; border: none; cursor: pointer; white-space: nowrap; }
+    .nav-btn:hover { background: var(--bgs); color: var(--a); }
+    .badge { position: absolute; top: 2px; right: 2px; background: var(--a); color: white; font-size: 10px; font-weight: 700; min-width: 18px; height: 18px; border-radius: 999px; display: flex; align-items: center; justify-content: center; }
+    .cart-btn { position: relative; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; border-radius: var(--r); cursor: pointer; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--t); border-radius: 2px; transition: var(--tr); }
+
+    .priv-hero {
+      background: linear-gradient(135deg, #0f0c29 0%, #1a1a2e 50%, #302b63 100%);
+      padding: 100px 24px 80px; text-align: center; color: white; position: relative; overflow: hidden;
     }
-
-    .privacy-hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 800;
-      margin-bottom: 12px;
-      position: relative;
-      z-index: 2;
+    .priv-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 60%, rgba(201,169,110,.1) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 40%, rgba(139,92,246,.06) 0%, transparent 50%);
     }
-
-    .privacy-hero p {
-      font-size: 1.1rem;
-      opacity: 0.85;
-      max-width: 600px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
+    .priv-hero-content { position: relative; z-index: 2; max-width: 740px; margin: 0 auto; }
+    .priv-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(201,169,110,.15); border: 1px solid rgba(201,169,110,.35);
+      padding: 6px 18px; border-radius: 999px; font-size: 12px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase; color: var(--a); margin-bottom: 22px;
     }
-
-    .privacy-meta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 20px;
-      padding: 8px 16px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 999px;
-      font-size: 13px;
-      backdrop-filter: blur(10px);
-      position: relative;
-      z-index: 2;
+    .priv-h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem,5vw,4.2rem); font-weight: 800; margin-bottom: 14px; }
+    .priv-sub { font-size: 1.05rem; color: rgba(255,255,255,.75); max-width: 600px; margin: 0 auto 24px; line-height: 1.75; }
+    .priv-meta {
+      display: inline-flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-content: center;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--rx); padding: 10px 24px; font-size: 13px; backdrop-filter: blur(10px); color: rgba(255,255,255,.8);
     }
+    .priv-meta-item { display: flex; align-items: center; gap: 7px; }
+    .priv-meta i { color: var(--a); }
 
-    .privacy-container {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 60px 24px;
+    .priv-hero-wave { display: block; margin-top: -1px; }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+    .priv-layout { display: grid; grid-template-columns: 260px 1fr; gap: 36px; padding: 60px 0 80px; align-items: start; }
+
+    .toc-card {
+      background: var(--bgc); border: 1px solid var(--bd); border-radius: var(--rl);
+      padding: 22px; box-shadow: var(--sh); position: sticky; top: calc(var(--nav) + 60px + 20px);
     }
-
-    @media (max-width: 900px) {
-      .privacy-container { grid-template-columns: 1fr; }
+    .toc-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--tm); margin-bottom: 12px; }
+    .toc-link {
+      display: flex; align-items: center; gap: 8px; padding: 8px 12px;
+      font-size: 13px; color: var(--ts); border-left: 2px solid transparent;
+      border-radius: 0 var(--r) var(--r) 0; transition: var(--tr); cursor: pointer;
     }
+    .toc-link:hover { color: var(--a); background: var(--bgs); }
+    .toc-link.active { color: var(--a); border-left-color: var(--a); background: rgba(201,169,110,.06); font-weight: 600; }
+    .toc-link i { font-size: 10px; color: inherit; }
 
-    /* Table of Contents */
-    .privacy-toc {
-      position: sticky;
-      top: calc(var(--nav-h, 80px) + 24px);
-      align-self: start;
-      background: var(--bg-card, #ffffff);
-      border: 1px solid var(--border, #e2e8f0);
-      border-radius: var(--radius-lg, 12px);
-      padding: 24px;
-      box-shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.05));
+    .toc-progress-wrap { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--bdl); }
+    .toc-progress-label { font-size: 11px; color: var(--tm); margin-bottom: 6px; display: flex; justify-content: space-between; }
+    .toc-progress-bar { height: 6px; background: var(--bgs); border-radius: 999px; overflow: hidden; }
+    .toc-progress-fill { height: 100%; background: linear-gradient(90deg, var(--a), var(--pu)); border-radius: 999px; width: 0%; transition: width .1s linear; }
+
+    .content-area {}
+
+    .priv-section { scroll-margin-top: calc(var(--nav) + 80px); margin-bottom: 56px; }
+    .priv-section-hdr {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 18px;
+      padding-bottom: 12px; border-bottom: 2px solid var(--bdl);
     }
-
-    .privacy-toc h3 {
-      font-size: 14px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-muted, #94a3b8);
-      margin-bottom: 16px;
+    .priv-section-icon {
+      width: 40px; height: 40px; border-radius: var(--r); flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(201,169,110,.15), rgba(201,169,110,.05));
+      border: 1px solid rgba(201,169,110,.2); display: flex; align-items: center;
+      justify-content: center; font-size: 16px; color: var(--a);
     }
+    .priv-h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; }
+    .priv-section p { font-size: 15px; line-height: 1.8; color: var(--ts); margin-bottom: 14px; }
+    .priv-section ul { padding-left: 0; display: flex; flex-direction: column; gap: 9px; margin-bottom: 14px; }
+    .priv-section li { font-size: 14.5px; line-height: 1.75; color: var(--ts); list-style: none; padding-left: 22px; position: relative; }
+    .priv-section li::before { content: '▸'; position: absolute; left: 0; color: var(--a); font-size: 12px; top: 2px; }
+    .priv-section li strong { color: var(--t); }
+    .priv-section a { color: var(--a); transition: var(--tr); }
+    .priv-section a:hover { color: var(--ad); text-decoration: underline; }
 
-    .privacy-toc a {
-      display: block;
-      padding: 8px 12px;
-      font-size: 14px;
-      color: var(--text-secondary, #64748b);
-      border-left: 2px solid transparent;
-      transition: all 0.2s ease;
-      text-decoration: none;
+    .highlight-box {
+      background: rgba(201,169,110,.07); border: 1px solid rgba(201,169,110,.2);
+      border-left: 4px solid var(--a); border-radius: 0 var(--r) var(--r) 0;
+      padding: 16px 18px; margin: 16px 0;
     }
+    .highlight-box p { margin: 0; font-size: 14px; }
 
-    .privacy-toc a:hover, .privacy-toc a.active {
-      color: var(--accent, #e11d48);
-      border-left-color: var(--accent, #e11d48);
-      background: var(--bg-secondary, #f8fafc);
-      border-radius: 0 8px 8px 0;
+    .data-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; }
+    .data-table th { padding: 10px 14px; background: var(--bgs); text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--tm); border-bottom: 1px solid var(--bd); }
+    .data-table td { padding: 11px 14px; border-bottom: 1px solid var(--bdl); color: var(--ts); }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: var(--bgs); }
+    .dt-badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+    .dt-badge.essential { background: rgba(34,197,94,.1); color: var(--su); }
+    .dt-badge.optional  { background: rgba(245,158,11,.1); color: var(--wa); }
+    .dt-badge.marketing { background: rgba(239,68,68,.1); color: var(--er); }
+
+    .pref-center {
+      background: var(--bgs); border-top: 1px solid var(--bd); border-bottom: 1px solid var(--bd);
+      padding: 72px 0; position: relative; overflow: hidden;
     }
-
-    /* Content Styling */
-    .privacy-content section {
-      margin-bottom: 48px;
-      scroll-margin-top: 100px;
-    }
-
-    .privacy-content h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-      color: var(--text, #0f172a);
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--border-light, #f1f5f9);
-    }
-
-    .privacy-content p, .privacy-content li {
-      font-size: 15px;
-      line-height: 1.8;
-      color: var(--text-secondary, #4a4a4a);
-      margin-bottom: 12px;
-    }
-
-    .privacy-content ul {
-      padding-left: 24px;
-      margin-bottom: 16px;
-    }
-
-    .privacy-content li {
-      position: relative;
-      list-style: none;
-    }
-
-    .privacy-content li::before {
-      content: '•';
-      color: var(--accent, #e11d48);
-      font-weight: bold;
-      position: absolute;
-      left: -16px;
-    }
-
-    /* Advanced Feature: Interactive Privacy Preference Center */
-    .privacy-preferences {
-      background: var(--bg-secondary, #f8fafc);
-      border-top: 1px solid var(--border, #e2e8f0);
-      padding: 80px 24px;
-    }
-
-    .pref-container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .pref-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .pref-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      margin-bottom: 12px;
-    }
-
-    .pref-header p {
-      color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .pref-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-bottom: 32px;
-    }
-
+    .pref-center::before { content: ''; position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(201,169,110,.08), transparent); pointer-events: none; }
+    .pref-hdr { text-align: center; margin-bottom: 40px; }
+    .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--a); display: block; margin-bottom: 8px; }
+    .pref-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 10px; }
+    .pref-sub { color: var(--ts); max-width: 560px; margin: 0 auto; font-size: 15px; }
+    .pref-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-bottom: 32px; }
     .pref-card {
-      background: var(--bg-card, #ffffff);
-      border: 1px solid var(--border, #e2e8f0);
-      border-radius: var(--radius-lg, 12px);
-      padding: 24px;
-      transition: all 0.3s ease;
+      background: var(--bgc); border: 1.5px solid var(--bd); border-radius: var(--rl);
+      padding: 22px; transition: var(--tr); position: relative; overflow: hidden;
     }
+    .pref-card:hover { box-shadow: var(--shm); transform: translateY(-2px); }
+    .pref-card.toggled { border-color: var(--a); box-shadow: 0 0 0 2px rgba(201,169,110,.1); }
+    .pref-card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+    .pref-card-icon { width: 38px; height: 38px; border-radius: var(--r); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .pref-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 5px; }
+    .pref-card p { font-size: 13px; color: var(--tm); line-height: 1.6; margin-bottom: 14px; }
 
-    .pref-card:hover {
-      box-shadow: var(--shadow-md, 0 4px 12px rgba(0,0,0,0.08));
-      transform: translateY(-2px);
-    }
+    .toggle-sw { width: 46px; height: 24px; background: var(--bd); border-radius: 999px; cursor: pointer; position: relative; transition: var(--tr); flex-shrink: 0; border: none; }
+    .toggle-sw.on { background: var(--a); }
+    .toggle-sw.always { background: var(--su); cursor: not-allowed; }
+    .toggle-sw::after { content: ''; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; background: white; border-radius: 50%; transition: transform .3s cubic-bezier(.34,1.56,.64,1); box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+    .toggle-sw.on::after, .toggle-sw.always::after { transform: translateX(22px); }
 
-    .pref-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
+    .pref-flow { height: 3px; background: var(--bdl); border-radius: 999px; margin: 8px 0; overflow: hidden; }
+    .pref-flow-fill { height: 100%; width: 0%; border-radius: 999px; background: linear-gradient(90deg, var(--a), var(--pu)); transition: width .6s ease; }
+    .pref-status-row { display: flex; justify-content: space-between; font-size: 11px; color: var(--tm); }
+    .pref-on-status { color: var(--su) !important; font-weight: 700; }
 
-    .pref-card h4 {
-      font-size: 16px;
-      font-weight: 600;
-      margin: 0;
-    }
+    .pref-actions { display: flex; gap: 12px; justify-content: center; }
 
-    .pref-card p {
-      font-size: 13px;
-      color: var(--text-muted, #94a3b8);
-      margin: 0 0 16px;
-      line-height: 1.5;
-    }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 26px; border-radius: var(--rx); font-size: 14px; font-weight: 600; cursor: pointer; border: 2px solid transparent; transition: var(--tr); font-family: 'DM Sans', sans-serif; white-space: nowrap; }
+    .btn-primary { background: linear-gradient(135deg, var(--a), var(--ad)); color: white; border-color: var(--a); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(201,169,110,.4); }
+    .btn-outline { background: transparent; color: var(--t); border-color: var(--bd); }
+    .btn-outline:hover { border-color: var(--a); color: var(--a); }
 
-    /* Custom Toggle Switch */
-    .pref-toggle {
-      position: relative;
-      width: 48px;
-      height: 26px;
-      background: var(--border, #e2e8f0);
-      border-radius: 999px;
-      cursor: pointer;
-      transition: background 0.3s ease;
+    .rights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-top: 20px; }
+    .right-item {
+      background: var(--bgc); border: 1px solid var(--bd); border-radius: var(--rl);
+      padding: 18px 16px; text-align: center; transition: var(--tr); cursor: default;
     }
+    .right-item:hover { border-color: var(--a); transform: translateY(-3px); box-shadow: var(--shm); }
+    .right-item i { font-size: 1.8rem; color: var(--a); margin-bottom: 10px; display: block; }
+    .right-item h4 { font-size: 14px; font-weight: 700; margin-bottom: 5px; }
+    .right-item p { font-size: 12px; color: var(--tm); line-height: 1.5; }
 
-    .pref-toggle.active {
-      background: var(--accent, #e11d48);
+    .contact-grid-sm { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+    .contact-item-sm {
+      display: flex; align-items: center; gap: 12px; padding: 14px 16px;
+      background: var(--bgc); border: 1px solid var(--bd); border-radius: var(--rl); transition: var(--tr);
     }
+    .contact-item-sm:hover { border-color: var(--a); }
+    .contact-item-sm i { font-size: 18px; color: var(--a); width: 20px; flex-shrink: 0; }
+    .contact-item-sm a { font-size: 13px; color: var(--a); font-weight: 600; }
+    .contact-item-sm small { font-size: 11px; color: var(--tm); display: block; margin-top: 2px; }
 
-    .pref-toggle::after {
-      content: '';
-      position: absolute;
-      top: 3px;
-      left: 3px;
-      width: 20px;
-      height: 20px;
-      background: white;
-      border-radius: 50%;
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
+    .footer { background: var(--p); color: rgba(255,255,255,.85); padding: 56px 0 0; }
+    [data-theme="dark"] .footer { background: var(--bgs); border-top: 1px solid var(--bd); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 36px; padding-bottom: 40px; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 800; color: white; margin-bottom: 12px; }
+    .footer-logo span { color: var(--a); }
+    .footer-brand p { font-size: 14px; color: rgba(255,255,255,.6); line-height: 1.7; margin-bottom: 20px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .fsb { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; font-size: 13px; color: white; transition: var(--tr); }
+    .fsb:hover { background: var(--a); transform: translateY(-2px); }
+    .footer-col h4 { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: white; margin-bottom: 16px; }
+    .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 9px; transition: var(--tr); }
+    .footer-col a:hover { color: var(--a); padding-left: 4px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding: 18px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .footer-bottom p { font-size: 13px; color: rgba(255,255,255,.45); }
+    .payment-icons { display: flex; gap: 10px; font-size: 22px; color: rgba(255,255,255,.45); }
 
-    .pref-toggle.active::after {
-      transform: translateX(22px);
-    }
+    .wishlist-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 1100; opacity: 0; pointer-events: none; transition: var(--tr); }
+    .wishlist-overlay.active { opacity: 1; pointer-events: all; }
+    .wishlist-sidebar { position: fixed; top: 0; right: 0; width: 380px; max-width: 100vw; height: 100vh; background: var(--bgc); box-shadow: var(--shl); z-index: 1200; transform: translateX(100%); transition: var(--tr); display: flex; flex-direction: column; }
+    .wishlist-sidebar.open { transform: translateX(0); }
+    .wishlist-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid var(--bd); }
+    .wishlist-header h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+    .wishlist-header button { width: 36px; height: 36px; border-radius: 50%; background: var(--bgs); display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; transition: var(--tr); }
+    .wishlist-items { flex: 1; overflow-y: auto; padding: 16px; }
 
-    /* Data Flow Visualization */
-    .data-flow {
-      height: 4px;
-      background: var(--border-light, #f1f5f9);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-top: 16px;
-      position: relative;
-    }
-
-    .data-flow-bar {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--accent, #e11d48), #f59e0b);
-      border-radius: 4px;
-      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-    }
-
-    .data-flow-bar::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      width: 20px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4));
-      animation: flowPulse 1.5s infinite;
-    }
-
-    @keyframes flowPulse {
-      0% { opacity: 0; transform: translateX(-10px); }
-      50% { opacity: 1; }
-      100% { opacity: 0; transform: translateX(10px); }
-    }
-
-    .pref-status {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 8px;
-    }
-
-    .pref-actions {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* Reading Progress Bar */
-    .reading-progress {
-      position: fixed;
-      top: var(--nav-h, 80px);
-      left: 0;
-      width: 0%;
-      height: 3px;
-      background: var(--accent, #e11d48);
-      z-index: 999;
-      transition: width 0.1s linear;
-      box-shadow: 0 2px 8px rgba(225,29,72,0.4);
-    }
-
-    /* Dark Mode Overrides */
-    [data-theme="dark"] .privacy-toc,
-    [data-theme="dark"] .pref-card {
-      background: #1e293b;
-      border-color: #334155;
-    }
-    [data-theme="dark"] .privacy-toc a:hover,
-    [data-theme="dark"] .privacy-toc a.active {
-      background: #0f172a;
-    }
-    [data-theme="dark"] .privacy-content h2 {
-      border-bottom-color: #334155;
-    }
-    [data-theme="dark"] .privacy-content p,
-    [data-theme="dark"] .privacy-content li {
-      color: #cbd5e1;
-    }
-    [data-theme="dark"] .privacy-preferences {
-      background: #0f172a;
-      border-top-color: #334155;
-    }
-    [data-theme="dark"] .data-flow {
-      background: #334155;
-    }
+    @media (max-width: 1000px) { .priv-layout { grid-template-columns: 1fr; } .toc-card { position: static; } }
+    @media (max-width: 768px) { .nav-search { display: none; } .footer-grid { grid-template-columns: 1fr 1fr; } .contact-grid-sm { grid-template-columns: 1fr; } }
+    @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } .rights-grid { grid-template-columns: 1fr 1fr; } }
   </style>
 </head>
 <body>
+<div id="toast-container"></div>
+<div class="read-bar" id="read-bar"></div>
 
-<!-- Reading Progress Bar -->
-<div class="reading-progress" id="reading-progress"></div>
-
-<!-- Navbar (Identical to other pages) -->
 <nav class="navbar" id="navbar">
   <div class="nav-container">
     <div class="nav-logo"><a href="index.html"><span class="logo-text">Bevenu</span><span class="logo-dot">.</span></a></div>
     <div class="nav-search">
       <div class="search-wrapper">
         <i class="fas fa-search search-icon"></i>
-        <input type="text" id="search-input" placeholder="Search for clothes, brands..." autocomplete="off" />
+        <input type="text" id="search-input" placeholder="Search products…" autocomplete="off" />
         <div class="search-suggestions" id="search-suggestions"></div>
       </div>
     </div>
     <div class="nav-actions">
-      <div class="nav-dropdown">
-        <button class="nav-btn" id="categories-btn"><i class="fas fa-th-large"></i><span>Shop</span><i class="fas fa-chevron-down chevron"></i></button>
-        <div class="dropdown-menu" id="categories-dropdown">
-          <a href="products.html?cat=men"><i class="fas fa-male"></i> Men</a>
-          <a href="products.html?cat=women"><i class="fas fa-female"></i> Women</a>
-          <a href="products.html?cat=kids"><i class="fas fa-child"></i> Kids</a>
-          <a href="products.html?cat=accessories"><i class="fas fa-gem"></i> Accessories</a>
-        </div>
-      </div>
-      <button class="nav-btn" id="theme-toggle" title="Toggle Dark Mode"><i class="fas fa-moon" id="theme-icon"></i></button>
-      <a href="#" class="nav-btn" id="wishlist-btn" title="Wishlist"><i class="fas fa-heart"></i><span class="badge" id="wishlist-count">0</span></a>
-      <a href="cart.html" class="nav-btn cart-btn" title="Cart"><i class="fas fa-shopping-bag"></i><span class="badge" id="cart-count">0</span></a>
-      <div class="nav-user" id="nav-user">
-        <a href="login.html" class="nav-btn" id="login-btn"><i class="fas fa-user"></i><span id="user-display">Login</span></a>
-      </div>
+      <button class="nav-btn" id="theme-toggle"><i class="fas fa-moon" id="theme-icon"></i></button>
+      <a href="#" class="nav-btn" id="wishlist-btn"><i class="fas fa-heart"></i><span class="badge" id="wishlist-count">0</span></a>
+      <a href="cart.html" class="nav-btn cart-btn" style="position:relative"><i class="fas fa-shopping-bag"></i><span class="badge" id="cart-count">0</span></a>
+      <a href="login.html" class="nav-btn" id="login-btn"><i class="fas fa-user"></i><span id="user-display">Login</span></a>
     </div>
     <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
   </div>
-  <div class="mobile-menu" id="mobile-menu">
-    <div class="mobile-search"><input type="text" placeholder="Search products..." id="mobile-search" /></div>
-    <nav class="mobile-nav">
-      <a href="products.html?cat=men"><i class="fas fa-male"></i> Men</a>
-      <a href="products.html?cat=women"><i class="fas fa-female"></i> Women</a>
-      <a href="products.html?cat=kids"><i class="fas fa-child"></i> Kids</a>
-      <a href="products.html?cat=accessories"><i class="fas fa-gem"></i> Accessories</a>
-      <hr />
-      <a href="cart.html"><i class="fas fa-shopping-bag"></i> Cart</a>
-      <a href="login.html"><i class="fas fa-user"></i> Login / Signup</a>
+  <div class="mobile-menu" id="mobile-menu" style="display:none">
+    <nav style="padding:12px;display:flex;flex-direction:column;gap:4px">
+      <a href="products.html?cat=men" class="nav-btn">Men</a>
+      <a href="products.html?cat=women" class="nav-btn">Women</a>
+      <a href="products.html?cat=kids" class="nav-btn">Kids</a>
+      <a href="products.html?cat=accessories" class="nav-btn">Accessories</a>
     </nav>
   </div>
 </nav>
 
-<!-- Privacy Page Content -->
-<main id="privacy-page">
-  <section class="privacy-hero">
-    <h1>Privacy Policy</h1>
-    <p>We respect your privacy and are committed to protecting your personal data. This policy explains how we collect, use, and safeguard your information.</p>
-    <div class="privacy-meta">
-      <i class="fas fa-calendar-alt"></i>
-      <span>Last Updated: April 15, 2026</span>
+<section class="priv-hero">
+  <div class="priv-hero-content animate__animated animate__fadeIn">
+    <div class="priv-tag"><i class="fas fa-shield-alt"></i> Privacy Policy</div>
+    <h1 class="priv-h1">Your Privacy Matters<br><em>To Us.</em></h1>
+    <p class="priv-sub">We're committed to total transparency about how your data is collected, used, and protected. No fine print, no surprises.</p>
+    <div class="priv-meta">
+      <div class="priv-meta-item"><i class="fas fa-calendar-alt"></i> Last Updated: April 15, 2026</div>
+      <div class="priv-meta-item"><i class="fas fa-book-open"></i> ~8 min read</div>
+      <div class="priv-meta-item"><i class="fas fa-globe-asia"></i> GDPR & IT Act Compliant</div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <div class="privacy-container">
-    <!-- Table of Contents -->
-    <aside class="privacy-toc" id="privacy-toc">
-      <h3>Contents</h3>
-      <a href="#data-collection" class="active">1. Data We Collect</a>
-      <a href="#how-we-use">2. How We Use Your Data</a>
-      <a href="#cookies">3. Cookies & Tracking</a>
-      <a href="#data-sharing">4. Data Sharing & Third Parties</a>
-      <a href="#security">5. Security Measures</a>
-      <a href="#your-rights">6. Your Rights</a>
-      <a href="#children">7. Children's Privacy</a>
-      <a href="#updates">8. Policy Updates</a>
-      <a href="#contact-privacy">9. Contact Us</a>
+<svg class="priv-hero-wave" viewBox="0 0 1440 50" preserveAspectRatio="none" style="display:block;background:linear-gradient(135deg,#0f0c29,#302b63);margin-top:-1px" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0,50 L0,25 Q360,0 720,25 Q1080,50 1440,25 L1440,50 Z" fill="var(--bg)"/>
+</svg>
+
+<div class="container">
+  <div class="priv-layout">
+
+    <aside>
+      <div class="toc-card">
+        <div class="toc-label">Table of Contents</div>
+        <a class="toc-link active" onclick="scrollTo('sec-1')"><i class="fas fa-database"></i> Data We Collect</a>
+        <a class="toc-link" onclick="scrollTo('sec-2')"><i class="fas fa-cogs"></i> How We Use It</a>
+        <a class="toc-link" onclick="scrollTo('sec-3')"><i class="fas fa-cookie-bite"></i> Cookies</a>
+        <a class="toc-link" onclick="scrollTo('sec-4')"><i class="fas fa-share-alt"></i> Data Sharing</a>
+        <a class="toc-link" onclick="scrollTo('sec-5')"><i class="fas fa-lock"></i> Security</a>
+        <a class="toc-link" onclick="scrollTo('sec-6')"><i class="fas fa-user-check"></i> Your Rights</a>
+        <a class="toc-link" onclick="scrollTo('sec-7')"><i class="fas fa-child"></i> Children</a>
+        <a class="toc-link" onclick="scrollTo('sec-8')"><i class="fas fa-sync-alt"></i> Policy Updates</a>
+        <a class="toc-link" onclick="scrollTo('sec-9')"><i class="fas fa-envelope"></i> Contact DPO</a>
+        <div class="toc-progress-wrap">
+          <div class="toc-progress-label"><span>Reading Progress</span><span id="read-pct">0%</span></div>
+          <div class="toc-progress-bar"><div class="toc-progress-fill" id="toc-fill"></div></div>
+        </div>
+      </div>
     </aside>
 
-    <!-- Policy Content -->
-    <article class="privacy-content">
-      <section id="data-collection">
-        <h2>1. Data We Collect</h2>
-        <p>We collect information you provide directly, as well as data generated through your use of our services:</p>
+    <article class="content-area">
+
+      <div class="priv-section" id="sec-1">
+        <div class="priv-section-hdr">
+          <div class="priv-section-icon"><i class="fas fa-database"></i></div>
+          <h2 class="priv-h2">1. Data We Collect</h2>
+        </div>
+        <p>We collect only what's necessary to provide you with a seamless, personalised shopping experience.</p>
         <ul>
-          <li><strong>Account Data:</strong> Name, email address, password (encrypted), shipping/billing addresses</li>
-          <li><strong>Transaction Data:</strong> Order history, payment method details (processed securely via Stripe/Razorpay), delivery preferences</li>
-          <li><strong>Usage Data:</strong> Pages visited, products viewed, search queries, device information, IP address, browser type</li>
-          <li><strong>Communication Data:</strong> Customer support messages, newsletter preferences, feedback submissions</li>
+          <li><strong>Account Data:</strong> Name, email address, encrypted password, shipping and billing addresses.</li>
+          <li><strong>Transaction Data:</strong> Order history, payment method type (we never store full card numbers), delivery preferences, coupon usage.</li>
+          <li><strong>Usage Data:</strong> Pages visited, products viewed, search queries, cart contents, device type, browser, IP address (anonymised after 24h).</li>
+          <li><strong>Communication Data:</strong> Messages sent through our contact form, support tickets, chat transcripts, newsletter preferences.</li>
         </ul>
-      </section>
+        <div class="highlight-box">
+          <p><i class="fas fa-info-circle" style="color:var(--a);margin-right:8px"></i><strong>We never sell your personal data</strong> to third parties or advertisers — ever. Your information stays with Bevenu.</p>
+        </div>
+      </div>
 
-      <section id="how-we-use">
-        <h2>2. How We Use Your Data</h2>
-        <p>Your information helps us provide, improve, and personalize your shopping experience:</p>
+      <div class="priv-section" id="sec-2">
+        <div class="priv-section-hdr">
+          <div class="priv-section-icon"><i class="fas fa-cogs"></i></div>
+          <h2 class="priv-h2">2. How We Use Your Data</h2>
+        </div>
+        <p>Your information is used exclusively to deliver and improve the Bevenu experience:</p>
+        <table class="data-table">
+          <thead><tr><th>Purpose</th><th>Lawful Basis</th><th>Type</th></tr></thead>
+          <tbody>
+            <tr><td>Process & fulfil orders</td><td>Contract performance</td><td><span class="dt-badge essential">Essential</span></td></tr>
+            <tr><td>Manage your account & wishlist</td><td>Contract performance</td><td><span class="dt-badge essential">Essential</span></td></tr>
+            <tr><td>Send order & shipping updates</td><td>Contract performance</td><td><span class="dt-badge essential">Essential</span></td></tr>
+            <tr><td>Fraud prevention & security</td><td>Legitimate interest</td><td><span class="dt-badge essential">Essential</span></td></tr>
+            <tr><td>Personalised recommendations</td><td>Consent</td><td><span class="dt-badge optional">Optional</span></td></tr>
+            <tr><td>Marketing emails & promotions</td><td>Consent</td><td><span class="dt-badge marketing">Marketing</span></td></tr>
+            <tr><td>Analytics & UX improvement</td><td>Legitimate interest</td><td><span class="dt-badge optional">Optional</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="priv-section" id="sec-3">
+        <div class="priv-section-hdr">
+          <div class="priv-section-icon"><i class="fas fa-cookie-bite"></i></div>
+          <h2 class="priv-h2">3. Cookies & Tracking Technologies</h2>
+        </div>
+        <p>We use cookies and similar technologies. You control which are active via our Privacy Preference Centre below.</p>
         <ul>
-          <li>Process and fulfill orders, including shipping and delivery updates</li>
-          <li>Manage your account, wishlist, and saved preferences</li>
-          <li>Send order confirmations, shipping notifications, and service announcements</li>
-          <li>Personalize product recommendations and marketing communications (opt-in)</li>
-          <li>Analyze site usage to improve functionality, security, and user experience</li>
-          <li>Prevent fraud, enforce terms, and comply with legal obligations</li>
+          <li><strong>Essential Cookies:</strong> Required for cart, checkout, session security and fraud prevention. Cannot be disabled.</li>
+          <li><strong>Analytics Cookies:</strong> Aggregated, anonymised traffic data to understand popular pages and search queries.</li>
+          <li><strong>Personalisation Cookies:</strong> Remember your size preferences, recently viewed items, and layout choices.</li>
+          <li><strong>Marketing Cookies:</strong> Deliver relevant ads across platforms. Only activated with explicit consent.</li>
         </ul>
-      </section>
+        <p>Manage all cookie preferences instantly using the interactive control panel at the bottom of this page.</p>
+      </div>
 
-      <section id="cookies">
-        <h2>3. Cookies & Tracking Technologies</h2>
-        <p>We use cookies and similar technologies to enhance functionality and analytics:</p>
+      <div class="priv-section" id="sec-4">
+        <div class="priv-section-hdr">
+          <div class="priv-section-icon"><i class="fas fa-share-alt"></i></div>
+          <h2 class="priv-h2">4. Data Sharing & Third Parties</h2>
+        </div>
+        <p>We share the minimum necessary data with carefully vetted partners bound by strict data processing agreements:</p>
         <ul>
-          <li><strong>Essential Cookies:</strong> Required for cart functionality, session management, and security</li>
-          <li><strong>Analytics Cookies:</strong> Help us understand how visitors interact with our site (aggregated, anonymized)</li>
-          <li><strong>Personalization Cookies:</strong> Remember your preferences, size selections, and recently viewed items</li>
-          <li><strong>Marketing Cookies:</strong> Used to deliver relevant ads and measure campaign effectiveness (only with consent)</li>
+          <li><strong>Payment Processors:</strong> Razorpay, Stripe — secure transaction handling with PCI-DSS Level 1 compliance.</li>
+          <li><strong>Shipping Partners:</strong> DHL, FedEx, India Post — order fulfilment and tracking only.</li>
+          <li><strong>Analytics:</strong> Plausible Analytics (privacy-first, no personal identifiers shared).</li>
+          <li><strong>Email Services:</strong> Transactional order emails only — never used for third-party marketing.</li>
+          <li><strong>Legal & Compliance:</strong> When required by applicable law, court order, or to protect our rights.</li>
         </ul>
-        <p>You can manage cookie preferences anytime through your browser settings or our interactive Privacy Preference Center below.</p>
-      </section>
+        <div class="highlight-box">
+          <p><i class="fas fa-ban" style="color:var(--er);margin-right:8px"></i><strong>We never share data</strong> with data brokers, advertising networks, or any party for resale purposes.</p>
+        </div>
+      </div>
 
-      <section id="data-sharing">
-        <h2>4. Data Sharing & Third Parties</h2>
-        <p>We never sell your personal data. We may share limited information with trusted partners solely to operate our business:</p>
+      <div class="priv-section" id="sec-5">
+        <div class="priv-section-hdr">
+          <div class="priv-section-icon"><i class="fas fa-lock"></i></div>
+          <h2 class="priv-h2">5. Security Measures</h2>
+        </div>
+        <p>We implement multiple layers of security to protect your information:</p>
         <ul>
-          <li><strong>Payment Processors:</strong> Stripe, Razorpay (for secure transaction handling)</li>
-          <li><strong>Shipping Partners:</strong> DHL, FedEx, India Post (for order fulfillment)</li>
-          <li><strong>Analytics Providers:</strong> Google Analytics, Plausible (anonymized traffic data)</li>
-          <li><strong>Legal/Compliance:</strong> When required by law, regulation, or to protect our rights</li>
+          <li>End-to-end encryption (HTTPS/TLS 1.3) for all data in transit.</li>
+          <li>AES-256 encryption for data at rest in our databases.</li>
+          <li>Passwords hashed using bcrypt with 12+ salt rounds — never stored in plain text.</li>
+          <li>Regular penetration testing and third-party security audits (quarterly).</li>
+          <li>Strict access controls — only authorised personnel with legitimate business need can access your data.</li>
+          <li>Automated threat detection, rate limiting, and DDoS protection.</li>
+          <li>72-hour breach notification in compliance with applicable data protection regulations.</li>
         </ul>
-        <p>All third-party partners are contractually bound to protect your data and use it only for specified purposes.</p>
-      </section>
+      </div>
 
-      <section id="security">
-        <h2>5. Security Measures</h2>
-        <p>We implement industry-standard security practices to protect your information:</p>
+      <div class="priv-section" id="sec-6">
+        <div class="priv-section-hdr">
+          <div class="priv-section-icon"><i class="fas fa-user-check"></i></div>
+          <h2 class="priv-h2">6. Your Rights</h2>
+        </div>
+        <p>Depending on your location, you have the following rights regarding your personal data:</p>
+        <div class="rights-grid">
+          <div class="right-item"><i class="fas fa-eye"></i><h4>Access</h4><p>Request a full copy of your personal data</p></div>
+          <div class="right-item"><i class="fas fa-edit"></i><h4>Correction</h4><p>Update inaccurate information</p></div>
+          <div class="right-item"><i class="fas fa-trash-alt"></i><h4>Deletion</h4><p>Request removal of your data</p></div>
+          <div class="right-item"><i class="fas fa-file-export"></i><h4>Portability</h4><p>Receive data in machine-readable format</p></div>
+          <div class="right-item"><i class="fas fa-ban"></i><h4>Opt-Out</h4><p>Withdraw consent for marketing</p></div>
+          <div class="right-item"><i class="fas fa-pause"></i><h4>Restriction</h4><p>Limit how we process your data</p></div>
+        </div>
+        <p style="margin-top:20px">To exercise any of these rights, contact our Data Protection Officer. We respond to all verified requests within 30 days.</p>
+      </div>
+
+      <div class="priv-section" id="sec-7">
+        <div class="priv-section-hdr">
+          <div class="priv-section-icon"><i class="fas fa-child"></i></div>
+          <h2 class="priv-h2">7. Children's Privacy</h2>
+        </div>
+        <p>Bevenu's services are not directed at individuals under 13 years of age. We do not knowingly collect personal data from children. If you believe a child has provided us with personal information, please contact us immediately at <a href="mailto:privacy@bevenu.com">privacy@bevenu.com</a> so we can delete the data promptly.</p>
+        <div class="highlight-box"><p><i class="fas fa-shield-alt" style="color:var(--su);margin-right:8px"></i>All kids' clothing products are curated with safety standards in mind. Our data practices extend this care to their parents and guardians.</p></div>
+      </div>
+
+      <div class="priv-section" id="sec-8">
+        <div class="priv-section-hdr">
+          <div class="priv-section-icon"><i class="fas fa-sync-alt"></i></div>
+          <h2 class="priv-h2">8. Policy Updates</h2>
+        </div>
+        <p>We may update this Privacy Policy periodically to reflect changes in our practices, technology, or legal requirements. We will notify you of significant changes via:</p>
         <ul>
-          <li>End-to-end encryption (HTTPS/TLS) for all data transmissions</li>
-          <li>Secure, salted hashing for passwords (PBKDF2, 100,000+ iterations)</li>
-          <li>Regular security audits, vulnerability scanning, and penetration testing</li>
-          <li>Strict access controls and employee confidentiality agreements</li>
-          <li>Automated threat detection and incident response protocols</li>
+          <li>Prominent notice on our website homepage for 30 days following any change.</li>
+          <li>Email notification to your registered address for material changes.</li>
+          <li>In-app notification if you have a Bevenu account.</li>
         </ul>
-        <p>While no system is 100% immune to breaches, we continuously invest in protecting your data against unauthorized access, alteration, or disclosure.</p>
-      </section>
+        <p>Continued use of our services after the effective date constitutes acceptance of the revised policy. The version history is maintained internally — contact our DPO for previous versions.</p>
+      </div>
 
-      <section id="your-rights">
-        <h2>6. Your Rights</h2>
-        <p>Depending on your location, you may have the following rights regarding your personal data:</p>
-        <ul>
-          <li><strong>Access:</strong> Request a copy of the personal data we hold about you</li>
-          <li><strong>Correction:</strong> Update inaccurate or incomplete information</li>
-          <li><strong>Deletion:</strong> Request removal of your data (subject to legal retention requirements)</li>
-          <li><strong>Portability:</strong> Receive your data in a machine-readable format</li>
-          <li><strong>Opt-Out:</strong> Withdraw consent for marketing communications or non-essential cookies</li>
-          <li><strong>Restriction:</strong> Limit how we process your data under certain circumstances</li>
-        </ul>
-        <p>To exercise any of these rights, contact us at <a href="mailto:privacy@bevenu.com" style="color:var(--accent);">privacy@bevenu.com</a>. We respond to all verified requests within 30 days.</p>
-      </section>
+      <div class="priv-section" id="sec-9">
+        <div class="priv-section-hdr">
+          <div class="priv-section-icon"><i class="fas fa-envelope"></i></div>
+          <h2 class="priv-h2">9. Contact Our DPO</h2>
+        </div>
+        <p>For any questions, concerns, or rights requests regarding this policy or your personal data:</p>
+        <div class="contact-grid-sm">
+          <div class="contact-item-sm">
+            <i class="fas fa-envelope"></i>
+            <div><a href="mailto:privacy@bevenu.com">privacy@bevenu.com</a><small>General privacy queries</small></div>
+          </div>
+          <div class="contact-item-sm">
+            <i class="fas fa-user-shield"></i>
+            <div><a href="mailto:dpo@bevenu.com">dpo@bevenu.com</a><small>Data Protection Officer</small></div>
+          </div>
+          <div class="contact-item-sm">
+            <i class="fas fa-map-marker-alt"></i>
+            <div><span style="font-size:13px;font-weight:600">Bevenu Fashion Labs</span><small>Chandigarh, India</small></div>
+          </div>
+          <div class="contact-item-sm">
+            <i class="fas fa-clock"></i>
+            <div><span style="font-size:13px;font-weight:600">Response within 30 days</span><small>For verified requests</small></div>
+          </div>
+        </div>
+      </div>
 
-      <section id="children">
-        <h2>7. Children's Privacy</h2>
-        <p>Bevenu is not intended for individuals under the age of 13. We do not knowingly collect personal information from children. If you believe a child has provided us with personal data, please contact us immediately so we can delete the information.</p>
-      </section>
-
-      <section id="updates">
-        <h2>8. Policy Updates</h2>
-        <p>We may update this Privacy Policy periodically to reflect changes in our practices, technology, or legal requirements. We will notify you of significant changes via email or a prominent notice on our website. Continued use of our services after updates constitutes acceptance of the revised policy.</p>
-      </section>
-
-      <section id="contact-privacy">
-        <h2>9. Contact Us</h2>
-        <p>If you have questions, concerns, or requests regarding this Privacy Policy or your personal data, please reach out:</p>
-        <ul>
-          <li><strong>Email:</strong> <a href="mailto:privacy@bevenu.com" style="color:var(--accent);">privacy@bevenu.com</a></li>
-          <li><strong>Data Protection Officer:</strong> <a href="mailto:dpo@bevenu.com" style="color:var(--accent);">dpo@bevenu.com</a></li>
-          <li><strong>Address:</strong> Bevenu Fashion Labs, New Delhi, India</li>
-        </ul>
-        <p>We value your trust and are committed to transparent, responsible data practices.</p>
-      </section>
     </article>
   </div>
+</div>
 
-  <!-- Advanced Feature: Interactive Privacy Preference Center -->
-  <section class="privacy-preferences">
-    <div class="pref-container">
-      <div class="pref-header">
-        <h2>Your Privacy Controls</h2>
-        <p>Customize how we use your data. Toggle preferences below to see real-time impact on data collection.</p>
+<section class="pref-center">
+  <div class="container">
+    <div class="pref-hdr">
+      <span class="section-tag">Interactive Controls</span>
+      <h2 class="pref-title">Privacy Preference Centre</h2>
+      <p class="pref-sub">Customise exactly how your data is used. Toggle any category to see real-time impact. Essential cookies are always on.</p>
+    </div>
+    <div class="pref-grid" id="pref-grid">
+      <div class="pref-card toggled" data-type="essential">
+        <div class="pref-card-top">
+          <div class="pref-card-icon" style="background:rgba(34,197,94,.1);color:var(--su)"><i class="fas fa-shield-alt"></i></div>
+          <button class="toggle-sw always" title="Always required"></button>
+        </div>
+        <h4>Essential Operations</h4>
+        <p>Cart, checkout, session security, fraud prevention. Always required for site to function.</p>
+        <div class="pref-flow"><div class="pref-flow-fill" style="width:100%;background:var(--su)"></div></div>
+        <div class="pref-status-row"><span>Always Active</span><span class="pref-on-status">100% of data</span></div>
       </div>
-      
-      <div class="pref-grid" id="pref-grid">
-        <!-- Essential (Always On) -->
-        <div class="pref-card" data-pref="essential">
-          <div class="pref-card-header">
-            <h4>Essential Operations</h4>
-            <div class="pref-toggle active" data-type="essential"></div>
-          </div>
-          <p>Required for site functionality: cart, checkout, session security, and fraud prevention.</p>
-          <div class="data-flow"><div class="data-flow-bar" style="width:100%"></div></div>
-          <div class="pref-status"><span>Always Active</span><span>Cannot be disabled</span></div>
+      <div class="pref-card" data-type="analytics">
+        <div class="pref-card-top">
+          <div class="pref-card-icon" style="background:rgba(59,130,246,.1);color:var(--in)"><i class="fas fa-chart-bar"></i></div>
+          <button class="toggle-sw" onclick="togglePref(this)"></button>
         </div>
-
-        <!-- Analytics -->
-        <div class="pref-card" data-pref="analytics">
-          <div class="pref-card-header">
-            <h4>Site Analytics</h4>
-            <div class="pref-toggle" data-type="analytics"></div>
-          </div>
-          <p>Helps us understand traffic patterns, popular products, and improve user experience.</p>
-          <div class="data-flow"><div class="data-flow-bar" style="width:0%"></div></div>
-          <div class="pref-status"><span>Aggregated & Anonymous</span><span>Off by default</span></div>
-        </div>
-
-        <!-- Personalization -->
-        <div class="pref-card" data-pref="personalization">
-          <div class="pref-card-header">
-            <h4>Personalization</h4>
-            <div class="pref-toggle" data-type="personalization"></div>
-          </div>
-          <p>Remembers your size, recently viewed items, and tailors product recommendations.</p>
-          <div class="data-flow"><div class="data-flow-bar" style="width:0%"></div></div>
-          <div class="pref-status"><span>Stored locally & server</span><span>Off by default</span></div>
-        </div>
-
-        <!-- Marketing -->
-        <div class="pref-card" data-pref="marketing">
-          <div class="pref-card-header">
-            <h4>Marketing & Ads</h4>
-            <div class="pref-toggle" data-type="marketing"></div>
-          </div>
-          <p>Enables targeted promotions, email campaigns, and social media retargeting.</p>
-          <div class="data-flow"><div class="data-flow-bar" style="width:0%"></div></div>
-          <div class="pref-status"><span>Opt-in only</span><span>Off by default</span></div>
-        </div>
+        <h4>Site Analytics</h4>
+        <p>Aggregated, anonymous traffic data. Helps us improve pages, search, and user journeys.</p>
+        <div class="pref-flow"><div class="pref-flow-fill"></div></div>
+        <div class="pref-status-row"><span>Anonymous only</span><span id="st-analytics">Off</span></div>
       </div>
-
-      <div class="pref-actions">
-        <button class="btn btn-outline" id="pref-reset">Reset to Defaults</button>
-        <button class="btn btn-primary" id="pref-save"><i class="fas fa-check"></i> Save Preferences</button>
+      <div class="pref-card" data-type="personalization">
+        <div class="pref-card-top">
+          <div class="pref-card-icon" style="background:rgba(139,92,246,.1);color:var(--pu)"><i class="fas fa-magic"></i></div>
+          <button class="toggle-sw" onclick="togglePref(this)"></button>
+        </div>
+        <h4>Personalisation</h4>
+        <p>Remembers your sizes, recently viewed items, and shows tailored recommendations.</p>
+        <div class="pref-flow"><div class="pref-flow-fill"></div></div>
+        <div class="pref-status-row"><span>Local + server storage</span><span id="st-personalization">Off</span></div>
+      </div>
+      <div class="pref-card" data-type="marketing">
+        <div class="pref-card-top">
+          <div class="pref-card-icon" style="background:rgba(239,68,68,.1);color:var(--er)"><i class="fas fa-bullhorn"></i></div>
+          <button class="toggle-sw" onclick="togglePref(this)"></button>
+        </div>
+        <h4>Marketing & Ads</h4>
+        <p>Enables targeted promotions, newsletter campaigns, and social media retargeting.</p>
+        <div class="pref-flow"><div class="pref-flow-fill"></div></div>
+        <div class="pref-status-row"><span>Opt-in required</span><span id="st-marketing">Off</span></div>
       </div>
     </div>
-  </section>
-</main>
+    <div class="pref-actions">
+      <button class="btn btn-outline" onclick="resetPrefs()"><i class="fas fa-undo"></i> Reset Defaults</button>
+      <button class="btn btn-primary" onclick="savePrefs()"><i class="fas fa-check"></i> Save Preferences</button>
+    </div>
+  </div>
+</section>
 
-<!-- Footer (Identical to other pages) -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="footer-logo">Bevenu<span style="color:var(--accent);">.</span></div>
+        <div class="footer-logo">Bevenu<span>.</span></div>
         <p>Premium fashion for every story. Crafted with love, delivered with care.</p>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-pinterest"></i></a>
+        <div class="footer-socials">
+          <a href="#" class="fsb"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="fsb"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="fsb"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="fsb"><i class="fab fa-pinterest-p"></i></a>
         </div>
       </div>
-      <div class="footer-links">
-        <h4>Quick Links</h4>
+      <div class="footer-col">
+        <h4>Shop</h4>
         <a href="products.html?cat=men">Men's Collection</a>
         <a href="products.html?cat=women">Women's Collection</a>
         <a href="products.html?cat=kids">Kids Wear</a>
         <a href="products.html?cat=accessories">Accessories</a>
       </div>
-      <div class="footer-links">
+      <div class="footer-col">
         <h4>Help</h4>
         <a href="contact.html">Contact Us</a>
         <a href="#">Shipping Info</a>
         <a href="#">Returns Policy</a>
-        <a href="#">Size Guide</a>
         <a href="#">Track Order</a>
       </div>
-      <div class="footer-links">
-        <h4>Company</h4>
-        <a href="about.html">About Bevenu</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="#">Careers</a>
-        <a href="#">Press</a>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="privacy.html" style="color:var(--a)!important">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
         <a href="admin.html">Admin Panel</a>
       </div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 Bevenu. All rights reserved.</p>
       <div class="payment-icons">
-        <i class="fab fa-cc-visa"></i>
-        <i class="fab fa-cc-mastercard"></i>
-        <i class="fab fa-cc-paypal"></i>
-        <i class="fab fa-google-pay"></i>
+        <i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i>
+        <i class="fab fa-cc-paypal"></i><i class="fab fa-google-pay"></i>
       </div>
     </div>
   </div>
 </footer>
 
+<div class="wishlist-overlay" id="wishlist-overlay"></div>
+<div class="wishlist-sidebar" id="wishlist-sidebar">
+  <div class="wishlist-header">
+    <h3>My Wishlist</h3>
+    <button onclick="closeWishlist && closeWishlist()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="wishlist-items" id="wishlist-items-container"></div>
+</div>
 
-<div id="toast-container"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Smoothie/1.36.1/smoothie.min.js"></script>
 <script src="script.js"></script>
 
 <script>
-(function() {
-  'use strict';
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof initTheme === 'function') initTheme();
+  if (typeof updateNavCounts === 'function') updateNavCounts();
+  if (typeof checkUserSession === 'function') checkUserSession();
+  if (typeof initSearchSuggestions === 'function') initSearchSuggestions();
 
-  const showToast = typeof window.showToast === 'function' ? window.showToast : function(msg) { console.log('Toast:', msg); };
-  const initTheme = typeof window.initTheme === 'function' ? window.initTheme : function() {};
-  
-  const PrivacyUI = {
-    init() {
-      this.initTheme();
-      this.initScrollSpy();
-      this.initProgressTracker();
-      this.initPreferenceToggles();
-      this.initSaveReset();
-    },
-    
-    initTheme() {
-      if (typeof initTheme === 'function') initTheme();
-    },
-    
-    initScrollSpy() {
-      const sections = document.querySelectorAll('.privacy-content section');
-      const navLinks = document.querySelectorAll('.privacy-toc a');
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            navLinks.forEach(link => link.classList.remove('active'));
-            const activeLink = document.querySelector(`.privacy-toc a[href="#${entry.target.id}"]`);
-            if (activeLink) activeLink.classList.add('active');
-          }
-        });
-      }, { rootMargin: '-20% 0px -60% 0px' });
-      
-      sections.forEach(section => observer.observe(section));
-    },
-    
-    initProgressTracker() {
-      const bar = document.getElementById('reading-progress');
-      if (!bar) return;
-      
-      const updateProgress = () => {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        bar.style.width = scrolled + '%';
-      };
-      
-      window.addEventListener('scroll', updateProgress, { passive: true });
-      updateProgress();
-    },
-    
-    initPreferenceToggles() {
-      const toggles = document.querySelectorAll('.pref-toggle');
-      const bars = document.querySelectorAll('.data-flow-bar');
-      const statuses = document.querySelectorAll('.pref-status span:last-child');
-      
-      const updateFlow = (type, isActive) => {
-        const card = document.querySelector(`.pref-card[data-pref="${type}"]`);
-        const bar = card.querySelector('.data-flow-bar');
-        const status = card.querySelector('.pref-status span:last-child');
-        
-        if (isActive) {
-          bar.style.width = '100%';
-          status.textContent = 'Active';
-          status.style.color = 'var(--accent)';
-        } else {
-          bar.style.width = '0%';
-          status.textContent = type === 'essential' ? 'Always On' : 'Disabled';
-          status.style.color = type === 'essential' ? 'var(--text-muted)' : 'var(--text-muted)';
-        }
-      };
-      
-      toggles.forEach(toggle => {
-        const type = toggle.dataset.type;
-        const isActive = toggle.classList.contains('active');
-        updateFlow(type, isActive);
-        
-        toggle.addEventListener('click', () => {
-          if (type === 'essential') return; // Essential cannot be toggled
-          
-          const newState = !toggle.classList.contains('active');
-          toggle.classList.toggle('active', newState);
-          updateFlow(type, newState);
-          
-          // Store preference temporarily
-          localStorage.setItem(`bevenu_pref_${type}`, newState.toString());
-        });
-      });
-    },
-    
-    initSaveReset() {
-      const saveBtn = document.getElementById('pref-save');
-      const resetBtn = document.getElementById('pref-reset');
-      
-      if (saveBtn) {
-        saveBtn.addEventListener('click', () => {
-          // Simulate API save
-          saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
-          setTimeout(() => {
-            showToast('Privacy preferences saved successfully! 🔒', 'success');
-            saveBtn.innerHTML = '<i class="fas fa-check"></i> Saved';
-            setTimeout(() => { saveBtn.innerHTML = '<i class="fas fa-check"></i> Save Preferences'; }, 2000);
-          }, 800);
-        });
+  initReadingProgress();
+  initTOCScrollSpy();
+  initSectionAnimations();
+  initRightsTilt();
+  loadSavedPrefs();
+
+  const hbg = document.getElementById('hamburger');
+  const mmenu = document.getElementById('mobile-menu');
+  if (hbg && mmenu) hbg.addEventListener('click', () => mmenu.style.display = mmenu.style.display === 'none' ? 'block' : 'none');
+});
+
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function initReadingProgress() {
+  const bar = document.getElementById('read-bar');
+  const fill = document.getElementById('toc-fill');
+  const pct = document.getElementById('read-pct');
+
+  window.addEventListener('scroll', () => {
+    const sch = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const p = Math.round((window.scrollY / sch) * 100);
+    if (bar) bar.style.width = p + '%';
+    if (fill) fill.style.width = p + '%';
+    if (pct) pct.textContent = p + '%';
+  }, { passive: true });
+}
+
+function initTOCScrollSpy() {
+  const sections = ['sec-1','sec-2','sec-3','sec-4','sec-5','sec-6','sec-7','sec-8','sec-9'];
+  const links = document.querySelectorAll('.toc-link');
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      links.forEach(l => l.classList.remove('active'));
+      const idx = sections.indexOf(entry.target.id);
+      if (idx >= 0 && links[idx]) links[idx].classList.add('active');
+    });
+  }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+  sections.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
+}
+
+function initSectionAnimations() {
+  if (typeof gsap === 'undefined') return;
+  const sections = document.querySelectorAll('.priv-section');
+  sections.forEach(sec => {
+    gsap.fromTo(sec,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: .6, ease: 'power2.out',
+        scrollTrigger: { trigger: sec, start: 'top 85%', once: true }
       }
-      
-      if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-          const toggles = document.querySelectorAll('.pref-toggle:not([data-type="essential"])');
-          toggles.forEach(t => {
-            t.classList.remove('active');
-            localStorage.removeItem(`bevenu_pref_${t.dataset.type}`);
-          });
-          document.querySelectorAll('.data-flow-bar').forEach((bar, i) => {
-            if (i > 0) bar.style.width = '0%';
-          });
-          document.querySelectorAll('.pref-status span:last-child').forEach((span, i) => {
-            if (i > 0) {
-              span.textContent = 'Disabled';
-              span.style.color = 'var(--text-muted)';
-            }
-          });
-          showToast('Preferences reset to defaults', 'info');
-        });
+    );
+  });
+
+  if (typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from('.right-item', {
+      scrollTrigger: { trigger: '.rights-grid', start: 'top 80%' },
+      y: 20, opacity: 0, stagger: .08, duration: .5
+    });
+    gsap.from('.pref-card', {
+      scrollTrigger: { trigger: '.pref-grid', start: 'top 80%' },
+      y: 20, opacity: 0, stagger: .1, duration: .5
+    });
+  }
+}
+
+function initRightsTilt() {
+  if (typeof VanillaTilt !== 'undefined') {
+    VanillaTilt.init(document.querySelectorAll('.right-item'), { max: 10, speed: 400, glare: true, 'max-glare': .08 });
+  }
+}
+
+function togglePref(btn) {
+  const isOn = btn.classList.toggle('on');
+  const card = btn.closest('.pref-card');
+  const type = card.dataset.type;
+  card.classList.toggle('toggled', isOn);
+  const fill = card.querySelector('.pref-flow-fill');
+  const status = document.getElementById('st-' + type);
+  if (fill) { fill.style.width = isOn ? '100%' : '0%'; fill.style.background = 'linear-gradient(90deg, var(--a), var(--pu))'; }
+  if (status) { status.textContent = isOn ? 'Active'; status.className = isOn ? 'pref-on-status' : ''; }
+  localStorage.setItem('bvn_pref_' + type, isOn ? '1' : '0');
+}
+
+function loadSavedPrefs() {
+  ['analytics','personalization','marketing'].forEach(type => {
+    const saved = localStorage.getItem('bvn_pref_' + type);
+    if (saved === '1') {
+      const card = document.querySelector(`.pref-card[data-type="${type}"]`);
+      const btn = card?.querySelector('.toggle-sw');
+      if (btn && !btn.classList.contains('always')) {
+        btn.classList.add('on');
+        card.classList.add('toggled');
+        const fill = card.querySelector('.pref-flow-fill');
+        const status = document.getElementById('st-' + type);
+        if (fill) fill.style.width = '100%';
+        if (status) { status.textContent = 'Active'; status.className = 'pref-on-status'; }
       }
     }
-  };
+  });
+}
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => PrivacyUI.init());
-  } else {
-    PrivacyUI.init();
+function resetPrefs() {
+  ['analytics','personalization','marketing'].forEach(type => {
+    localStorage.removeItem('bvn_pref_' + type);
+    const card = document.querySelector(`.pref-card[data-type="${type}"]`);
+    const btn = card?.querySelector('.toggle-sw:not(.always)');
+    if (btn) {
+      btn.classList.remove('on');
+      card.classList.remove('toggled');
+      const fill = card.querySelector('.pref-flow-fill');
+      const status = document.getElementById('st-' + type);
+      if (fill) fill.style.width = '0%';
+      if (status) { status.textContent = 'Off'; status.className = ''; }
+    }
+  });
+  showToast('Preferences reset to defaults', 'info');
+}
+
+function savePrefs() {
+  const btn = document.querySelector('.pref-actions .btn-primary');
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving…';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.innerHTML = '<i class="fas fa-check"></i> Saved!';
+    showToast('Privacy preferences saved successfully! 🔒', 'success');
+    setTimeout(() => { btn.innerHTML = orig; btn.disabled = false; }, 2000);
+  }, 900);
+}
+
+function showToast(msg, type) {
+  if (typeof window.showToast !== 'function' || window.showToast === showToast) {
+    const c = document.getElementById('toast-container'); if (!c) return;
+    const icons = { success:'fa-check-circle', error:'fa-exclamation-circle', info:'fa-info-circle' };
+    const colors = { success:'var(--su)', error:'var(--er)', info:'var(--in)' };
+    const t = document.createElement('div'); t.className = `toast ${type}`;
+    t.innerHTML = `<i class="fas ${icons[type]} " style="color:${colors[type]}"></i><span>${msg}</span>`;
+    c.appendChild(t); setTimeout(() => t.remove(), 3000);
   }
-})();
+}
 </script>
 </body>
 </html>
