@@ -648,37 +648,7 @@ body {
 }
 </style>
 
-  <script>
-document.onkeydown = function(e) {
-  if (
-    e.key === "F12" ||
-    (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key)) ||
-    (e.ctrlKey && e.key === "U")
-  ) {
-    return false;
-  }
-};
 
-document.addEventListener("contextmenu", e => e.preventDefault());
-
-setInterval(() => {
-  if (window.outerWidth - window.innerWidth > 160) {
-    document.body.innerHTML = "DevTools detected 🚫";
-  }
-}, 1000);
-
-const element = new Image();
-Object.defineProperty(element, 'id', {
-  get: function () {
-    document.body.innerHTML = "Inspect blocked!";
-  }
-});
-console.log(element);
-
-console.log = function() {};
-console.warn = function() {};
-console.error = function() {};
-</script>
   
 </body>
 </html>
