@@ -10,7 +10,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bevenu — Premium Fashion</title> <!-- BEVENU TradeMark - https://www.indiafilings.com/search/bevenu-tm-5822509 -->
+  <title>Bevenu — Premium Fashion</title>  <!-- BEVENU TradeMark - https://www.indiafilings.com/search/bevenu-tm-5822509 -->
   
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230F172A'/%3E%3Cpath d='M50 15 C 44 15 40 22 40 30 C 40 38 50 45 50 45 C 50 45 60 38 60 30 C 60 22 56 15 50 15 Z' fill='%23E11D48'/%3E%3Crect x='20' y='42' width='60' height='4' rx='2' fill='%23FFFFFF'/%3E%3Cpath d='M25 50 L75 50 L85 88 A 8 8 0 0 1 75 94 L25 94 A 8 8 0 0 1 15 88 Z' fill='%23FFFFFF'/%3E%3Cpath d='M35 50 V 35 C 35 25 65 25 65 35 V 50' stroke='%23E11D48' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3Cpath d='M50 82 C 50 82 40 72 40 64 C 40 58 46 54 50 58 C 54 54 60 58 60 64 C 60 72 50 82 50 82 Z' fill='%23E11D48'/%3E%3C/svg%3E">
   <meta name="description" content="Bevenu — Premium fashion e-commerce. Discover curated collections for men, women & kids. Sustainable, modern, timeless styles.">
@@ -19,11 +19,118 @@
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://paras367.github.io/BEVENU"> 
 
-   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
   
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css" />
+  
+  <style>
+    body { user-select: none; }
+    #hero-particles {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      opacity: 0.6;
+    }
+
+    .lottie-hero {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 300px;
+      height: 300px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    
+    .lottie-category {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 80px;
+      height: 80px;
+      opacity: 0.8;
+      z-index: 1;
+    }
+    
+    .lottie-testimonial {
+      position: absolute;
+      bottom: -30px;
+      left: -30px;
+      width: 100px;
+      height: 100px;
+      opacity: 0.7;
+      z-index: 0;
+    }
+    
+    .lottie-newsletter {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      width: 120px;
+      height: 120px;
+      pointer-events: none;
+    }
+    
+  
+    .cat-card, .product-card, .testimonial-card {
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+      will-change: transform;
+    }
+    
+    .cat-card:hover, .product-card:hover, .testimonial-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+  
+    .stat-number {
+      font-weight: 800;
+      color: var(--accent);
+      display: inline-block;
+    }
+    
+ 
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, var(--border) 25%, var(--border-light) 50%, var(--border) 75%);
+      background-size: 200px 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: var(--radius-sm);
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -200px 0; }
+      100% { background-position: calc(200px + 100%) 0; }
+    }
+
+    [data-aos] {
+      opacity: 0;
+      transition-property: opacity, transform;
+    }
+    [data-aos].aos-animate {
+      opacity: 1;
+    }
+
+    @media (max-width: 900px) {
+      .lottie-hero {
+        display: none;
+      }
+      .lottie-category, .lottie-testimonial, .lottie-newsletter {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -88,7 +195,6 @@
     </button>
   </div>
 
-
   <div class="mobile-menu" id="mobile-menu">
     <div class="mobile-search">
       <input type="text" placeholder="Search products..." id="mobile-search" />
@@ -106,18 +212,19 @@
 </nav>
 
 <section class="hero" id="hero">
+  <div id="hero-particles"></div>
   <div class="hero-slides">
     <div class="hero-slide active" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">
-      <div class="hero-content">
-        <p class="hero-tag">New Season 2026</p>
-        <h1 class="hero-title">Dress to<br /><em>Impress.</em></h1>
-        <p class="hero-subtitle">Curated fashion for the modern soul. Discover premium styles crafted for every occasion.</p>
-        <div class="hero-btns">
+      <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+        <p class="hero-tag animate__animated animate__fadeInDown">New Season 2026</p>
+        <h1 class="hero-title animate__animated animate__fadeInUp">Dress to<br /><em>Impress.</em></h1>
+        <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">Curated fashion for the modern soul. Discover premium styles crafted for every occasion.</p>
+        <div class="hero-btns animate__animated animate__fadeInUp animate__delay-2s">
           <a href="products.html" class="btn btn-primary">Shop Now <i class="fas fa-arrow-right"></i></a>
           <a href="products.html?cat=new" class="btn btn-outline">New Arrivals</a>
         </div>
       </div>
-      <div class="hero-visual">
+      <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
         <div class="hero-img-wrapper">
           <div class="hero-img-placeholder">
             <i class="fas fa-tshirt"></i>
@@ -125,6 +232,8 @@
           </div>
         </div>
       </div>
+
+      <div class="lottie-hero" id="lottie-hero"></div>
     </div>
   </div>
   <div class="hero-scroll-hint">
@@ -134,12 +243,11 @@
 </section>
 
 <div class="stats-bar">
-  <div class="stat-item"><i class="fas fa-shipping-fast"></i><span>Free Shipping over ₹999</span></div>
-  <div class="stat-item"><i class="fas fa-undo"></i><span>30-Day Easy Returns</span></div>
+  <div class="stat-item"><i class="fas fa-shipping-fast"></i><span>Free Shipping over <span class="stat-number" data-count="999">0</span></span></div>
+  <div class="stat-item"><i class="fas fa-undo"></i><span><span class="stat-number" data-count="30">0</span>-Day Easy Returns</span></div>
   <div class="stat-item"><i class="fas fa-shield-alt"></i><span>Secure Payments</span></div>
   <div class="stat-item"><i class="fas fa-headset"></i><span>24/7 Support</span></div>
 </div>
-
 
 <section class="section categories-section">
   <div class="container">
@@ -148,42 +256,46 @@
       <h2 class="section-title">Shop Categories</h2>
     </div>
     <div class="categories-grid">
-      <a href="products.html?cat=women" class="cat-card cat-women">
+      <a href="products.html?cat=women" class="cat-card cat-women" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
         <div class="cat-overlay"></div>
         <div class="cat-content">
           <i class="fas fa-female cat-icon"></i>
           <h3>Women</h3>
           <p>320+ Styles</p>
         </div>
+
+        <div class="lottie-category" id="lottie-cat-women"></div>
       </a>
-      <a href="products.html?cat=men" class="cat-card cat-men">
+      <a href="products.html?cat=men" class="cat-card cat-men" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
         <div class="cat-overlay"></div>
         <div class="cat-content">
           <i class="fas fa-male cat-icon"></i>
           <h3>Men</h3>
           <p>240+ Styles</p>
         </div>
+        <div class="lottie-category" id="lottie-cat-men"></div>
       </a>
-      <a href="products.html?cat=kids" class="cat-card cat-kids">
+      <a href="products.html?cat=kids" class="cat-card cat-kids" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
         <div class="cat-overlay"></div>
         <div class="cat-content">
           <i class="fas fa-child cat-icon"></i>
           <h3>Kids</h3>
           <p>180+ Styles</p>
         </div>
+        <div class="lottie-category" id="lottie-cat-kids"></div>
       </a>
-      <a href="products.html?cat=accessories" class="cat-card cat-accessories">
+      <a href="products.html?cat=accessories" class="cat-card cat-accessories" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
         <div class="cat-overlay"></div>
         <div class="cat-content">
           <i class="fas fa-gem cat-icon"></i>
           <h3>Accessories</h3>
           <p>150+ Items</p>
         </div>
+        <div class="lottie-category" id="lottie-cat-accessories"></div>
       </a>
     </div>
   </div>
 </section>
-
 
 <section class="section products-section">
   <div class="container">
@@ -193,12 +305,13 @@
       <a href="products.html" class="see-all">See All <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="products-grid" id="trending-grid">
+
     </div>
   </div>
 </section>
 
 <section class="offer-banner">
-  <div class="offer-content">
+  <div class="offer-content" data-aos="zoom-in" data-aos-duration="800">
     <p class="offer-tag">Limited Time</p>
     <h2>Up to <span class="highlight">50% OFF</span></h2>
     <p>On selected summer collection items. Don't miss out!</p>
@@ -211,7 +324,6 @@
   </div>
 </section>
 
-
 <section class="section products-section">
   <div class="container">
     <div class="section-header">
@@ -220,11 +332,9 @@
       <a href="products.html?sort=newest" class="see-all">See All <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="products-grid" id="new-arrivals-grid">
-
     </div>
   </div>
 </section>
-
 
 <section class="section products-section" id="recently-viewed-section" style="display:none;">
   <div class="container">
@@ -236,7 +346,6 @@
   </div>
 </section>
 
-
 <section class="section testimonials-section">
   <div class="container">
     <div class="section-header">
@@ -244,7 +353,7 @@
       <h2 class="section-title">Customer Reviews</h2>
     </div>
     <div class="testimonials-grid">
-      <div class="testimonial-card">
+      <div class="testimonial-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
         <div class="stars">★★★★★</div>
         <p class="testimonial-text">"Absolutely love the quality! The fabric feels premium and the fit is perfect. Will definitely order again from Bevenu."</p>
         <div class="testimonial-author">
@@ -254,8 +363,9 @@
             <span>Verified Buyer</span>
           </div>
         </div>
+        <div class="lottie-testimonial" id="lottie-testimonial-1"></div>
       </div>
-      <div class="testimonial-card featured">
+      <div class="testimonial-card featured" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
         <div class="stars">★★★★★</div>
         <p class="testimonial-text">"Best fashion store I've shopped at online. Fast delivery, amazing packaging, and the clothes look exactly like the photos!"</p>
         <div class="testimonial-author">
@@ -265,8 +375,9 @@
             <span>Verified Buyer</span>
           </div>
         </div>
+        <div class="lottie-testimonial" id="lottie-testimonial-2"></div>
       </div>
-      <div class="testimonial-card">
+      <div class="testimonial-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
         <div class="stars">★★★★☆</div>
         <p class="testimonial-text">"Great collection and easy returns policy. Customer service was helpful when I needed to exchange a size. Highly recommend!"</p>
         <div class="testimonial-author">
@@ -276,24 +387,26 @@
             <span>Verified Buyer</span>
           </div>
         </div>
+        <div class="lottie-testimonial" id="lottie-testimonial-3"></div>
       </div>
     </div>
   </div>
 </section>
-
 
 <section class="newsletter-section">
   <div class="container">
     <div class="newsletter-content">
-      <h2>Stay in Style</h2>
-      <p>Subscribe for exclusive offers, new arrivals & style inspiration.</p>
-      <div class="newsletter-form">
+      <h2 data-aos="fade-up" data-aos-duration="800">Stay in Style</h2>
+      <p data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Subscribe for exclusive offers, new arrivals & style inspiration.</p>
+      <div class="newsletter-form" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
         <input type="email" placeholder="Your email address" id="newsletter-email" />
         <button class="btn btn-primary" onclick="subscribeNewsletter()">Subscribe</button>
       </div>
+      <div class="lottie-newsletter" id="lottie-newsletter"></div>
     </div>
   </div>
 </section>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -343,7 +456,6 @@
   </div>
 </footer>
 
-
 <div class="wishlist-overlay" id="wishlist-overlay"></div>
 <div class="wishlist-sidebar" id="wishlist-sidebar">
   <div class="wishlist-header">
@@ -352,6 +464,12 @@
   </div>
   <div class="wishlist-items" id="wishlist-items-container"></div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/js/glightbox.min.js"></script>
 
 <script src="script.js"></script>
 <script>
@@ -363,6 +481,8 @@
     initSearchSuggestions();
     checkUserSession();
     initTheme();
+
+    initAdvancedUI();
   });
 
   function subscribeNewsletter() {
@@ -370,9 +490,155 @@
     if (email && email.includes('@')) {
       showToast('🎉 Subscribed successfully!', 'success');
       document.getElementById('newsletter-email').value = '';
+
+      triggerNewsletterLottie();
     } else {
       showToast('Please enter a valid email.', 'error');
     }
+  }
+
+  function initAdvancedUI() {
+    if (typeof AOS !== 'undefined') {
+      AOS.init({ duration: 800, once: true, offset: 100 });
+    }
+
+    initCounters();
+    initTiltEffects();
+    initLottieAnimations();
+    initGlightbox();
+    initHeroParticles();
+  }
+  
+
+  function initCounters() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.querySelectorAll('[data-count]').forEach(el => {
+          const target = parseInt(el.dataset.count);
+          const cu = new countUp.CountUp(el, target, { duration: 2, separator: ',' });
+          if (!cu.error) cu.start();
+        });
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.3 });
+    
+    const statsBar = document.querySelector('.stats-bar');
+    if (statsBar) observer.observe(statsBar);
+  }
+  
+
+  function initTiltEffects() {
+    if (typeof VanillaTilt !== 'undefined') {
+      VanillaTilt.init(document.querySelectorAll('.cat-card, .product-card, .testimonial-card'), { 
+        max: 8, 
+        speed: 400, 
+        glare: true, 
+        'max-glare': 0.1 
+      });
+    }
+  }
+  
+
+  function initLottieAnimations() {
+    if (typeof lottie === 'undefined') return;
+
+    if (document.getElementById('lottie-hero')) {
+      try {
+        lottie.loadAnimation({
+          container: document.getElementById('lottie-hero'),
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          path: 'https://assets1.lottiefiles.com/packages/lf20_totrpclr.json'
+        });
+      } catch (e) {
+        console.warn('Hero Lottie failed, using fallback');
+      }
+    }
+    
+    ['women', 'men', 'kids', 'accessories'].forEach(cat => {
+      const el = document.getElementById(`lottie-cat-${cat}`);
+      if (el) {
+        try {
+          lottie.loadAnimation({
+            container: el,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'https://assets9.lottiefiles.com/packages/lf20_vybwn7df.json'
+          });
+        } catch (e) {
+          console.warn(`Category ${cat} Lottie failed`);
+        }
+      }
+    });
+    
+
+    for (let i = 1; i <= 3; i++) {
+      const el = document.getElementById(`lottie-testimonial-${i}`);
+      if (el) {
+        try {
+          lottie.loadAnimation({
+            container: el,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'https://assets7.lottiefiles.com/packages/lf20_2cwDXD.json'
+          });
+        } catch (e) {
+          console.warn(`Testimonial ${i} Lottie failed`);
+        }
+      }
+    }
+    
+    if (document.getElementById('lottie-newsletter')) {
+      try {
+        const anim = lottie.loadAnimation({
+          container: document.getElementById('lottie-newsletter'),
+          renderer: 'svg',
+          loop: false,
+          autoplay: false,
+          path: 'https://assets7.lottiefiles.com/packages/lf20_touohxv0.json'
+        });
+        window.newsletterLottie = anim; 
+      } catch (e) {
+        console.warn('Newsletter Lottie failed');
+      }
+    }
+  }
+  
+
+  function triggerNewsletterLottie() {
+    if (window.newsletterLottie) {
+      window.newsletterLottie.play();
+      setTimeout(() => {
+        window.newsletterLottie.stop();
+      }, 3000);
+    }
+  }
+  
+
+  function initGlightbox() {
+    if (typeof GLightbox !== 'undefined') {
+      GLightbox({ selector: '.testimonial-card' });
+    }
+  }
+  
+
+  function initHeroParticles() {
+    if (typeof tsParticles === 'undefined') return;
+    tsParticles.load('hero-particles', {
+      particles: {
+        number: { value: 60 },
+        color: { value: ['#c9a96e', '#ffffff', '#8b5cf6'] },
+        opacity: { value: 0.3, random: true },
+        size: { value: 2, random: true },
+        move: { enable: true, speed: 0.6, direction: 'none', random: true },
+        links: { enable: true, color: '#c9a96e', opacity: 0.08, distance: 100 }
+      },
+      background: { color: 'transparent' }
+    });
   }
 </script>
 
@@ -412,13 +678,10 @@ console.log(element);
 console.log = function() {};
 console.warn = function() {};
 console.error = function() {};
-
-
 </script>
   
 </body>
 </html>
-
 
 <!-- Made By PARAS -->
 <!-- Copyrights BEVENU -->
