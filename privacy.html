@@ -1,3 +1,6 @@
+<!-- Privacy Policy -->
+<!-- BEVENU. | Paras Dhiman & Dhrupad Arora -->
+
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -5,12 +8,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Privacy Policy — Bevenu Premium Fashion. How we collect, use and protect your data.">
   <title>Privacy Policy — Bevenu</title>
-
+  <!-- BEVENU TradeMark - https://www.indiafilings.com/search/bevenu-tm-5822509 -->
+  
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
   <link rel="stylesheet" href="styles.css" />
-
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2L4 5V11C4 16 7.8 20.5 12 22C16.2 20.5 20 16 20 11V5L12 2Z' fill='%23c9a96e'/></svg>">
 
   <style>
@@ -26,7 +34,6 @@
       --bg:#0a0a0f;--bgc:#13131a;--bgs:#1a1a24;--bgl:#16161f;--bd:#252535;--bdl:#1e1e2e;
       --t:#f0f0f5;--ts:#9090a8;--tm:#55556a;--p:#f0ede8;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t); line-height: 1.6; transition: background .3s, color .3s; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
@@ -49,78 +56,47 @@
     .search-icon { position: absolute; left: 14px; color: var(--tm); font-size: 14px; pointer-events: none; }
     .search-wrapper input { width: 100%; padding: 10px 14px 10px 40px; border: 1.5px solid var(--bd); border-radius: var(--rx); background: var(--bgs); color: var(--t); font-size: 14px; outline: none; transition: var(--tr); }
     .search-wrapper input:focus { border-color: var(--a); background: var(--bgc); box-shadow: 0 0 0 3px rgba(201,169,110,.15); }
+    .search-suggestions { position: absolute; top: 100%; left: 0; right: 0; background: var(--bgc); border: 1px solid var(--bd); border-radius: var(--r); box-shadow: var(--shl); z-index: 1001; max-height: 300px; overflow-y: auto; display: none; }
+    .search-suggestions.active { display: block; }
+    .suggestion-item { padding: 10px 14px; cursor: pointer; font-size: 14px; color: var(--t); border-bottom: 1px solid var(--bdl); transition: var(--tr); }
+    .suggestion-item:hover { background: var(--bgs); color: var(--a); }
+    .suggestion-item:last-child { border-bottom: none; }
+
     .nav-actions { display: flex; align-items: center; gap: 4px; margin-left: auto; }
-    .nav-btn { display: flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: var(--r); color: var(--t); font-size: 14px; font-weight: 500; transition: var(--tr); background: none; border: none; cursor: pointer; white-space: nowrap; }
+    .nav-btn { display: flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: var(--r); color: var(--t); font-size: 14px; font-weight: 500; transition: var(--tr); background: none; border: none; cursor: pointer; white-space: nowrap; position: relative; }
     .nav-btn:hover { background: var(--bgs); color: var(--a); }
-    .badge { position: absolute; top: 2px; right: 2px; background: var(--a); color: white; font-size: 10px; font-weight: 700; min-width: 18px; height: 18px; border-radius: 999px; display: flex; align-items: center; justify-content: center; }
-    .cart-btn { position: relative; }
+    .badge { position: absolute; top: 2px; right: 2px; background: var(--a); color: white; font-size: 10px; font-weight: 700; min-width: 18px; height: 18px; border-radius: 999px; display: flex; align-items: center; justify-content: center; z-index: 2; }
     .hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; border-radius: var(--r); cursor: pointer; background: none; border: none; }
     .hamburger span { display: block; width: 22px; height: 2px; background: var(--t); border-radius: 2px; transition: var(--tr); }
 
-    .priv-hero {
-      background: linear-gradient(135deg, #0f0c29 0%, #1a1a2e 50%, #302b63 100%);
-      padding: 100px 24px 80px; text-align: center; color: white; position: relative; overflow: hidden;
-    }
-    .priv-hero::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 30% 60%, rgba(201,169,110,.1) 0%, transparent 60%),
-                  radial-gradient(ellipse at 70% 40%, rgba(139,92,246,.06) 0%, transparent 50%);
-    }
+    .priv-hero { background: linear-gradient(135deg, #0f0c29 0%, #1a1a2e 50%, #302b63 100%); padding: 100px 24px 80px; text-align: center; color: white; position: relative; overflow: hidden; }
+    .priv-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 60%, rgba(201,169,110,.1) 0%, transparent 60%), radial-gradient(ellipse at 70% 40%, rgba(139,92,246,.06) 0%, transparent 50%); }
     .priv-hero-content { position: relative; z-index: 2; max-width: 740px; margin: 0 auto; }
-    .priv-tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(201,169,110,.15); border: 1px solid rgba(201,169,110,.35);
-      padding: 6px 18px; border-radius: 999px; font-size: 12px; font-weight: 700;
-      letter-spacing: 1.5px; text-transform: uppercase; color: var(--a); margin-bottom: 22px;
-    }
+    .priv-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,169,110,.15); border: 1px solid rgba(201,169,110,.35); padding: 6px 18px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--a); margin-bottom: 22px; }
     .priv-h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem,5vw,4.2rem); font-weight: 800; margin-bottom: 14px; }
     .priv-sub { font-size: 1.05rem; color: rgba(255,255,255,.75); max-width: 600px; margin: 0 auto 24px; line-height: 1.75; }
-    .priv-meta {
-      display: inline-flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-content: center;
-      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12);
-      border-radius: var(--rx); padding: 10px 24px; font-size: 13px; backdrop-filter: blur(10px); color: rgba(255,255,255,.8);
-    }
+    .priv-meta { display: inline-flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-content: center; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: var(--rx); padding: 10px 24px; font-size: 13px; backdrop-filter: blur(10px); color: rgba(255,255,255,.8); }
     .priv-meta-item { display: flex; align-items: center; gap: 7px; }
     .priv-meta i { color: var(--a); }
-
     .priv-hero-wave { display: block; margin-top: -1px; }
 
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-
     .priv-layout { display: grid; grid-template-columns: 260px 1fr; gap: 36px; padding: 60px 0 80px; align-items: start; }
 
-    .toc-card {
-      background: var(--bgc); border: 1px solid var(--bd); border-radius: var(--rl);
-      padding: 22px; box-shadow: var(--sh); position: sticky; top: calc(var(--nav) + 60px + 20px);
-    }
+    .toc-card { background: var(--bgc); border: 1px solid var(--bd); border-radius: var(--rl); padding: 22px; box-shadow: var(--sh); position: sticky; top: calc(var(--nav) + 60px + 20px); z-index: 10; }
     .toc-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--tm); margin-bottom: 12px; }
-    .toc-link {
-      display: flex; align-items: center; gap: 8px; padding: 8px 12px;
-      font-size: 13px; color: var(--ts); border-left: 2px solid transparent;
-      border-radius: 0 var(--r) var(--r) 0; transition: var(--tr); cursor: pointer;
-    }
+    .toc-link { display: flex; align-items: center; gap: 8px; padding: 8px 12px; font-size: 13px; color: var(--ts); border-left: 2px solid transparent; border-radius: 0 var(--r) var(--r) 0; transition: var(--tr); cursor: pointer; }
     .toc-link:hover { color: var(--a); background: var(--bgs); }
     .toc-link.active { color: var(--a); border-left-color: var(--a); background: rgba(201,169,110,.06); font-weight: 600; }
     .toc-link i { font-size: 10px; color: inherit; }
-
     .toc-progress-wrap { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--bdl); }
     .toc-progress-label { font-size: 11px; color: var(--tm); margin-bottom: 6px; display: flex; justify-content: space-between; }
     .toc-progress-bar { height: 6px; background: var(--bgs); border-radius: 999px; overflow: hidden; }
     .toc-progress-fill { height: 100%; background: linear-gradient(90deg, var(--a), var(--pu)); border-radius: 999px; width: 0%; transition: width .1s linear; }
 
-    .content-area {}
-
     .priv-section { scroll-margin-top: calc(var(--nav) + 80px); margin-bottom: 56px; }
-    .priv-section-hdr {
-      display: flex; align-items: center; gap: 12px; margin-bottom: 18px;
-      padding-bottom: 12px; border-bottom: 2px solid var(--bdl);
-    }
-    .priv-section-icon {
-      width: 40px; height: 40px; border-radius: var(--r); flex-shrink: 0;
-      background: linear-gradient(135deg, rgba(201,169,110,.15), rgba(201,169,110,.05));
-      border: 1px solid rgba(201,169,110,.2); display: flex; align-items: center;
-      justify-content: center; font-size: 16px; color: var(--a);
-    }
+    .priv-section-hdr { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 2px solid var(--bdl); }
+    .priv-section-icon { width: 40px; height: 40px; border-radius: var(--r); flex-shrink: 0; background: linear-gradient(135deg, rgba(201,169,110,.15), rgba(201,169,110,.05)); border: 1px solid rgba(201,169,110,.2); display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--a); }
     .priv-h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; }
     .priv-section p { font-size: 15px; line-height: 1.8; color: var(--ts); margin-bottom: 14px; }
     .priv-section ul { padding-left: 0; display: flex; flex-direction: column; gap: 9px; margin-bottom: 14px; }
@@ -130,11 +106,7 @@
     .priv-section a { color: var(--a); transition: var(--tr); }
     .priv-section a:hover { color: var(--ad); text-decoration: underline; }
 
-    .highlight-box {
-      background: rgba(201,169,110,.07); border: 1px solid rgba(201,169,110,.2);
-      border-left: 4px solid var(--a); border-radius: 0 var(--r) var(--r) 0;
-      padding: 16px 18px; margin: 16px 0;
-    }
+    .highlight-box { background: rgba(201,169,110,.07); border: 1px solid rgba(201,169,110,.2); border-left: 4px solid var(--a); border-radius: 0 var(--r) var(--r) 0; padding: 16px 18px; margin: 16px 0; }
     .highlight-box p { margin: 0; font-size: 14px; }
 
     .data-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; }
@@ -147,20 +119,14 @@
     .dt-badge.optional  { background: rgba(245,158,11,.1); color: var(--wa); }
     .dt-badge.marketing { background: rgba(239,68,68,.1); color: var(--er); }
 
-    .pref-center {
-      background: var(--bgs); border-top: 1px solid var(--bd); border-bottom: 1px solid var(--bd);
-      padding: 72px 0; position: relative; overflow: hidden;
-    }
+    .pref-center { background: var(--bgs); border-top: 1px solid var(--bd); border-bottom: 1px solid var(--bd); padding: 72px 0; position: relative; overflow: hidden; }
     .pref-center::before { content: ''; position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(201,169,110,.08), transparent); pointer-events: none; }
     .pref-hdr { text-align: center; margin-bottom: 40px; }
     .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--a); display: block; margin-bottom: 8px; }
     .pref-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 10px; }
     .pref-sub { color: var(--ts); max-width: 560px; margin: 0 auto; font-size: 15px; }
     .pref-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-bottom: 32px; }
-    .pref-card {
-      background: var(--bgc); border: 1.5px solid var(--bd); border-radius: var(--rl);
-      padding: 22px; transition: var(--tr); position: relative; overflow: hidden;
-    }
+    .pref-card { background: var(--bgc); border: 1.5px solid var(--bd); border-radius: var(--rl); padding: 22px; transition: var(--tr); position: relative; overflow: hidden; }
     .pref-card:hover { box-shadow: var(--shm); transform: translateY(-2px); }
     .pref-card.toggled { border-color: var(--a); box-shadow: 0 0 0 2px rgba(201,169,110,.1); }
     .pref-card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
@@ -180,7 +146,6 @@
     .pref-on-status { color: var(--su) !important; font-weight: 700; }
 
     .pref-actions { display: flex; gap: 12px; justify-content: center; }
-
     .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 26px; border-radius: var(--rx); font-size: 14px; font-weight: 600; cursor: pointer; border: 2px solid transparent; transition: var(--tr); font-family: 'DM Sans', sans-serif; white-space: nowrap; }
     .btn-primary { background: linear-gradient(135deg, var(--a), var(--ad)); color: white; border-color: var(--a); }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(201,169,110,.4); }
@@ -188,20 +153,14 @@
     .btn-outline:hover { border-color: var(--a); color: var(--a); }
 
     .rights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-top: 20px; }
-    .right-item {
-      background: var(--bgc); border: 1px solid var(--bd); border-radius: var(--rl);
-      padding: 18px 16px; text-align: center; transition: var(--tr); cursor: default;
-    }
+    .right-item { background: var(--bgc); border: 1px solid var(--bd); border-radius: var(--rl); padding: 18px 16px; text-align: center; transition: var(--tr); cursor: default; }
     .right-item:hover { border-color: var(--a); transform: translateY(-3px); box-shadow: var(--shm); }
     .right-item i { font-size: 1.8rem; color: var(--a); margin-bottom: 10px; display: block; }
     .right-item h4 { font-size: 14px; font-weight: 700; margin-bottom: 5px; }
     .right-item p { font-size: 12px; color: var(--tm); line-height: 1.5; }
 
     .contact-grid-sm { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
-    .contact-item-sm {
-      display: flex; align-items: center; gap: 12px; padding: 14px 16px;
-      background: var(--bgc); border: 1px solid var(--bd); border-radius: var(--rl); transition: var(--tr);
-    }
+    .contact-item-sm { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--bgc); border: 1px solid var(--bd); border-radius: var(--rl); transition: var(--tr); }
     .contact-item-sm:hover { border-color: var(--a); }
     .contact-item-sm i { font-size: 18px; color: var(--a); width: 20px; flex-shrink: 0; }
     .contact-item-sm a { font-size: 13px; color: var(--a); font-weight: 600; }
@@ -235,83 +194,6 @@
     @media (max-width: 1000px) { .priv-layout { grid-template-columns: 1fr; } .toc-card { position: static; } }
     @media (max-width: 768px) { .nav-search { display: none; } .footer-grid { grid-template-columns: 1fr 1fr; } .contact-grid-sm { grid-template-columns: 1fr; } }
     @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } .rights-grid { grid-template-columns: 1fr 1fr; } }
-
-
-.search-suggestions {
-  position: absolute !important;
-  top: 100% !important;
-  left: 0 !important;
-  right: 0 !important;
-  background: var(--bgc) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: var(--r) !important;
-  box-shadow: var(--shl) !important;
-  z-index: 1001 !important;
-  max-height: 300px !important;
-  overflow-y: auto !important;
-  display: none !important;
-}
-
-.search-suggestions.active {
-  display: block !important;
-}
-
-.suggestion-item {
-  padding: 10px 14px !important;
-  cursor: pointer !important;
-  font-size: 14px !important;
-  color: var(--text) !important;
-  border-bottom: 1px solid var(--border-light) !important;
-  transition: var(--tr) !important;
-}
-
-.suggestion-item:hover {
-  background: var(--bgs) !important;
-  color: var(--a) !important;
-}
-
-.suggestion-item:last-child {
-  border-bottom: none !important;
-}
-
-
-.badge {
-  position: absolute !important;
-  top: 2px !important;
-  right: 2px !important;
-  background: var(--a) !important;
-  color: white !important;
-  font-size: 10px !important;
-  font-weight: 700 !important;
-  min-width: 18px !important;
-  height: 18px !important;
-  border-radius: 999px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  z-index: 2 !important;
-}
-
-.nav-btn {
-  position: relative !important;
-}
-
-.priv-section, .toc-card, .pref-card, .right-item {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: none !important;
-}
-
-
-.pref-grid, .rights-grid, .contact-grid-sm {
-  display: grid !important;
-  opacity: 1 !important;
-}
-
-
-.navbar, #toast-container, .wishlist-overlay, .wishlist-sidebar {
-  z-index: 9999 !important;
-}
   </style>
 </head>
 <body>
@@ -331,7 +213,7 @@
     <div class="nav-actions">
       <button class="nav-btn" id="theme-toggle"><i class="fas fa-moon" id="theme-icon"></i></button>
       <a href="#" class="nav-btn" id="wishlist-btn"><i class="fas fa-heart"></i><span class="badge" id="wishlist-count">0</span></a>
-      <a href="cart.html" class="nav-btn cart-btn" style="position:relative"><i class="fas fa-shopping-bag"></i><span class="badge" id="cart-count">0</span></a>
+      <a href="cart.html" class="nav-btn cart-btn"><i class="fas fa-shopping-bag"></i><span class="badge" id="cart-count">0</span></a>
       <a href="login.html" class="nav-btn" id="login-btn"><i class="fas fa-user"></i><span id="user-display">Login</span></a>
     </div>
     <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
@@ -350,7 +232,7 @@
   <div class="priv-hero-content animate__animated animate__fadeIn">
     <div class="priv-tag"><i class="fas fa-shield-alt"></i> Privacy Policy</div>
     <h1 class="priv-h1">Your Privacy Matters<br><em>To Us.</em></h1>
-    <p class="priv-sub">We're committed to total transparency about how your data is collected, used, and protected. No fine print, no surprises.</p>
+    <p class="priv-sub" id="typed-sub">We're committed to total transparency about how your data is collected, used, and protected. No fine print, no surprises.</p>
     <div class="priv-meta">
       <div class="priv-meta-item"><i class="fas fa-calendar-alt"></i> Last Updated: April 15, 2026</div>
       <div class="priv-meta-item"><i class="fas fa-book-open"></i> ~8 min read</div>
@@ -386,7 +268,6 @@
     </aside>
 
     <article class="content-area">
-
       <div class="priv-section" id="sec-1">
         <div class="priv-section-hdr">
           <div class="priv-section-icon"><i class="fas fa-database"></i></div>
@@ -539,7 +420,6 @@
           </div>
         </div>
       </div>
-
     </article>
   </div>
 </div>
@@ -623,9 +503,9 @@
       <div class="footer-col">
         <h4>Help</h4>
         <a href="contact.html">Contact Us</a>
-        <a href="#">Shipping Info</a>
-        <a href="#">Returns Policy</a>
-        <a href="#">Track Order</a>
+        <a href="404.html">Shipping Info</a>
+        <a href="404.html">Returns Policy</a>
+        <a href="404.html">Track Order</a>
       </div>
       <div class="footer-col">
         <h4>Legal</h4>
@@ -649,7 +529,7 @@
 <div class="wishlist-sidebar" id="wishlist-sidebar">
   <div class="wishlist-header">
     <h3>My Wishlist</h3>
-    <button onclick="closeWishlist && closeWishlist()"><i class="fas fa-times"></i></button>
+    <button onclick="toggleWishlist()"><i class="fas fa-times"></i></button>
   </div>
   <div class="wishlist-items" id="wishlist-items-container"></div>
 </div>
@@ -657,7 +537,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Smoothie/1.36.1/smoothie.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.umd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/js/glightbox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 <script src="script.js"></script>
 
 <script>
@@ -667,77 +550,34 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof checkUserSession === 'function') checkUserSession();
   if (typeof initSearchSuggestions === 'function') initSearchSuggestions();
 
-const searchWrapper = document.querySelector('.search-wrapper');
-if (searchWrapper && !searchWrapper.dataset.initialized) {
-  searchWrapper.dataset.initialized = 'true';
-  if (typeof initSearchSuggestions === 'function') {
-    initSearchSuggestions();
-
-
-if (typeof updateNavCounts === 'function') {
-  updateNavCounts();
-}
-
-
-if (typeof checkUserSession === 'function') {
-  checkUserSession();
-}
-
-
-const wishlistBtn = document.getElementById('wishlist-btn');
-const wishlistOverlay = document.getElementById('wishlist-overlay');
-const wishlistSidebar = document.getElementById('wishlist-sidebar');
-
-if (wishlistBtn && wishlistOverlay && wishlistSidebar) {
-  wishlistBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (typeof renderWishlistSidebar === 'function') {
-      renderWishlistSidebar();
-    }
-    wishlistSidebar.classList.add('open');
-    wishlistOverlay.classList.add('active');
-  });
-}
-
-if (wishlistOverlay) {
-  wishlistOverlay.addEventListener('click', () => {
-    wishlistSidebar.classList.remove('open');
-    wishlistOverlay.classList.remove('active');
-  });
-}
-
-if (wishlistSidebar) {
-  const closeBtn = wishlistSidebar.querySelector('button');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      wishlistSidebar.classList.remove('open');
-      wishlistOverlay.classList.remove('active');
-    });
-
-  }
-}
-
+  AOS.init({ duration: 800, once: true, offset: 80 });
   initReadingProgress();
   initTOCScrollSpy();
   initSectionAnimations();
   initRightsTilt();
   loadSavedPrefs();
+  initMobileMenu();
+  initWishlist();
+  initTypedHero();
+});
 
-  const hbg = document.getElementById('hamburger');
-  const mmenu = document.getElementById('mobile-menu');
-  if (hbg && mmenu) hbg.addEventListener('click', () => mmenu.style.display = mmenu.style.display === 'none' ? 'block' : 'none');
-};
 
 function scrollTo(id) {
   const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (el) {
+    document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+    const activeLink = document.querySelector(`.toc-link[onclick*="${id}"]`);
+    if (activeLink) activeLink.classList.add('active');
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    history.pushState(null, null, `#${id}`);
+  }
 }
+
 
 function initReadingProgress() {
   const bar = document.getElementById('read-bar');
   const fill = document.getElementById('toc-fill');
   const pct = document.getElementById('read-pct');
-
   window.addEventListener('scroll', () => {
     const sch = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const p = Math.round((window.scrollY / sch) * 100);
@@ -750,74 +590,135 @@ function initReadingProgress() {
 function initTOCScrollSpy() {
   const sections = ['sec-1','sec-2','sec-3','sec-4','sec-5','sec-6','sec-7','sec-8','sec-9'];
   const links = document.querySelectorAll('.toc-link');
-
   const obs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       links.forEach(l => l.classList.remove('active'));
       const idx = sections.indexOf(entry.target.id);
-      if (idx >= 0 && links[idx]) links[idx].classList.add('active');
-    });
-  }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
-
-  sections.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
-}
-
-function initSectionAnimations() {
-  if (typeof gsap === 'undefined') return;
-  const sections = document.querySelectorAll('.priv-section');
-  sections.forEach(sec => {
-    gsap.fromTo(sec,
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: .6, ease: 'power2.out',
-        scrollTrigger: { trigger: sec, start: 'top 85%', once: true }
+      if (idx >= 0 && links[idx]) {
+        links[idx].classList.add('active');
+        history.replaceState(null, null, `#${entry.target.id}`);
       }
-    );
-  });
-
-  if (typeof ScrollTrigger !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.from('.right-item', {
-      scrollTrigger: { trigger: '.rights-grid', start: 'top 80%' },
-      y: 20, opacity: 0, stagger: .08, duration: .5
     });
-    gsap.from('.pref-card', {
-      scrollTrigger: { trigger: '.pref-grid', start: 'top 80%' },
-      y: 20, opacity: 0, stagger: .1, duration: .5
-    });
+  }, { rootMargin: '-20% 0px -60% 0px', threshold: 0.1 });
+  sections.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
+  if (window.location.hash) {
+    const hash = window.location.hash.substring(1);
+    if (sections.includes(hash)) {
+      setTimeout(() => {
+        const el = document.getElementById(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: 'auto' });
+          links.forEach(l => l.classList.remove('active'));
+          const idx = sections.indexOf(hash);
+          if (idx >= 0 && links[idx]) links[idx].classList.add('active');
+        }
+      }, 100);
+    }
   }
 }
+
+
+function initSectionAnimations() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from('.priv-section', {
+    scrollTrigger: { trigger: '.priv-section', start: 'top 85%', once: true },
+    opacity: 0, y: 30, stagger: 0.1, duration: 0.6, ease: 'power2.out'
+  });
+  gsap.from('.right-item', {
+    scrollTrigger: { trigger: '.rights-grid', start: 'top 80%' },
+    y: 20, opacity: 0, stagger: 0.08, duration: 0.5
+  });
+  gsap.from('.pref-card', {
+    scrollTrigger: { trigger: '.pref-grid', start: 'top 80%' },
+    y: 20, opacity: 0, stagger: 0.1, duration: 0.5
+  });
+}
+
 
 function initRightsTilt() {
   if (typeof VanillaTilt !== 'undefined') {
-    VanillaTilt.init(document.querySelectorAll('.right-item'), { max: 10, speed: 400, glare: true, 'max-glare': .08 });
+    VanillaTilt.init(document.querySelectorAll('.right-item, .pref-card'), { max: 10, speed: 400, glare: true, 'max-glare': 0.08 });
   }
+}
+
+
+function initMobileMenu() {
+  const hbg = document.getElementById('hamburger');
+  const mmenu = document.getElementById('mobile-menu');
+  if (hbg && mmenu) {
+    hbg.addEventListener('click', () => {
+      mmenu.style.display = mmenu.style.display === 'none' ? 'block' : 'none';
+    });
+  }
+}
+
+
+function initWishlist() {
+  const wishlistBtn = document.getElementById('wishlist-btn');
+  const wishlistOverlay = document.getElementById('wishlist-overlay');
+  const wishlistSidebar = document.getElementById('wishlist-sidebar');
+  
+  if (wishlistBtn && wishlistOverlay && wishlistSidebar) {
+    wishlistBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleWishlist();
+    });
+    
+    wishlistOverlay.addEventListener('click', () => {
+      wishlistSidebar.classList.remove('open');
+      wishlistOverlay.classList.remove('active');
+    });
+  }
+}
+
+function toggleWishlist() {
+  const wishlistSidebar = document.getElementById('wishlist-sidebar');
+  const wishlistOverlay = document.getElementById('wishlist-overlay');
+  if (!wishlistSidebar || !wishlistOverlay) return;
+  
+  const isOpen = wishlistSidebar.classList.contains('open');
+  wishlistSidebar.classList.toggle('open', !isOpen);
+  wishlistOverlay.classList.toggle('active', !isOpen);
+  
+  if (!isOpen && typeof renderWishlistSidebar === 'function') {
+    renderWishlistSidebar();
+  }
+}
+
+
+function initTypedHero() {
+  if (typeof Typed === 'undefined') return;
+  new Typed('#typed-sub', {
+    strings: [
+      "We're committed to total transparency about how your data is collected, used, and protected.",
+      "No fine print. No surprises. Just clear, honest privacy practices."
+    ],
+    typeSpeed: 40,
+    backSpeed: 20,
+    backDelay: 2500,
+    loop: true,
+    showCursor: true,
+    cursorChar: '|'
+  });
 }
 
 
 function togglePref(btn) {
-
   if (!btn) return;
-
-
   const isOn = btn.classList.toggle('on');
   const card = btn.closest('.pref-card');
   const type = card?.dataset?.type;
-
   if (!card || !type) return;
 
-
   card.classList.toggle('toggled', isOn);
-
-
+  
   const fill = card.querySelector('.pref-flow-fill');
   if (fill) {
     fill.style.width = isOn ? '100%' : '0%';
-    fill.style.background = isOn 
-      ? 'linear-gradient(90deg, var(--a), var(--pu))' 
-      : '';
+    fill.style.background = isOn ? 'linear-gradient(90deg, var(--a), var(--pu))' : '';
   }
-
 
   const status = document.getElementById(`st-${type}`);
   if (status) {
@@ -825,45 +726,45 @@ function togglePref(btn) {
     status.className = isOn ? 'pref-on-status' : '';
   }
 
-
   const prefs = JSON.parse(localStorage.getItem('bvn_privacy_prefs') || '{}');
-  prefs[type] = {
-    enabled: isOn,
-    updated: new Date().toISOString()
-  };
+  prefs[type] = { enabled: isOn, updated: new Date().toISOString() };
   localStorage.setItem('bvn_privacy_prefs', JSON.stringify(prefs));
-
-
 }
 
+
 function loadSavedPrefs() {
+  const prefs = JSON.parse(localStorage.getItem('bvn_privacy_prefs') || '{}');
   ['analytics','personalization','marketing'].forEach(type => {
-    const saved = localStorage.getItem('bvn_pref_' + type);
-    if (saved === '1') {
-      const card = document.querySelector(`.pref-card[data-type="${type}"]`);
-      const btn = card?.querySelector('.toggle-sw');
-      if (btn && !btn.classList.contains('always')) {
-        btn.classList.add('on');
-        card.classList.add('toggled');
-        const fill = card.querySelector('.pref-flow-fill');
-        const status = document.getElementById('st-' + type);
-        if (fill) fill.style.width = '100%';
-        if (status) { status.textContent = 'Active'; status.className = 'pref-on-status'; }
+    const pref = prefs[type];
+    const isOn = pref?.enabled === true;
+    const card = document.querySelector(`.pref-card[data-type="${type}"]`);
+    const btn = card?.querySelector('.toggle-sw:not(.always)');
+    
+    if (btn) {
+      btn.classList.toggle('on', isOn);
+      card.classList.toggle('toggled', isOn);
+      const fill = card.querySelector('.pref-flow-fill');
+      const status = document.getElementById(`st-${type}`);
+      if (fill) fill.style.width = isOn ? '100%' : '0%';
+      if (status) {
+        status.textContent = isOn ? 'Active' : 'Off';
+        status.className = isOn ? 'pref-on-status' : '';
       }
     }
   });
 }
 
+
 function resetPrefs() {
+  localStorage.removeItem('bvn_privacy_prefs');
   ['analytics','personalization','marketing'].forEach(type => {
-    localStorage.removeItem('bvn_pref_' + type);
     const card = document.querySelector(`.pref-card[data-type="${type}"]`);
     const btn = card?.querySelector('.toggle-sw:not(.always)');
     if (btn) {
       btn.classList.remove('on');
       card.classList.remove('toggled');
       const fill = card.querySelector('.pref-flow-fill');
-      const status = document.getElementById('st-' + type);
+      const status = document.getElementById(`st-${type}`);
       if (fill) fill.style.width = '0%';
       if (status) { status.textContent = 'Off'; status.className = ''; }
     }
@@ -873,9 +774,11 @@ function resetPrefs() {
 
 function savePrefs() {
   const btn = document.querySelector('.pref-actions .btn-primary');
+  if (!btn) return;
   const orig = btn.innerHTML;
   btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving…';
   btn.disabled = true;
+  
   setTimeout(() => {
     btn.innerHTML = '<i class="fas fa-check"></i> Saved!';
     showToast('Privacy preferences saved successfully! 🔒', 'success');
@@ -883,15 +786,15 @@ function savePrefs() {
   }, 900);
 }
 
+
 function showToast(msg, type) {
-  if (typeof window.showToast !== 'function' || window.showToast === showToast) {
-    const c = document.getElementById('toast-container'); if (!c) return;
-    const icons = { success:'fa-check-circle', error:'fa-exclamation-circle', info:'fa-info-circle' };
-    const colors = { success:'var(--su)', error:'var(--er)', info:'var(--in)' };
-    const t = document.createElement('div'); t.className = `toast ${type}`;
-    t.innerHTML = `<i class="fas ${icons[type]} " style="color:${colors[type]}"></i><span>${msg}</span>`;
-    c.appendChild(t); setTimeout(() => t.remove(), 3000);
-  }
+  if (typeof window.showToast === 'function') { window.showToast(msg, type); return; }
+  const c = document.getElementById('toast-container'); if (!c) return;
+  const icons = { success:'fa-check-circle', error:'fa-exclamation-circle', info:'fa-info-circle' };
+  const colors = { success:'var(--su)', error:'var(--er)', info:'var(--in)' };
+  const t = document.createElement('div'); t.className = `toast ${type}`;
+  t.innerHTML = `<i class="fas ${icons[type]} " style="color:${colors[type]}"></i><span>${msg}</span>`;
+  c.appendChild(t); setTimeout(() => t.remove(), 3000);
 }
 </script>
 </body>
