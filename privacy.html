@@ -794,16 +794,46 @@ function initRightsTilt() {
   }
 }
 
+
 function togglePref(btn) {
+
+  if (!btn) return;
+
+
   const isOn = btn.classList.toggle('on');
   const card = btn.closest('.pref-card');
-  const type = card.dataset.type;
+  const type = card?.dataset?.type;
+
+  if (!card || !type) return;
+
+
   card.classList.toggle('toggled', isOn);
+
+
   const fill = card.querySelector('.pref-flow-fill');
-  const status = document.getElementById('st-' + type);
-  if (fill) { fill.style.width = isOn ? '100%' : '0%'; fill.style.background = 'linear-gradient(90deg, var(--a), var(--pu))'};
-  if (status) { status.textContent = isOn ? 'Active'; status.className = isOn ? 'pref-on-status' : ''}
-  localStorage.setItem('bvn_pref_' + type, isOn ? '1' : '0');
+  if (fill) {
+    fill.style.width = isOn ? '100%' : '0%';
+    fill.style.background = isOn 
+      ? 'linear-gradient(90deg, var(--a), var(--pu))' 
+      : '';
+  }
+
+
+  const status = document.getElementById(`st-${type}`);
+  if (status) {
+    status.textContent = isOn ? 'Active' : 'Off';
+    status.className = isOn ? 'pref-on-status' : '';
+  }
+
+
+  const prefs = JSON.parse(localStorage.getItem('bvn_privacy_prefs') || '{}');
+  prefs[type] = {
+    enabled: isOn,
+    updated: new Date().toISOString()
+  };
+  localStorage.setItem('bvn_privacy_prefs', JSON.stringify(prefs));
+
+
 }
 
 function loadSavedPrefs() {
