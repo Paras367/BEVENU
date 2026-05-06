@@ -359,6 +359,38 @@
     [data-aos].aos-animate { opacity: 1; }
 
 
+#btt {
+  position: fixed !important;
+  bottom: 28px !important;
+  right: 28px !important;
+  z-index: 9999 !important;
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #c9a96e, #a07840) !important;
+  color: #fff !important;
+  border: none !important;
+  cursor: pointer !important;
+  font-size: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 20px rgba(201,169,110,.45) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: all .35s cubic-bezier(.34,1.56,.64,1) !important;
+  transform: translateY(16px) scale(.8) !important;
+}
+
+#btt.show {
+  opacity: 1 !important;
+  pointer-events: all !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+#btt:hover {
+  transform: scale(1.12) translateY(-2px) !important;
+}
 
   </style>
 </head>
@@ -1057,11 +1089,24 @@ function initProdTabs() {
     });
   });
 }
-
 function initBTT() {
   const btn = document.getElementById('btt');
   if (!btn) return;
-  window.addEventListener('scroll', () => btn.classList.toggle('show', window.scrollY > 400), { passive: true });
+  
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      btn.classList.add('show');
+    } else {
+      btn.classList.remove('show');
+    }
+  }, { passive: true });
+  
+
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 }
 
 function initGSAP() {
