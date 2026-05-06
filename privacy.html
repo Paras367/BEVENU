@@ -802,7 +802,7 @@ function togglePref(btn) {
   const fill = card.querySelector('.pref-flow-fill');
   const status = document.getElementById('st-' + type);
   if (fill) { fill.style.width = isOn ? '100%' : '0%'; fill.style.background = 'linear-gradient(90deg, var(--a), var(--pu))'};
-  if (status) { status.textContent = isOn ? 'Active'; status.className = isOn ? 'pref-on-status' : ''};
+  if (status) { status.textContent = isOn ? 'Active'; status.className = isOn ? 'pref-on-status' : ''}
   localStorage.setItem('bvn_pref_' + type, isOn ? '1' : '0');
 }
 
