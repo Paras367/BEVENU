@@ -227,6 +227,36 @@
 
     [data-aos] { opacity: 0; transition-property: opacity, transform; }
     [data-aos].aos-animate { opacity: 1; }
+
+
+
+[data-aos].aos-animate,
+[data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+
+.features-grid,
+.sband-grid,
+.categories-grid,
+.products-grid,
+.testimonials-grid {
+  display: grid !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+
+.lottie-hero,
+.lottie-cat-badge,
+.lottie-feat-wrap,
+.lottie-nl-wrap {
+  position: relative !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
   </style>
 </head>
 <body>
