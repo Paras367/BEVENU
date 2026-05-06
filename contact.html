@@ -40,7 +40,7 @@
     @keyframes toastIn { from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:none;} }
     @keyframes toastOut { from{opacity:1;}to{opacity:0;transform:translateX(20px);} }
 
-    /* Hero Section */
+
     .hero-contact {
       min-height: 62vh; position: relative; overflow: hidden;
       background: linear-gradient(135deg, #0f0c29 0%, #1a1a2e 50%, #302b63 100%);
@@ -288,6 +288,14 @@
   opacity: 1 !important;
   visibility: visible !important;
 }
+
+
+.hero-contact, .hero-content, .hero-overlay { position: relative; z-index: 5; }
+.leadership-section, .faq-section, .newsletter-sec { position: relative; z-index: 1; opacity: 1 !important; visibility: visible !important; }
+.leaders-grid, .faq-wrap { display: grid !important; flex-direction: column !important; opacity: 1 !important; visibility: visible !important; gap: 24px !important; }
+.leader-card, .faq-item { opacity: 1 !important; visibility: visible !important; position: relative; z-index: 2; }
+.container { position: relative; z-index: 3; }
+#toast-container, .live-chat-btn, .chat-win { z-index: 9999 !important; }
   </style>
 </head>
 <body>
