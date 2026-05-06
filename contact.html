@@ -838,30 +838,226 @@ function sendChat() {
   const msg = inp.value.trim();
   if (!msg) return;
 
+
   const userDiv = document.createElement('div');
-  userDiv.className = 'chat-msg user'; userDiv.textContent = msg;
+  userDiv.className = 'chat-msg user'; 
+  userDiv.textContent = msg;
   body.appendChild(userDiv);
-  inp.value = ''; body.scrollTop = body.scrollHeight;
+  inp.value = ''; 
+  body.scrollTop = body.scrollHeight;
+
 
   const typing = document.createElement('div');
-  typing.className = 'chat-typing'; typing.innerHTML = '<span></span><span></span><span></span>';
-  body.appendChild(typing); body.scrollTop = body.scrollHeight;
+  typing.className = 'chat-typing'; 
+  typing.innerHTML = '<span></span><span></span><span></span>';
+  body.appendChild(typing); 
+  body.scrollTop = body.scrollHeight;
 
   setTimeout(() => {
     typing.remove();
     const botDiv = document.createElement('div');
     botDiv.className = 'chat-msg bot';
     const low = msg.toLowerCase();
-    if (low.includes('order') || low.includes('track')) botDiv.textContent = 'To track your order, check "My Orders" in your account or provide your Order ID (starts with BVN) and we\'ll help right away! 📦';
-    else if (low.includes('return') || low.includes('refund')) botDiv.textContent = 'Easy 30-day returns! Visit your account → Orders → Return Item. Free returns on defective products. 🔄';
-    else if (low.includes('size') || low.includes('fit')) botDiv.textContent = 'Every product has a size guide! When in doubt, size up. Our support team can also give personal advice. 👗';
-    else if (low.includes('shipping') || low.includes('deliver')) botDiv.textContent = 'Free shipping on orders above ₹999! Standard delivery: 3–5 business days. Express available at checkout. 🚀';
-    else if (/hi|hello|hey/.test(low)) botDiv.textContent = 'Hello! 👋 So great to hear from you. Ask me about orders, sizing, returns, or anything fashion!';
-    else botDiv.textContent = 'Thanks for your message! For detailed help, email dhimanparas605@gmail.com or use the contact form above. We\'re always here! ✨';
-    body.appendChild(botDiv); body.scrollTop = body.scrollHeight;
+
+    if (low.includes('order') || low.includes('track') || low.includes('status') || low.includes('where is my')) {
+      botDiv.innerHTML = `
+        <strong>📦 Order Tracking Help</strong><br><br>
+        • Log into your account → "My Orders" to see real-time status<br>
+        • Order IDs start with <strong>BVN</strong> (e.g., BVN12345678)<br>
+        • You'll receive SMS/email updates at each shipping stage<br>
+        • <a href="products.html?cat=new" style="color:var(--a);text-decoration:none">Track your order here</a> or reply with your BVN ID for instant help! 🚀
+      `;
+    }
+
+    else if (low.includes('return') || low.includes('refund') || low.includes('exchange') || low.includes('send back')) {
+      botDiv.innerHTML = `
+        <strong>🔄 Easy Returns & Exchanges</strong><br><br>
+        • <strong>30-day window</strong> from delivery date<br>
+        • Items must be unworn, unwashed, with original tags<br>
+        • Free return shipping on defective items<br>
+        • <strong>Steps</strong>: Account → Orders → Select Item → "Return/Exchange"<br>
+        • Refunds process in 3-5 business days after we receive the item<br>
+        • Need help? Email <a href="mailto:dhimanparas605@gmail.com" style="color:var(--a)">dhimanparas605@gmail.com</a> with your order ID ✨
+      `;
+    }
+
+    else if (low.includes('size') || low.includes('fit') || low.includes('measure') || low.includes('small') || low.includes('large')) {
+      botDiv.innerHTML = `
+        <strong>📏 Find Your Perfect Fit</strong><br><br>
+        • Every product page has a <strong>detailed size chart</strong> (cm & inches)<br>
+        • <strong>Pro tip</strong>: When between sizes, size up for relaxed fits<br>
+        • <strong>Women's wear</strong>: Runs true to size; check bust/waist/hip measurements<br>
+        • <strong>Men's wear</strong>: Slim fit styles may require sizing up<br>
+        • <strong>Kids</strong>: Refer to age/height chart on each product<br>
+        • Still unsure? Reply with the product name + your measurements for personalized advice! 👗
+      `;
+    }
+
+    else if (low.includes('shipping') || low.includes('deliver') || low.includes('dispatch') || low.includes('courier')) {
+      botDiv.innerHTML = `
+        <strong>🚚 Shipping Information</strong><br><br>
+        • <strong>Free shipping</strong> on orders above ₹999<br>
+        • <strong>Standard delivery</strong>: 3-5 business days (metro), 5-7 days (non-metro)<br>
+        • <strong>Express delivery</strong>: Available at checkout for ₹99 (1-2 days)<br>
+        • <strong>International shipping</strong>: Available to 50+ countries; rates calculated at checkout<br>
+        • <strong>Tracking</strong>: You'll receive SMS/email with tracking link once dispatched<br>
+        • <strong>Delays?</strong> Monsoon/festive seasons may add 1-2 days; we'll notify you proactively 🌟
+      `;
+    }
+
+    else if (low.includes('payment') || low.includes('pay') || low.includes('card') || low.includes('upi') || low.includes('cod') || low.includes('price') || low.includes('cost')) {
+      botDiv.innerHTML = `
+        <strong>💳 Payments & Pricing</strong><br><br>
+        • <strong>Accepted methods</strong>: UPI, Credit/Debit Cards, Net Banking, Razorpay Wallet, COD<br>
+        • <strong>Security</strong>: 256-bit SSL encryption; we never store card details<br>
+        • <strong>COD available</strong> on orders under ₹5000 (PIN code dependent)<br>
+        • <strong>Price match</strong>: Found a lower price? Email us with proof for verification<br>
+        • <strong>Discounts</strong>: Apply coupon codes at checkout; cannot be combined<br>
+        • <strong>EMI options</strong>: Available on orders above ₹3000 via select banks 💰
+      `;
+    }
+
+    else if (/^(hi|hello|hey|yo|sup|namaste|good morning|good evening)/.test(low)) {
+      botDiv.innerHTML = `
+        <strong>👋 Hello! Welcome to Bevenu Support</strong><br><br>
+        I'm here to help with:<br>
+        • 📦 Order tracking & status<br>
+        • 🔄 Returns & exchanges<br>
+        • 📏 Sizing & fit advice<br>
+        • 🚚 Shipping & delivery<br>
+        • 💳 Payments & pricing<br>
+        • 👗 Product recommendations<br>
+        • 🔐 Account & login help<br><br>
+        Just type your question, or try: "track my order", "return policy", or "size guide"! ✨
+      `;
+    }
+
+    else if (low.includes('recommend') || low.includes('suggest') || low.includes('what to wear') || low.includes('style') || low.includes('outfit')) {
+      botDiv.innerHTML = `
+        <strong>👗 Style Recommendations</strong><br><br>
+        Tell me more about what you're looking for:<br>
+        • <strong>Occasion</strong>: Work, wedding, casual, party, travel?<br>
+        • <strong>Season</strong>: Summer, monsoon, winter, festive?<br>
+        • <strong>Preference</strong>: Traditional, contemporary, fusion, minimalist?<br>
+        • <strong>Budget</strong>: Under ₹999, ₹1000-2999, ₹3000+?<br><br>
+        Or browse our curated collections:<br>
+        • <a href="products.html?cat=women" style="color:var(--a)">Women's New Arrivals</a><br>
+        • <a href="products.html?cat=men" style="color:var(--a)">Men's Essentials</a><br>
+        • <a href="products.html?sale=true" style="color:var(--a)">Sale Items (Up to 50% OFF)</a> 🛍️
+      `;
+    }
+
+    else if (low.includes('account') || low.includes('login') || low.includes('password') || low.includes('signup') || low.includes('register') || low.includes('forgot')) {
+      botDiv.innerHTML = `
+        <strong>🔐 Account Assistance</strong><br><br>
+        • <strong>Login issues</strong>: Use "Forgot Password" on login page; check spam folder for reset email<br>
+        • <strong>Signup</strong>: Use valid email; verify via OTP sent to phone/email<br>
+        • <strong>Update details</strong>: Account → Profile → Edit Info<br>
+        • <strong>Delete account</strong>: Email dhimanparas605@gmail.com with subject "Account Deletion Request"<br>
+        • <strong>Security</strong>: Enable 2FA in Account Settings for extra protection<br>
+        • Still stuck? Reply with the exact error message for targeted help 🔒
+      `;
+    }
+
+    else if (low.includes('discount') || low.includes('coupon') || low.includes('promo') || low.includes('offer') || low.includes('sale') || low.includes('deal')) {
+      botDiv.innerHTML = `
+        <strong>🎁 Current Promotions</strong><br><br>
+        • <strong>Summer Sale</strong>: Up to 50% OFF on selected items (ends soon!)<br>
+        • <strong>First Order</strong>: Use code <strong>WELCOME10</strong> for 10% OFF<br>
+        • <strong>Refer a Friend</strong>: Get ₹200 credit when they make first purchase<br>
+        • <strong>Newsletter Exclusive</strong>: Subscribe for early access to drops + member-only deals<br>
+        • <strong>Student Discount</strong>: 15% OFF with valid student ID (email verification required)<br>
+        • <strong>Pro tip</strong>: Follow @bevenu on Instagram for flash sale alerts! 🌟
+      `;
+    }
+
+    else if (low.includes('international') || low.includes('outside india') || low.includes('abroad') || low.includes('country') || low.includes('region')) {
+      botDiv.innerHTML = `
+        <strong>🌍 International Shopping</strong><br><br>
+        • We ship to <strong>50+ countries</strong> including USA, UK, UAE, Singapore, Australia<br>
+        • <strong>Shipping cost</strong>: Calculated at checkout based on weight & destination<br>
+        • <strong>Customs/duties</strong>: Buyer responsible for import taxes (varies by country)<br>
+        • <strong>Delivery time</strong>: 7-14 business days for international orders<br>
+        • <strong>Tracking</strong>: Full tracking provided via DHL/FedEx<br>
+        • <strong>Questions?</strong> Email international@bevenu.com with your country for specific guidance 🌏
+      `;
+    }
+
+    else if (low.includes('fabric') || low.includes('material') || low.includes('care') || low.includes('wash') || low.includes('iron') || low.includes('dry clean')) {
+      botDiv.innerHTML = `
+        <strong>🧵 Fabric & Care Guide</strong><br><br>
+        • <strong>Cotton/Linen</strong>: Machine wash cold, hang dry, iron medium heat<br>
+        • <strong>Silk</strong>: Dry clean recommended; hand wash cold if needed<br>
+        • <strong>Synthetics</strong>: Machine wash gentle cycle, low heat iron<br>
+        • <strong>Embellished items</strong>: Turn inside out, wash in mesh bag, air dry<br>
+        • <strong>Storage tip</strong>: Use padded hangers for structured pieces; fold knits<br>
+        • Full care instructions included with every order + on product pages 🧼
+      `;
+    }
+
+    else if (low.includes('gift') || low.includes('corporate') || low.includes('bulk') || low.includes('wholesale') || low.includes('business')) {
+      botDiv.innerHTML = `
+        <strong>🎁 Gifting & Corporate Orders</strong><br><br>
+        • <strong>Gift wrapping</strong>: Available at checkout (+₹49); includes personalized note<br>
+        • <strong>Corporate orders</strong>: Bulk discounts for 10+ items; email corporate@bevenu.com<br>
+        • <strong>Custom branding</strong>: Logo embroidery/printing available for business orders<br>
+        • <strong>Gift cards</strong>: Digital/physical cards in ₹500-5000 denominations<br>
+        • <strong>Wedding/festive collections</strong>: Curated sets with group ordering support<br>
+        • Reply with your requirements for a personalized proposal! 🎀
+      `;
+    }
+
+    else if (low.includes('sustainable') || low.includes('eco') || low.includes('ethical') || low.includes('organic') || low.includes('environment')) {
+      botDiv.innerHTML = `
+        <strong>🌱 Our Sustainability Commitment</strong><br><br>
+        • <strong>Materials</strong>: 98% sustainable fabrics (organic cotton, recycled polyester, Tencel™)<br>
+        • <strong>Production</strong>: Partner factories certified for fair wages & safe conditions<br>
+        • <strong>Packaging</strong>: 100% recyclable mailers; plastic-free since 2025<br>
+        • <strong>Carbon neutral</strong>: We offset 100% of shipping emissions via verified projects<br>
+        • <strong>Transparency</strong>: Scan QR on garment tag to see its journey from farm to you<br>
+        • Learn more: <a href="about.html" style="color:var(--a)">Our Values</a> page 🌍
+      `;
+    }
+
+    else if (low.includes('human') || low.includes('agent') || low.includes('person') || low.includes('talk to someone') || low.includes('not working') || low.includes('problem') || low.includes('issue') || low.includes('complaint')) {
+      botDiv.innerHTML = `
+        <strong>🤝 Connecting You to Human Support</strong><br><br>
+        I've flagged your query for our specialist team!<br><br>
+        • <strong>Response time</strong>: Within 2 hours during business hours (9AM-6PM IST)<br>
+        • <strong>Direct contact</strong>: <a href="mailto:dhimanparas605@gmail.com" style="color:var(--a)">dhimanparas605@gmail.com</a><br>
+        • <strong>Phone support</strong>: +91-XXXXXXXXXX (Mon-Sat, 10AM-5PM)<br>
+        • <strong>Live chat</strong>: Available on desktop site (bottom-right corner)<br><br>
+        For fastest help, include your order ID (if applicable) and a brief description of the issue. We're committed to making this right! 💙
+      `;
+    }
+
+    else {
+      botDiv.innerHTML = `
+        <strong>✨ How Can I Help Further?</strong><br><br>
+        I didn't quite catch that. Try asking about:<br>
+        • 📦 "Track my order BVN12345678"<br>
+        • 🔄 "How do I return an item?"<br>
+        • 📏 "What size should I get for a 38" bust?"<br>
+        • 🚚 "Do you ship to Dubai?"<br>
+        • 💳 "Is COD available in my area?"<br>
+        • 👗 "Recommend a party outfit under ₹2000"<br><br>
+        Or email us directly: <a href="mailto:dhimanparas605@gmail.com" style="color:var(--a)">dhimanparas605@gmail.com</a><br>
+        We're here 24/7 to ensure you love your Bevenu experience! 🙏
+      `;
+    }
+    
+    body.appendChild(botDiv); 
+    body.scrollTop = body.scrollHeight;
+
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'chat_response', {
+        'event_category': 'support',
+        'event_label': low.substring(0, 50),
+        'value': 1
+      });
+    }
   }, 1200);
 }
-
 
 function handleNewsletter(e) {
   e.preventDefault();
